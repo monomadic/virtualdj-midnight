@@ -14831,22 +14831,45 @@
 	</define>
 
 	<!-- TRANSPORT PANEL -->
-	<define class="xfader_panel">		
+	<define class="xfader_panel">
 		<!-- PLAY BUTTON -->
-		<button x="+120" y="+8" width="70" height="70" action="deck left play & deck right play & sync" coloroff="#333333" textcolor="#888888">
-			<off color="#444444" border="#999999" border_size="1" shape="circle"/>
-			<selected color="#555555" border="#FFFFFF" border-size="1" shape="circle" />
-			<icon dx="+3" sysicon="arrowright" color="#888888" colordown="white" colorselected="white" width="40" height="40" />
-		</button>
-	
+		<button x="+125" y="+5" width="60" height="60"
+		        action="deck left play & deck right play & sync"
+		        query="(deck left play | deck right play) ? blink 500ms : off">
+		  <off color="#333333" border="#000000" border_size="8" shape="circle"/>
+		  <on  color="#444444" border="#00FF00" border_size="10" shape="circle"/> <!-- blink target: green border -->
+		  <over color="#555555" border="#000000" border_size="10" shape="circle"/>
+		  <selected color="#555555" border="#00FF00" border_size="8" shape="circle"/>
+		  <icon dx="+3" sysicon="arrowright"
+		        color="#888888" colordown="white" colorselected="#888888"
+		        width="40" height="40"/>
+		</button>	
+		
+		
+		<!-- <button x="+125" y="+5" width="60" height="60" -->
+		        <!-- action="(deck left play | deck right play) ? (deck left pause & deck right pause) : (deck left play & deck right play & sync)" -->
+		        <!-- query="(deck left play | deck right play) ? on : off"> -->
+		  <!-- <off color="#444444" border="#000000" border_size="10" shape="circle"/> -->
+		  <!-- <over color="#555555" border="#000000" border_size="10" shape="circle"/> -->
+		  <!-- <selected color="#00FF00" border="#FFFFFF" border_size="10" shape="circle"/> -->
+		  <!-- show pause when any deck is playing -->
+		  <!-- <icon dx="+3" sysicon="pause" width="40" height="40" -->
+		        <!-- visibility="(deck left play | deck right play) ? visible : hidden" -->
+		        <!-- colorselected="white" colordown="white" color="#FFFFFF"/> -->
+		  <!-- show play when nothing is playing -->
+		  <!-- <icon dx="+3" sysicon="arrowright" width="40" height="40" -->
+		        <!-- visibility="(deck left play | deck right play) ? hidden : visible" -->
+		        <!-- color="#888888" colordown="white" colorselected="white"/> -->
+		<!-- </button> -->
+
 		<!-- <visual class="gfx_shape" width="312" height="86" coloroff="xf_background"/> -->
 		<!-- <panel class="crossfader" x="+20" y="+6+4+2"/> -->
 
-		<!-- <button class="button_main" x="+0" y="+64" width="63" height="17" action="crossfader_curve 'full' ? setting 'crossfaderDisable' : crossfader_curve 'full'" query="crossfader_curve 'full' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'FULL'"/> -->
-		<!-- <button class="button_main" x="+63" y="+64" width="63" height="17" action="crossfader_curve 'smooth' ? setting 'crossfaderDisable' : crossfader_curve 'smooth'" query="crossfader_curve 'smooth' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SMOOTH'"/> -->
-		<!-- <button class="button_main" x="+63*2" y="+64" width="61" height="17" action="crossfader_curve 'scratch' ? setting 'crossfaderDisable' : crossfader_curve 'scratch'" query="crossfader_curve 'scratch' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SCRATCH'"/> -->
-		<!-- <button class="button_main" x="+62*3" y="+64" width="63" height="17" action="crossfader_curve 'custom' ? setting 'crossfaderDisable' : crossfader_curve 'custom'" query="crossfader_curve 'custom' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUSTOM'"/> -->
-		<!-- <button class="button_main" x="+62*4" y="+64" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/> -->
+		<button class="button_main" x="+0" y="+70" width="63" height="17" action="crossfader_curve 'full' ? setting 'crossfaderDisable' : crossfader_curve 'full'" query="crossfader_curve 'full' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'FULL'"/>
+		<button class="button_main" x="+63" y="+70" width="63" height="17" action="crossfader_curve 'smooth' ? setting 'crossfaderDisable' : crossfader_curve 'smooth'" query="crossfader_curve 'smooth' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SMOOTH'"/>
+		<button class="button_main" x="+63*2" y="+70" width="61" height="17" action="crossfader_curve 'scratch' ? setting 'crossfaderDisable' : crossfader_curve 'scratch'" query="crossfader_curve 'scratch' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SCRATCH'"/>
+		<button class="button_main" x="+62*3" y="+70" width="63" height="17" action="crossfader_curve 'custom' ? setting 'crossfaderDisable' : crossfader_curve 'custom'" query="crossfader_curve 'custom' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUSTOM'"/>
+		<button class="button_main" x="+62*4" y="+70" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/>
 	</define>
 </group>
 
