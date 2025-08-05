@@ -2710,10 +2710,10 @@
 		<!-- SYNC OPTIONS -->
 		<define class="syncoptions_display">
 			<!-- <button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_bpm" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH BPM"/> -->
-			<button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="LINKED TRACKS"/>
+			<!-- <button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="LINKED TRACKS"/> -->
 			
 			<button class="button_main"
-			        x="+0" y="+0" width="100" height="15"
+			        x="+0" y="+0" width="110" height="15"
 			        action="show_splitpanel sideview on & wait 200ms & sideview 'geniusdj:\linked'"
 			        query="has_linked_tracks"
 			        text="LINKED TRACKS"
@@ -9345,11 +9345,11 @@
 		</group>
 	</define>
 
-	<!-- PRO: VERTICAL SCRATCHWAVE -->
+	<!-- PRO: MAIN WAVEFORM (VERTICAL) -->
 	<define class="vertical_scratchwave" placeholders="deck">
 		<deck deck="[DECK]">
 			
-			<!-- with crossfader -->
+			<!-- WITH CROSSFADER -->
 			<group name="no_hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 0">
 				<scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal"  colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" >
 				<!-- WAVEFORM -->
@@ -10636,7 +10636,7 @@
 				<panel class="beat_counter" deck="4" x="960-2-598-40" y="+[WAVEFORMHEIGHT]/2+18+[WAVEFORMHEIGHT]/2+2" visibility="var_equal '@$hauntingbarcounter' 1 ? setting 'waveformCenter' 'left'"/>
 			</panel>
 
-			<!-- PRO: MAIN SCRATCHWAVE -->
+			<!-- PRO: MAIN WAVEFORM (HORIZONTAL) -->
 			<panel name="horizontal_scratch_active2deck" visibility="not setting skinWaveformType 0 && var_equal '@$4decks' 0 ? true : var_equal '@$4waveforms' 0">
 				
 				<group name="grid_1" visibility="var_equal '@$hauntingwavegridmode' 0">
@@ -10879,7 +10879,7 @@
 						<!-- <grid size="1" mainsize="4" height="12" pos="-14" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-14" shapemirrored="up"/> -->
 						<grid size="2" mainsize="4" height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="up"/>
 						<gridlines width="1" color="gridlines" transparency="0.3"/>
-						<cue y="[WAVEFORMHEIGHT]+28" height="[WAVEFORMHEIGHT]">
+						<cue y="+[WAVEFORMHEIGHT]/2-32-4" height="[WAVEFORMHEIGHT]">
 							 <mask x="42" y="0" width="7" height="12"/>
 							 <text dx="+8" dy="-2" weight="" fontsize="12" color="deckcolor" important="true"/>
 						</cue>
@@ -12336,6 +12336,7 @@
 		</menu>
 	</define>
 
+	<!-- ?: MAIN WAVEFORM (HORIZONTAL) -->
 	<define class="waveform_horizontal_center" placeholders="*waveformwidth,*waveformheight">
 		<visual class="gfx_shape" width="[WAVEFORMWIDTH]" height="[WAVEFORMHEIGHT]" coloroff="wave_background"/>
 
@@ -13905,7 +13906,7 @@
 		</menu>
 	</define>
 
-	<!-- MAIN WAVEFORM (STACK VIEW) .wave_stack -->
+	<!-- STACK: MAIN WAVEFORM .wave_stack -->
 	<define class="wave_stack" placeholders="*width=1114,*height=164">
 
 		<!-- with no background -->
@@ -16046,6 +16047,7 @@
 </group>
 
 <group name="VARIATIONS">
+	<!-- PRO: CONTAINER (2 DECK) (entire area of decks, not including waveform or browser) -->
 	<define class="PRO_2DECKS" placeholders="*panelname">
 		<pos y="+43+2+381+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 13"/>
 		<pos y="+43+2+361+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 12"/>
