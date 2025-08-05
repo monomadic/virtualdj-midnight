@@ -1578,7 +1578,7 @@
 			</visual>
 		</define>
 
-		<!-- HOTCUE BUTTON (PERFORMANCE MODE HOTCUE PANEL) -->
+		<!-- PERFORMANCE: EXTENDED: HOTCUE BUTTON -->
 		<define class="hcue_button_ex" placeholders="*source" >
 			<!-- default background -->
 			<button class="button_main" width="28" height="26" action="hot_cue [SOURCE]" rightclick="cue_name [SOURCE]" coloron="button_background" brcoloron="button_background"/>
@@ -1899,6 +1899,7 @@
 				<selected color="button_background2" border="needle" border_size="1" shape="square"/>
 			</button>
 
+			<!-- TEXT -->
 			<button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
 				<size width="109" height="37"/>
 				<text dx="+10+5+4" width="109-20-10" size="16" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="center"/>
@@ -2708,7 +2709,23 @@
 	<group name="texts">
 		<!-- SYNC OPTIONS -->
 		<define class="syncoptions_display">
-			<button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_bpm" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH BPM"/>
+			<!-- <button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_bpm" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH BPM"/> -->
+			<button class="button_main" x="+0" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="LINKED TRACKS"/>
+			
+			<button class="button_main"
+			        x="+0" y="+0" width="100" height="15"
+			        action="show_splitpanel sideview on & wait 200ms & sideview 'geniusdj:\linked'"
+			        query="has_linked_tracks"
+			        text="LINKED TRACKS"
+			        textcolor="textoff3"
+			        textcoloron="green"
+			        textsize="10"
+							coloroff="infos_background"
+							coloron="infos_background"
+							brcoloroff="infos_background"
+							brcoloron="infos_background"
+			/>
+			
 			<button class="button_main" x="+114+8" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH KEY"/>
 			<button class="button_main" x="+114+114+16" y="+0" width="90" height="17" action="auto_sync" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO SYNC"/>
 			<button class="button_main" x="+114+94+114+24" y="+0" width="120" height="17" action="auto_pitch_lock" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO PITCH LOCK"/>
@@ -5612,7 +5629,7 @@
 			<button class="button_main" x="+2+4" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/>
 			<menu class="menu_maindecks" query="select" x="+2+4" y="+64-8-22" width="28" height="20"/>
 
-			<!-- not cover -->
+			<!-- TITLE (No Cover) -->
 			<group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
 				<group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
 					<textzone tooltip="" >
@@ -5641,18 +5658,18 @@
 				</group>
 			</group>
 
-			<!-- with cover -->
+			<!-- TITLE: with cover -->
 			<group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
 				<group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
 					<textzone tooltip="" >
 						<pos x="+2+4+28+8+50+8" y="+4"/>
 						<size width="478-50-8" height="34"/>
-						<text fontsize="20" weight="bold" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="18" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
 						<pos x="+2+4+28+8+50+8" y="+4+28" />
 						<size width="478-50-8" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/>
+						<text fontsize="14" weight="" color="#888888" align="left" scroll="no" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 
@@ -5660,12 +5677,12 @@
 					<textzone tooltip="" >
 						<pos x="+2+4+28+8+50+8" y="+4"/>
 						<size width="478-50-8" height="34"/>
-						<text fontsize="20" weight="bold" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="18" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
 						<pos x="+2+4+28+8+50+8" y="+4+28" />
 						<size width="478-50-8" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
+						<text fontsize="14" weight="" color="#888888" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 			</group>
@@ -5691,12 +5708,12 @@
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4"/>
 						<size width="478" height="34"/>
-						<text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="18" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4+28" />
 						<size width="478" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
+						<text fontsize="14" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 
@@ -5704,12 +5721,12 @@
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4"/>
 						<size width="478" height="34"/>
-						<text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="18" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4+28" />
 						<size width="478" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
+						<text fontsize="14" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 			</group>
@@ -5720,12 +5737,12 @@
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4"/>
 						<size width="478-50-8" height="34"/>
-						<text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="18" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4+28" />
 						<size width="478-50-8" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
+						<text fontsize="14" weight="" color="#888888" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 
@@ -5738,7 +5755,7 @@
 					<textzone tooltip="">
 						<pos x="+2+354" y="+4+28" />
 						<size width="478-50-8" height="28"/>
-						<text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
+						<text fontsize="17" weight="" color="#888888" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
 					</textzone>
 				</group>
 			</group>
@@ -6219,7 +6236,7 @@
 		<button class="button_main" x="+0" y="+6+30+4+30+6+62" width="60" height="30" action="play_button" sysicon="play_button" iconsize="39" textcolor="textoff2"/>
 	</define>
 
-	<!-- PERFORMANCE MODE? -->
+	<!-- PERFORMANCE: EXTENDED: TRANSPORT (SYNC CUE ETC) -->
 	<define class="transport_ex">
 		<button class="button_main" x="+0" y="+6" width="60" height="16" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/>
 		<button class="button_main" x="+0" y="+6+16+2" width="60" height="16" action="setting 'hotcueMode' 'stutter'" query="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/>
@@ -7476,15 +7493,15 @@
 				<!-- <button class="button_main" x="+10+150" y="+6" width="454-300" height="28" action="pad_page_select" scroll="pad_page" textsize="13" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/> -->
 			<!-- </panel> -->
 
-			<!-- 4-tab pad select -->
-			<panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="Pads (4 btn)">
-				<button class="button_main" x="+10" y="+6" width="109" height="26" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+10+115" y="+6" width="109" height="26" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+10+115+115" y="+6" width="109" height="26" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+10+115+115+115" y="+6" width="109" height="26" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<!-- BANK SELECT -->
+			<panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
+				<button class="button_main" x="+10" y="+6" width="109" height="22" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+10+115" y="+6" width="109" height="22" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+10+115+115" y="+6" width="109" height="22" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+10+115+115+115" y="+6" width="109" height="22" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			</panel>
 
-			<!-- 5-tab pad select -->
+			<!-- 5-tab bank select -->
 			<!-- <panel name="@pads3_[PANELNAME]" group="pads16_[PANELNAME]" visible="no" available="yes" displayname="Pads (5 btns)"> -->
 				<!-- <button class="button_main" x="+10" y="+6" width="86" height="28" action="shift ? pad_pages 26 : pad_pages 1 ? pad_pages 5 : pad_pages 1" rightclick="pad_pages 26 ? pad_page_select 26 : pad_pages 5 ? pad_page_select 5 : pad_page_select 1" query="pad_pages 26 ? blink 400ms : pad_pages 5 ? blink : pad_pages 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 26 ? pad_pages 26 & param_uppercase : pad_pages 5 ? pad_pages 5 & param_uppercase : pad_pages 1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
 				<!-- <button class="button_main" x="+10+92" y="+6" width="86" height="28" action="shift ? pad_pages 27 : pad_pages 2 ? pad_pages 6 : pad_pages 2" rightclick="pad_pages 27 ? pad_page_select 27 : pad_pages 6 ? pad_page_select 6 : pad_page_select 2" query="pad_pages 27 ? blink 400ms : pad_pages 6 ? blink : pad_pages 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 27 ? pad_pages 27 & param_uppercase : pad_pages 6 ? pad_pages 6 & param_uppercase : pad_pages 2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
@@ -7493,12 +7510,12 @@
 				<!-- <button class="button_main" x="+10+92+92+92+92" y="+6" width="86" height="28" action="shift ? pad_pages 30 : pad_pages 12 ? pad_pages 16 : pad_pages 12" rightclick="pad_pages 30 ? pad_page_select 30 : pad_pages 16 ? pad_page_select 16 : pad_page_select 12" query="pad_pages 30 ? blink 400ms : pad_pages 16 ? blink : pad_pages 12" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 30 ? pad_pages 30 & param_uppercase : pad_pages 16 ? pad_pages 16 & param_uppercase : pad_pages 12 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
 			<!-- </panel> -->
 
-			<!-- pads 1-4 -->
+			<!-- PAD BUTTONS -->
 			<panel class="padbutton2" x="+10" y="+6+34" source="1"/>
 			<panel class="padbutton2" x="+10+115" y="+6+34" source="2"/>
 			<panel class="padbutton2" x="+10+115+115" y="+6+34" source="3"/>
 			<panel class="padbutton2" x="+10+115+115+115" y="+6+34" source="4"/>
-			<!-- pads 5-8 -->
+			
 			<panel class="padbutton2" x="+10" y="+5+34+45-2" source="5"/>
 			<panel class="padbutton2" x="+10+115" y="+5+34+45-2" source="6"/>
 			<panel class="padbutton2" x="+10+115+115" y="+5+34+45-2" source="7"/>
@@ -7620,28 +7637,28 @@
 		</panel>
 	</define>
 
-	<!-- PAD PANEL (USED IN PERFORMANCE MODE'S HOTCUE PANEL SELECT) -->
+	<!-- PERFORMANCE: EXTENDED: PAD PANEL -->
 	<define class="pads_ex" placeholders="*panelname">
 		<!-- Pads (Default) -->
-		<panel name="@padssl_[PANELNAME]" group="pads16++_[PANELNAME]" visible="yes" available="yes" displayname="Pads (Default)">
-			<visual class="gfx_shape" x="+10" y="+6" width="454+45" height="28" coloroff="xf_background"/>
-			<group name="pad_param1" visibility="pad_has_param 1">
-				<button class="button_main" x="+10" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+10+26" y="+6" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-				<button class="button_main" x="+10+26+82" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			</group>
+		<!-- <panel name="@padssl_[PANELNAME]" group="pads16++_[PANELNAME]" visible="yes" available="yes" displayname="Pads (Default)"> -->
+			<!-- <visual class="gfx_shape" x="+10" y="+6" width="454+45" height="28" coloroff="xf_background"/> -->
+			<!-- <group name="pad_param1" visibility="pad_has_param 1"> -->
+				<!-- <button class="button_main" x="+10" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+10+26" y="+6" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+10+26+82" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- </group> -->
 
-			<group name="pad_param1" x="+45" visibility="pad_param_visible 2">
-				<button class="button_main" x="+454+10-26-82-26" y="+6" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+454+10-26-82" y="+6" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-				<button class="button_main" x="+454+10-26" y="+6" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			</group>
+			<!-- <group name="pad_param1" x="+45" visibility="pad_param_visible 2"> -->
+				<!-- <button class="button_main" x="+454+10-26-82-26" y="+6" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+454+10-26-82" y="+6" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+454+10-26" y="+6" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- </group> -->
 
-			<button class="button_main" x="+10+150" y="+6" width="454-300+45" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/>
-		</panel>
+			<!-- <button class="button_main" x="+10+150" y="+6" width="454-300+45" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/> -->
+		<!-- </panel> -->
 
-		<!-- Pads (4 btn) -->
-		<panel name="@padsbtns_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (4 bnt)">
+		<!-- Pads (8 Pads) -->
+		<panel name="@padsbtns_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="8 Pads">
 			<button class="button_main" x="+10" y="+6" width="121" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" query="pad_page btn1" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			<button class="button_main" x="+10+126" y="+6" width="121" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" query="pad_page btn2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			<button class="button_main" x="+10+126+126" y="+6" width="121" height="28" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" query="pad_page btn3" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
@@ -7653,14 +7670,34 @@
 			<button class="button_main" x="+10+126+126+126" y="+6" width="121" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" visibility="pad_page btn4 ? pad_bank2" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
 		</panel>
 
-		<!-- Pads (5 btn) -->
-		<panel name="@padsbtns2_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (5 btns)">
-			<button class="button_main" x="+10" y="+6" width="95" height="28" action="shift ? pad_pages 26 : pad_pages 1 ? pad_pages 5 : pad_pages 1" rightclick="pad_pages 26 ? pad_page_select 26 : pad_pages 5 ? pad_page_select 5 : pad_page_select 1" query="pad_pages 26 ? blink 400ms : pad_pages 5 ? blink : pad_pages 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 26 ? pad_pages 26 & param_uppercase : pad_pages 5 ? pad_pages 5 & param_uppercase : pad_pages 1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+101" y="+6" width="95" height="28" action="shift ? pad_pages 27 : pad_pages 2 ? pad_pages 6 : pad_pages 2" rightclick="pad_pages 27 ? pad_page_select 27 : pad_pages 6 ? pad_page_select 6 : pad_page_select 2" query="pad_pages 27 ? blink 400ms : pad_pages 6 ? blink : pad_pages 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 27 ? pad_pages 27 & param_uppercase : pad_pages 6 ? pad_pages 6 & param_uppercase : pad_pages 2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 28 : pad_pages 3 ? pad_pages 7 : pad_pages 3" rightclick="pad_pages 28 ? pad_page_select 28 : pad_pages 7 ? pad_page_select 7 : pad_page_select 3" query="pad_pages 28 ? blink 400ms : pad_pages 7 ? blink : pad_pages 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 28 ? pad_pages 28 & param_uppercase : pad_pages 7 ? pad_pages 7 & param_uppercase : pad_pages 3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+101+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 29 : pad_pages 4 ? pad_pages 19 : pad_pages 19 ? pad_pages 8 : pad_pages 4" rightclick="pad_pages 29 ? pad_page_select 29 : pad_pages 4 ? pad_page_select 4 : pad_pages 19 ? pad_page_select 19 : pad_page_select 8" query="pad_pages 29 ? blink 400ms : pad_pages 8 ? blink : pad_pages 4 ? on : pad_pages 19" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 29 ? pad_pages 29 & param_uppercase : pad_pages 19 ? pad_pages 19 & param_uppercase : pad_pages 8 ? pad_pages 8 & param_uppercase : pad_pages 4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+101+101+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 30 : pad_pages 12 ? pad_pages 16 : pad_pages 12" rightclick="pad_pages 30 ? pad_page_select 30 : pad_pages 16 ? pad_page_select 16 : pad_page_select 12" query="pad_pages 30 ? blink 400ms : pad_pages 16 ? blink : pad_pages 12" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 30 ? pad_pages 30 & param_uppercase : pad_pages 16 ? pad_pages 16 & param_uppercase : pad_pages 12 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+		<!-- Pads (16 Pads) -->
+		<panel name="@pads_16_btns_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="16 Pads">
+			<!-- header buttons -->
+			<button class="button_main" x="+10" y="+6" width="121" height="24" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" query="pad_page btn1" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126" y="+6" width="121" height="24" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" query="pad_page btn2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126+126" y="+6" width="121" height="24" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" query="pad_page btn3" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126+126+126" y="+6" width="121" height="24" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" query="pad_page btn4" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+
+			<!-- pad buttons -->
+			<button class="button_main" x="+10" y="+6" width="121" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" visibility="pad_page btn1 ? pad_bank2" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126" y="+6" width="121" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" visibility="pad_page btn2 ? pad_bank2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126+126" y="+6" width="121" height="28" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" visibility="pad_page btn3 ? pad_bank2" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+126+126+126" y="+6" width="121" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" visibility="pad_page btn4 ? pad_bank2" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+		
+			<!-- <button class="button_main" x="+10" y="+6" width="121" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" visibility="pad_page btn1 ? pad_bank2" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+126" y="+6" width="121" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" visibility="pad_page btn2 ? pad_bank2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+126+126" y="+6" width="121" height="28" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" visibility="pad_page btn3 ? pad_bank2" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+126+126+126" y="+6" width="121" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" visibility="pad_page btn4 ? pad_bank2" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/> -->
 		</panel>
+
+		<!-- Pads (5 btn) -->
+		<!-- <panel name="@padsbtns2_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (5 btns)"> -->
+			<!-- <button class="button_main" x="+10" y="+6" width="95" height="28" action="shift ? pad_pages 26 : pad_pages 1 ? pad_pages 5 : pad_pages 1" rightclick="pad_pages 26 ? pad_page_select 26 : pad_pages 5 ? pad_page_select 5 : pad_page_select 1" query="pad_pages 26 ? blink 400ms : pad_pages 5 ? blink : pad_pages 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 26 ? pad_pages 26 & param_uppercase : pad_pages 5 ? pad_pages 5 & param_uppercase : pad_pages 1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+101" y="+6" width="95" height="28" action="shift ? pad_pages 27 : pad_pages 2 ? pad_pages 6 : pad_pages 2" rightclick="pad_pages 27 ? pad_page_select 27 : pad_pages 6 ? pad_page_select 6 : pad_page_select 2" query="pad_pages 27 ? blink 400ms : pad_pages 6 ? blink : pad_pages 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 27 ? pad_pages 27 & param_uppercase : pad_pages 6 ? pad_pages 6 & param_uppercase : pad_pages 2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 28 : pad_pages 3 ? pad_pages 7 : pad_pages 3" rightclick="pad_pages 28 ? pad_page_select 28 : pad_pages 7 ? pad_page_select 7 : pad_page_select 3" query="pad_pages 28 ? blink 400ms : pad_pages 7 ? blink : pad_pages 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 28 ? pad_pages 28 & param_uppercase : pad_pages 7 ? pad_pages 7 & param_uppercase : pad_pages 3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+101+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 29 : pad_pages 4 ? pad_pages 19 : pad_pages 19 ? pad_pages 8 : pad_pages 4" rightclick="pad_pages 29 ? pad_page_select 29 : pad_pages 4 ? pad_page_select 4 : pad_pages 19 ? pad_page_select 19 : pad_page_select 8" query="pad_pages 29 ? blink 400ms : pad_pages 8 ? blink : pad_pages 4 ? on : pad_pages 19" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 29 ? pad_pages 29 & param_uppercase : pad_pages 19 ? pad_pages 19 & param_uppercase : pad_pages 8 ? pad_pages 8 & param_uppercase : pad_pages 4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- <button class="button_main" x="+10+101+101+101+101" y="+6" width="95" height="28" action="shift ? pad_pages 30 : pad_pages 12 ? pad_pages 16 : pad_pages 12" rightclick="pad_pages 30 ? pad_page_select 30 : pad_pages 16 ? pad_page_select 16 : pad_page_select 12" query="pad_pages 30 ? blink 400ms : pad_pages 16 ? blink : pad_pages 12" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_pages 30 ? pad_pages 30 & param_uppercase : pad_pages 16 ? pad_pages 16 & param_uppercase : pad_pages 12 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+		<!-- </panel> -->
 
 		<!-- Hot Cues -->
 		<panel name="@hotcuesx8_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Hot Cues">
@@ -7700,29 +7737,32 @@
 		</panel>
 	</define>
 
+	<!-- PERFORMANCE: VERTICAL: PAD BUTTONS -->
 	<define class="pads_vert" placeholders="*panelname">
-		<panel name="@padssl_[PANELNAME]" group="pads16++_[PANELNAME]" visible="yes" available="yes" displayname="Pads (Default)">
-			<visual class="gfx_shape" x="+10" y="+6" width="454+45-80-52" height="28" coloroff="xf_background"/>
-			<group name="pad_param1" visibility="pad_has_param 1">
-				<button class="button_main" x="+10" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+10+26" y="+6" width="82-12" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-				<button class="button_main" x="+10+26+82-12" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			</group>
+		<!-- Pads (Default) -->
+		<!-- <panel name="@padssl_[PANELNAME]" group="pads16++_[PANELNAME]" visible="yes" available="yes" displayname="Pads (Default)"> -->
+			<!-- <visual class="gfx_shape" x="+10" y="+6" width="454+45-80-52" height="28" coloroff="xf_background"/> -->
+			<!-- <group name="pad_param1" visibility="pad_has_param 1"> -->
+				<!-- <button class="button_main" x="+10" y="+6" width="26" height="25" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+10+26" y="+6" width="82-12" height="25" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+10+26+82-12" y="+6" width="26" height="25" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- </group> -->
 
-			<group name="pad_param1" x="+45-78-54+12" visibility="pad_param_visible 2">
-				<button class="button_main" x="+454+10-26-82-26" y="+6" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+454+10-26-82" y="+6" width="82-12" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-				<button class="button_main" x="+454+10-26-12" y="+6" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			</group>
+			<!-- <group name="pad_param1" x="+45-78-54+12" visibility="pad_param_visible 2"> -->
+				<!-- <button class="button_main" x="+454+10-26-82-26" y="+6" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+454+10-26-82" y="+6" width="82-12" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+				<!-- <button class="button_main" x="+454+10-26-12" y="+6" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+			<!-- </group> -->
 
-			<button class="button_main" x="+10+150-12" y="+6" width="454-300+45-78-54+24" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/>
-		</panel>
+			<!-- <button class="button_main" x="+10+150-12" y="+6" width="454-300+45-78-54+24" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/> -->
+		<!-- </panel> -->
 
-		<panel name="@padsbtns_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (4 bnt)">
-			<button class="button_main" x="+10" y="+6" width="88" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" query="pad_page btn1" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+93" y="+6" width="88" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" query="pad_page btn2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+93+93" y="+6" width="88" height="28" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" query="pad_page btn3" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-			<button class="button_main" x="+10+93+93+93" y="+6" width="88" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" query="pad_page btn4" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+		<!-- Pads (8 Pads) -->
+		<panel name="@padsbtns_8_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (8 Buttons)">
+			<button class="button_main" x="+10" y="+6" width="88" height="26" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" query="pad_page btn1" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93" y="+6" width="88" height="26" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" query="pad_page btn2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93" y="+6" width="88" height="26" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" query="pad_page btn3" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93+93" y="+6" width="88" height="26" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" query="pad_page btn4" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 
 			<button class="button_main" x="+10" y="+6" width="88" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" visibility="pad_page btn1 ? pad_bank2" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
 			<button class="button_main" x="+10+93" y="+6" width="88" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" visibility="pad_page btn2 ? pad_bank2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
@@ -7730,6 +7770,20 @@
 			<button class="button_main" x="+10+93+93+93" y="+6" width="88" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" visibility="pad_page btn4 ? pad_bank2" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
 		</panel>
 
+		<!-- Pads (16 Pads) -->
+		<panel name="@padsbtns_16_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Pads (16 Buttons)">
+			<button class="button_main" x="+10" y="+6" width="88" height="25" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" query="pad_page btn1" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93" y="+6" width="88" height="25" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" query="pad_page btn2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93" y="+6" width="88" height="25" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" query="pad_page btn3" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93+93" y="+6" width="88" height="25" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" query="pad_page btn4" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+
+			<button class="button_main" x="+10" y="+6" width="88" height="28" action="pad_page btn1 ? pad_bank2 : pad_page btn1" rightclick="pad_page_select 1" visibility="pad_page btn1 ? pad_bank2" scroll="pad_page_select 1" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93" y="+6" width="88" height="28" action="pad_page btn2 ? pad_bank2 : pad_page btn2" rightclick="pad_page_select 2" visibility="pad_page btn2 ? pad_bank2" scroll="pad_page_select 2" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93" y="+6" width="88" height="28" action="pad_page btn3 ? pad_bank2 : pad_page btn3" rightclick="pad_page_select 3" visibility="pad_page btn3 ? pad_bank2" scroll="pad_page_select 3" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+			<button class="button_main" x="+10+93+93+93" y="+6" width="88" height="28" action="pad_page btn4 ? pad_bank2 : pad_page btn4" rightclick="pad_page_select 4" visibility="pad_page btn4 ? pad_bank2" scroll="pad_page_select 4" tooltip="Select this pad page, one more click shows pad bank 2.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="1" textcolor="textdarker"/>
+		</panel>
+
+		<!-- Hot Cues -->
 		<panel name="@hotcuesx8_[PANELNAME]" group="pads16++_[PANELNAME]" visible="no" available="yes" displayname="Hot Cues">
 			<panel class="hcue_button_vert" x="+10" y="+6" source="1"/>
 			<panel class="hcue_button_vert" x="+10" y="+6+37" source="2"/>
@@ -7753,6 +7807,18 @@
 			<panel class="padbutton_vert" x="+10+93+93" y="+6+34+50+5" width="88" height="50" source="7"/>
 			<panel class="padbutton_vert" x="+10+93+93+93" y="+6+34+50+5" width="88" height="50" source="8"/>
 		</panel>
+		
+		<!-- <panel visibility="not skin_panel '@hotcuesx16_[PANELNAME]' ? not pad_bank2 : false"> -->
+			<!-- <panel class="padbutton_vert" x="+10" y="+6+34" width="88" height="50" source="1"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93" y="+6+34" width="88" height="50" source="2"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93+93" y="+6+34" width="88" height="50" source="3"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93+93+93" y="+6+34" width="88" height="50" source="4"/> -->
+
+			<!-- <panel class="padbutton_vert" x="+10" y="+6+34+50+5" width="88" height="50" source="5"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93" y="+6+34+50+5" width="88" height="50" source="6"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93+93" y="+6+34+50+5" width="88" height="50" source="7"/> -->
+			<!-- <panel class="padbutton_vert" x="+10+93+93+93" y="+6+34+50+5" width="88" height="50" source="8"/> -->
+		<!-- </panel> -->
 
 		<panel visibility="not skin_panel '@hotcuesx8_[PANELNAME]' ? pad_bank2 : false">
 			<panel class="padbutton_vert" x="+10" y="+6+34" width="88" height="50" source="9"/>
@@ -14383,7 +14449,7 @@
 		</deck>
 	</define>
 
-	<!-- PERFORMANCE: RACK: PADS -->
+	<!-- PERFORMANCE: EXTENDED: PADS RACK -->
 	<define class="pads_rack_ex" placeholders="deck,*panelname">
 		<!-- PAD SELECT (4 decks) -->
 		<deck deck="[DECK]">
@@ -14410,9 +14476,10 @@
 		</deck>
 	</define>
 
+	<!-- PERFORMANCE: VERTICAL: PADS RACK -->
 	<define class="pads_rack_vert" placeholders="deck,*panelname">
 		<deck deck="[DECK]">
-			<panel class="tab_button" action="skin_panelgroup 'pads16++_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16++_[PANELNAME]'" query="on/off" width="30" height="132+7" y="+6" orientation="vertical" textaction="not skin_panel '@hotcuesx8_[PANELNAME]' ? get_text 'PADS' : get_text 'HOTCUE'" visibility="get_deck 1 ? true : get_deck 3 ? true"/>
+			<panel class="tab_button" height="218" action="skin_panelgroup 'pads16++_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16++_[PANELNAME]'" query="on/off" width="30" height="132+7" y="+6" orientation="vertical" textaction="not skin_panel '@hotcuesx8_[PANELNAME]' ? get_text 'PADS' : get_text 'HOTCUE'" visibility="get_deck 1 ? true : get_deck 3 ? true"/>
 			<button class="menu_button" action="pad_menu" query="on/off" x="+6" y="+12" width="18" height="18" visibility="get_deck 1 ? not skin_panel '@hotcuesx8_[PANELNAME]' ? pad_has_menu : get_deck 3 ? not skin_panel '@hotcuesx8_[PANELNAME]' ? pad_has_menu"/>
 			<button class="menu_button" action="cues_options" query="on/off" x="+6" y="+12" width="18" height="18" visibility="get_deck 1 ? skin_panel '@hotcuesx8_[PANELNAME]' : get_deck 3 ? skin_panel '@hotcuesx8_[PANELNAME]'"/>
 
@@ -14420,7 +14487,7 @@
 			<button class="menu_button" action="pad_menu" query="on/off" x="+549-30+6-78-54" y="+12" width="18" height="18" visibility="get_deck 2 ? not skin_panel '@hotcuesx8_[PANELNAME]' ? pad_has_menu : get_deck 4 ? not skin_panel '@hotcuesx8_[PANELNAME]' ? pad_has_menu"/>
 			<button class="menu_button" action="cues_options" query="on/off" x="+549-30+6-78-54" y="+12" width="18" height="18" visibility="get_deck 2 ? skin_panel '@hotcuesx8_[PANELNAME]' : get_deck 4 ? skin_panel '@hotcuesx8_[PANELNAME]'"/>
 
-			<panel class="pads_vert" x="+32-2" panelname="[PANELNAME]" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+			<panel class="pads_vert" x="+32-6" panelname="[PANELNAME]" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 			<panel class="pads_vert" panelname="[PANELNAME]" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 		</deck>
 	</define>
@@ -14912,11 +14979,30 @@
 		<!-- <visual class="gfx_shape" width="312" height="86" coloroff="xf_background"/> -->
 		<!-- <panel class="crossfader" x="+20" y="+6+4+2"/> -->
 
-		<button class="button_main" x="+0" y="+70" width="63" height="17" action="crossfader_curve 'full' ? setting 'crossfaderDisable' : crossfader_curve 'full'" query="crossfader_curve 'full' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'FULL'"/>
-		<button class="button_main" x="+63" y="+70" width="63" height="17" action="crossfader_curve 'smooth' ? setting 'crossfaderDisable' : crossfader_curve 'smooth'" query="crossfader_curve 'smooth' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SMOOTH'"/>
-		<button class="button_main" x="+63*2" y="+70" width="61" height="17" action="crossfader_curve 'scratch' ? setting 'crossfaderDisable' : crossfader_curve 'scratch'" query="crossfader_curve 'scratch' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'SCRATCH'"/>
-		<button class="button_main" x="+62*3" y="+70" width="63" height="17" action="crossfader_curve 'custom' ? setting 'crossfaderDisable' : crossfader_curve 'custom'" query="crossfader_curve 'custom' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUSTOM'"/>
-		<button class="button_main" x="+62*4" y="+70" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/>
+		<!-- <button class="button_main" x="+0" y="+70" width="63" height="17" action="crossfader_curve 'full' ? setting 'crossfaderDisable' : crossfader_curve 'full'" query="crossfader_curve 'full' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'FULL'"/> -->
+		<!-- <button class="button_main" x="+63" y="+70" width="63" height="17" action="crossfader_curve 'smooth' ? setting 'crossfaderDisable' : crossfader_curve 'smooth'" query="crossfader_curve 'smooth' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'LINKED TRACKS'"/> -->
+		
+		<button class="button_main"
+		        x="+106" y="+68" width="100" height="15"
+		        action="browser_sideview 'linked'"
+		        query="has_linked_tracks"
+		        text="LINKED TRACKS"
+		        textcolor="textoff3"
+		        textcoloron="green"
+		        textsize="10"
+		/>
+		
+		<button class="button_main"
+		        x="+10" y="+68" width="100" height="15"
+		        action="mark_linked_tracks"
+		        text="LINK A+B"
+		        textcolor="textoff3"
+		        textcolorover="white"
+		        textsize="10"
+		/>
+		
+		<!-- <button class="button_main" x="+62*3" y="+70" width="63" height="17" action="crossfader_curve 'custom' ? setting 'crossfaderDisable' : crossfader_curve 'custom'" query="crossfader_curve 'custom' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUSTOM'"/> -->
+		<!-- <button class="button_main" x="+62*4" y="+70" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/> -->
 	</define>
 </group>
 
@@ -14938,7 +15024,7 @@
 		<panel class="waveform" x="+2" waveformheight="121" condition="var_equal '@$infntywavesize' 0"/>
 	</define>
 
-	<!-- LEFT DECK (PRO) -->
+	<!-- PRO: LEFT DECK -->
 	<define class="area_deck_left" placeholders="*deck,*panelname">
 		<deck deck="[DECK]">
 
@@ -14991,6 +15077,7 @@
 		</deck>
 	</define>
 
+	<!-- PERFORMANCE: EXTENDED: LEFT DECK AREA -->
 	<define class="area_deck_left_extended" placeholders="*deck,*panelname">
 		<deck deck="[DECK]">
 		<visual class="gfx_shape" width="878+77+2" height="264" coloroff="panel_background"/>
@@ -15031,6 +15118,7 @@
 		</deck>
 	</define>
 
+	<!-- PERFORMANCE: VERTICAL: LEFT DECK -->
 	<define class="area_deck_left_vertical" placeholders="*deck,*panelname">
 		<deck deck="[DECK]">
 		<visual class="gfx_shape" width="800" height="333" coloroff="panel_background"/>
@@ -15049,8 +15137,10 @@
 
 		<line name="divider" color="button_background" width="3" height="171+48-2" x="+557-79-51" y="+108+2"/>
 
-		<panel class="loops_vert" x="+0" y="+108" panelname="[PANELNAME]"/>
-		<panel class="pads_rack_vert" x="+10" y="+108+72" panelname="[PANELNAME]"/>
+		<!-- <panel class="loops_vert" x="+0" y="+108" panelname="[PANELNAME]"/> -->
+		
+		<!-- PADS RACK -->
+		<panel class="pads_rack_vert" x="+1" y="+108" panelname="[PANELNAME]"/>
 
 		<panel class="channel_levels_vert" deck="[DECK]" x="+800-61-10" y="+108" />
 
