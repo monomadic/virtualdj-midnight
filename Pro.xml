@@ -9474,15 +9474,37 @@
 				<!-- <square width="98" height="370+216+2" x="+0" y="+0" color="red" border="1" bordercolor="red" /> -->
 				
 				<!-- PRO: SCRATCHWAVE: background under text -->
-				<square color="black" x="+0" y="+2" width="98" height="35" coloroff="wave_background" visibility="0.7"/>
+				<square color="black" x="+0" y="+2" width="98" height="53" coloroff="wave_background" visibility="0.7"/>
 				<!-- border on masterdeck -->
 				<!-- <square x="+10" y="+4" width="80" height="20" border="2" border_color="#FFEF8632" color="#00EF8632" radius="0" visibility="masterdeck" /> -->
 				
 				<!-- BPM -->
+<square
+    x="+10"
+    y="+8"
+    width="80"
+    height="39"
+    radius="5"
+    color="red"
+/>
+				
 				<textzone>
-				  <pos x="+0" y="+9"/>
+				  <pos x="+0" y="+8"/>
 				  <size width="98" height="25"/>
-			  	<text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/>
+			  	<text fontsize="20" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/>
+				</textzone>
+				
+				<textzone>
+				  <pos x="+15" y="+25"/>
+				  <size width="68" height="25"/>
+			  	<text fontsize="10" weight="" color="white" align="right" format="BPM" important="true"/>
+				</textzone>
+				
+				<!-- BPM DIFF -->
+				<textzone>
+				  <pos x="+16" y="+25"/>
+				  <size width="78" height="25"/>
+			  	<text fontsize="12" weight="" color="white" align="left" format="`get_text '%Ppitch%'`" important="true"/>
 				</textzone>
 				
 				<dropzone>
