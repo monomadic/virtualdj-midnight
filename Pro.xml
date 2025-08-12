@@ -2834,70 +2834,65 @@
 		<!-- </define> -->
 
 		<!-- FILETYPE -->
-		<define class="times_display_left">
-			<square x="+425" y="-26" width="40" height="18" border_color="white" radius="5" border="1" />
-			<textzone>
-				<pos x="+425" y="-26" /> <!-- Add some padding -->
-				<size width="40" height="17"/>
-				<text fontsize="11" weight="bold" color="white" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/>
-			</textzone>
-		
-			<!-- <square x="+25" y="+0" width="40" height="18" border_color="white" radius="5" border="1" /> -->
+		<!-- <define class="times_display_left"> -->
+			<!-- <square x="+425" y="-23" width="40" height="15" border_color="#444444" radius="5" border="1" /> -->
 			<!-- <textzone> -->
-				<!-- <pos x="+25" y="+0" /> <!-- Add some padding --> -->
+				<!-- <pos x="+425" y="-24" /> <!-- Add some padding --> -->
 				<!-- <size width="40" height="17"/> -->
-				<!-- <text fontsize="14" weight="" color="`get_key_color`" align="center" scroll="no" action="get_loaded_song 'key' & param_uppercase" localize="true" important="true"/> -->
+				<!-- <text fontsize="11" weight="bold" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/> -->
 			<!-- </textzone> -->
-		</define>
-		
+		<!-- </define> -->		
 
-<textzone
-  x="+2" y="+2" width="360" height="24"
-  group="horizontal">
+<!-- <textzone -->
+  <!-- x="+2" y="+2" width="360" height="24" -->
+  <!-- group="horizontal"> -->
 
-  <!-- Tag 1 -->
-  <text
-    fontsize="12" weight="bold" align="center"
-    format="ffff"
-    action="get_loaded_song 'user 1'"/>
+  <!-- <text -->
+    <!-- fontsize="12" weight="bold" align="center" -->
+    <!-- format="ffff" -->
+    <!-- action="get_loaded_song 'user 1'"/> -->
   
-  <!-- Tag 2 -->
-  <text
-    fontsize="12" weight="bold" align="center"
-    format="%Field2"
-    action="music search %Field2"
-    visibility="Field2"/>  <!-- only show if non-empty -->
+  <!-- <text -->
+    <!-- fontsize="12" weight="bold" align="center" -->
+    <!-- format="%Field2" -->
+    <!-- action="music search %Field2" -->
+    <!-- visibility="Field2"/>  <!-- only show if non-empty --> -->
   
-  <!-- Tag 3 -->
-  <text
-    fontsize="12" weight="bold" align="center"
-    format="%Field3"
-    action="music search %Field3"
-    visibility="Field3"/>
+  <!-- <text -->
+    <!-- fontsize="12" weight="bold" align="center" -->
+    <!-- format="%Field3" -->
+    <!-- action="music search %Field3" -->
+    <!-- visibility="Field3"/> -->
 
-</textzone>
+<!-- </textzone> -->
 		
-		<define class="times_display_right" bordercolor="blue" border="2">
-			<panel>
-				<pos x="+0" y="+0"/>
-				<size width="488-2-4-28-6-2-4-60-8" height="72-6-6-26"/>
-				<border color="#888888" size="1"/>
-				
-			<square x="-50" y="-24" width="40" height="18" border_color="white" radius="5" border="1" />
-			<textzone>
-				<pos x="-50" y="-24" /> <!-- Add some padding -->
-				<size width="40" height="17"/>
-				<text fontsize="11" weight="bold" color="white" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/>
-			</textzone>
-
+		<!-- <define class="times_display_right" bordercolor="blue" border="2"> -->			
+			<!-- <square x="+425" y="-23" width="40" height="15" border_color="#444444" radius="5" border="1" /> -->
+			<!-- <textzone> -->
+				<!-- <pos x="+425" y="-24" /> <!-- Add some padding --> -->
+				<!-- <size width="40" height="17"/> -->
+				<!-- <text fontsize="11" weight="bold" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/> -->
+			<!-- </textzone> -->
+		<!-- </define> -->
 			
-				<textzone>
-					<pos x="+2" y="+15" /> <!-- Add some padding -->
-					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
-					<text fontsize="10" weight="" color="white" align="left" scroll="no" action="get_loaded_song 'user 1' & param_lowercase" localize="true" important="true"/>
-				</textzone>
-			</panel>
-		</define>
+			<!-- <panel> -->
+				<!-- <pos x="+0" y="+0"/> -->
+				<!-- <size width="488-2-4-28-6-2-4-60-8" height="72-6-6-26"/> -->
+				<!-- <border color="#888888" size="1"/> -->
+				
+				<!-- <square x="-50" y="-24" width="40" height="18" border_color="white" radius="5" border="1" /> -->
+				<!-- <textzone> -->
+					<!-- <pos x="-50" y="-24" /> -->
+					<!-- <size width="40" height="17"/> -->
+					<!-- <text fontsize="11" weight="bold" color="white" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/> -->
+				<!-- </textzone> -->
+
+				<!-- <textzone> -->
+					<!-- <pos x="+2" y="+15" /> -->
+					<!-- <size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/> -->
+					<!-- <text fontsize="10" weight="" color="white" align="left" scroll="no" action="get_loaded_song 'user 1' & param_lowercase" localize="true" important="true"/> -->
+				<!-- </textzone> -->
+			<!-- </panel> -->
 
 		<define class="transport_left_stack">
 			<button class="button_main" x="+0" y="+10" width="50" height="22" action="sync" coloroff="button_background" text="SYNC" textcolor="white" iconsize="20" sysicon="" border="0"/>
@@ -5637,28 +5632,40 @@
 
 			<!-- left side title without autoscroll -->
 			<group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
-				<!-- title -->
+				<!-- PRO: LEFT DECK: INFO: TITLE -->
 				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 					<pos x="+2+4+28+6+170+8" y="+1"/>
 					<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
 					<text fontsize="18" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_text '`get_title_before_remix`'" localize="true" important="true"/>
 				</textzone>
-				<!-- artist -->
+				
+				<!-- PRO: LEFT DECK: INFO: LINE 2 -->
 				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 					<pos x="+2+4+28+6+170+8" y="+21" />
 					<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
 					<text fontsize="14" weight="" color="#888888" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
 				</textzone>
 
+				<!-- PRO: LEFT DECK: INFO: KEY -->
 				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 					<pos x="+2+4+28+6+170+8" y="+4+20+16" />
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
 					<text fontsize="12" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
 				</textzone>
+				
+				<!-- PRO: LEFT DECK: INFO: BPM -->
 				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 					<pos x="+2+4+28+6+170+10+30" y="+4+20+16" />
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
 					<text fontsize="12" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'` bpm" localize="true" important="true"/>
+				</textzone>
+
+				<!-- PRO: LEFT DECK: INFO: FILETYPE -->
+				<square x="+432" y="+50" width="40" height="15" border_color="#444444" radius="5" border="1" />
+				<textzone>
+					<pos x="+432" y="+49" />
+					<size width="40" height="17"/>
+					<text fontsize="11" weight="" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/>
 				</textzone>
 			</group>
 
@@ -5684,6 +5691,17 @@
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
 					<text fontsize="12" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'` bpm" localize="true" important="true"/>
 				</textzone>
+
+				
+				<!-- PRO: RIGHT DECK: INFO: FILETYPE -->
+				<square x="+230" y="+50" width="40" height="15" border_color="#444444" radius="5" border="1" />
+				<textzone>
+					<pos x="+230" y="+49" />
+					<size width="40" height="17"/>
+					<text fontsize="11" weight="" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/>
+				</textzone>
+
+				
 <!-- <square x="+2+4+10+30" y="+4+20+16" width="50" height="50" color="#FFFFFF" -->
   <!-- visibility="loaded and not (get_bpm & param_sub get_master 'bpm' & param_abs & param_greater 0.5)"/> -->
 
