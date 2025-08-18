@@ -9583,46 +9583,49 @@
 				
 				<!-- BPM WARNING -->
 				<square
-				    x="+10"
-				    y="+34"
-				    width="80"
+				    x="+5"
+				    y="+36"
+				    width="55"
 				    height="15"
 				    radius="5"
 				    color="red"
-						visibility="param_add `deck left get_bpm` `deck left get_bpm 'absolute' & param_multiply -1` & param_bigger 16 ? blink 500ms : off"
+						visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off"
 					/>
 				
 							<!-- <item text="1 Phrase" action="setting 'beatCounterRange' 16" check="setting 'beatCounterRange' 16"/> -->
 							<!-- <item text="2 Phrases" action="setting 'beatCounterRange' 32" check="setting 'beatCounterRange' 32"/> -->
 
 				
-<panel name="debugbar" color="black">
-  <pos x="20" y="15"/>
-  <size width="620" height="18"/>
-  <textzone>
-    <pos x="+0" y="+0"/>
-    <size width="620" height="18"/>
-    <text fontsize="18" color="white" action="deck left pitch"/>
-  </textzone>
-</panel>
+				<panel name="debugbar" color="black">
+				  <pos x="20" y="15"/>
+				  <size width="620" height="18"/>
+				  <textzone>
+				    <pos x="+0" y="+0"/>
+				    <size width="620" height="18"/>
+				    <text fontsize="18" color="white" action="deck left pitch"/>
+				  </textzone>
+				</panel>
 
-<!-- <square -->
-  <!-- x="+10" y="+33" width="80" height="15" radius="5" -->
-  <!-- color="`deck left pitch & param_abs & param_greater_equal 0.16 ? 'blink 500ms red' : 'black'`" -->
-<!-- /> -->				
+				<!-- <square -->
+				  <!-- x="+10" y="+33" width="80" height="15" radius="5" -->
+				  <!-- color="`deck left pitch & param_abs & param_greater_equal 0.16 ? 'blink 500ms red' : 'black'`" -->
+				<!-- /> -->				
 
-<visual source="deck left pitch & param_abs & param_greater 0.16 ? color 'blue' : color 'green'" type="color">
-	<pos x="+10" y="+33"/>
-	<tooltip></tooltip>
-	<size width="80" height="15"/>
-	<mask x="195" y="1085"/>
-</visual>
+				<visual source="deck left pitch & param_abs & param_greater 0.16 ? color 'blue' : color 'green'" type="color">
+					<pos x="+10" y="+33"/>
+					<tooltip></tooltip>
+					<size width="80" height="15"/>
+					<mask x="195" y="1085"/>
+				</visual>
+			
 				<!-- BPM -->
-				<textzone>
-				  <pos x="+0" y="+6"/>
-				  <size width="98" height="25"/>
-			  	<text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/>
-				</textzone>
+				<!-- <textzone> -->
+				  <!-- <pos x="+0" y="+6"/> -->
+				  <!-- <size width="98" height="25"/> -->
+			  	<!-- <text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/> -->
+				<!-- </textzone> -->
+				<textzone class="text" x="+0" y="+10" width="100" height="25" fontsize="26" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+
 				
 				<!-- <textzone> -->
 				  <!-- <pos x="+15" y="+27"/> -->
@@ -9631,11 +9634,11 @@
 				<!-- </textzone> -->
 			
 				<!-- PITCH RANGE -->
-				<button class="button_main" width="68" height="25" x="+40" y="+27" coloroff="transparent" coloron="transparent" bordersize="0" textsize="13" textcolor="white" textaction="get_text '±%Ppitchrange'" visibility="loaded"/>
+				<button class="button_main" width="68" height="25" x="+40" y="+30" coloroff="transparent" coloron="transparent" bordersize="0" textsize="13" textcolor="white" textaction="get_text '±%Ppitchrange'" visibility="loaded"/>
 				
 				<!-- BPM DIFF -->
 				<textzone>
-				  <pos x="+10" y="+27"/>
+				  <pos x="+10" y="+30"/>
 				  <size width="78" height="25"/>
 			  	<text fontsize="12" weight="" color="white" align="left" format="`get_text '%Ppitch%'`" important="true"/>
 				</textzone>
