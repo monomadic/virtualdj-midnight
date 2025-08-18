@@ -71,10 +71,10 @@
 		<define color="scratch2" value="#00c6ff" deck="1"/>
 
 		<!-- Deck colors -->
-		<define color="deckcolor" value="#00FF88" deck="1"/>
+		<define color="deckcolor" value="#00FF44" deck="1"/>
 
 		<!-- faders - knobs-->
-		<define color="knobfillon" value="#00FF88" deck="1"/>
+		<define color="knobfillon" value="#FF44AA" deck="1"/>
 	</group>
 
 	<group name="deckcolors2" condition="var_equal '@$hauntingcolorsdecks' 0">
@@ -86,14 +86,14 @@
 		<define color="colormed" value="#5f1620" deck="2"/>
 		<define color="colorhigh" value="#c62b39" deck="2"/>
 
-		<define color="scratch1" value="#f30d0d" deck="2"/>
-		<define color="scratch2" value="#ff0084" deck="2"/>
+		<define color="scratch1" value="#33BBFF" deck="2"/>
+		<define color="scratch2" value="#33BBFF" deck="2"/>
 
 		<!-- Deck colors -->
-		<define color="deckcolor" value="#FF4477" deck="2"/>
+		<define color="deckcolor" value="#33BBFF" deck="2"/>
 
 		<!-- faders - knobs-->
-		<define color="knobfillon" value="#c62b39" deck="2"/>
+		<define color="knobfillon" value="#33FFBB" deck="2"/>
 	</group>
 
 	<group name="deckcolors3" condition="var_equal '@$hauntingcolorsdecks' 0">
@@ -109,7 +109,7 @@
 		<define color="scratch2" value="#00f6ff" deck="3"/>
 
 		<!-- Deck colors -->
-		<define color="deckcolor" value="#21ac87" deck="3"/>
+		<define color="deckcolor" value="#FF88DD" deck="3"/>
 
 		<!-- faders - knobs-->
 		<define color="knobfillon" value="#21ac87" deck="3"/>
@@ -128,7 +128,7 @@
 		<define color="scratch2" value="#ff9000" deck="4"/>
 
 		<!-- Deck colors -->
-		<define color="deckcolor" value="#ca5d36" deck="4"/>
+		<define color="deckcolor" value="#AA44FF" deck="4"/>
 
 		<!-- faders - knobs-->
 		<define color="knobfillon" value="#ca5d36" deck="4"/>
@@ -259,7 +259,7 @@
 		<define color="colormed" value="#153f39" deck="3"/>
 		<define color="colorhigh" value="#2ee8b7" deck="3"/>
 
-		<define color="scratch1" value="#00ff5a" deck="3"/>
+		<define color="scratch1" value="#FFFF33" deck="3"/>
 		<define color="scratch2" value="#00f6ff" deck="3"/>
 
 		<!-- Deck colors -->
@@ -2179,37 +2179,38 @@
 			<!-- </visual> -->
 
 			<!-- border -->
-			<!-- <visual type="color" source="pad_button_color [SOURCE]" visibility="pad [SOURCE] ? constant 1 : constant 0.0"> -->
-				<!-- <tooltip></tooltip> -->
-				<!-- <size width="71" height="55"/> -->
-			<!-- </visual> -->
+			<visual type="color" source="pad_button_color [SOURCE]" visibility="pad [SOURCE] ? constant 1 : constant 0.5">
+				<tooltip></tooltip>
+				<size width="78" height="30"/>
+			</visual>
 
-			<!-- background -->
-			<button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-				<size width="71" height="28"/>
+			<!-- black background -->
+			<button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="not pad_pushed [SOURCE]">
+				<size width="78" height="30"/>
 				<up color="button_background2" border="button_background2" border_size="1" shape="square"/>
-				<selected color="button_background2" border="transparent" border_size="1" shape="square"/>
+				<selected color="#CC000000" border="transparent" border_size="1" shape="square"/>
 			</button>
-
-			<!-- background (pushed) -->
+		
+			<!-- black background (pushed) -->
 			<button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="pad_pushed [SOURCE]">
-				<size width="71" height="28"/>
-				<up color="button_background2" border="button_background2" border_size="1" shape="square"/>
-				<selected color="button_background2" border="needle" border_size="1" shape="square"/>
+				<size width="78" height="30"/>
+				<up color="button_background2" border="transparent" border_size="1" shape="square"/>
+				<selected color="#CC000000" border="pad_button_color [SOURCE]" border_size="1" shape="square"/>
 			</button>
 
 			<!-- text -->
 			<button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-				<size width="71" height="26"/>
-				<text dx="+6" dy="-4" width="71-12" size="12" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="center"/>
+				<size width="78" height="28"/>
+				<text dy="-1" width="78" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="center"/>
 			</button>
 
 			<!-- color bar -->
 			<visual type="color" source="pad_button_color [SOURCE]">
 				<tooltip></tooltip>
-				<pos x="+6" y="+28-8"/>
-				<size width="71-12" height="2"/>
+				<pos x="+0" y="+27"/>
+				<size width="78" height="3"/>
 			</visual>
+
 
 			<!-- <visual novisibility="pad_button_color [SOURCE]"> -->
 				<!-- <tooltip></tooltip> -->
@@ -2217,12 +2218,12 @@
 				<!-- <size width="71-12" height="4"/> -->
 				<!-- <off color="panel_background" shape="square"/> -->
 			<!-- </visual> -->
-			<visual visibility="pad_pushed [SOURCE]">
-				<tooltip></tooltip>
-				<pos x="+6" y="+55-12"/>
-				<size width="71-12" height="4"/>
-				<off color="needle" shape="square"/>
-			</visual>
+			<!-- <visual visibility="pad_pushed [SOURCE]"> -->
+				<!-- <tooltip></tooltip> -->
+				<!-- <pos x="+6" y="+55-12"/> -->
+				<!-- <size width="71-12" height="4"/> -->
+				<!-- <off color="needle" shape="square"/> -->
+			<!-- </visual> -->
 		</define>
 
 		<define class="hotcue_button_ex" placeholders="*source,width=59,height=22">
@@ -2791,9 +2792,15 @@
 		</define>
 
 		<define class="times_display_left_stack">
-			<button class="button_main" x="+80" y="+8" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="stem_color 'Vocal'" textcolor="#555555" text="VOCAL" radius="6" />
-			<button class="button_main" x="+80+80" y="+8" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="" textcolor="#555555" text="INSTR" radius="6" />
-			<button class="button_main" x="+80+80+80" y="+8" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="" textcolor="#555555" text="DRUM" radius="6" />
+
+				<!-- <pos x="+0" y="+0"/> -->
+				<!-- <size width="70" height="22"/> -->
+				<!-- <over shape="square" color="transparent" border="needle" border_size="2"/> -->
+			<!-- <button action="stem_pad 'Vocal'" text="h" > -->
+			<!-- </button> -->
+			<button class="button_main" x="+80" y="+8" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="black" textcolor="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" radius="6" />
+			<button class="button_main" x="+80+80" y="+8" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="black" textcolor="colorinstru" textcoloron="black" text="INSTR" radius="6" />
+			<button class="button_main" x="+80+80+80" y="+8" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" radius="6" />
 		</define>
 
 		<!-- <define class="times_display_left_stack"> -->
@@ -2936,7 +2943,7 @@
 			<textzone class="text" x="+0" y="+10" width="196-73" height="20" fontsize="18" color="deckcolor" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="not var_equal '@$hauntingjogtype' 0 ? var_equal '@$hauntingdeckstack' 1 ? var_equal '@hauntingdeckmode' 0 : false"/>
 			<textzone class="text" x="+0" y="+10" width="196-73" height="20" fontsize="18" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" novisibility="not var_equal '@$hauntingjogtype' 0 ? var_equal '@$hauntingdeckstack' 1 ? var_equal '@hauntingdeckmode' 0 : false"/>
 
-			<button class="button_main" x="+196-105" y="+11" width="60" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" textsize="10" text="MASTER"/>
+			<button class="button_main" x="+196-105" y="+11" width="60" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="10" text="MASTER"/>
 			<!-- <textzone class="text" x="+154" y="+8" action="pitch_reset" width="80" height="24" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'" visibility="not var_equal '@$hauntingdeckstack' 1"/> -->
 		</define>
 
@@ -5652,21 +5659,22 @@
 					<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
 					<text fontsize="14" weight="" color="#888888" align="left" scroll="yes" action="get_loaded_song 'remix'" localize="true" important="true"/>
 				</textzone>
-
-				<!-- PRO: LEFT DECK: INFO: KEY -->
+				
+				<!-- PRO: LEFT DECK: INFO: BPM -->
 				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 					<pos x="+2+4+28+6+170+8" y="+4+20+16" />
+					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
+					<text fontsize="15" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'`bpm" localize="true" important="true"/>
+				</textzone>
+
+				<!-- PRO: LEFT DECK: INFO: KEY -->
+				<square x="+2+4+28+6+170+8+80" y="+4+20+16" width="40" height="15" border_color="deck 1 get_key_color" radius="5" border="1" />
+				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
+					<pos x="+2+4+28+6+170+8+80" y="+4+20+16" />
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
 					<text fontsize="16" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
 				</textzone>
 				
-				<!-- PRO: LEFT DECK: INFO: BPM -->
-				<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
-					<pos x="+2+4+28+6+170+10+36" y="+4+20+16" />
-					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
-					<text fontsize="15" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'` bpm" localize="true" important="true"/>
-				</textzone>
-
 				<!-- PRO: LEFT DECK: INFO: FILETYPE -->
 				<square x="+435" y="+48" width="40" height="15" border_color="#444444" radius="5" border="1" />
 				<textzone>
@@ -5690,18 +5698,25 @@
 					<text fontsize="14" weight="" color="#888888" align="left" scroll="no" action="get_loaded_song 'remix'" localize="true" important="true"/>
 				</textzone>
 				
-				<!-- PRO: RIGHT DECK: INFO: KEY -->
+				<!-- PRO: RIGHT DECK: INFO: BPM -->
 				<textzone tooltip="" visibility="get_deck 2 ? true : get_deck 4 ? true : false">
 					<pos x="+2+4+10" y="+4+20+16" />
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
-					<text fontsize="16" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
+					<text fontsize="15" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'` bpm" localize="true" important="true"/>
 				</textzone>
 				
-				<!-- PRO: RIGHT DECK: INFO: BPM -->
+				<!-- PRO: RIGHT DECK: INFO: KEY -->
 				<textzone tooltip="" visibility="get_deck 2 ? true : get_deck 4 ? true : false">
-					<pos x="+2+4+10+38" y="+4+20+16" />
+					<pos x="+2+4+10+38+50" y="+4+20+16" />
 					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
-					<text fontsize="15" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm' & param_cast 'int'` bpm" localize="true" important="true"/>
+					<text fontsize="16" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
+				</textzone>
+
+				<!-- PRO: RIGHT DECK: INFO: TIME -->
+				<textzone tooltip="" visibility="get_deck 2 ? true : get_deck 4 ? true : false">
+					<pos x="+2+4+10+38+50" y="+4+20+16" />
+					<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
+					<text fontsize="16" weight="bold" color="`get_loaded_song length`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
 				</textzone>
 
 				<!-- PRO: RIGHT DECK: INFO: FILETYPE -->
@@ -6228,26 +6243,39 @@
 
 	<!-- STACK: INFO PANEL -->
 	<define class="infos_stack">
+		<!-- title background -->
 		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="484" height="38" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 
+		<!-- deck button -->
 		<button class="button_main" x="+2+4" y="+6" width="28" height="38-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textheight="26" textsize="16" textaction="get_deck"/>
+
+		<!-- right menu -->
 		<menu class="menu_maindecks" x="+484-28-6" y="+38-8-22" width="28" height="20"/>
 
+		<!-- cover -->
+		<cover rotate="no" visibility="1.0">
+			<pos x="+45" y="+6"/>
+			<size width="100" height="100"/>
+		</cover>
+
+		<!-- title (no scroll) -->
 		<textzone group="horizontal" scroll="no" tooltip="" visibility="var_equal '@hntnhtxtscroll' 0">
-			<pos x="+2+4+28+6" y="+6"/>
-			<size width="484-2-4-28-6-2-4-28-6" height="38-6-6"/>
-			<text fontsize="15" weight="" color="needle" align="left" action="get_text '`get_title_before_remix` '" localize="true" important="true"/>
-			<text3 fontsize="15" weight="" color="#888888" align="left" action="get_loaded_song 'remix'" localize="true" important="true"/>
+			<pos x="+2+4+28+6+120" y="+6"/>
+			<size width="364-2-4-28-6-2-4-28-6" height="38-6-6"/>
+			<text fontsize="15" weight="" color="needle" align="left" action="get_text ' `get_title_before_remix`   '" localize="true" important="true"/>
+			<text fontsize="15" weight="" color="#888888" align="left" action="get_loaded_song 'remix'" localize="true" important="true"/>
 		</textzone>
 
+		<!-- title (scroll) -->
 		<textzone group="horizontal" scroll="yes" tooltip="" visibility="var_equal '@hntnhtxtscroll' 1">
-			<pos x="+2+4+28+6" y="+6"/>
-			<size width="484-2-4-28-6-2-4-28-6" height="38-6-6"/>
-			<text fontsize="15" weight="" color="needle" align="left" action="get_text '`get_title_before_remix` '" localize="true" important="true"/>
+			<pos x="+2+4+28+6+110" y="+6"/>
+			<size width="364-2-4-28-6-2-4-28-6" height="38-6-6"/>
+			<text fontsize="15" weight="" color="needle" align="left" action="get_text ' `get_title_before_remix`  '" localize="true" important="true"/>
 			<text3 fontsize="15" weight="" color="#888888" align="left" action="get_loaded_song 'remix'" localize="true" important="true"/>
 		</textzone>
 	</define>
 
+	<!-- ?: INFO PANEL -->
 	<define class="infos2">
 		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="404" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 
@@ -6460,6 +6488,7 @@
 		<button class="button_main" x="+0" y="+6+30+4+30+6+62+12-8" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="18" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '±%pitchrange'" visibility="var_equal '@$hauntingjogtype' 0"/>
 	</define>
 
+	<!-- STACK: BPM SLIDER -->
 	<define class="pitch_zone_stack">
 		<button class="button_main" x="+0" y="+6" width="58" height="18" action="pitch_reset" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
 
@@ -8089,7 +8118,7 @@
 
 	<!-- STACK: PADS PANEL -->
 	<define class="pads_stack" placeholders="*panelname">
-		<panel>
+		<panel x="-8" y="-4">
 			<!-- PAD PAGE SELECT -->
 			<!-- <button class="button_main" x="+6" y="+6" width="100" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" align="left" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/> -->
 
@@ -8101,10 +8130,10 @@
 				<!-- background -->
 				<!-- <visual class="gfx_shape" x="+0" y="+6" width="299" height="24" coloroff="xf_background"/> -->
 				<!-- buttons -->
-				<button class="button_main" x="+1" y="+6" width="69" height="22" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="" textcoloron="needle" textsize="10" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+1+75" y="+6" width="69" height="22" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="" textcoloron="needle" textsize="10" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+1+75+75" y="+6" width="69" height="22" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="" textcoloron="needle" textsize="10" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+1+75+75+75" y="+6" width="69" height="22" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="" textcoloron="needle" textsize="10" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+0" y="+6" width="78" height="25" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+80" y="+6" width="78" height="25" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+80*2" y="+6" width="78" height="25" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+80*3" y="+6" width="78" height="25" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			</panel>
 
 			<!-- PAD PAGE PARAM 1 -->
@@ -8141,26 +8170,26 @@
 		<!-- </panel> -->
 
 		<!-- STACK: 16 PADS -->
-		<panel>
+		<panel x="-8" y="-4">
 			<panel class="padbutton-16-small" x="+0" y="+8+24" source="1"/>
-			<panel class="padbutton-16-small" x="+75" y="+8+24" source="2"/>
-			<panel class="padbutton-16-small" x="+75*2" y="+8+24" source="3"/>
-			<panel class="padbutton-16-small" x="+75*3" y="+8+24" source="4"/>
+			<panel class="padbutton-16-small" x="+80" y="+8+24" source="2"/>
+			<panel class="padbutton-16-small" x="+80*2" y="+8+24" source="3"/>
+			<panel class="padbutton-16-small" x="+80*3" y="+8+24" source="4"/>
 
-			<panel class="padbutton-16-small" x="+0" y="+8+24+31" source="5"/>
-			<panel class="padbutton-16-small" x="+75" y="+8+24+31" source="6"/>
-			<panel class="padbutton-16-small" x="+75*2" y="+8+24+31" source="7"/>
-			<panel class="padbutton-16-small" x="+75*3" y="+8+24+31" source="8"/>
+			<panel class="padbutton-16-small" x="+0" y="+8+24+33" source="5"/>
+			<panel class="padbutton-16-small" x="+80" y="+8+24+33" source="6"/>
+			<panel class="padbutton-16-small" x="+80*2" y="+8+24+33" source="7"/>
+			<panel class="padbutton-16-small" x="+80*3" y="+8+24+33" source="8"/>
 
-			<panel class="padbutton-16-small" x="+0" y="+8+24+31+31" source="9"/>
-			<panel class="padbutton-16-small" x="+75" y="+8+24+31+31" source="10"/>
-			<panel class="padbutton-16-small" x="+75*2" y="+8+24+31+31" source="11"/>
-			<panel class="padbutton-16-small" x="+75*3" y="+8+24+31+31" source="12" />
+			<panel class="padbutton-16-small" x="+0" y="+8+24+33+33" source="9"/>
+			<panel class="padbutton-16-small" x="+80" y="+8+24+33+33" source="10"/>
+			<panel class="padbutton-16-small" x="+80*2" y="+8+24+33+33" source="11"/>
+			<panel class="padbutton-16-small" x="+80*3" y="+8+24+33+33" source="12" />
 
-			<panel class="padbutton-16-small" x="+0" y="+8+24+31+31+31" source="13"/>
-			<panel class="padbutton-16-small" x="+75" y="+8+24+31+31+31" source="14"/>
-			<panel class="padbutton-16-small" x="+75*2" y="+8+24+31+31+31" source="15"/>
-			<panel class="padbutton-16-small" x="+75*3" y="+8+24+31+31+31" source="16" />
+			<panel class="padbutton-16-small" x="+0" y="+8+24+33+33+33" source="13"/>
+			<panel class="padbutton-16-small" x="+80" y="+8+24+33+33+33" source="14"/>
+			<panel class="padbutton-16-small" x="+80*2" y="+8+24+33+33+33" source="15"/>
+			<panel class="padbutton-16-small" x="+80*3" y="+8+24+33+33+33" source="16" />
 		</panel>
 	</define>
 
@@ -9757,9 +9786,9 @@
 		<!-- ACCOUNT -->
 		<button action="connect">
 			<pos x="+136+27+6" y="+8"/>
-			<size width="50" height="27"/>
+			<size width="65" height="27"/>
 			<off shape="square" color="xf_background"/>
-			<text dx="+10" width="50-20" fontsize="11" weight="" color="textoff4" colordown="textoff2" colorselected="textoff2" align="left" action="connect ? get_text '@`get_username & param_uppercase`' : get_text '- NOT LOGGED IN -'" important="true"/>
+			<text dx="+10" width="45" fontsize="11" weight="" color="textoff4" colordown="textoff2" colorselected="textoff2" align="left" action="connect ? get_text '@`get_username & param_uppercase`' : get_text '- NOT LOGGED IN -'" important="true"/>
 		</button>
 
 		<!-- SKIN LAYOUT MENU -->
@@ -15167,7 +15196,7 @@
 		  <!-- PLAY state (no decks playing) -->
 		  <button x="+125" y="+2" width="60" height="60"
 		          visibility="true"
-		          action="deck left play & deck right play & deck all sync"
+		          action="deck left play & deck right play & deck all sync & phrase_sync"
 		          query="blink 1500ms">
 		    <off color="#333333" border="#000000" border_size="6" shape="circle"/>
 		    <on  color="#444444" border="#111111" border_size="6" shape="circle"/>
@@ -15619,6 +15648,7 @@
 	<!-- STACK VIEW PANELS -->
 	<define class="area_deck_stack" placeholders="*deck,*panelname">
 		<deck deck="[DECK]">
+
 		<!-- BG: PADS PANEL -->
 		<visual class="gfx_shape" width="800" height="164" coloroff="panel_background" visibility="var_equal '@$hauntingdeckstack' 1"/>
 		<visual class="gfx_shape" width="484" height="164" coloroff="panel_background" visibility="var_equal '@$hauntingdeckstack' 0"/>
@@ -15654,7 +15684,7 @@
 
 		<!-- MINI SONGPOS -->
 		<!-- songpos background -->
-		<visual class="gfx_shape" x="+0" y="+164-38" width="484" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
+		<visual class="gfx_shape" x="+0" y="+164-38" width="482" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 		<!-- <panel class="beat_divider_area" x="+2+4" y="+164-38+2+4" width="484-4-8" height="38-4-8"/> -->
 		<songpos class="songpos" x="+2+4" y="+164-38+2+4" width="484-4-8" height="38-4-8"/>
 
