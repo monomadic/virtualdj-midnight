@@ -5571,7 +5571,7 @@
 		<!-- DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+8" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
-		<!-- show cover = false -->
+		<!-- HIDE COVER ART -->
 		<group visibility="var_equal '@$haunting_showcover_title' 0">
 			<!-- LEFT -->
 			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
@@ -5599,7 +5599,7 @@
 			</textzone>
 		</group>
 
-		<!-- PRO: TITLE info with cover -->
+		<!-- SHOW COVER ART -->
 		<group visibility="var_equal '@$haunting_showcover_title' 1">
 				
 			<!-- PRO: LEFT DECK: INFO -->
@@ -5698,7 +5698,7 @@
 					<!-- <text fontsize="14" weight="" color="#888888" align="left" scroll="yes" action="get_loaded_song 'remix'" localize="true" important="true"/> -->
 				<!-- </textzone> -->
 			<!-- </group> -->
-		<!-- </group> -->
+		</group>
 
 		<!-- COVER ART (PRO) -->
 		<!-- left -->
