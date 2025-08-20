@@ -2280,17 +2280,17 @@
 			<item text="Auto Match KEY" action="auto_match_key" check="auto_match_key" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
 			<item text="Auto Sync on Play" action="auto_sync" check="auto_sync" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
 			<item text="Auto Pitch Lock" action="auto_pitch_lock" check="auto_pitch_lock" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
-			<separator visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
+			<!-- <separator visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/> -->
 			<item text="Hot Cues" action="set '@infospannelmode' 2" check="var_equal '@infospannelmode' 2" visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
 			<item text="Loops" action="set '@infospannelmode' 1" check="var_equal '@infospannelmode' 1" visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
 			<item text="Edit Grid" action="set '@infospannelmode' 0" check="var_equal '@infospannelmode' 0" visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
 			<item text="Timecode & Line-In" action="set '@infospannelmode' 3" check="var_equal '@infospannelmode' 3" visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
 			<item text="Custom Buttons" action="set '@infospannelmode' 4" check="var_equal '@infospannelmode' 4" visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
-			<separator visibility="var_equal '@$hauntingproskinmode' 2 : false"/>
+			<!-- <separator visibility="var_equal '@$hauntingproskinmode' 2 : false"/> -->
 			<item text="Jog" action="set '@hauntingdeckmode' 0" check="var_equal '@hauntingdeckmode' 0" visibility="var_equal '@$hauntingproskinmode' 2"/>
 			<item text="Pads" action="set '@hauntingdeckmode' 1" check="var_equal '@hauntingdeckmode' 1" visibility="var_equal '@$hauntingproskinmode' 2"/>
 			<item text="Saved Loops" action="set '@hauntingdeckmode' 2" check="var_equal '@hauntingdeckmode' 2" visibility="var_equal '@$hauntingproskinmode' 2"/>
-			<separator visibility="var_equal '@$hauntingproskinmode' 2"/>
+			<!-- <separator visibility="var_equal '@$hauntingproskinmode' 2"/> -->
 			<submenu text="Songpos Waveform Type" localize="true">
 				<item text="Auto" localize="true" action="setting 'skinOverviewType' 'auto'" check="setting 'skinOverviewType' 'auto'" />
 				<item text="Scratch" localize="true" action="setting 'skinOverviewType' 'colors'" check="setting 'skinOverviewType' 'colors'" />
@@ -2311,13 +2311,13 @@
 				<separator/>
 				<item text="Wave Use Frequency" action="setting 'waveUseFrequency'" check="setting 'waveUseFrequency'"/>
 			</submenu>
-			<separator visibility="setting 'skinOverviewType' 'shapes' ? true : setting 'skinOverviewType' 'auto' ? setting 'skinWaveformType' 'shapes' ? true : false"/>
+			<!-- <separator visibility="setting 'skinOverviewType' 'shapes' ? true : setting 'skinOverviewType' 'auto' ? setting 'skinWaveformType' 'shapes' ? true : false"/> -->
 			<submenu text="Colors" localize="true" visibility="setting 'skinOverviewType' 'shapes' ? true : setting 'skinOverviewType' 'auto' ? setting 'skinWaveformType' 'shapes' ? true : false">
 				<item text="Virtual DJ (ish)" localize="true" action="set '@$hauntingcolorshapescolors' 0 & load_skin" check="var_equal '@$hauntingcolorshapescolors' 0"/>
 				<item text="Denon DJ (ish)" localize="true" action="set '@$hauntingcolorshapescolors' 2 & load_skin" check="var_equal '@$hauntingcolorshapescolors' 2"/>
 				<item text="Pioneer DJ (ish)" localize="true" action="set '@$hauntingcolorshapescolors' 1 & load_skin" check="var_equal '@$hauntingcolorshapescolors' 1"/>
 			</submenu>
-			<separator/>
+			<!-- <separator/> -->
 			<submenu text="Pitch Range" localize="true">
 				<item text="6%" action="pitch_range 6%" check="pitch_range 6%" />
 				<item text="8%" action="pitch_range 8%" check="pitch_range 8%" />
@@ -2329,7 +2329,7 @@
 				<item text="50%" action="pitch_range 50%" check="pitch_range 50%" />
 				<item text="100%" action="pitch_range 100%" check="pitch_range 100%" />
 			</submenu>
-			<separator/>
+			<!-- <separator/> -->
 			<submenu text="Buttons Behavior" localize="true">
 				<item text="Play-Pause" action="play_mode 'pioneer'" check="play_mode 'pioneer'" />
 				<item text="Play-Stutter" action="play_mode 'numark'" check="play_mode 'numark'" />
@@ -2338,7 +2338,7 @@
 				<item text="Cue hold-to-play" action="setting 'cueMode' 'cue-hold'" check="setting 'cueMode' 'cue-hold'" />
 				<item text="Cue Inverted (CUP)" action="setting 'cueMode' 'cup'" check="setting 'cueMode' 'cup'" />
 			</submenu>
-			<separator/>
+			<!-- <separator/> -->
 			<submenu text="Jog Behavior" localize="true">
 				<item text="Jog" action="wheel_mode 'jog'" check="wheel_mode 'jog'" />
 				<item text="Search" action="wheel_mode 'search'" check="wheel_mode 'search'" />
@@ -2347,7 +2347,7 @@
 				<item text="Loop Out" action="wheel_mode 'loop_out'" check="wheel_mode 'loop_out'" />
 				<item text="Browser" action="wheel_mode 'browser'" check="wheel_mode 'browser'" />
 			</submenu>
-			<separator/>
+			<!-- <separator/> -->
 			<submenu text="Hot Cues Behavior" localize="true">
 				<item text="Play" action="setting 'hotCueMode' 'play'" check="setting 'hotCueMode' 'play'" />
 				<item text="Stutter" action="setting 'hotCueMode' 'stutter'" check="setting 'hotCueMode' 'stutter'" />
@@ -2366,7 +2366,7 @@
 					<item text="Beats left" action="setting 'cueDisplay' 'beat'" check="setting 'cueDisplay' 'beat'" />
 				</submenu>
 			</submenu>
-			<separator visibility="not var_equal '@$hauntingproskinmode' 3"/>
+			<!-- <separator visibility="not var_equal '@$hauntingproskinmode' 3"/> -->
 			<item text="Show CoverArt" action="toggle '@$haunting_showcover_title'" check="var_equal '@$haunting_showcover_title' 1" visibility="not var_equal '@$hauntingproskinmode' 3"/>
 		</define>
 
@@ -2912,6 +2912,7 @@
 		<!-- KEY -->
 		<define class="key_display_left">
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
+
 			<button class="button_main" x="+0" y="+8" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowleft"/>
 			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
 			<button class="button_main" x="+128-26" y="+8" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/>
@@ -6303,13 +6304,18 @@
 	<!-- PRO: BPM, KEY -->
 	<define class="times_bpm_key">
 		<visual class="gfx_shape" width="484" height="104" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
-		<panel class="times_display_left" x="+2+4" y="+2" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
-		<panel class="key_display_left" x="+2+4+200+4" y="+2" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
-		<panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
-		<panel class="times_display_right" x="+484-2-4-200" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-		<panel class="key_display_right" x="+484-2-4-200-4-128" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-		<panel class="bpm_display_right" x="+484-2-4-200-4-128-4-136" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="black" textcolor="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" radius="6" />
+		<button class="button_main" x="+7+73" y="+12" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="black" textcolor="colorinstru" textcoloron="black" text="INSTR" radius="6" />
+		<button class="button_main" x="+7+73+73" y="+12" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" radius="6" />
+
+		<!-- <panel class="times_display_left" x="+2+4" y="+2" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+		<panel class="key_display_left" x="+2+4+220+4" y="+2"/>
+		<panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/>
+
+		<!-- <panel class="times_display_right" x="+484-2-4-200" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/> -->
+		<!-- <panel class="key_display_right" x="+484-2-4-200-4-128" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/> -->
+		<!-- <panel class="bpm_display_right" x="+484-2-4-200-4-128-4-136" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/> -->
 
 		<panel class="syncoptions_display" x="+2+6" y="+81" />
 	</define>
