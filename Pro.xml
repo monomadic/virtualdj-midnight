@@ -2912,9 +2912,9 @@
 		<!-- KEY -->
 		<define class="key_display_left">
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
-			<button class="button_main" x="+0" y="+8" width="26" height="48-16" action="key_move -1" coloroff="button_background" textcolor="textoff4" iconsize="22" sysicon="arrowleft"/>
+			<button class="button_main" x="+0" y="+8" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowleft"/>
 			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
-			<button class="button_main" x="+128-26" y="+8" width="26" height="48-16" action="key_move +1" coloroff="button_background" textcolor="textoff4" iconsize="22" sysicon="arrowright"/>
+			<button class="button_main" x="+128-26" y="+8" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/>
 
 			<textzone class="text"
 			  x="+26" y="+40"
@@ -5568,7 +5568,7 @@
 		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="484" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
 		<!-- PRO: LEFT DECK: DECK BUTTON -->
-		<button class="button_main" x="+6" y="+8" width="32" height="62" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+		<button class="button_main" x="+8" y="+8" width="30" height="62" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 		
 		<!-- PRO: LEFT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+8" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
@@ -6355,13 +6355,14 @@
 		<panel class="syncoptions_display2" x="+2+6" y="+81" />
 	</define>
 
+	<!-- PRO: TRANSPORT -->
 	<define class="transport">
 		<button class="button_main" x="+0" y="+6" width="60" height="16" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/>
 		<button class="button_main" x="+0" y="+6+16+2" width="60" height="16" action="setting 'hotcueMode' 'stutter'" query="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/>
 
-		<button class="button_main" x="+0" y="+6+30+4+26" width="60" height="30" action="sync" text="SYNC" textcolor="textoff2"/>
-		<button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2"/>
-		<button class="button_main" x="+0" y="+6+30+4+30+6+62" width="60" height="30" action="play_button" sysicon="play_button" iconsize="39" textcolor="textoff2"/>
+		<button class="button_main" x="+0" y="+6+30+4+26" width="60" height="30" action="sync" text="SYNC" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" y="+6+30+4+30+6+62" width="60" height="30" action="play_button" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black"/>
 	</define>
 
 	<!-- PERFORMANCE: EXTENDED: TRANSPORT (SYNC CUE ETC) -->
