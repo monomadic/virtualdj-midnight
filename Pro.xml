@@ -5560,15 +5560,17 @@
 		</group>
 	</define>
 
-	<!-- INFO LEFT -->
+	<!-- PRO: TRACK INFO -->
 	<define class="infos">
+		<!-- PRO: TRACK INFO: LEFT DECK -->
+		
 		<!-- BACKGROUND -->
 		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="484" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
-		<!-- DECK BUTTON -->
+		<!-- PRO: LEFT DECK: DECK BUTTON -->
 		<button class="button_main" x="+6" y="+8" width="32" height="62" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 		
-		<!-- DECK MENU -->
+		<!-- PRO: LEFT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+8" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
 		<!-- HIDE COVER ART -->
@@ -5634,12 +5636,12 @@
 			</textzone>
 			
 			<!-- FILETYPE -->
-			<square x="+435" y="+48" width="40" height="15" border_color="#444444" radius="5" border="1" />
-			<textzone>
-				<pos x="+435" y="+47" />
-				<size width="40" height="17"/>
-				<text fontsize="11" weight="" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/>
-			</textzone>
+			<!-- <square x="+435" y="+48" width="40" height="15" border_color="#444444" radius="5" border="1" /> -->
+			<!-- <textzone> -->
+				<!-- <pos x="+435" y="+47" /> -->
+				<!-- <size width="40" height="17"/> -->
+				<!-- <text fontsize="11" weight="" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' & param_uppercase" localize="true" important="true"/> -->
+			<!-- </textzone> -->
 
 			<!-- PRO: RIGHT DECK: TRACK INFO -->
 			<group visibility="get_deck 2 ? true : get_deck 4 ? true : false">
@@ -5706,8 +5708,11 @@
 		<!-- right -->
 		<panel class="cover_art_hntg" size="180-6-6" x="+484-2-4-28-170-6" y="+6" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
 
-		<button class="button_main" x="+484-2-4-28" y="+6" width="28" height="72-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textheight="45" textsize="16" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-		<menu class="menu_maindecks" query="select" x="+484-2-4-28" y="+72-8-22" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<!-- PRO: RIGHT DECK: DECK BUTTON -->
+		<button class="button_main" x="+484-40" y="+8" width="32" height="62" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+
+		<!-- PRO: RIGHT DECK: DECK MENU -->
+		<menu class="menu_maindecks" query="select" x="+484/2" y="+8" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 	</define>
 
 	<define class="infos_ex">
