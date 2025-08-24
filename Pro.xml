@@ -2267,8 +2267,8 @@
 			<!-- bottom color bar -->
 			<visual type="color" source="cue_color [SOURCE]" visibility="cue_color [SOURCE]">
 				<tooltip></tooltip>
-				<pos x="+0" y="+[HEIGHT]-5"/>
-				<size width="[WIDTH]" height="3"/>
+				<pos x="+0" y="+0"/>
+				<size width="[WIDTH]" height="[HEIGHT]"/>
 			</visual>
 		</define>
 
@@ -2779,8 +2779,7 @@
 							coloroff="infos_background"
 							coloron="infos_background"
 							brcoloroff="infos_background"
-							brcoloron="infos_background"
-			/>
+							brcoloron="infos_background" />
 			
 			<button class="button_main" x="+114+8" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH KEY"/>
 			<button class="button_main" x="+114+114+16" y="+0" width="90" height="17" action="auto_sync" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="SYNC ON PLAY"/>
@@ -2923,9 +2922,24 @@
 			  fontsize="12" align="center" weight=""
 			  color="#999999"
 			  textaction="get_key_modifier_text"/>
-	
-			<!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
-			<!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
+
+
+				<button class="button_main" action="key_match_button" width="128-26-26" height="16" x="+26"
+					y="+5" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
+					textcoloron="black" textaction="get_text '`KEY`'" visibility="not is_sync ? blink : false" />
+
+				<!-- loaded ? key 0 -->
+
+				<button class="button_main" action="key_match_button" width="128-26-26" height="16" x="+26"
+					y="+45" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
+					textcoloron="black" textaction="get_text '`get_bpm_match`'" visibility="" />
+
+				<visual type="square"				        x="+20" y="+40" width="10" height="10"
+				        color="red"
+				        visibility="not is_sync ? blink : false"/>
+
+				<!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+				<!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
 		</define>
 
 		<define class="key_display_right">
@@ -2934,36 +2948,36 @@
 			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
 			<button class="button_main" x="+128-26" y="+8" width="26" height="48-16" action="key_move +1" coloroff="button_background" textcolor="textoff4" iconsize="22" sysicon="arrowright"/>
 
-			<!-- <button class="button_main" x="+56+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
-			<!-- <textzone class="text" x="+10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
+				<!-- <button class="button_main" x="+56+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+				<!-- <textzone class="text" x="+10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
 		</define>
 
-		<!-- STACK: BPM -->
+			<!-- STACK: BPM -->
 		<define class="bpm_display_left_stack">
 			<visual class="gfx_shape" width="196" height="40" coloroff="transparent"/>
 
-			<!-- <button class="button_main" x="+0" y="+8" width="196-73" height="24" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="20" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRight-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+				<!-- <button class="button_main" x="+0" y="+8" width="196-73" height="24" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="20" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRight-click: Edit BPM \nDouble-click: Reanalyze"/> -->
 
 			<textzone class="text" x="+0" y="+10" width="196-73" height="20" fontsize="18" color="deckcolor" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="not var_equal '@$hauntingjogtype' 0 ? var_equal '@$hauntingdeckstack' 1 ? var_equal '@hauntingdeckmode' 0 : false"/>
 			<textzone class="text" x="+0" y="+10" width="196-73" height="20" fontsize="18" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" novisibility="not var_equal '@$hauntingjogtype' 0 ? var_equal '@$hauntingdeckstack' 1 ? var_equal '@hauntingdeckmode' 0 : false"/>
 
 			<button class="button_main" x="+196-105" y="+11" width="60" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="10" text="MASTER"/>
-			<!-- <textzone class="text" x="+154" y="+8" action="pitch_reset" width="80" height="24" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'" visibility="not var_equal '@$hauntingdeckstack' 1"/> -->
+				<!-- <textzone class="text" x="+154" y="+8" action="pitch_reset" width="80" height="24" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'" visibility="not var_equal '@$hauntingdeckstack' 1"/> -->
 		</define>
 
-		<!-- PRO: BPM -->
+			<!-- PRO: BPM -->
 		<define class="bpm_display_left">
 			<visual class="gfx_shape" width="136" height="80" coloroff="transparent"/>
 
 			<group name="bpm_not_video" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'">
-				<button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
+				<!-- <button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
 
 				<textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/>
 
 				<textzone class="text" x="+0" y="+0" width="136" height="50" fontsize="30" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 
-				<!-- MASTER DECK BUTTON -->
-				<button class="button_main" x="+15" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
+					<!-- MASTER DECK BUTTON -->
+					<!-- <button class="button_main" x="+15" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
 
 				<button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/>
 				<textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM" visibility="var_equal '@$hauntingjogtype' 0"/>
@@ -2988,7 +3002,7 @@
 				<textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/>
 				<textzone class="text" x="+0" y="+0" width="136" height="50" fontsize="30" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 
-				<!-- MASTER DECK BUTTON -->
+					<!-- MASTER DECK BUTTON -->
 				<button class="button_main" x="+15" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 
 				<button class="button_main" x="+56" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/>
@@ -5629,13 +5643,47 @@
 			</textzone>
 
 			<!-- KEY -->
-			<square x="+2+4+28+6+170+8+80" y="+4+20+16" width="40" height="15" border_color="deck 1 get_key_color" radius="5" border="1" />
-			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
-				<pos x="+2+4+28+6+170+8+80" y="+4+20+16" />
-				<size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/>
-				<text fontsize="16" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/>
-			</textzone>
-			
+			<!-- <square x="+2+4+28+6+170+8+80" y="+4+20+16" width="40" height="15" border_color="deck 1 get_key_color" radius="5" border="1" /> -->
+			<!-- <textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false"> -->
+				<!-- <pos x="+2+4+28+6+170+8+80" y="+4+20+16" /> -->
+				<!-- <size width="484-2-4-28-6-2-4-60-8" height="70-6-6-26"/> -->
+				<!-- <text fontsize="16" weight="bold" color="`get_key_color`" align="left" scroll="no" action="get_loaded_song 'key'" localize="true" important="true"/> -->
+			<!-- </textzone> -->
+
+			<!-- <button class="button_main" x="+2+4+28+6+170+8+80" y="+4+20+16" width="40" height="25" action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' & set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' & set 'keyDisplayToggle' 1" textsize="16" coloroff="green" coloron="get_key_color" bordersize="0" align="center" weight="bold" textaction="get_loaded_song 'key'" /> -->
+
+			<button action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' & set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' & set 'keyDisplayToggle' 1"
+			        query="var_equal 'keyDisplayToggle' 1"
+			        deck="default">
+			  <pos  x="+2+4+28+6+170+8+80" y="+4+20+19"/>
+			  <size width="40" height="25"/>
+
+			  <!-- show colored text when a key exists -->
+			  <text fontsize="16" weight="bold" align="center"
+			        visibility="get_key"
+			        color="`get_key_color`"
+			        action="get_loaded_song 'key'"/>
+
+			  <!-- fallback (white) when no key/color is available -->
+			  <text fontsize="16" weight="bold" align="center"
+			        visibility="not get_key"
+			        color="white"
+			        action="get_loaded_song 'key'"/>
+			</button>
+
+<!-- <button -->
+  <!-- action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' & set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' & set 'keyDisplayToggle' 1" -->
+  <!-- deck="default"> -->
+  <!-- <pos  x="+2+4+28+6+170+8+80+20" y="+4+20+16"/> -->
+  <!-- <size width="40" height="25"/> -->
+
+  <!-- <off radius="6" border_size="0" color="`get_loaded_song 'harmonic' & param_equal '01A' ? #70ECD4 : get_loaded_song 'harmonic' & param_equal '01B' ? #00EDC9 : get_loaded_song 'harmonic' & param_equal '02A' ? #92F0A4 : get_loaded_song 'harmonic' & param_equal '02B' ? #27EC82 : get_loaded_song 'harmonic' & param_equal '03A' ? #B1EE86 : get_loaded_song 'harmonic' & param_equal '03B' ? #8BE753 : get_loaded_song 'harmonic' & param_equal '04A' ? #D1F07E : get_loaded_song 'harmonic' & param_equal '04B' ? #E6EF76 : get_loaded_song 'harmonic' & param_equal '05A' ? #F0ED64 : get_loaded_song 'harmonic' & param_equal '05B' ? #F7EA3E : get_loaded_song 'harmonic' & param_equal '06A' ? #FFE15A : get_loaded_song 'harmonic' & param_equal '06B' ? #FFD024 : get_loaded_song 'harmonic' & param_equal '07A' ? #FFC072 : get_loaded_song 'harmonic' & param_equal '07B' ? #FFA24A : get_loaded_song 'harmonic' & param_equal '08A' ? #FFAA9A : get_loaded_song 'harmonic' & param_equal '08B' ? #FF846D : get_loaded_song 'harmonic' & param_equal '09A' ? #FF8BD5 : get_loaded_song 'harmonic' & param_equal '09B' ? #FF54B7 : get_loaded_song 'harmonic' & param_equal '10A' ? #D998F4 : get_loaded_song 'harmonic' & param_equal '10B' ? #CC6DF1 : get_loaded_song 'harmonic' & param_equal '11A' ? #B7A6FF : get_loaded_song 'harmonic' & param_equal '11B' ? #6F7CF3 : get_loaded_song 'harmonic' & param_equal '12A' ? #7BB9FF : get_loaded_song 'harmonic' & param_equal '12B' ? #4AA1FF : #808080`"/> -->
+  <!-- <over radius="6" border_size="0" color="`sameasabove`"/> -->
+  <!-- <on   radius="6" border_size="0" color="`sameasabove`"/> -->
+  <!-- <selected radius="6" border_size="0" color="`sameasabove`"/> -->
+
+  <!-- <text fontsize="16" weight="bold" align="center" color="white" action="get_loaded_song 'key'"/> -->
+<!-- </button> -->
 			<!-- FILETYPE -->
 			<!-- <square x="+435" y="+48" width="40" height="15" border_color="#444444" radius="5" border="1" /> -->
 			<!-- <textzone> -->
@@ -6305,6 +6353,13 @@
 	<define class="times_bpm_key">
 		<visual class="gfx_shape" width="484" height="104" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 
+		<textzone tooltip="">
+			<pos x="+10" y="+50" />
+			<size width="404-2-4-28-6-2-4" height="70-6-6-26"/>
+			<text fontsize="10" weight="" color="white" align="left" scroll="yes" action="get_loaded_song 'comment'" localize="true" important="true"/>
+		</textzone>
+
+		<!-- PRO: STEMS BUTTONS -->
 		<button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="black" textcolor="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" radius="6" />
 		<button class="button_main" x="+7+73" y="+12" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="black" textcolor="colorinstru" textcoloron="black" text="INSTR" radius="6" />
 		<button class="button_main" x="+7+73+73" y="+12" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" radius="6" />
@@ -6577,15 +6632,15 @@
 			<visual name="innercircle_border">
 				<pos x="+10" y="+10"/>
 				<size width="[JOGSIZE]-20" height="[JOGSIZE]-20"/>
-				<off shape="circle" color="jogwheelbackground2" border_size="1" border="deckcolor" />
+				<off shape="circle" color="jogwheelbackground2" border_size="4" border="deckcolor" />
 			</visual>
 
 			<textzone class="text" x="+18" y="+22" width="[JOGSIZE]-36" height="46" fontsize="26" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
 
 			<!-- KEY RIGHT -->
-			<button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textaction="get_text 'KEY'" visibility="loaded ? key 0"/>
+			<button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/>
 			<!-- KEY LEFT -->
-			<button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/>
+			<button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/>
 			<!-- PITCH RANGE -->
 			<button class="button_main" width="45" height="16" x="+18+6+45+15" y="+68" coloroff="transparent" coloron="transparent" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_text '±%Ppitchrange'" visibility="loaded"/>
 
@@ -7093,7 +7148,7 @@
 	</define>
 
 	<define class="fx_slot4" placeholders="*source" >
-		<button class="button_main" width="104" height="30" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="get_effect_name [SOURCE] & param_uppercase" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2"/>
+		<button class="button_main" width="104" height="30" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="get_effect_name [SOURCE] & param_uppercase" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black"/>
 		<button class="button_main" x="+104" width="28" height="30" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
 
 		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
@@ -7102,7 +7157,20 @@
 		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
 		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
 
-		<button class="button_main" x="+28+40+10+136+8" y="+4" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" text="+"/>
+		<button class="button_main" x="+28+40+10+136+8" y="+4" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
+	</define>
+
+	<define class="fx_colorfx" placeholders="*source" >
+		<button class="button_main" width="104" height="30" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="filter_label" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+104" width="28" height="30" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
+
+		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="true" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
+		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+
+		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
+		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+
+		<button class="button_main" x="+28+40+10+136+8" y="+4" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
 	</define>
 
 	<define class="fx_slot_single">
@@ -7750,15 +7818,15 @@
 
 			<!-- PARAM SELECT -->
 			<!-- <group name="pad_param1" visibility="pad_has_param 1"> -->
-				<button class="button_main" x="+202" y="+40*4+25" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+202+26" y="+40*4+25" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="15" textcolor="white"/>
-				<button class="button_main" x="+202+26+82" y="+40*4+25" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+202" y="+40*4+25" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+202+26" y="+40*4+25" width="82" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
+				<button class="button_main" x="+202+26+82" y="+40*4+25" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			<!-- </group> -->
 
 			<!-- <group name="pad_param1" visibility="pad_param_visible 2"> -->
-				<button class="button_main" x="+338" y="+40*4+25" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+338+26" y="+40*4+25" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="15" textcolor="white"/>
-				<button class="button_main" x="+338+26+82" y="+40*4+25" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+338" y="+40*4+25" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+338+26" y="+40*4+25" width="82" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
+				<button class="button_main" x="+338+26+82" y="+40*4+25" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			<!-- </group> -->
 		</panel>
 	</define>
@@ -8386,10 +8454,17 @@
 			<panel class="fx_slot_single" x="+10" y="+10" source="1"/>
 		</panel>
 
+		<!-- PRO: FX PANEL -->
 		<panel name="@fxx3_[PANELNAME]" group="loops_[PANELNAME]" visible="no" available="no" displayname="FX x3" >
-			<panel class="fx_slot4" x="+10" y="+10" source="1"/>
-			<panel class="fx_slot4" x="+10" y="+10+40" source="2"/>
-			<panel class="fx_slot4" x="+10" y="+10+80" source="3"/>
+
+			<!-- FX1 -->
+			<textzone class="text" x="+10" y="+10" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="FX1"/>
+			<panel class="fx_slot4" x="+10" y="+30" source="1"/>
+
+			<!-- COLORFX -->
+			<textzone class="text" x="+10" y="+70" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="COLORFX"/>
+			<panel class="fx_colorfx" x="+10" y="+90" source="colorfx"/>
+			
 		</panel>
 	</define>
 
@@ -9602,15 +9677,15 @@
 							<!-- <item text="2 Phrases" action="setting 'beatCounterRange' 32" check="setting 'beatCounterRange' 32"/> -->
 
 				
-				<panel name="debugbar" color="black">
-				  <pos x="20" y="15"/>
-				  <size width="620" height="18"/>
-				  <textzone>
-				    <pos x="+0" y="+0"/>
-				    <size width="620" height="18"/>
-				    <text fontsize="18" color="white" action="deck left pitch"/>
-				  </textzone>
-				</panel>
+				<!-- <panel name="debugbar" color="black"> -->
+				  <!-- <pos x="20" y="15"/> -->
+				  <!-- <size width="620" height="18"/> -->
+				  <!-- <textzone> -->
+				    <!-- <pos x="+0" y="+0"/> -->
+				    <!-- <size width="620" height="18"/> -->
+				    <!-- <text fontsize="18" color="white" action="deck left pitch"/> -->
+				  <!-- </textzone> -->
+				<!-- </panel> -->
 
 				<!-- <square -->
 				  <!-- x="+10" y="+33" width="80" height="15" radius="5" -->
@@ -9793,15 +9868,15 @@
 		<visual class="gfx_shape" width="1920-2-2" height="43" coloroff="panel_background"/>
 
 		<!-- ACCOUNT -->
-		<button action="connect">
-			<pos x="+136+27+6" y="+8"/>
-			<size width="65" height="27"/>
-			<off shape="square" color="xf_background"/>
-			<text dx="+10" width="45" fontsize="11" weight="" color="textoff4" colordown="textoff2" colorselected="textoff2" align="left" action="connect ? get_text '@`get_username & param_uppercase`' : get_text '- NOT LOGGED IN -'" important="true"/>
-		</button>
+		<!-- <button action="connect"> -->
+			<!-- <pos x="+136+27+6" y="+8"/> -->
+			<!-- <size width="65" height="27"/> -->
+			<!-- <off shape="square" color="xf_background"/> -->
+			<!-- <text dx="+10" width="45" fontsize="11" weight="" color="textoff4" colordown="textoff2" colorselected="textoff2" align="left" action="connect ? get_text '@`get_username & param_uppercase`' : get_text '- NOT LOGGED IN -'" important="true"/> -->
+		<!-- </button> -->
 
 		<!-- SKIN LAYOUT MENU -->
-		<group name="layout_options" x="115+80" y="8">
+		<group name="layout_options" x="100" y="8">
 			<menu tooltip="SKIN LAYOUT\nSelect the layout adapted to your mixing style">
 				<pos x="+50" y="+0"/>
 				<size width="136" height="27"/>
@@ -9826,6 +9901,9 @@
 				<item text="Browser Zoom" action="browser_zoom" check="browser_zoom"/>
 			</menu>
 		</group>
+
+			<button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="2" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
+			<button class="button_main" x="335" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="4" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
 
 		<!-- PRO: TOP BAR -->
 		<group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
@@ -10162,36 +10240,36 @@
 
 		<button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/>
 
-		<group name="battery" visibility="var_equal '@$hauntinggetbattery' 1">
-			<visual type="linear" direction="right" source="get_battery">
-				<pos x="+1696" y="+8+2" width="42" height="27-4"/>
-				<off color="vu_background" shape="square"/>
-				<on color="#70ca20" shape="square"/>
-			</visual>
-			<visual>
-				<pos x="+1696+42-4" y="+8" width="4" height="4"/>
-				<off color="panel_background" shape="square"/>
-			</visual>
-			<visual>
-				<pos x="+1696+42-4" y="+8+27-4" width="4" height="4"/>
-				<off color="panel_background" shape="square"/>
-			</visual>
+		<!-- <group name="battery" visibility="var_equal '@$hauntinggetbattery' 1"> -->
+			<!-- <visual type="linear" direction="right" source="get_battery"> -->
+				<!-- <pos x="+1696" y="+8+2" width="42" height="27-4"/> -->
+				<!-- <off color="vu_background" shape="square"/> -->
+				<!-- <on color="#70ca20" shape="square"/> -->
+			<!-- </visual> -->
+			<!-- <visual> -->
+				<!-- <pos x="+1696+42-4" y="+8" width="4" height="4"/> -->
+				<!-- <off color="panel_background" shape="square"/> -->
+			<!-- </visual> -->
+			<!-- <visual> -->
+				<!-- <pos x="+1696+42-4" y="+8+27-4" width="4" height="4"/> -->
+				<!-- <off color="panel_background" shape="square"/> -->
+			<!-- </visual> -->
 
-			<textzone visibility="var_equal '@$hauntingcolorscheme' 4">
-				<pos x="+1696" y="+8" width="42" height="27"/>
-				<text fontsize="13" weight="bold" color="textoff2" align="center" action="get_battery" localize="true" important="true"/>
-			</textzone>
+			<!-- <textzone visibility="var_equal '@$hauntingcolorscheme' 4"> -->
+				<!-- <pos x="+1696" y="+8" width="42" height="27"/> -->
+				<!-- <text fontsize="13" weight="bold" color="textoff2" align="center" action="get_battery" localize="true" important="true"/> -->
+			<!-- </textzone> -->
 
-			<textzone visibility="var_not_equal '@$hauntingcolorscheme' 4">
-				<pos x="+1696" y="+8" width="42" height="27"/>
-				<text fontsize="13" weight="bold" color="needle" align="center" action="get_battery" localize="true" important="true"/>
-			</textzone>
-		</group>
+			<!-- <textzone visibility="var_not_equal '@$hauntingcolorscheme' 4"> -->
+				<!-- <pos x="+1696" y="+8" width="42" height="27"/> -->
+				<!-- <text fontsize="13" weight="bold" color="needle" align="center" action="get_battery" localize="true" important="true"/> -->
+			<!-- </textzone> -->
+		<!-- </group> -->
 
 		<button action="settings">
 			<pos x="1920-40-133" y="8"/>
 			<size width="35" height="27"/>
-			<off color="button_background" shape="square"/>
+			<off color="transparent" shape="square"/>
 			<over color="button_background" shape="square"/>
 			<selected color="button_background" shape="square"/>
 			<icon sysicon="settings" color="textoff" colorselected="needle" colorover="needle" width="27" height="27"/>
@@ -10204,7 +10282,7 @@
 			</logo>
 
 			<menu tooltip="DIRECT OPTIONS">
-				<pos x="+10+120" y="8"/>
+				<pos x="+100" y="8"/>
 				<size width="32" height="27"/>
 				<off color="button_background" shape="square"/>
 				<over color="button_background" shape="square"/>
@@ -17236,19 +17314,19 @@
 			<zoomed width="1920-4" height="768-43-2-2"/>
 		</browser>
 
-		<panel condition="is_mac">
-			<button action="show_window 'haunting_browser_window' off" tooltip="Close">
-				<pos x="+10+2" y="+10"/>
-				<size width="15" height="15"/>
-				<off shape="circle" color="#bf4744"/>
-				<down shape="circle" color="#fc5753"/>
-				<selected shape="circle" color="#fc5753"/>
-			</button>
-			<logo>
-				<pos x="-100" y="-100"/>
-				<size width="108" height="23"/>
-			</logo>
-		</panel>
+		<!-- <panel condition="is_mac"> -->
+			<!-- <button action="show_window 'haunting_browser_window' off" tooltip="Close"> -->
+				<!-- <pos x="+10+2" y="+10"/> -->
+				<!-- <size width="15" height="15"/> -->
+				<!-- <off shape="circle" color="#bf4744"/> -->
+				<!-- <down shape="circle" color="#fc5753"/> -->
+				<!-- <selected shape="circle" color="#fc5753"/> -->
+			<!-- </button> -->
+			<!-- <logo> -->
+				<!-- <pos x="-100" y="-100"/> -->
+				<!-- <size width="108" height="23"/> -->
+			<!-- </logo> -->
+		<!-- </panel> -->
 
 		<!-- <group name="applicationbuttons_logo" condition="is_mac"> -->
 			<!-- <logo> -->
