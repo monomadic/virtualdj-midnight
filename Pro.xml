@@ -5237,10 +5237,11 @@
 				<pos x="+2" y="+2"/>
 				<size width="[SIZE]-4" height="[SIZE]-4"/>
 			</cover>
-			<button action="" >
+			<button action="select" >
 				<pos x="+0" y="+0"/>
 				<size width="[SIZE]" height="[SIZE]/2-17"/>
 				<over shape="square" color="transparent" border="needle" border_size="2"/>
+				<on shape="square" color="transparent" border="needle" border_size="2"/>
 			</button>
 		</deck>
 	</define>
@@ -5597,7 +5598,7 @@
 		<!-- PRO: TRACK INFO: LEFT DECK -->
 		
 		<!-- BACKGROUND -->
-		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="484" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+		<button class="button_main" action="select" width="484" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
 		<!-- PRO: LEFT DECK: DECK BUTTON -->
 		<button class="button_main" x="+8" y="+8" width="30" height="62" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
@@ -6378,15 +6379,25 @@
 
 		<group visibility="loaded">
 			<!-- PRO: STEM BUTTONS -->
-			<button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="black" textcolor="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" radius="6" />
+<!-- <button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorvocal' : 'colorvocal'`" coloron="colorvocal" brcoloron="black" textcolor="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorvocal' : 'colorvocal'`" textcoloron="black" text="VOCAL" radius="6"/> -->
+<!-- <button class="button_main" x="+7+73" y="+12" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorinstru' : 'colorinstru'`" coloron="colorinstru" brcoloron="black" textcolor="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorinstru' : 'colorinstru'`" textcoloron="black" text="INSTR" radius="6"/> -->
+<!-- <button class="button_main" x="+7+73+73" y="+12" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorbeat' : 'colorbeat'`" coloron="colorbeat" brcoloron="colorbeat" textcolor="`var 'all_stems_muted' ? blink 400ms ? 'black' : 'colorbeat' : 'colorbeat'`" textcoloron="black" text="DRUM" radius="6"/> -->
+
+			<button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="black" textcolor="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" radius="6"/>
 			<button class="button_main" x="+7+73" y="+12" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="black" textcolor="colorinstru" textcoloron="black" text="INSTR" radius="6" />
 			<button class="button_main" x="+7+73+73" y="+12" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" radius="6" />
+
+			<define name="all_stems_muted">mute_stem "vocal" and mute_stem "melody" and mute_stem "rhythm" and mute_stem "bass" and mute_stem "hihat" and mute_stem "kick"</define>
+
+			<button class="button_main" x="+7" y="+12" width="70" height="22" action="stem_pad 'Vocal'" visibility="`all_stems_muted and blink 400ms`" brcoloroff="white" brcoloron="white" coloroff="black" coloron="black" textcolor="white" textcoloron="white" text="VOCAL" radius="6"/>
+			<button class="button_main" x="+7+73" y="+12" width="70" height="22" action="stem_pad 'Melody'" visibility="`all_stems_muted and blink 400ms`" brcoloroff="white" brcoloron="white" coloroff="black" coloron="black" textcolor="white" textcoloron="white" text="INSTR" radius="6"/>
+			<button class="button_main" x="+7+73+73" y="+12" width="70" height="22" action="stem_pad 'Rhythm'" visibility="`all_stems_muted and blink 400ms`" brcoloroff="white" brcoloron="white" coloroff="black" coloron="black" textcolor="white" textcoloron="white" text="DRUM" radius="6"/>			
 
 			<!-- <panel class="times_display_left" x="+2+4" y="+2" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
 			<panel class="key_display_left" x="+2+4+220+4" y="+2"/>
 			<panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/>
 
-			<button class="button_main" x="+7" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
+			<button class="button_main" x="+7" y="+40" width="216" height="25" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" textcoloron="black" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 		</group>
 
 		<!-- <panel class="times_display_right" x="+484-2-4-200" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/> -->
@@ -6439,11 +6450,12 @@
 
 	<!-- PRO: TRANSPORT -->
 	<define class="transport">
-		<button class="button_main" x="+0" y="+6" width="60" height="16" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/>
-		<button class="button_main" x="+0" y="+6+16+2" width="60" height="16" action="setting 'hotcueMode' 'stutter'" query="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/>
+		<!-- <button class="button_main" x="+0" y="+6" width="60" height="16" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/> -->
+		<!-- <button class="button_main" x="+0" y="+6+16+2" width="60" height="16" action="setting 'hotcueMode' 'stutter'" query="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
 
-		<button class="button_main" x="+0" y="+6+30+4+26" width="60" height="30" action="sync" text="SYNC" textcolor="textoff2" textcoloron="black"/>
-		<button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" y="+6+30+4+28" width="60" height="30" action="phrase_sync 16" text="PHRASE" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="sync" text="SYNC" textcolor="textoff2" textcoloron="black"/>
+		<!-- <button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2" textcoloron="black"/> -->
 		<button class="button_main" x="+0" y="+6+30+4+30+6+62" width="60" height="30" action="play_button" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background2"/>
 	</define>
 
@@ -6563,7 +6575,7 @@
 	</define>
 
 	<!-- JOGWHEEL (ALL) -->
-	<define class="jogwheel" placeholders="*jogsize=150">
+	<define class="jogwheel" placeholders="*jogsize=155">
 		<group name="jogwheel_a" visibility="var_equal '@$hauntingjogtype' 0">
 			<visual novisibility="loaded">
 				<tooltip/>
@@ -6583,6 +6595,15 @@
 				<size width="[JOGSIZE]-12" height="[JOGSIZE]-12"/>
 				<off shape="circle" color="jogprogressoff" border_size="35" border="jogwheelbackground" />
 			</visual>
+
+			<!-- SONG ENDING WARNING -->
+			<!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
+				<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+				<!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
+				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
+			<!-- </visual> -->
+			<!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="14" heightfader="32" radius="42"/> -->
+			<!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
 
 			<visual name="innercircle_border" visibility="loaded">
 				<pos x="+52" y="+52"/>
@@ -6664,11 +6685,21 @@
 				<off shape="circle" color="jogwheelbackground2" />
 			</visual>
 
-			<visual name="innercircle_border" visibility="masterdeck">
-				<pos x="+9" y="+9"/>
-				<size width="[JOGSIZE]-18" height="[JOGSIZE]-18"/>
-				<off shape="circle" color="jogwheelbackground2" border_size="5" border="orange" />
-			</visual>
+			<!-- SONG ENDING WARNING -->
+				<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+			<!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
+				<!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
+				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
+			<!-- </visual> -->
+			<!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
+			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="4" heightfader="5" radius="60"/>
+
+			<!-- masterdeck -->
+			<!-- <visual name="innercircle_border" visibility="masterdeck"> -->
+				<!-- <pos x="+9" y="+9"/> -->
+				<!-- <size width="[JOGSIZE]-18" height="[JOGSIZE]-18"/> -->
+				<!-- <off shape="circle" color="jogwheelbackground2" border_size="5" border="orange" /> -->
+			<!-- </visual> -->
 
 			<!-- BPM -->
 			<textzone class="text" x="+18" y="+22" width="[JOGSIZE]-36" height="46" fontsize="26"
@@ -7238,30 +7269,32 @@
 		<panel class="knob" x="+108+30+7" y="+0" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
 	</define>
 
-	<define class="fx_slot4" placeholders="*source" >
-		<button class="button_main" width="104" height="30" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="get_effect_name [SOURCE] & param_uppercase" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black"/>
-		<button class="button_main" x="+104" width="28" height="30" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
+	<define class="fx_slot4" placeholders="*source,width=104" >
+		<button class="button_main" width="[WIDTH]-40" height="35" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="get_effect_name [SOURCE] & param_uppercase" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black" textsize="17"/>
+		<button class="button_main" x="+[WIDTH]-40" width="28" height="35" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
 
-		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
-		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+		<!-- <panel class="knob" x="+104+28+8+15" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/> -->
+		<!-- <panel class="knob" x="+104+28+8+15" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/> -->
 
-		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
-		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+		<!-- <panel class="knob" x="+104+28+8+28+25" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/> -->
+		<!-- <panel class="knob" x="+104+28+8+28+25" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/> -->
 
-		<button class="button_main" x="+28+40+10+136+8" y="+4" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
+		<button class="button_main" x="+28+40+10+150" y="+6" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
 	</define>
 
-	<define class="fx_colorfx" placeholders="*source" >
-		<button class="button_main" width="104" height="30" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="filter_label" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black"/>
-		<button class="button_main" x="+104" width="28" height="30" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
+	<define class="fx_colorfx" placeholders="*source,width=104" >
+		<!-- <square x="+0" y="+0" width="[WIDTH]+28" height="36" color="black" /> -->
 
-		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="true" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
-		<panel class="knob" x="+104+28+8" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+		<button class="button_main" width="[WIDTH]-40" height="35" action="effect_active [SOURCE]" scroll="effect_select [SOURCE]" textaction="filter_label" coloroff="button_background3" brcoloroff="button_background3" textcolor="textoff2" textcoloron="black" textsize="15" />
+		<button class="button_main" x="+[WIDTH]-40" width="28" height="35" action="effect_select [SOURCE]" sysicon="chevrondown" iconsize="20"/>
 
-		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/>
-		<panel class="knob" x="+104+28+8+28+10" y="+1" knobsize="32" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/>
+		<!-- <panel class="knob" x="+104+28+8+15" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="true" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/> -->
+		<!-- <panel class="knob" x="+104+28+8+15" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 1" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/> -->
 
-		<button class="button_main" x="+28+40+10+136+8" y="+4" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
+		<!-- <panel class="knob" x="+104+28+8+28+25" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfilloff" novisibility="effect_active [SOURCE]"/> -->
+		<!-- <panel class="knob" x="+104+28+8+28+25" y="+10" knobsize="22" knobradius="10" faderradius="5" action="effect_slider [SOURCE] 2" frommiddle="false" fillcolor="knobfillon" visibility="effect_active [SOURCE]"/> -->
+
+		<button class="button_main" x="+28+40+10+150" y="+6" width="30-8" height="30-8" action="effect_show_gui [SOURCE]" sysicon="settings" iconsize="20"/>
 	</define>
 
 	<define class="fx_slot_single">
@@ -7837,13 +7870,17 @@
 
 	<!-- PRO: CUSTOM BUTTON PANEL -->
 	<define class="custom_buttons" placeholders="*panelname">
-		<button class="custom_button2" coloroff="button_background2" source="1" x="+10" y="+6" width="78" height="31"/>
-		<button class="custom_button2" coloroff="button_background2" source="2" x="+10+83" y="+6" width="78" height="31"/>
-		<button class="custom_button2" coloroff="button_background2" source="3" x="+10+83+83" y="+6" width="78" height="31"/>
+		<button class="custom_button2" coloroff="button_background2" source="1" x="+88*0+1" y="+0" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="2" x="+88*1+1" y="+0" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="3" x="+88*2+1" y="+0" width="86" height="25"/>
 
-		<button class="custom_button2" coloroff="button_background2" source="4" x="+10" y="+6+35" width="78" height="31"/>
-		<button class="custom_button2" coloroff="button_background2" source="5" x="+10+83" y="+6+35" width="78" height="31"/>
-		<button class="custom_button2" coloroff="button_background2" source="6" x="+10+83+83" y="+6+35" width="78" height="31"/>
+		<button class="custom_button2" coloroff="button_background2" source="4" x="+88*0+1" y="+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="5" x="+88*1+1" y="+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="6" x="+88*2+1" y="+27" width="86" height="25"/>
+		
+		<button class="custom_button2" coloroff="button_background2" source="7" x="+88*0+1" y="+27+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="8" x="+88*1+1" y="+27+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="9" x="+88*2+1" y="+27+27" width="86" height="25"/>
 	</define>
 
 	<define class="effects" placeholders="*panelname">
@@ -8548,14 +8585,15 @@
 
 		<!-- PRO: FX PANEL -->
 		<panel name="@fxx3_[PANELNAME]" group="loops_[PANELNAME]" visible="no" available="no" displayname="FX x3" >
+			<square x="+0" y="+0" width="236+28" height="132" color="#44000000" />
 
 			<!-- FX1 -->
 			<textzone class="text" x="+10" y="+10" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="FX1"/>
-			<panel class="fx_slot4" x="+10" y="+30" source="1"/>
+			<panel class="fx_slot4" x="+10" y="+30" width="236" source="1"/>
 
 			<!-- COLORFX -->
 			<textzone class="text" x="+10" y="+70" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="COLORFX"/>
-			<panel class="fx_colorfx" x="+10" y="+90" source="colorfx"/>
+			<panel class="fx_colorfx" x="+10" y="+90" width="236" source="colorfx"/>
 			
 		</panel>
 	</define>
@@ -10006,8 +10044,8 @@
 		<!-- PRO: TOP BAR -->
 		<group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
 			<!-- sandbox button -->
-			<button class="button_main" x="115+80+300" y="8" width="75" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
-			<button class="button_main" x="115+80+300" y="8" width="27" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SB" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
+			<button class="button_main" x="115+80+1000" y="8" width="75" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
+			<button class="button_main" x="115+80+900" y="8" width="27" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SB" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
 
 			<!-- disable sandbox button if cannot sandbox -->
 			<!-- <group visibility="0.75"> -->
@@ -10022,7 +10060,7 @@
 			</songpos>
 
 			<!-- QUANTIZE BUTTON -->
-			<button class="button_main" x="115+80+300+75+10" y="8" width="32" height="27" tooltip="Quantize all" action="deck 1 quantize_all & deck 2 quantize_all & deck 3 quantize_all & deck 4 quantize_all" textsize="10" text="Q" coloron="br_focus" bordersize="0" visibility="sandbox on ? false : true"/>
+			<button class="button_main" x="115+80+960" y="8" width="32" height="27" tooltip="Quantize all" action="deck 1 quantize_all & deck 2 quantize_all & deck 3 quantize_all & deck 4 quantize_all" textsize="10" text="Q" coloron="br_focus" bordersize="0" visibility="sandbox on ? false : true"/>
 
 			<!-- MIDDLE SECTION TABS -->
 			<button class="button_main" x="+800+2" y="+8" width="78" height="27" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="AUDIO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
@@ -10031,7 +10069,15 @@
 			<button class="button_main" x="+800+2+78+78+78" y="+8" width="78" height="27" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 
 			<!-- CUSTOM BUTTONS -->
-			<button class="custom_button" source="24" x="+630" y="+8"/>
+			<button class="custom_button" source="102" x="+430" y="+8" width="80"/>
+			<button class="custom_button" source="101" x="+515" y="+8" width="80"/>
+			<button class="custom_button" source="100" x="+600" y="+8" width="175"/>
+			
+			<!-- <button action="custom button 25"> -->
+			  <!-- <pos x="+540" y="+8"/> -->
+			  <!-- <size width="44" height="44"/> -->
+			  <!-- <up x="0" y="0"/><down x="44" y="0"/> -->
+			<!-- </button> -->
 
 			<!-- <panel class="beat_keeper" deck="3" x="+655" y="+8+4" visibility="deck 3 leftdeck"/> -->
 			<!-- <panel class="beat_keeper" deck="1" x="+655" y="+8+4" visibility="not deck 3 leftdeck"/> -->
@@ -15479,23 +15525,23 @@
 			<!-- PRO: SONGPOS LEFT -->
 			<songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/>
 
-			<panel class="transport" x="+484+7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-			<panel class="transport" x="+484+7-80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
+			<panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+			<!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
 
-			<panel class="pitch_zone" x="+800-58-2-8"/>
+			<panel class="pitch_zone" x="+800-140" y="+3"/>
 
-			<panel class="jogwheel" x="+800-[JOGSIZE]-2-8-58-14" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+			<panel class="jogwheel" x="+800-[JOGSIZE]-150" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
 				<size width="800" height="216"/>
-				<down color="transparent" border_size="4" border="deckcolor" shape="square"/>
+				<down color="transparent" border_size="2" border="deckcolor" shape="square"/>
 			</visual>
 
-			<!-- SELECTED DECK -->
-			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
+			<!-- SELECTED DECK BORDER -->
+			<visual source="deck [DECK] leftdeck" visibility="select">
 				<size width="800" height="216"/>
-				<down color="transparent" border_size="4" border="deckcolor" shape="square"/>
+				<down color="transparent" border_size="1" border="#22FFFFFF" shape="square"/>
 			</visual>
 
 			<dropzone visibility="var_equal '@$hauntinglayout' 0">
@@ -15668,7 +15714,13 @@
 		<!-- ACTIVE DECK BORDER: RIGHT -->
 		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
 			<size width="800" height="216"/>
-			<down color="transparent" border_size="4" border="deckcolor" shape="square"/>
+			<down color="transparent" border_size="2" border="deckcolor" shape="square"/>
+		</visual>
+
+		<!-- SELECTED DECK BORDER -->
+		<visual source="deck [DECK] rightdeck" visibility="select">
+			<size width="800" height="216"/>
+			<down color="transparent" border_size="1" border="#22FFFFFF" shape="square"/>
 		</visual>
 
 		<dropzone visibility="var_equal '@$hauntinglayout' 0">
