@@ -2931,8 +2931,8 @@
 				<!-- loaded ? key 0 -->
 
 				<button class="button_main" action="key_match_button" width="128-26-26" height="16" x="+26"
-					y="+45" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
-					textcoloron="black" textaction="get_text '`get_bpm_match`'" visibility="" />
+					y="+55" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
+					textcoloron="black" textaction="get_text '`get_key_modifier_text`'" visibility="" />
 
 				<visual type="square"				        x="+20" y="+40" width="10" height="10"
 				        color="red"
@@ -6744,21 +6744,36 @@
 			        width="38"
 			        height="16"
 			        x="+16+6"
-			        y="+68"
+			        y="+70"
 			        coloroff="red"
-			        coloron="green"
+			        coloron="black"
+			        bordersize="0"
+			        textsize="12"
+			        textcolor="black"
+			        textcoloron="green"
+			        textaction="get_text 'KEY'"
+			        visibility="loaded ? not masterdeck ? not key 0 ? true" />
+
+		  <!-- BEAT DESYNC WARNING -->
+			<button class="button_main" action="key_match_button" width="38" height="16"
+				x="+16+6+66" y="+70" color="blue" coloroff="red" coloron="black" bordersize="0"
+				textsize="12" textcolor="black" textcoloron="green" textaction="get_text 'SYNC'"
+				visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true" />
+
+			<button class="button_main"
+			        action="key_match_button"
+			        width="110"
+			        height="16"
+			        x="+16+6"
+			        y="+70"
+			        coloroff="orange"
+			        coloron="orange"
 			        bordersize="0"
 			        textsize="12"
 			        textcolor="black"
 			        textcoloron="black"
-			        textaction="get_text 'KEY'"
-			        visibility="loaded ? key 0 ? blink 500ms : true" />
-
-		  <!-- BEAT DESYNC WARNING -->
-			<button class="button_main" action="key_match_button" width="38" height="16"
-				x="+16+6+66" y="+68" color="blue" color="red" coloron="green" bordersize="0"
-				textsize="12" textcolor="black" textcoloron="black" textaction="get_text 'SYNC'"
-				visibility="loaded ? not is_sync ? blink 500ms : true" />
+			        textaction="get_text 'MASTER'"
+			        visibility="loaded ? masterdeck" />
 
 			<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/> -->
 
