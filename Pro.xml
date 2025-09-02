@@ -9864,8 +9864,8 @@
 				<!-- "bpm" -->
 				<textzone>
 				  <pos x="+12" y="+31"/>
-				  <size width="30" height="25"/>
-			  	<text fontsize="13" weight="" color="white" align="left" format="BPM" important="true"/>
+				  <size width="30" height="26"/>
+			  	<text fontsize="14" weight="" color="white" align="left" format="BPM" important="true"/>
 				</textzone>
 			
 				<!-- PITCH RANGE -->
@@ -9875,7 +9875,7 @@
 				<textzone>
 				  <pos x="+44" y="+31"/>
 				  <size width="45" height="25"/>
-			  	<text fontsize="13" weight="" color="white" align="right" format="`get_text '%Ppitch%'`" important="true"/>
+			  	<text fontsize="14" weight="" color="white" align="right" format="`get_text '%Ppitch%'`" important="true"/>
 				</textzone>
 				
 				<dropzone>
