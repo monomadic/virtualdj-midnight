@@ -2912,7 +2912,7 @@
 		<define class="key_display_left">
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
 
-			<button class="button_main" x="+16" y="+37" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowleft"/>
+			<button class="button_main" x="+16" y="+37" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="red" border="0" iconsize="22" sysicon="arrowleft"/>
 			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
 			<button class="button_main" x="+128-26-12" y="+37" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/>
 
@@ -6353,9 +6353,10 @@
 	<define class="times_bpm_key">
 		<visual class="gfx_shape" width="484" height="104" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 
+		<!-- HR -->
 		<visual class="gfx_shape" coloroff="panel_background">
 			<pos x="+0" y="+0" />
-			<size width="481" height="5"/>
+			<size width="481" height="2"/>
 		</visual>
 
 		<textzone tooltip="">
@@ -6364,6 +6365,12 @@
 			<text fontsize="12" weight="" color="white" align="left" scroll="yes" action="get_loaded_song 'comment'" localize="true" important="true"/>
 		</textzone>
 
+		<!-- HR -->
+		<visual class="gfx_shape" coloroff="panel_background">
+			<pos x="+0" y="+20" />
+			<size width="481" height="2"/>
+		</visual>
+
 		<group visibility="loaded">
 
 			<!-- PRO: STEM BUTTONS -->
@@ -6371,8 +6378,8 @@
 			<button class="button_main" x="+7+73" y="+28" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" />
 			<button class="button_main" x="+7+73+73" y="+28" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" />
 
-			<panel class="key_display_left" x="+2+4+220+4" y="+2"/>
-			<panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/>
+			<panel class="key_display_left" x="+2+4+220+4" y="+14"/>
+			<!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
 
 			<!-- MASTER BUTTON -->
 			<button class="button_main" x="+7" y="+53" width="216" height="22" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" brcoloroff="orange" textcolor="orange" textcoloron="black" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
@@ -6477,7 +6484,6 @@
 		<button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="58" height="18" action="pitch_reset 4bt" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
 
 		<button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="58" height="18" action="pitch_reset 4bt" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="red" textaction="get_text 'RESET'" query="pitch_reset ? blink 400ms" visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off"/>
-
 
 		<!-- <textzone	visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off"> -->
 		  <!-- <pos x="+26" y="+40"/> -->
@@ -9846,15 +9852,16 @@
 					<!-- <mask x="195" y="1085"/> -->
 				<!-- </visual> -->
 			
-				<!-- BPM -->
 				<!-- <textzone> -->
 				  <!-- <pos x="+0" y="+6"/> -->
 				  <!-- <size width="98" height="25"/> -->
 			  	<!-- <text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/> -->
 				<!-- </textzone> -->
+
+				<!-- BPM -->
 				<textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
 
-				
+				<!-- "bpm" -->
 				<textzone>
 				  <pos x="+12" y="+31"/>
 				  <size width="30" height="25"/>
