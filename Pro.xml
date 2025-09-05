@@ -2912,9 +2912,9 @@
 		<define class="key_display_left">
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
 
-			<button class="button_main" x="+16" y="+37" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="red" border="0" iconsize="22" sysicon="arrowleft"/>
-			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
-			<button class="button_main" x="+128-26-12" y="+37" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/>
+			<button class="button_main" x="+16" y="+34" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" border="0" iconsize="22" sysicon="arrowleft"/>
+			<textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="26" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
+			<button class="button_main" x="+128-26-12" y="+34" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/>
 
 			<!-- <textzone class="text" -->
 			  <!-- x="+26" y="+40" -->
@@ -2931,7 +2931,7 @@
 				<!-- loaded ? key 0 -->
 
 				<button class="button_main" action="key_match_button" width="100-26-26" height="16" x="+42"
-					y="+45" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
+					y="+42" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
 					textcoloron="black" textaction="get_key_modifier_text" visibility="" />
 
 				<visual type="square"				        x="+20" y="+40" width="10" height="10"
@@ -5643,12 +5643,12 @@
 			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
 				<pos x="+2+4+28+6+170+8" y="+1"/>
 				<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
-				<text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_title_before_remix" localize="true" important="true"/>
+				<text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_title_before_remix & param_uppercase" localize="true" important="true"/>
 			</textzone>
 			
 			<!-- LINE 2 -->
 			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
-				<pos x="+2+4+28+6+170+8" y="+22" />
+				<pos x="+2+4+28+6+170+8" y="+20" />
 				<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
 				<text fontsize="12" weight="" color="#888888" align="left" scroll="yes" action="get_loaded_song 'remix' & param_uppercase" localize="true" important="true"/>
 			</textzone>
@@ -5666,7 +5666,7 @@
 			        query="var_equal 'keyDisplayToggle' 1"
 			        deck="default"
 			        visibility="loaded">
-			  <pos  x="+2+4+28+6+170+8+80" y="+4+20+19"/>
+			  <pos  x="+2+4+28+6+170+8+60" y="+4+20+19"/>
 			  <size width="40" height="25"/>
 
 			  <!-- show colored text when a key exists -->
@@ -6352,16 +6352,23 @@
 
 	<!-- PRO: BPM, KEY -->
 	<define class="times_bpm_key">
-		<visual class="gfx_shape" width="484" height="104" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 
 		<!-- HR -->
-		<visual class="gfx_shape" coloroff="panel_background">
-			<pos x="+0" y="+0" />
-			<size width="481" height="2"/>
-		</visual>
+		<!-- <visual class="gfx_shape" coloroff="panel_background"> -->
+			<!-- <pos x="+0" y="+2" /> -->
+			<!-- <size width="481" height="1"/> -->
+		<!-- </visual> -->
 
+		<!-- COMMENT BG -->
+		<!-- <visual class="gfx_shape" coloroff="#121212"> -->
+			<!-- <pos x="+0" y="+2" /> -->
+			<!-- <size width="481" height="20"/> -->
+		<!-- </visual> -->
+
+		<visual class="gfx_shape" width="483" height="22" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
+		<!-- <visual class="gfx_shape" width="482" height="22" coloroff="black" bordercoloroff="transparent" bordersize="0"/> -->
 		<textzone tooltip="">
-			<pos x="+10" y="+4" />
+			<pos x="+10" y="+2" />
 			<size width="404-2-4-28-6-2-4" height="20"/>
 			<text fontsize="12" weight="" color="white" align="left" scroll="yes" action="get_loaded_song 'comment'" localize="true" important="true"/>
 		</textzone>
@@ -6369,24 +6376,28 @@
 		<!-- HR -->
 		<visual class="gfx_shape" coloroff="panel_background">
 			<pos x="+0" y="+20" />
-			<size width="481" height="2"/>
+			<size width="481" height="1"/>
 		</visual>
 
-		<group visibility="loaded">
+
+		<visual class="gfx_shape" y="+20" width="484" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
+
+		<visual class="gfx_shape" y="+20" width="484" height="104" coloroff="#44000000" bordercoloroff="panel_background" bordersize="1"/>
+		<group visibility="loaded" x="+10" y="+10">
 
 			<!-- PRO: STEM BUTTONS -->
 			<button class="button_main" x="+7" y="+28" width="70" height="22" action="stem_pad 'Vocal'" brcoloroff="colorvocal" coloron="colorvocal" brcoloron="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" />
 			<button class="button_main" x="+7+73" y="+28" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" />
 			<button class="button_main" x="+7+73+73" y="+28" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" />
 
-			<panel class="key_display_left" x="+2+4+220+4" y="+14"/>
+			<panel class="key_display_left" x="+2+4+220+4+120" y="+14"/>
 			<!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
 
 			<!-- MASTER BUTTON -->
 			<button class="button_main" x="+7" y="+53" width="216" height="22" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" brcoloroff="orange" textcolor="orange" textcoloron="black" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 		</group>
 
-		<panel class="syncoptions_display" x="+2+6" y="+81" />
+		<!-- <panel class="syncoptions_display" x="+2+6" y="+81" /> -->
 	</define>
 
 	<!-- STACK VIEW: times (when pad is showing) -->
@@ -6402,7 +6413,7 @@
 		<panel class="transport_left_stack" x="+370" y="+2"/>
 		<panel class="bpm_display_left_stack" x="+2+4+180+6+98+4-80" y="+2"/>
 
-		<panel class="syncoptions_display" x="+2+6" y="+39" />
+		<!-- <panel class="syncoptions_display" x="+2+6" y="+39" /> -->
 	</define>
 
 
@@ -6427,7 +6438,7 @@
 		<panel class="key_display_right" x="+404-2-4-200-4-128+80" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 		<panel class="bpm_display_right" x="+404-2-4-200-4-128-4-136+80" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 
-		<panel class="syncoptions_display2" x="+2+6" y="+81" />
+		<!-- <panel class="syncoptions_display2" x="+2+6" y="+81" /> -->
 	</define>
 
 	<!-- PRO: TRANSPORT -->
@@ -6440,12 +6451,14 @@
 		    <action>param_div `cue_countup` `param_add cue_countup cue_countdown`</action>
 		  </text>
 		</textzone>
+		<button class="button_main" x="+0" textsize="11" y="+6" width="60" height="30" action="sampler_play_stop all" text="SAMPLER" textcolor="textoff2" coloron="button_background3" brcoloron="button_background_3" textcoloron="green"/>
 
-		<button class="button_main" x="+0" textsize="11" y="+6+30" width="60" height="30" action="key_match" text="KEY" textcolor="textoff2" textcoloron="black"/>
-		<button class="button_main" x="+0" textsize="11" y="+6+30+4+28" width="60" height="30" action="shift ? phrase_sync 16 : phrase_sync 32" text="PHRASE" textcolor="textoff2" textcoloron="black"/>
-		<button class="button_main" x="+0" textsize="11" y="+6+30+4+28+4+28" width="60" height="30" action="sync_button" text="SYNC" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" textsize="11" y="+6+33" width="60" height="30" action="key_match_button" text="KEY" textcolor="textoff2" coloron="button_background3" brcoloron="button_background_3" textcoloron="green"/>
+		<!-- <button class="button_main" x="+0" textsize="11" y="+6+30" width="60" height="30" action="key_match" text="KEY" textcolor="red" textcoloron="red" coloroff="red" coloron="red" visibility="loaded ? not masterdeck ? sync_hint"/> -->
+		<button class="button_main" x="+0" textsize="11" y="+6+33+4+30" width="60" height="30" action="shift ? phrase_sync 16 : phrase_sync 32" text="PHRASE" textcolor="textoff2" textcoloron="black"/>
+		<button class="button_main" x="+0" textsize="11" y="+6+33+4+28+4+31" width="60" height="30" action="sync_button" text="SYNC" textcolor="textoff2" textcoloron="black"/>
 		<!-- <button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2" textcoloron="black"/> -->
-		<button class="button_main" x="+0" textsize="11" y="+6+30+4+30+6+62" width="60" height="30" action="play_pause" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background2"/>
+		<button class="button_main" x="+0" textsize="11" y="+6+33+4+30+6+60" width="60" height="30" action="play_pause" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background2"/>
 	</define>
 
 	<!-- PERFORMANCE: EXTENDED: TRANSPORT (SYNC CUE ETC) -->
@@ -6755,7 +6768,7 @@
 			        textcolor="black"
 			        textcoloron="green"
 			        textaction="get_text 'KEY'"
-			        visibility="loaded ? not masterdeck ? not key 0 ? true" />
+			        visibility="loaded ? not masterdeck" />
 
 		  <!-- BEAT DESYNC WARNING -->
 			<button class="button_main" action="key_match_button" width="45" height="16"
@@ -6879,10 +6892,10 @@
 			<!-- <textzone class="text" x="+18" y="+50" width="[JOGSIZE]-36" height="46" fontsize="26" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
 
 		</group>
-		<scratch>
-			<pos width="[JOGSIZE]" height="[JOGSIZE]"/>
-			<mousecircle width="[JOGSIZE]" height="[JOGSIZE]"/>
-		</scratch>
+		<!-- <scratch> -->
+			<!-- <pos width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+			<!-- <mousecircle width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+		<!-- </scratch> -->
 	</define>
 
 	<define class="jogwheel_2" placeholders="*jogsize=165">
@@ -10075,7 +10088,7 @@
 			<!-- MIDDLE SECTION TABS -->
 			<button class="button_main" x="+800+2" y="+8" width="78" height="27" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="AUDIO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 			<button class="button_main" x="+800+2+78" y="+8" width="78" height="27" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-			<button class="button_main" x="+800+2+78+78" y="+8" width="78" height="27" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="SCRATCH" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+			<button class="button_main" x="+800+2+78+78" y="+8" width="78" height="27" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 			<button class="button_main" x="+800+2+78+78+78" y="+8" width="78" height="27" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 
 			<!-- CUSTOM BUTTONS -->
@@ -15533,6 +15546,7 @@
 
 			<!-- PRO: SONGPOS LEFT -->
 			<songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/>
+			<!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
 
 			<panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 			<!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
