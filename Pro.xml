@@ -7530,23 +7530,29 @@
 		</video>
 	</define>
 
+	<!-- PRO: VFX PANEL -->
 	<define class="vfx_slot">
+		<!-- LEFT -->
 		<panel visibility="get_deck 1 ? true : get_deck 3 ? true : false">
-			<button class="button_main" x="+27" y="+10" width="40" height="28" action="effect_show_gui 'video'" text="+"/>
-			<button class="button_main" x="+27+40+10" y="+10" width="132" height="28" action="video_fx" scroll="video_fx_select" textaction="get_videofx_name &amp; param_uppercase" coloroff="button_background3" coloron="deckcolor" bordersize="0" textcolor="textoff2"/>
-			<button class="button_main" x="+27+40+10+132" y="+10" width="28" height="28" action="video_fx_select" sysicon="chevrondown" iconsize="20"/>
-
-			<slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfilloff" disabled="not effect_has_slider 'video' 1" novisibility="video_fx"/>
-			<slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfillon" disabled="not effect_has_slider 'video' 1" visibility="video_fx"/>
+			<!-- <button class="button_main" x="+27" y="+10" width="40" height="28" action="effect_show_gui 'video'" text="+"/> -->
+			<!-- <button class="button_main" x="+27+40+10" y="+10" width="132" height="28" action="video_fx" scroll="video_fx_select" textaction="get_videofx_name &amp; param_uppercase" coloroff="button_background3" coloron="deckcolor" bordersize="0" textcolor="textoff2"/> -->
+			<!-- <button class="button_main" x="+27+40+10+132" y="+10" width="28" height="28" action="video_fx_select" sysicon="chevrondown" iconsize="20"/> -->
+			<!-- <slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfilloff" disabled="not effect_has_slider 'video' 1" novisibility="video_fx"/> -->
+			<!-- <slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfillon" disabled="not effect_has_slider 'video' 1" visibility="video_fx"/> -->
+			<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+30" y="+12" />
+			<panel class="stem_control" stem="melody" label="INSTR" color="colorinstru" x="+110" y="+12" />
+			<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+190" y="+12" />
 		</panel>
 
 		<panel x="-52" visibility="get_deck 2 ? true : get_deck 4 ? true : false">
-			<button class="button_main" x="+28+40+10+132+28+10" y="+10" width="40" height="28" action="effect_show_gui 'video'" text="+"/>
-			<button class="button_main" x="+28+40+10" y="+10" width="132" height="28" action="video_fx" scroll="video_fx_select" textaction="get_videofx_name &amp; param_uppercase" coloroff="button_background3" coloron="deckcolor" bordersize="0" textcolor="textoff2"/>
-			<button class="button_main" x="+28+40+10+132" y="+10" width="28" height="28" action="video_fx_select" sysicon="chevrondown" iconsize="20"/>
-
-			<slider class="hor_slider" x="+28+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfilloff" disabled="not effect_has_slider 'video' 1" novisibility="video_fx"/>
-			<slider class="hor_slider" x="+28+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfillon" disabled="not effect_has_slider 'video' 1" visibility="video_fx"/>
+			<!-- <button class="button_main" x="+28+40+10+132+28+10" y="+10" width="40" height="28" action="effect_show_gui 'video'" text="+"/> -->
+			<!-- <button class="button_main" x="+28+40+10" y="+10" width="132" height="28" action="video_fx" scroll="video_fx_select" textaction="get_videofx_name &amp; param_uppercase" coloroff="button_background3" coloron="deckcolor" bordersize="0" textcolor="textoff2"/> -->
+			<!-- <button class="button_main" x="+28+40+10+132" y="+10" width="28" height="28" action="video_fx_select" sysicon="chevrondown" iconsize="20"/> -->
+			<!-- <slider class="hor_slider" x="+28+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfilloff" disabled="not effect_has_slider 'video' 1" novisibility="video_fx"/> -->
+			<!-- <slider class="hor_slider" x="+28+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfillon" disabled="not effect_has_slider 'video' 1" visibility="video_fx"/> -->
+			<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+80" y="+12" />␍
+			<panel class="stem_control" stem="melody" label="INSTR" color="colorinstru" x="+160" y="+12" />␍
+			<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+240" y="+12" />␍
 		</panel>
 	</define>
 
@@ -14859,7 +14865,7 @@
 	<define class="editgrid_rack" placeholders="deck,*panelname">
 		<deck deck="[DECK]">
 			<visual class="gfx_shape" width="294" height="80" coloroff="panel_background"/>
-			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'VFX' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
+			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
 			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'VFX' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
 
 			<panel class="grids" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/>
@@ -15813,6 +15819,59 @@
 	</define>
 </group>
 
+
+<define class="stem_control" placeholders="*stem,*label,*color">
+  <group>
+
+    <!-- Stem Toggle Button -->
+    <button class="button_main"
+            x="+0" y="+42" width="45" height="15"
+            action="stem_pad '[STEM]'"
+            coloroff="#111111" brcoloroff="#111111"
+            coloron="[COLOR]" brcoloron="[COLOR]"
+            textcoloroff="[COLOR]" textcoloron="black"
+            text="[LABEL]" textsize="12" />
+
+    <!-- Knob (muted state visible) -->
+    <panel class="knob"
+           x="+2" y="+0"
+           textbelow="+37" textleft="-7"
+           textwidth="48" textsize="9"
+           knobsize="39" knobradius="11" faderradius="9"
+           action="stem '[STEM]'"
+           rgclick="sampler_volume_master 100%"
+           dblclick="stem '[STEM]' 50%"
+           frommiddle="false"
+           fillcolor="#333333" fillcoloroff="#000000"
+           text=""
+           visibility="mute_stem '[STEM]' on" />
+
+    <!-- Knob (unmuted state visible) -->
+    <panel class="knob"
+           x="+2" y="+0"
+           textbelow="+37" textleft="-7"
+           textwidth="48" textsize="9"
+           knobsize="39" knobradius="11" faderradius="9"
+           action="stem '[STEM]'"
+           rgclick="sampler_volume_master 100%"
+           dblclick="stem '[STEM]' 50%"
+           frommiddle="false"
+           fillcolor="[COLOR]" fillcoloroff="#000000"
+           text=""
+           visibility="mute_stem '[STEM]' off" />
+
+
+    <!-- VU Meter -->
+		<visual class="gfx_shape" x="+52" y="+0" width="14" height="59" coloroff="black"/>
+    <panel class="vvu_meter_LEDs"
+           x="+55" y="+5"
+           ledw="7" ledh="1" gap="2"
+           source="get_level '[STEM]'"
+           showpeaks="false"/>
+
+  </group>
+</define>
+
 <define class="sampler_mini" placeholders="*deck">
 
 <group name="Sampler Mini">
@@ -15821,15 +15880,17 @@
   <!-- SAMPLER MASTER VOLUME KNOB -->
 	<!-- <panel class="knob" x="+0" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="sampler_volume_master" rgclick="sampler_volume_master 100%" dblclick="sampler_volume_master 100%" frommiddle="false" fillcolor="magenta" text="SAMPLER"/> -->
 
-	<button class="button_main" x="+0" y="+39" width="45" height="15" action="stem_pad 'Vocal'" coloroff="transparent" brcoloroff="transparent" coloron="colorvocal" brcoloron="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" textsize="11" />
-	<panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'vocal' on" />
-	<panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorvocal" fillcoloroff="#222222" text="" visibility="mute_stem 'vocal' off" />
-	<panel class="vvu_meter_LEDs" x="+47" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'vocal'" showpeaks="false"/>
+	<!-- <button class="button_main" x="+0" y="+39" width="45" height="15" action="stem_pad 'Vocal'" coloroff="transparent" brcoloroff="transparent" coloron="colorvocal" brcoloron="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" textsize="11" /> -->
+	<!-- <panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'vocal' on" /> -->
+	<!-- <panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorvocal" fillcoloroff="#222222" text="" visibility="mute_stem 'vocal' off" /> -->
+	<!-- <panel class="vvu_meter_LEDs" x="+47" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'vocal'" showpeaks="false"/> -->
 
-	<button class="button_main" x="+67" y="+39" width="45" height="15" action="stem_pad 'melody'" coloroff="transparent" brcoloroff="transparent" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" textsize="11" />
-	<panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'melody' on" />
-	<panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="" visibility="mute_stem 'melody' off"  />
-	<panel class="vvu_meter_LEDs" x="+115" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'melody'" showpeaks="false"/>
+	<!-- <button class="button_main" x="+67" y="+39" width="45" height="15" action="stem_pad 'melody'" coloroff="transparent" brcoloroff="transparent" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" textsize="11" /> -->
+	<!-- <panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'melody' on" /> -->
+	<!-- <panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="" visibility="mute_stem 'melody' off"  /> -->
+	<!-- <panel class="vvu_meter_LEDs" x="+115" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'melody'" showpeaks="false"/> -->
+
+	<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" />
 
 	<!-- <panel class="knob" x="+60" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="VOCAL" /> -->
 	<!-- <panel class="vvu_meter_LEDs" x="+103" y="+0" ledw="7" ledh="1" gap="1" source="get_level 'melody'" showpeaks="false"/> -->
@@ -16141,14 +16202,31 @@
 		<!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
 		<songpos class="songpos" x="+800-482" y="+75" width="480" height="44-4-24" colorPlayed="blue"/>
 
-		<panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-		<panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
+		<!-- <panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
+		<!-- <panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
 
-		<panel class="pitch_zone" x="+2+8" />
+		<panel class="pitch_zone" x="+250" />
 
 		<panel class="jogwheel" x="+2+8+58+14" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 
+		<visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/>
+		<panel class="vvu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
+		<panel class="vvu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
+		<slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
+			<pos x="+65-52" y="+13"/>
+			<size width="38" height="172-24"/>
+			<fader color="faderbackgroundline" width="38" height="6"/>
+		</slider>
+
 		<panel class="sampler_mini" x="+800-235" y="+106" />
+
+		<!-- TRANSPORT BAR -->
+		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7" textsize="11" y="+179" width="80" height="30" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+
 
 		<!-- ACTIVE DECK BORDER: RIGHT -->
 		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
