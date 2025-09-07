@@ -689,6 +689,282 @@
 		<define color="browser_iconbuttonoff" value="#c1c1c1"/>
 	</group>
 
+<define class="vu_meter_LEDs" placeholders="*source,ledw=11,ledh=4,gap=2,vucoloroff=vu_background">
+  <visual type="vumeter" source="[SOURCE]" width="[LEDW]" height="([LEDH]*26+[GAP]*25)" smooth="no" visibility="1">
+
+    <!-- Top (row 25) to bottom (row 0). Use stride: ([LEDH]+[GAP]) * ROW -->
+    <led x="+0" y="+([LEDH]+[GAP])*25" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*24" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*23" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*22" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*21" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*20" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*19" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*18" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*17" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*16" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*15" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*14" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*13" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*12" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*11" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*10" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*9" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*8" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*7" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*6" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*5" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*4" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*3" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*2" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <!-- Bottom two as needle -->
+    <led x="+0" y="+([LEDH]+[GAP])*1" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="needle"      radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+0" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="needle"      radius="0" border="contrast" border_size="0"/>
+    </led>
+
+  </visual>
+</define>
+
+<define class="vvu_meter_LEDs" placeholders="*source,ledw=11,ledh=4,gap=2,vucoloroff=vu_background">
+  <visual type="vumeter" source="[SOURCE]" width="[LEDW]" height="([LEDH]+[GAP])*25" smooth="no" visibility="1">
+
+    <!-- Top (row 25) to bottom (row 0). Use stride: ([LEDH]+[GAP]) * ROW -->
+    <led x="+0" y="+[LEDH]*25+[GAP]*25" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*24" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*23" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*22" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*21" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*20" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*19" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*18" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*17" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*16" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*15" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*14" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*13" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*12" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*11" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*10" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"    radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*9" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*8" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*7" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*6" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*5" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*4" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*3" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+([LEDH]+[GAP])*2" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="deckcolor"   radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <!-- Bottom two as needle -->
+    <led x="+0" y="+([LEDH]+[GAP])*1" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="needle"      radius="0" border="contrast" border_size="0"/>
+    </led>
+
+    <led x="+0" y="+0" width="[LEDW]" height="[LEDH]">
+      <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
+      <on  color="needle"      radius="0" border="contrast" border_size="0"/>
+    </led>
+
+  </visual>
+</define>
+
 	<group name="visuals">
 		<define class="gfx_shape" placeholders="width,height,coloroff,coloron,bordercoloroff,bordercoloron,bordersize,radius=0,shape">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
@@ -698,11 +974,11 @@
 
         <define class="vu_meter_LEDs" placeholders="*source,peak,showpeaks,width=11,height=4,vucoloroff=vu_background">
 					<visual type="vumeter" width="11" height="154" source="[SOURCE]" smooth="no" visibility="var_equal '@$hntnhvumetercolors' 0">
-            <led x="+0" y="+6*25" width="11" height="4">
+            <led x="+0" y="+6*25" width="11" height="[HEIGHT]">
               <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
               <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
             </led>
-						<led x="+0" y="+6*24" width="11" height="4">
+						<led x="+0" y="+6*24" width="11" height="[HEIGHT]">
               <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
               <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
 	          </led>
@@ -5659,6 +5935,9 @@
 				<size width="484-2-4-28-6-2-4-170-8" height="70-6-6-26"/>
 				<text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_title_before_remix & param_uppercase" localize="true" important="true"/>
 			</textzone>
+
+			<button class="button_main" action="search `get_title_before_remix`" rightclick="file_info" x="+2+4+28+6+170+8" y="+1" tooltip="" width="484-2-4-28-6-2-4-210" height="70-6-6-26" coloroff="transparent" coloron="transparent" brcoloroff="transparent" brcoloron="transparent" bordersize="2"/>
+
 			
 			<!-- LINE 2 -->
 			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
@@ -6303,9 +6582,9 @@
 
 	<!-- ?: INFO PANEL -->
 	<define class="infos2">
-		<button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="404" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+		<button class="button_main" action="select" rightclick="file_info" tooltip="" width="404" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+		<!-- <button class="button_main" x="+2+4" y="+6" width="28" height="72-6-6" action="select" coloroff="button_background" textheight="45" textsize="16" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
 
-		<button class="button_main" x="+2+4" y="+6" width="28" height="72-6-6" action="select" coloroff="button_background" textheight="45" textsize="16" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 		<menu class="menu_maindecks" query="select" x="+2+4" y="+72-8-22" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
 		<group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
@@ -6365,7 +6644,7 @@
 	</define>
 
 	<!-- PRO: BPM, KEY -->
-	<define class="times_bpm_key">
+	<define class="track_info_action_zone">
 
 		<!-- HR -->
 		<!-- <visual class="gfx_shape" coloroff="panel_background"> -->
@@ -6379,7 +6658,7 @@
 			<!-- <size width="481" height="20"/> -->
 		<!-- </visual> -->
 
-		<visual class="gfx_shape" width="483" height="22" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
+		<visual class="gfx_shape" x="+2" width="480" height="22" coloroff="black" bordercoloroff="red" bordersize="0"/>
 		<!-- <visual class="gfx_shape" width="482" height="22" coloroff="black" bordercoloroff="transparent" bordersize="0"/> -->
 		<textzone tooltip="">
 			<pos x="+10" y="+2" />
@@ -6393,9 +6672,9 @@
 			<size width="481" height="1"/>
 		</visual>
 
-
 		<visual class="gfx_shape" y="+20" width="484" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
 
+		<!-- bottom panel -->
 		<visual class="gfx_shape" y="+20" width="484" height="104" coloroff="#44000000" bordercoloroff="panel_background" bordersize="1"/>
 		<group visibility="loaded" x="+10" y="+10">
 
@@ -6510,9 +6789,9 @@
 	<define class="pitch_zone">
 		<!-- pitch reset -->
 
-		<button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="58" height="18" action="pitch_reset 4bt" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
+		<button class="button_main" x="+0" y="+6+30+4+30+6+62+8" width="58" height="20" action="pitch_reset 4bt" coloroff="button_background3" brcoloroff="button_background3" textsize="11" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
 
-		<button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="58" height="18" action="pitch_reset 4bt" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="red" textaction="get_text 'RESET'" query="pitch_reset ? blink 400ms" visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off"/>
+		<button class="button_main" x="+0" y="+6+30+4+30+6+62+8" width="58" height="20" action="pitch_reset 4bt" coloroff="red" brcoloroff="button_background3" textsize="11" textcolor="black" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 25 ? blink 500ms : off"/>
 
 		<!-- <textzone	visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off"> -->
 		  <!-- <pos x="+26" y="+40"/> -->
@@ -8928,6 +9207,7 @@
 					</slider>
 				</group>
 
+				<!-- PRO: 4 DECK AUDIO PANEL CUE BUTTON -->
 				<button class="button_main" x="+2+4+4" y="+195" width="57" height="24" action="pfl" coloroff="button_background4" brcoloroff="button_background4" text="CUE"/>
 			</group>
 		</deck>
@@ -15524,6 +15804,81 @@
 	</define>
 </group>
 
+<define class="sampler_mini" placeholders="*deck">
+
+<group name="Sampler Mini">
+			<!-- <panel class="pitch_zone" x="+0" y="+0"/> -->
+
+  <!-- SAMPLER MASTER VOLUME KNOB -->
+	<!-- <panel class="knob" x="+0" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="sampler_volume_master" rgclick="sampler_volume_master 100%" dblclick="sampler_volume_master 100%" frommiddle="false" fillcolor="magenta" text="SAMPLER"/> -->
+
+	<panel class="knob" x="+0" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorvocal" text="VOCAL" />
+	<panel class="vvu_meter_LEDs" x="+43" y="+0" ledw="7" ledh="1" gap="2" source="get_level 'vocal'" showpeaks="false"/>
+
+  <!-- SAMPLER MASTER VOLUME KNOB -->
+  <!-- <rotary class="knob_big" tooltip="Sampler Volume (double-click to reset)"> -->
+    <!-- <pos x="+0" y="+0"/> -->
+    <!-- <size width="40" height="40"/> -->
+    <!-- <action>sampler_volume_master</action> -->
+    <!-- Reset on double-click: use 'action_dblclick' attribute -->
+    <!-- <dblclick>sampler_volume_master 100%</dblclick> -->
+  <!-- </rotary> -->
+
+  <!-- SIMPLE READOUT (integer 0–100) -->
+  <!-- <textzone> -->
+    <!-- <pos x="+0" y="+42"/> -->
+    <!-- <size width="40" height="16"/> -->
+    <!-- <text fontsize="11" align="center" color="text" -->
+          <!-- action="param_cast int `param_multiply 100 `sampler_volume_master``"/> -->
+  <!-- </textzone> -->
+
+  <!-- PLAYING INDICATOR + STOP-ALL -->
+  <!-- Lights and blinks while ANY sampler slot is playing; click to stop all -->
+  <!-- <button class="button_led" text="SAMPLER"> -->
+    <!-- <pos x="+50" y="+0"/> -->
+    <!-- <size width="70" height="24"/> -->
+    <!-- <query>sampler_play</query> -->
+    <!-- <blink>sampler_play</blink> -->
+    <!-- <action>sampler_stop all</action> -->
+    <!-- <textcolor>texton</textcolor> -->
+    <!-- <textcoloron>black</textcoloron> -->
+    <!-- <color>panel</color> -->
+    <!-- <coloron>accent</coloron> -->
+  <!-- </button> -->
+
+  <!-- FX STRIP (targets the Sampler bus) -->
+  <!-- FX SELECT POPUP -->
+  <!-- <button class="button_slim" text="FX" tooltip="Select Sampler FX"> -->
+    <!-- <pos x="+50" y="+28"/> -->
+    <!-- <size width="34" height="20"/> -->
+    <!-- <action>effect_select_popup 'sampler'</action> -->
+  <!-- </button> -->
+
+  <!-- FX ON/OFF -->
+  <!-- <button class="button_slim" text="ON" tooltip="Toggle Sampler FX"> -->
+    <!-- <pos x="+86" y="+28"/> -->
+    <!-- <size width="34" height="20"/> -->
+    <!-- <query>effect_active 'sampler'</query> -->
+    <!-- <action>effect_active 'sampler' toggle</action> -->
+  <!-- </button> -->
+
+  <!-- FX DRY/WET -->
+  <!-- <rotary class="knob_small" tooltip="Sampler FX Dry/Wet"> -->
+    <!-- <pos x="+50" y="+52"/> -->
+    <!-- <size width="30" height="30"/> -->
+    <!-- <action>effect_drywet 'sampler'</action> -->
+  <!-- </rotary> -->
+
+  <!-- FX PARAM 1 -->
+  <!-- <rotary class="knob_small" tooltip="Sampler FX Param 1"> -->
+    <!-- <pos x="+88" y="+52"/> -->
+    <!-- <size width="30" height="30"/> -->
+    <!-- <action>effect_slider 'sampler' 1</action> -->
+  <!-- </rotary> -->
+
+</group>
+</define>
+
 <group name="COMPOSITIONS">
 	<define class="area_waves">
 		<panel class="waveform" x="+2" waveformheight="381" condition="var_equal '@$infntywavesize' 13"/>
@@ -15553,7 +15908,7 @@
 			<!-- when video pane is active -->
 			<panel class="infos2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
 
-			<panel class="times_bpm_key" y="+72-2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+			<panel class="track_info_action_zone" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 			<panel class="times_bpm_key2" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
 
 			<visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
@@ -15561,14 +15916,34 @@
 
 			<!-- PRO: SONGPOS LEFT -->
 			<!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
-			<songpos class="songpos" x="+2+6" y="+75" width="470" height="44-4-18" colorPlayed="blue"/>
+			<songpos class="songpos" x="+5" y="+74" width="475" height="44-4-20" colorPlayed="blue"/>
 
-			<panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+			<!-- non-video -->
+			<!-- <panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
+
 			<!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
 
-			<panel class="pitch_zone" x="+800-140" y="+3"/>
 
-			<panel class="jogwheel" x="+800-[JOGSIZE]-150" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+			<panel class="pitch_zone" x="+800-310" y="-1"/>
+
+			<panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+
+			<visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/>
+			<panel class="vvu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
+			<panel class="vvu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
+			<slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
+				<pos x="+800-52" y="+15"/>
+				<size width="38" height="172-28"/>
+				<fader color="faderbackgroundline" width="38" height="4"/>
+			</slider>
+
+			<panel class="sampler_mini" x="+260" y="+110" />
+
+			<!-- TRANSPORT BAR -->
+			<button class="button_main" x="+800-80-8-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-8-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-8-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-8" textsize="11" y="+179" width="80" height="30" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
@@ -15611,6 +15986,7 @@
 
 		<visual class="gfx_shape" y="+68-2-6" width="878+77+2" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 		<panel class="beat_divider_area" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
+
 		<songpos class="songpos" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
 
 		<panel class="transport_ex" x="+484+7+77+2+77+2-8" y="+103-6"/>
@@ -15734,15 +16110,15 @@
 		<!-- cover, title etc -->
 		<panel class="infos" x="+800-484" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 		<panel class="infos2" x="+800-404" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
-		<panel class="times_bpm_key" x="+800-484" y="+72-2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-		<panel class="times_bpm_key2" x="+800-404" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
+		<panel class="track_info_action_zone" x="+800-484" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+		<!-- <panel class="times_bpm_key2" x="+800-404" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
 
 		<visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
 		<!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
 
 		<!-- PRO: RIGHT DECK: SONGPOS -->
 		<!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
-		<songpos class="songpos" x="+800-475" y="+76" width="470-5" height="44-4-10" colorPlayed="blue"/>
+		<songpos class="songpos" x="+800-482" y="+75" width="480" height="44-4-24" colorPlayed="blue"/>
 
 		<panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 		<panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
@@ -15750,6 +16126,8 @@
 		<panel class="pitch_zone" x="+2+8" />
 
 		<panel class="jogwheel" x="+2+8+58+14" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+
+		<panel class="sampler_mini" x="+800-220" y="+110" />
 
 		<!-- ACTIVE DECK BORDER: RIGHT -->
 		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
