@@ -7539,9 +7539,9 @@
 			<!-- <button class="button_main" x="+27+40+10+132" y="+10" width="28" height="28" action="video_fx_select" sysicon="chevrondown" iconsize="20"/> -->
 			<!-- <slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfilloff" disabled="not effect_has_slider 'video' 1" novisibility="video_fx"/> -->
 			<!-- <slider class="hor_slider" x="+27+40+10" y="+54" width="132+28" height="10" action="video_fx_slider" rightclick="video_fx_slider 50%" coloron="knobfillon" disabled="not effect_has_slider 'video' 1" visibility="video_fx"/> -->
-			<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+30" y="+12" />
-			<panel class="stem_control" stem="melody" label="INSTR" color="colorinstru" x="+110" y="+12" />
-			<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+190" y="+12" />
+			<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+15" y="+12" />
+			<panel class="stem_control" stem="melody" label="INSTR" color="colorinstru" x="+102" y="+12" />
+			<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+185" y="+12" />
 		</panel>
 
 		<panel x="-52" visibility="get_deck 2 ? true : get_deck 4 ? true : false">
@@ -8753,7 +8753,7 @@
 				<button class="button_main" x="+10+38+4+38+4+38+4+38+4+3" y="+6+30+7" width="38+35" height="30" action="edit_bpm" coloroff="button_background2" brcoloroff="button_background2" text="EDIT"/>
 			</panel>
 
-			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="Video Effect">
+			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="STEM 3">
 				<panel class="vfx_slot"/>
 			</panel>
 
@@ -8792,7 +8792,7 @@
 				<button class="button_main" x="+10" y="+6+30+7" width="38+35" height="30" action="edit_bpm" coloroff="button_background2" brcoloroff="button_background2" text="EDIT"/>
 			</panel>
 
-			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="Video Effect">
+			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="STEM 3">
 				<panel class="vfx_slot"/>
 			</panel>
 
@@ -8926,7 +8926,7 @@
 			<square x="+0" y="+0" width="236+28" height="132" color="#44000000" />
 
 			<!-- FX1 -->
-			<textzone class="text" x="+10" y="+10" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="FX1"/>
+			<textzone class="text" x="+10" y="+10" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
 			<panel class="fx_slot4" x="+10" y="+30" width="236" source="1"/>
 
 			<!-- COLORFX -->
@@ -9140,21 +9140,41 @@
 
 	<define class="rec_panel">
 		<textzone class="text" y="+0" width="77+77+2-6-6" height="20" fontsize="10" color="textoff" align="center" weight="" text="RECORD"/>
-
 		<button class="button_main" tooltip="" x="+0" y="+24" width="72+72" height="24" query="record" textsize="11" textcolor="textdarker" textcoloron="needle" textaction="get_text '`get_record_time` (`get_record_size`)'" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
 		<button class="button_main" x="+0" y="+54" width="105" height="28" textsize="11" action="record" text="REC" coloroff="button_background2" coloron="br_focus" bordersize="0"/>
 		<button class="button_main" x="+60+4+30+30-10" y="+54" width="30" height="28" action="record_config" iconsize="22" sysicon="settings" coloron="br_focus" bordersize="0"/>
 	</define>
 
+	<!-- PRO: MASTER PANEL: MASTER FX -->
 	<define class="masterfx_panel">
 		<deck deck="master">
 			<textzone class="text" y="+0" width="77+77+2-6-6" height="20" fontsize="10" color="textoff" align="center" weight="" text="MASTER FX"/>
 
-			<button class="button_main" y="+24" width="118" height="28" action="effect_active" scroll="effect_select" textaction="get_effect_name & param_uppercase" coloroff="button_background3" coloron="br_focus" bordersize="0" textcolor="textoff2"/>
-			<button class="button_main" x="+118" y="+24" width="28" height="28" action="effect_select" sysicon="chevrondown" iconsize="20" coloron="br_focus" bordersize="0" />
+    	<panel class="knob"
+           x="+16" y="+50"
+           textbelow="+37" textleft="-7"
+           textwidth="48" textsize="9"
+           knobsize="39" knobradius="9" faderradius="9"
+           action="effect_slider 1"
+           textaction="effect_select &amp; param_uppercase"
+           rgclick="sampler_volume_master 100%"
+           frommiddle="false"
+           fillcolor="magenta" fillcoloroff="#000000"
+           text="FX" />
 
-			<slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" coloron="knobfilloff" novisibility="effect_active"/>
-			<slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" visibility="effect_active"/>
+    	<button class="button_main"
+            x="+10" y="+30" width="50" height="15"
+            action="effect_select"
+            coloroff="#111111" brcoloroff="#111111"
+            coloron="magenta" brcoloron="magenta"
+            textcoloroff="magenta" textcoloron="black"
+            text="FX1" textsize="11" />
+
+			<!-- <button class="button_main" y="+24" width="118" height="28" action="effect_active" scroll="effect_select" textaction="get_effect_name & param_uppercase" coloroff="button_background3" coloron="br_focus" bordersize="0" textcolor="textoff2"/> -->
+			<!-- <button class="button_main" x="+118" y="+24" width="28" height="28" action="effect_select" sysicon="chevrondown" iconsize="20" coloron="br_focus" bordersize="0" /> -->
+
+			<!-- <slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" coloron="knobfilloff" novisibility="effect_active"/> -->
+			<!-- <slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" visibility="effect_active"/> -->
 		</deck>
 	</define>
 
@@ -9170,6 +9190,7 @@
 		</deck>
 	</define>
 
+	<!-- PRO: AUDIO PANEL: VOLUME SLIDER -->
 	<define class="channel_extended" placeholders="deck">
 		<deck deck="[DECK]">
 			<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="xf_background"/>
@@ -9819,23 +9840,24 @@
 		<!-- <button class="button_main" x="+6" y="+338+216+2+57" width="40-6-6" height="26" action="swap_decks" coloron="button_background" weight="bold" textcoloron="needle" text="> <" textsize="15" visibility="var_equal '@$hauntinghidecrossfader' 1 ? var_equal '@$hauntinglayout' 1"/> -->
 	</define>
 
+	<!-- MASTER PANEL -->
 	<define class="mic/headphones_controls">
 		<visual class="gfx_shape" width="77" height="432-56-1" coloroff="panel_background" visibility="var_not_equal '@$hauntinglayout' 1"/>
 		<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="panel_background" visibility="var_equal '@$hauntinglayout' 1"/>
 
 		<group name="2decks_view" visibility="var_not_equal '@$hauntinglayout' 1">
-			<panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="mic_volume" rgclick="mic_volume 62% while_pressed" dblclick="mic_volume 62%" frommiddle="false" fillcolor="br_focus" text="MIC VOL"/>
+			<!-- <panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="mic_volume" rgclick="mic_volume 62% while_pressed" dblclick="mic_volume 62%" frommiddle="false" fillcolor="br_focus" text="MIC VOL"/> -->
 
-			<button class="button_main" x="+10" y="+74" width="77-10-10" height="26" action="mic" textsize="11" text="ON" coloron="br_focus" bordersize="0"/>
-			<button class="button_main" x="+10" y="+74+24+12" width="77-10-10" height="26" action="sampler_rec 'mic'" textsize="11" text="REC" coloron="br_focus" bordersize="0"/>
-			<button class="button_main" x="+10" y="+74+24+12+24+12" width="77-10-10" height="26" radius="4" action="mic_talkover while_pressed" rightclick="mic_talkover" tooltip="Mic Talk-Over (while pressed)\nRight-click: Mic Talk-Over (ON-OFF)" textsize="11" textaction="get_text 'TALK'" coloroff="button_background2" coloron="#ff1467" bordersize="0"/>
+			<!-- <button class="button_main" x="+10" y="+74" width="77-10-10" height="26" action="mic" textsize="11" text="ON" coloron="br_focus" bordersize="0"/> -->
+			<!-- <button class="button_main" x="+10" y="+74+24+12" width="77-10-10" height="26" action="sampler_rec 'mic'" textsize="11" text="REC" coloron="br_focus" bordersize="0"/> -->
+			<!-- <button class="button_main" x="+10" y="+74+24+12+24+12" width="77-10-10" height="26" radius="4" action="mic_talkover while_pressed" rightclick="mic_talkover" tooltip="Mic Talk-Over (while pressed)\nRight-click: Mic Talk-Over (ON-OFF)" textsize="11" textaction="get_text 'TALK'" coloroff="button_background2" coloron="#ff1467" bordersize="0"/> -->
 
-			<visual class="gfx_shape" y="+240" width="77" height="2" coloroff="skin_background"/>
+			<!-- <visual class="gfx_shape" y="+240" width="77" height="2" coloroff="skin_background"/> -->
 
-			<panel class="knob" x="+18" y="+236+2+14" knobsize="41" knobradius="10" faderradius="9" action="headphone_volume" rgclick="headphone_volume 50% while_pressed" dblclick="mic_volume 50%" frommiddle="false" fillcolor="br_focus" text="CUE VOL"/>
-			<panel class="knob" x="+18" y="+236+2+14+60" knobsize="41" knobradius="10" faderradius="9" action="headphone_mix" rgclick="headphone_mix 0% while_pressed" dblclick="headphone_mix 0%" frommiddle="false" fillcolor="br_focus" text="CUE MIX"/>
+			<!-- <panel class="knob" x="+18" y="+236+2+14" knobsize="41" knobradius="10" faderradius="9" action="headphone_volume" rgclick="headphone_volume 50% while_pressed" dblclick="mic_volume 50%" frommiddle="false" fillcolor="br_focus" text="CUE VOL"/> -->
+			<!-- <panel class="knob" x="+18" y="+236+2+14+60" knobsize="41" knobradius="10" faderradius="9" action="headphone_mix" rgclick="headphone_mix 0% while_pressed" dblclick="headphone_mix 0%" frommiddle="false" fillcolor="br_focus" text="CUE MIX"/> -->
 
-			<visual class="gfx_shape" x="+77/2-10" y="+66-8+122+2" width="21" height="50" coloroff="xf_background"/>
+			<!-- <visual class="gfx_shape" x="+77/2-10" y="+66-8+122+2" width="21" height="50" coloroff="xf_background"/> -->
 			<visual type="vumeter" source="get_level 'mic'" x="+77/2-3" y="+66+122+2" width="7" height="28" smooth="no">
 				<led x="+0" y="+6*5" width="7" height="4">
 					<off color="vu_background" radius="0" border="contrast" border_size="0"/>
@@ -9940,7 +9962,8 @@
 			<button class="button_main" x="+10" y="+74+60" width="77-10-10" height="26" action="mono_mix" textsize="11" text="MONO" coloron="br_focus" bordersize="0"/>
 			<button class="button_main" x="+10" y="+74+24+12+60" width="77-10-10" height="26" action="sampler_rec 'master'" textsize="11" text="REC" coloron="br_focus" bordersize="0"/>
 
-			<button class="button_main" x="+10" y="+74+24+12+60+164" width="77-10-10" height="26" action="setting 'exclusiveAudioAccess'" tooltip="Exclusive Audio Access To Virtual DJ" textsize="11" text="ONLY" coloron="br_focus" bordersize="0"/>
+			<!-- PRO: MASTER PANEL -->
+			<!-- <button class="button_main" x="+10" y="+74+24+12+60+164" width="77-10-10" height="26" action="setting 'exclusiveAudioAccess'" tooltip="Exclusive Audio Access To Virtual DJ" textsize="11" text="ONLY" coloron="br_focus" bordersize="0"/> -->
 
 			<visual class="gfx_shape" x="+77/2-10" y="+240-8" width="21" height="90" coloroff="xf_background"/>
 			<visual type="vumeter" source="get_vu_meter 'master'" x="+77/2-3" y="+240" width="7" height="70" smooth="no">
@@ -10085,10 +10108,10 @@
 		<visual class="gfx_shape" width="77+77+2" height="432-56-1+216+2" coloroff="panel_background" visibility="var_equal '@$hauntinglayout' 1"/>
 
 		<group name="2decks_view" visibility="var_not_equal '@$hauntinglayout' 1">
-			<panel class="broadcast_panel" x="+6" y="+6"/>
-			<panel class="rec_panel" x="+6" y="+6+170"/>
-			<visual class="gfx_shape" y="+6+126+138" width="77+77+2" height="2" coloroff="skin_background"/>
-			<panel class="masterfx_panel" x="+6" y="+6+281"/>
+			<!-- <panel class="broadcast_panel" x="+6" y="+6"/> -->
+			<!-- <panel class="rec_panel" x="+6" y="+6+170"/> -->
+			<!-- <visual class="gfx_shape" y="+6+126+138" width="77+77+2" height="2" coloroff="skin_background"/> -->
+			<panel class="masterfx_panel" x="+6" y="+6"/>
 		</group>
 
 		<group name="4decks_view" visibility="var_equal '@$hauntinglayout' 1">
@@ -14866,7 +14889,7 @@
 		<deck deck="[DECK]">
 			<visual class="gfx_shape" width="294" height="80" coloroff="panel_background"/>
 			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
-			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'VFX' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
+			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
 
 			<panel class="grids" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/>
 			<panel class="grids" x="+0" panelname="[PANELNAME]" visibility="rightdeck"/>
@@ -15873,7 +15896,6 @@
 </define>
 
 <define class="sampler_mini" placeholders="*deck">
-
 <group name="Sampler Mini">
 			<!-- <panel class="pitch_zone" x="+0" y="+0"/> -->
 
@@ -15890,7 +15912,7 @@
 	<!-- <panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="" visibility="mute_stem 'melody' off"  /> -->
 	<!-- <panel class="vvu_meter_LEDs" x="+115" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'melody'" showpeaks="false"/> -->
 
-	<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" />
+	<!-- <panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" /> -->
 
 	<!-- <panel class="knob" x="+60" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="VOCAL" /> -->
 	<!-- <panel class="vvu_meter_LEDs" x="+103" y="+0" ledw="7" ledh="1" gap="1" source="get_level 'melody'" showpeaks="false"/> -->
