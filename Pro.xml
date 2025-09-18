@@ -1775,6 +1775,7 @@
 			<selected color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="" color="[TEXTCOLOR]" colorselected="[TEXTCOLORON]" colordown="[TEXTCOLORON]" align="[ALIGN]" orientation="[ORIENTATION]" action="[TEXTACTION]" text="[TEXT]" localize="true" scroll="[TEXTSCROLL]" important="[IMPORTANT]"/>
 			<icon dx="[ICONDX]" sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<!-- <action rgclick="[RIGHTCLICK]"/> -->
 		</define>
 
 		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=13,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no" condition="var_equal '@$hauntingcolorscheme' 4">
@@ -1784,6 +1785,7 @@
 			<selected color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="bold" color="[TEXTCOLOR]" colorselected="[TEXTCOLORON]" colordown="[TEXTCOLORON]" align="[ALIGN]" orientation="[ORIENTATION]" action="[TEXTACTION]" text="[TEXT]" localize="true" scroll="[TEXTSCROLL]" important="[IMPORTANT]"/>
 			<icon dx="[ICONDX]" sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<!-- <action rgclick="[RIGHTCLICK]"/> -->
 		</define>
 
 		<define class="custom_button" action="custom_button [SOURCE]" rightclick="custom_button_edit [SOURCE]" placeholders="*source,width=100,height=26,text,textheight=height,important=true,textaction,coloroff=br_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=11,textcolor=br_textoff,textcoloron=needle,orientation=horizontal" condition="var_not_equal '@$hauntingcolorscheme' 4">
@@ -6692,6 +6694,31 @@
 			<button class="button_main" x="+7+73" y="+28" width="70" height="22" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" />
 			<button class="button_main" x="+7+73+73" y="+28" width="70" height="22" action="stem_pad 'Rhythm'" brcoloroff="colorbeat" coloron="colorbeat" brcoloron="colorbeat" textcolor="colorbeat" textcoloron="black" text="DRUM" />
 
+			<button class="dropdown_menu" action="filter_selectcolorfx" x="+293" y="+25" visibility="var_equal '@$hauntingdropmenus' 0"/>
+			<panel class="knob" x="+250" y="+28" knobsize="41" knobradius="10" faderradius="9" action="effect_slider 'colorfx'" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label & param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+
+    	<!-- <button class="button_main" -->
+            <!-- x="+250" y="+30" width="50" height="15" -->
+            <!-- action="effect_select" -->
+            <!-- coloroff="#111111" brcoloroff="#111111" -->
+            <!-- coloron="magenta" brcoloron="magenta" -->
+            <!-- textcoloroff="magenta" textcoloron="black" -->
+            <!-- text="COLORFX" textsize="11" /> -->
+
+    	<!-- <panel class="knob" -->
+           <!-- x="+256" y="+30" -->
+           <!-- textbelow="+37" textleft="-7" -->
+           <!-- textwidth="48" textsize="9" -->
+           <!-- knobsize="39" knobradius="11" faderradius="9" -->
+           <!-- action="effect_slider 'colorfx'" -->
+           <!-- textaction="filter_label & param_cast 'text' 9" -->
+					 <!-- actiontxt="filter_selectcolorfx" -->
+					 <!-- rgclick="effect_select" -->
+           <!-- dblclick=" 'colorfx' 50%" -->
+           <!-- frommiddle="true" -->
+           <!-- fillcolor="magenta" fillcoloroff="#000000" -->
+           <!-- text="FX" /> -->
+
 			<panel class="key_display_left" x="+2+4+220+4+120" y="+14"/>
 			<!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
 
@@ -6909,13 +6936,13 @@
 			</visual>
 
 			<!-- SONG ENDING WARNING -->
-			<!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
-				<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
-				<!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
-				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
-			<!-- </visual> -->
-			<!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="14" heightfader="32" radius="42"/> -->
-			<!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
+			<visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip="">
+				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
+				<off border_size="2" border="transparent" color="mixerbackground" shape="circle"/>
+				<on border_size="5" border="deckcolor" color="ixerbackground" shape="circle"/>
+			</visual>
+			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="14" heightfader="32" radius="42"/>
+			<slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/>
 
 			<visual name="innercircle_border" visibility="loaded">
 				<pos x="+52" y="+52"/>
@@ -6944,7 +6971,7 @@
 			<!-- SONG ENDING WARNING -->
 			<visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip="">
 				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
-				<off border_size="2" border="transparent" color="mixerbackground" shape="circle"/>
+				<off border_size="2" border="transparent" color="red" shape="circle"/>
 				<on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/>
 			</visual>
 			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="14" heightfader="32" radius="42"/>
@@ -6985,6 +7012,8 @@
 				<on shape="circle" color="knobfillon" />
 			</visual>
 
+			<!-- EJECT BUTTON -->
+			<visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" />
 			<!-- <button class="button_main" action="load ''" width="20" height="20" -->
 				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
 				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
@@ -7003,7 +7032,7 @@
 			</visual>
 
 			<!-- SONG ENDING WARNING -->
-				<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+			<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
 			<!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
 				<!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
 				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
@@ -7034,26 +7063,6 @@
 			  <size width="38" height="18"/>
 			  <text fontsize="12" color="blue" format="PHRASE" />
 			</textzone>
-
-			<!-- Blinking PHASE warning badge -->
-			<!-- <group name="phase_warning"> -->
-			  <!-- Blinking red background when phase is off -->
-			  <!-- <button x="+10" y="+10" width="38" height="18" -->
-			  				<!-- action="nothing" -->
-								<!-- bordersize="0" -->
-			          <!-- color="red" /> -->
-			          <!-- visibility="sync_hint 'phase' ? blink 500ms : 0"/> -->
-
-			  <!-- Black text on top (only show when phase is off) -->
-			  <!-- <textzone	x="+10" y="+10" width="38" height="18" -->
-			        <!-- align="center" fontsize="12" weight="bold" -->
-			        <!-- color="white" -->
-			        <!-- visibility=""> -->
-			    <!-- PHASE -->
-			  <!-- </textzone> -->
-			<!-- </group> -->
-			<!-- JOGWHEEL: KEY (COMPATIBLE) -->
-			<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/> -->
 
 			<!-- JOGWHEEL: KEY (OUT OF TUNE) -->
 			<button class="button_main"
@@ -8814,6 +8823,7 @@
 		</panel>
 	</define>
 
+	<!-- PRO: LOOP PANEL -->
 	<define class="loops" placeholders="*panelname">
 		<panel name="@loops_[PANELNAME]" group="loops_[PANELNAME]" visible="yes" available="yes" displayname="Loop (Adjust)">
 			<button class="button_main" x="+10" y="+6" width="50" height="30" action="loop_half" sysicon="chevronleft" iconsize="22"/>
@@ -8927,11 +8937,24 @@
 
 			<!-- FX1 -->
 			<textzone class="text" x="+10" y="+10" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
-			<panel class="fx_slot4" x="+10" y="+30" width="236" source="1"/>
+			<!-- <panel class="fx_slot4" x="+10" y="+30" width="236" source="1"/> -->
+
+			<group x="+8" y="+27">
+				<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active" rightclick="effect_select" textaction="effect_select & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
+				<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			</group>
+			
 
 			<!-- COLORFX -->
 			<textzone class="text" x="+10" y="+70" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="COLORFX"/>
-			<panel class="fx_colorfx" x="+10" y="+90" width="236" source="colorfx"/>
+			<!-- <panel class="fx_colorfx" x="+10" y="+90" width="236" source="colorfx"/> -->
+
+			<group x="+8" y="+87">
+				<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
+				<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			</group>
 			
 		</panel>
 	</define>
@@ -9148,27 +9171,60 @@
 	<!-- PRO: MASTER PANEL: MASTER FX -->
 	<define class="masterfx_panel">
 		<deck deck="master">
-			<textzone class="text" y="+0" width="77+77+2-6-6" height="20" fontsize="10" color="textoff" align="center" weight="" text="MASTER FX"/>
+
+			<group name="sampler_panel" x="+0" y="+0" >
+				<textzone class="text" x="+0" y="+0" width="144" height="20" fontsize="10" color="textoff" align="center" weight="" text="SAMPLER"/>
+
+				<button class="button_main" x="+0" y="+22" width="144" height="20" textsize="10"
+				  action="sampler_output 'headphones' ? sampler_output 'master' : sampler_output 'headphones'"
+				  textaction="sampler_output 'headphones' ? get_text 'SAMP → HP' : get_text 'SAMP → MAIN'"
+				  rightclick="sampler_output 'popup'"
+				  color="`sampler_output 'headphones' ? '#00D5FF' : 'transparent'`" />
+
+			  <button x="+0" y="+50" width="40" height="40"
+			          visibility="true"
+			          action="deck left play & deck right play & deck all sync & phrase_sync"
+			          query="blink 1500ms">
+			    <off color="#333333" border="#000000" border_size="4" shape="circle"/>
+			    <on  color="#444444" border="#111111" border_size="4" shape="circle"/>
+			    <over color="#444444" border="#000000" border_size="4" shape="circle"/>
+			    <selected color="#555555" border="#000066" border_size="4" shape="circle"/>
+			    <icon dx="-2" sysicon="play" width="30" height="30"
+			          color="#888888" colordown="white" colorselected="#888888"/>
+			  </button>
+			</group>
+
+    	<button class="button_main"
+            x="-71" y="+10" width="50" height="16"
+            action="effect_select 1"
+            coloroff="#111111" brcoloroff="#111111"
+            coloron="magenta" brcoloron="magenta"
+            textcoloroff="magenta" textcoloron="black"
+            text="FX1" textsize="13" />
 
     	<panel class="knob"
-           x="+16" y="+50"
-           textbelow="+37" textleft="-7"
-           textwidth="48" textsize="9"
+           x="-65" y="+36"
+           textbelow="+40"
            knobsize="39" knobradius="9" faderradius="9"
            action="effect_slider 1"
            textaction="effect_select &amp; param_uppercase"
-           rgclick="sampler_volume_master 100%"
+           rgclick="effect_select 1"
            frommiddle="false"
            fillcolor="magenta" fillcoloroff="#000000"
            text="FX" />
 
-    	<button class="button_main"
-            x="+10" y="+30" width="50" height="15"
-            action="effect_select"
-            coloroff="#111111" brcoloroff="#111111"
-            coloron="magenta" brcoloron="magenta"
-            textcoloroff="magenta" textcoloron="black"
-            text="FX1" textsize="11" />
+    	<!-- <panel class="knob" -->
+           <!-- x="+76" y="+50" -->
+           <!-- textbelow="+37" textleft="-7" -->
+           <!-- textwidth="48" textsize="9" -->
+           <!-- knobsize="39" knobradius="9" faderradius="9" -->
+           <!-- action="effect_slider 'colorfx'" -->
+           <!-- textaction="filter_label & param_cast 'text' 9" -->
+					 <!-- actiontxt="filter_selectcolorfx" -->
+					 <!-- rgclick="effect_select" -->
+           <!-- frommiddle="false" -->
+           <!-- fillcolor="magenta" fillcoloroff="#000000" -->
+           <!-- text="FX" /> -->
 
 			<!-- <button class="button_main" y="+24" width="118" height="28" action="effect_active" scroll="effect_select" textaction="get_effect_name & param_uppercase" coloroff="button_background3" coloron="br_focus" bordersize="0" textcolor="textoff2"/> -->
 			<!-- <button class="button_main" x="+118" y="+24" width="28" height="28" action="effect_select" sysicon="chevrondown" iconsize="20" coloron="br_focus" bordersize="0" /> -->
@@ -9261,8 +9317,9 @@
 				<panel class="knob" x="+18" y="+14+76+67" knobsize="41" knobradius="10" faderradius="9" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="knobfillon" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
 				<panel class="knob" x="+18" y="+14+76+67+67" knobsize="41" knobradius="10" faderradius="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="knobfillon" textaction="low_label" actiontxt="eq_mode +1"/>
 
-				<button class="dropdown_menu" action="filter_selectcolorfx" x="+58" y="+14+81+68+68+68+5" visibility="var_equal '@$hauntingdropmenus' 0"/>
-				<panel class="knob" x="+18" y="+14+81+68+68+68+13" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label & param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+				<!-- PRO: AUDIO PANEL: COLORFX -->
+				<button class="dropdown_menu" action="filter_selectcolorfx" x="+58" y="+14+81+68+68+50+5" visibility="var_equal '@$hauntingdropmenus' 0"/>
+				<panel class="knob" x="+18" y="+14+81+68+68+50+13" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label & param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
 			</group>
 
 			<!-- 5knobs -->
@@ -9956,7 +10013,8 @@
 				<item text="-12dB" action="setting 'zeroDB' '-12db'" check="setting 'zeroDB' '-12db'"/>
 			</menu>
 
-			<panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="master_volume" rgclick="master_volume 62% while_pressed" dblclick="master_volume 62%" frommiddle="false" fillcolor="br_focus" textaction="setting 'zeroDB' '-12db' ? get_text '-12dB' : setting 'zeroDB' '-9db' ? get_text '-9dB' : setting 'zeroDB' '-6db' ? get_text '-6dB' : setting 'zeroDB' '-3db' ? get_text '-3dB' : setting 'zeroDB' '-1db' ? get_text '-1dB' : setting 'zeroDB' 'default' ? get_text 'MASTER'"/>
+			<!-- PRO: MASTER PANEL: MASTER VOLUME -->
+			<panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="master_volume" rgclick="master_volume 62% while_pressed" dblclick="master_volume 62%" frommiddle="false" fillcolor="#777777" textaction="setting 'zeroDB' '-12db' ? get_text '-12dB' : setting 'zeroDB' '-9db' ? get_text '-9dB' : setting 'zeroDB' '-6db' ? get_text '-6dB' : setting 'zeroDB' '-3db' ? get_text '-3dB' : setting 'zeroDB' '-1db' ? get_text '-1dB' : setting 'zeroDB' 'default' ? get_text 'MASTER'"/>
 			<panel class="knob" x="+18" y="+14+60" knobsize="41" knobradius="10" faderradius="9" action="master_balance" rgclick="temporary" dblclick="master_balance 50%" frommiddle="true" fillcolor="br_focus" text="BALANCE"/>
 
 			<button class="button_main" x="+10" y="+74+60" width="77-10-10" height="26" action="mono_mix" textsize="11" text="MONO" coloron="br_focus" bordersize="0"/>
@@ -15895,93 +15953,6 @@
   </group>
 </define>
 
-<define class="sampler_mini" placeholders="*deck">
-<group name="Sampler Mini">
-			<!-- <panel class="pitch_zone" x="+0" y="+0"/> -->
-
-  <!-- SAMPLER MASTER VOLUME KNOB -->
-	<!-- <panel class="knob" x="+0" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="sampler_volume_master" rgclick="sampler_volume_master 100%" dblclick="sampler_volume_master 100%" frommiddle="false" fillcolor="magenta" text="SAMPLER"/> -->
-
-	<!-- <button class="button_main" x="+0" y="+39" width="45" height="15" action="stem_pad 'Vocal'" coloroff="transparent" brcoloroff="transparent" coloron="colorvocal" brcoloron="colorvocal" textcolor="colorvocal" textcoloron="black" text="VOCAL" textsize="11" /> -->
-	<!-- <panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'vocal' on" /> -->
-	<!-- <panel class="knob" x="+2" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'vocal'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorvocal" fillcoloroff="#222222" text="" visibility="mute_stem 'vocal' off" /> -->
-	<!-- <panel class="vvu_meter_LEDs" x="+47" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'vocal'" showpeaks="false"/> -->
-
-	<!-- <button class="button_main" x="+67" y="+39" width="45" height="15" action="stem_pad 'melody'" coloroff="transparent" brcoloroff="transparent" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" textsize="11" /> -->
-	<!-- <panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#1a1a1a" text="" visibility="mute_stem 'melody' on" /> -->
-	<!-- <panel class="knob" x="+70" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="39" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'melody' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="" visibility="mute_stem 'melody' off"  /> -->
-	<!-- <panel class="vvu_meter_LEDs" x="+115" y="+5" ledw="7" ledh="1" gap="2" source="get_level 'melody'" showpeaks="false"/> -->
-
-	<!-- <panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" /> -->
-
-	<!-- <panel class="knob" x="+60" y="+0" textbelow="+37" textleft="-7" textwidth="48" textsize="9" knobsize="35" knobradius="10" faderradius="9" action="stem 'melody'" rgclick="sampler_volume_master 100%" dblclick="stem 'vocal' 50%" frommiddle="false" fillcolor="colorinstru" fillcoloroff="#222222" text="VOCAL" /> -->
-	<!-- <panel class="vvu_meter_LEDs" x="+103" y="+0" ledw="7" ledh="1" gap="1" source="get_level 'melody'" showpeaks="false"/> -->
-	<!-- <button class="button_main" x="+60" y="+39" width="50" height="15" action="stem_pad 'Melody'" brcoloroff="colorinstru" coloron="colorinstru" brcoloron="colorinstru" textcolor="colorinstru" textcoloron="black" text="INSTR" textsize="11" /> -->
-
-  <!-- SAMPLER MASTER VOLUME KNOB -->
-  <!-- <rotary class="knob_big" tooltip="Sampler Volume (double-click to reset)"> -->
-    <!-- <pos x="+0" y="+0"/> -->
-    <!-- <size width="40" height="40"/> -->
-    <!-- <action>sampler_volume_master</action> -->
-    <!-- Reset on double-click: use 'action_dblclick' attribute -->
-    <!-- <dblclick>sampler_volume_master 100%</dblclick> -->
-  <!-- </rotary> -->
-
-  <!-- SIMPLE READOUT (integer 0–100) -->
-  <!-- <textzone> -->
-    <!-- <pos x="+0" y="+42"/> -->
-    <!-- <size width="40" height="16"/> -->
-    <!-- <text fontsize="11" align="center" color="text" -->
-          <!-- action="param_cast int `param_multiply 100 `sampler_volume_master``"/> -->
-  <!-- </textzone> -->
-
-  <!-- PLAYING INDICATOR + STOP-ALL -->
-  <!-- Lights and blinks while ANY sampler slot is playing; click to stop all -->
-  <!-- <button class="button_led" text="SAMPLER"> -->
-    <!-- <pos x="+50" y="+0"/> -->
-    <!-- <size width="70" height="24"/> -->
-    <!-- <query>sampler_play</query> -->
-    <!-- <blink>sampler_play</blink> -->
-    <!-- <action>sampler_stop all</action> -->
-    <!-- <textcolor>texton</textcolor> -->
-    <!-- <textcoloron>black</textcoloron> -->
-    <!-- <color>panel</color> -->
-    <!-- <coloron>accent</coloron> -->
-  <!-- </button> -->
-
-  <!-- FX STRIP (targets the Sampler bus) -->
-  <!-- FX SELECT POPUP -->
-  <!-- <button class="button_slim" text="FX" tooltip="Select Sampler FX"> -->
-    <!-- <pos x="+50" y="+28"/> -->
-    <!-- <size width="34" height="20"/> -->
-    <!-- <action>effect_select_popup 'sampler'</action> -->
-  <!-- </button> -->
-
-  <!-- FX ON/OFF -->
-  <!-- <button class="button_slim" text="ON" tooltip="Toggle Sampler FX"> -->
-    <!-- <pos x="+86" y="+28"/> -->
-    <!-- <size width="34" height="20"/> -->
-    <!-- <query>effect_active 'sampler'</query> -->
-    <!-- <action>effect_active 'sampler' toggle</action> -->
-  <!-- </button> -->
-
-  <!-- FX DRY/WET -->
-  <!-- <rotary class="knob_small" tooltip="Sampler FX Dry/Wet"> -->
-    <!-- <pos x="+50" y="+52"/> -->
-    <!-- <size width="30" height="30"/> -->
-    <!-- <action>effect_drywet 'sampler'</action> -->
-  <!-- </rotary> -->
-
-  <!-- FX PARAM 1 -->
-  <!-- <rotary class="knob_small" tooltip="Sampler FX Param 1"> -->
-    <!-- <pos x="+88" y="+52"/> -->
-    <!-- <size width="30" height="30"/> -->
-    <!-- <action>effect_slider 'sampler' 1</action> -->
-  <!-- </rotary> -->
-
-</group>
-</define>
-
 <group name="COMPOSITIONS">
 	<define class="area_waves">
 		<panel class="waveform" x="+2" waveformheight="381" condition="var_equal '@$infntywavesize' 13"/>
@@ -16040,10 +16011,9 @@
 				<fader color="faderbackgroundline" width="38" height="6"/>
 			</slider>
 
-			<panel class="sampler_mini" x="+250" y="+106" />
-
 			<!-- TRANSPORT BAR -->
-			<button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
+			<!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
 			<button class="button_main" x="+800-80-8-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-8-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-8-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
@@ -16239,8 +16209,6 @@
 			<size width="38" height="172-24"/>
 			<fader color="faderbackgroundline" width="38" height="6"/>
 		</slider>
-
-		<panel class="sampler_mini" x="+800-235" y="+106" />
 
 		<!-- TRANSPORT BAR -->
 		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
