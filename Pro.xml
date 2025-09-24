@@ -3186,6 +3186,32 @@
 			<button class="button_main" x="+50+4" y="+10" width="50" height="22" action="play_button" coloroff="button_background" textcolor="white" iconsize="20" sysicon="arrowright" border="0"/>
 		</define>
 
+		<define class="key_display">
+			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
+
+			<!-- KEY TEXT -->
+			<textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="17" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
+
+			<!-- KEY DOWN BUTTON -->
+			<button class="button_main" x="+6" y="+15" width="26" height="48-20" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="22" sysicon="arrowleft"/>
+
+			<!-- KEY MATCH BUTTON -->
+			<button class="button_main" action="key_match_button"
+				width="100-26-26" height="14" x="+32" y="+22" 
+				coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
+				textcoloron="black" textaction="get_key_modifier_text" visibility="" />
+
+			<!-- KEY UP BUTTON -->
+			<button class="button_main" x="+118-26-12" y="+15" width="26" height="48-20" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="22" sysicon="arrowright"/>
+
+			<!-- KEY MISMATCH WARNING -->
+			<visual type="square" x="+10" y="+40" width="10" height="10" color="red"
+			        visibility="not is_sync ? blink : false"/>
+
+			<!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+			<!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
+		</define>
+
 		<!-- TRANSPORT: KEY INDICATOR -->
 		<define class="key_display_left">
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
@@ -6719,7 +6745,7 @@
            <!-- fillcolor="magenta" fillcoloroff="#000000" -->
            <!-- text="FX" /> -->
 
-			<panel class="key_display_left" x="+2+4+220+4+120" y="+14"/>
+			<!-- <panel class="key_display_left" x="+2+4+220+4+120" y="+14"/> -->
 			<!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
 
 			<!-- MASTER BUTTON -->
@@ -7014,10 +7040,10 @@
 
 			<!-- EJECT BUTTON -->
 			<visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" />
-			<!-- <button class="button_main" action="load ''" width="20" height="20" -->
-				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
-				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
-				<!-- visibility="loaded" /> -->
+			<button class="button_main" action="load ''" width="20" height="20"
+				x="+0" y="+0" color="transparent" bordersize="0"
+				textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'"
+				visibility="loaded" />
 
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded" color="red" width="40" height="40" x="+0" y="+0" />
 
@@ -7108,10 +7134,12 @@
 			<!-- <button class="button_main" width="45" height="16" x="+18+6+45+15" y="+68" coloroff="transparent" coloron="transparent" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
 
 			<!-- BOTTOM TEXT -->
-			<textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="23" fontsize="14" color="deckcolor" align="center" weight="" textaction="wheel_mode & param_uppercase" visibility="loaded ? var_equal '@$haunting_jog_text' 0"/>
-			<button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="23" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/>
-			<textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/>
-			<textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
+			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="23" fontsize="14" color="deckcolor" align="center" weight="" textaction="wheel_mode & param_uppercase" visibility="loaded ? var_equal '@$haunting_jog_text' 0"/> -->
+			<!-- <button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="23" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/> -->
+			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/> -->
+			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/> -->
+
+			<panel class="key_display" x="+22" y="+91"/>
 			
 			<!-- <visual name="innercircle_border"> -->
 				<!-- <pos x="+68" y="+68"/> -->
@@ -8230,6 +8258,20 @@
 		<button class="custom_button2" coloroff="button_background2" source="9" x="+88*2+1" y="+27+27" width="86" height="25"/>
 	</define>
 
+	<define class="custom_buttons_2" placeholders="*panelname">
+		<button class="custom_button2" coloroff="button_background2" source="10" x="+88*0+1" y="+0" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="11" x="+88*1+1" y="+0" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="12" x="+88*2+1" y="+0" width="86" height="25"/>
+
+		<button class="custom_button2" coloroff="button_background2" source="13" x="+88*0+1" y="+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="14" x="+88*1+1" y="+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="15" x="+88*2+1" y="+27" width="86" height="25"/>
+		
+		<button class="custom_button2" coloroff="button_background2" source="16" x="+88*0+1" y="+27+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="17" x="+88*1+1" y="+27+27" width="86" height="25"/>
+		<button class="custom_button2" coloroff="button_background2" source="18" x="+88*2+1" y="+27+27" width="86" height="25"/>
+	</define>
+
 	<define class="effects" placeholders="*panelname">
 		<!-- <panel name="@1fx_[PANELNAME]" group="efx_[PANELNAME]" visible="no" available="yes" displayname="FX x1" forceshow="1fx"> -->
 			<!-- <panel class="fx_slot_ex" x="+10" y="+6" source="1"/> -->
@@ -8781,6 +8823,10 @@
 			<panel name="@custom_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="no" displayname="Custom">
 				<panel class="custom_buttons"/>
 			</panel>
+
+			<panel name="@custom_2_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="no" displayname="Custom 2">
+				<panel class="custom_buttons_2"/>
+			</panel>
 		</panel>
 
 		<panel visibility="get_deck 2 ? true : get_deck 4 ? true : false">
@@ -8952,7 +8998,7 @@
 
 			<group x="+8" y="+87">
 				<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
+				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
 				<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			</group>
 			
@@ -9175,23 +9221,96 @@
 			<group name="sampler_panel" x="+0" y="+0" >
 				<textzone class="text" x="+0" y="+0" width="144" height="20" fontsize="10" color="textoff" align="center" weight="" text="SAMPLER"/>
 
-				<button class="button_main" x="+0" y="+22" width="144" height="20" textsize="10"
+				<!-- SAMPLER ROUTING TOGGLE HEADPHONES/MASTER -->
+				<button class="button_main" x="+0" y="+22" width="144" height="26" textsize="10"
 				  action="sampler_output 'headphones' ? sampler_output 'master' : sampler_output 'headphones'"
-				  textaction="sampler_output 'headphones' ? get_text 'SAMP → HP' : get_text 'SAMP → MAIN'"
+				  textaction="sampler_output 'headphones' ? get_text 'SAMP → HEADPHONES' : get_text 'SAMP → MASTER'"
 				  rightclick="sampler_output 'popup'"
 				  color="`sampler_output 'headphones' ? '#00D5FF' : 'transparent'`" />
 
-			  <button x="+0" y="+50" width="40" height="40"
+				<!-- SAMPLER GROUP SELECT -->
+				<group x="+0" y="+50">
+					<button class="button_main" x="+0" y="+0" width="26" height="18" action="sampler_bank -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+					<button class="button_main" x="+0+26" y="+0" width="92" height="18" action="sampler_bank" rightclick="effect_select colorfx" textaction="get_sampler_bank" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
+					<button class="button_main" x="+0+26+92" y="+0" width="26" height="18" action="sampler_bank +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				</group>
+
+				<!-- SAMPLER VUMETER -->
+				<group x="+0" y="+80">
+						<!-- BACKGROUND -->
+					  <visual class="gfx_shape" width="144" height="43-8-8" coloroff="xf_background"/>
+
+					  <!-- LABEL -->
+					  <textzone class="text" x="+0" y="+0" width="56" height="27" fontsize="10" color="textdarker" align="right" weight="" text="MASTER"/>
+
+					  <!-- L -->
+					  <visual type="vumeter" source="get_level_left 'sampler'" x="+58+8" y="+6" width="70" height="6" smooth="no">
+					    <led x="+0"     y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6"     y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*2"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*3"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*4"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*5"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*6"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*7"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*8"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*9"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*10"  y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*11"  y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="orange_vu" radius="0" border="contrast" border_size="0"/></led>
+					  </visual>
+
+					  <!-- R -->
+					  <visual type="vumeter" source="get_level_right 'sampler'" x="+58+8" y="+6+7+2" width="70" height="6" smooth="no">
+					    <led x="+0"     y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6"     y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*2"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*3"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*4"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*5"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*6"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*7"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*8"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*9"   y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*10"  y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="green_vu" radius="0" border="contrast" border_size="0"/></led>
+					    <led x="+6*11"  y="+0" width="4" height="6"><off color="vu_background" radius="0" border="contrast" border_size="0"/><on color="orange_vu" radius="0" border="contrast" border_size="0"/></led>
+					  </visual>
+
+					  <!-- Sampler Master Volume (horizontal slider) -->
+						<slider action="level 'sampler'" dblclick="level 80%" orientation="horizontal" direction="up" frommiddle="false">
+							<pos x="+58+8" y="+4"/>
+							<size width="70" height="20"/>
+							<fader color="faderbackgroundline" width="2" height="20"/>
+						</slider>
+					  <!-- <fader x="+58+8" y="+6" width="70" height="6" action="sampler_volume_master"> -->
+					    <!-- <back  color="vu_background" radius="3" border="contrast" border_size="1"/> -->
+					    <!-- <cursor width="8" height="6" color="deckcolor" radius="3" border="contrast" border_size="0"/> -->
+					  <!-- </fader> -->
+				</group>
+
+				<!-- SAMPLER PLAY/STOP BUTTON -->
+			  <button x="+3" y="+83" width="58" height="21"
 			          visibility="true"
-			          action="deck left play & deck right play & deck all sync & phrase_sync"
-			          query="blink 1500ms">
-			    <off color="#333333" border="#000000" border_size="4" shape="circle"/>
-			    <on  color="#444444" border="#111111" border_size="4" shape="circle"/>
-			    <over color="#444444" border="#000000" border_size="4" shape="circle"/>
-			    <selected color="#555555" border="#000066" border_size="4" shape="circle"/>
-			    <icon dx="-2" sysicon="play" width="30" height="30"
+			          action="sampler_play_stop"
+			          query="sampler_play_stop">
+			    <off color="#333333" border="#000000" border_size="2" shape="square"/>
+			    <on  color="#444444" border="#111111" border_size="2" shape="square"/>
+			    <over color="#444444" border="#000000" border_size="2" shape="square"/>
+			    <selected color="#555555" border="#0000FF" border_size="2" shape="square"/>
+			    <icon dx="-1" sysicon="play" width="24" height="24"
 			          color="#888888" colordown="white" colorselected="#888888"/>
 			  </button>
+
+			  <!-- <button x="+0" y="+110" width="40" height="40" -->
+			          <!-- visibility="true" -->
+			          <!-- action="sampler_play_stop" -->
+			          <!-- query="sampler_play_stop"> -->
+			    <!-- <off color="#333333" border="#000000" border_size="4" shape="circle"/> -->
+			    <!-- <on  color="#444444" border="#111111" border_size="4" shape="circle"/> -->
+			    <!-- <over color="#444444" border="#000000" border_size="4" shape="circle"/> -->
+			    <!-- <selected color="#555555" border="#0000FF" border_size="4" shape="circle"/> -->
+			    <!-- <icon dx="-2" sysicon="play" width="30" height="30" -->
+			          <!-- color="#888888" colordown="white" colorselected="#888888"/> -->
+			  <!-- </button> -->
 			</group>
 
     	<button class="button_main"
@@ -14946,8 +15065,8 @@
 	<define class="editgrid_rack" placeholders="deck,*panelname">
 		<deck deck="[DECK]">
 			<visual class="gfx_shape" width="294" height="80" coloroff="panel_background"/>
-			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
-			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
+			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : skin_panel '@custom_2_[PANELNAME]' ? get_text 'USER 2' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
+			<panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER 1' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
 
 			<panel class="grids" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/>
 			<panel class="grids" x="+0" panelname="[PANELNAME]" visibility="rightdeck"/>
@@ -15834,13 +15953,12 @@
 	<define class="xfader_panel">
 
 		<!-- GLASS BACKGROUND -->
-		<!-- <square x="+0" y="+0" width="312" height="64" color="#AA222233" /> -->
-		<square x="+0" y="+0" width="312" height="64" color="#AA101415" />
+		<!-- <square x="+0" y="+0" width="312" height="64" color="#AA101415" /> -->
 
 		<!-- PLAY BUTTON -->
 		<group name="playpause_global">
 		  <!-- PLAY state (no decks playing) -->
-		  <button x="+125" y="+2" width="60" height="60"
+		  <button x="+125" y="+25" width="60" height="60"
 		          visibility="true"
 		          action="deck left play & deck right play & deck all sync & phrase_sync"
 		          query="blink 1500ms">
@@ -15853,7 +15971,7 @@
 		  </button>
 
 		  <!-- STOP state (any deck playing) -->
-		  <button x="+125" y="+2" width="60" height="60"
+		  <button x="+125" y="+25" width="60" height="60"
 		          visibility="deck 1 play or deck 2 play"
 		          action="deck all pause"
 		          query="on">
@@ -15885,9 +16003,9 @@
 		
 		<!-- LINK TRACKS BUTTON -->
 		<button class="button_main"
-		        x="+105" y="+68" width="100" height="15"
+		        x="+65" y="+68" width="50" height="15"
 		        action="mark_linked_tracks"
-		        text="TRACK LINK"
+		        text="LINK"
 		        textcolor="#888888"
 		        textcolorover="white"
 						textcoloron="black"
