@@ -56,84 +56,55 @@
 		<define color="colornoinstru" value="#303030"/>
 		<define color="colornobeat" value="#F9E5CC"/>
 	</group>
+<!-- ===== Top-level color defines (always active) ===== -->
 
+<!-- Deck 1 -->
+<define color="waveform_active1"  value="#219cbf"/>
+<define color="waveform_passive1" value="#113845"/>
 
-	<group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 0">
-		<!-- waveforms -->
-		<define color="waveform_active1" value="#219cbf"/>
-		<define color="waveform_passive1" value="#113845"/>
+<define color="colorbass"  value="#0e4551"  deck="1"/>
+<define color="colormed"   value="#113845"  deck="1"/>
+<define color="colorhigh"  value="#219cbf"  deck="1"/>
+<define color="scratch1"   value="#007eff"  deck="1"/>
+<define color="scratch2"   value="#00c6ff"  deck="1"/>
+<define color="deckcolor"  value="#00FF44"  deck="1"/>
+<define color="knobfillon" value="#FF44AA"  deck="1"/>
 
-		<define color="colorbass" value="#0e4551" deck="1"/>
-		<define color="colormed" value="#113845" deck="1"/>
-		<define color="colorhigh" value="#219cbf" deck="1"/>
+<!-- Deck 2 -->
+<define color="waveform_active2"  value="#c62b39"/>
+<define color="waveform_passive2" value="#5f1620"/>
 
-		<define color="scratch1" value="#007eff" deck="1"/>
-		<define color="scratch2" value="#00c6ff" deck="1"/>
+<define color="colorbass"  value="#6e2328"  deck="2"/>
+<define color="colormed"   value="#5f1620"  deck="2"/>
+<define color="colorhigh"  value="#c62b39"  deck="2"/>
+<define color="scratch1"   value="#33BBFF"  deck="2"/>
+<define color="scratch2"   value="#33BBFF"  deck="2"/>
+<define color="deckcolor"  value="#33BBFF"  deck="2"/>
+<define color="knobfillon" value="#33FFBB"  deck="2"/>
 
-		<!-- Deck colors -->
-		<define color="deckcolor" value="#00FF44" deck="1"/>
+<!-- Deck 3 -->
+<define color="waveform_active3"  value="#21ac87"/>
+<define color="waveform_passive3" value="#153f39"/>
 
-		<!-- faders - knobs-->
-		<define color="knobfillon" value="#FF44AA" deck="1"/>
-	</group>
+<define color="colorbass"  value="#0a423a"  deck="3"/>
+<define color="colormed"   value="#153f39"  deck="3"/>
+<define color="colorhigh"  value="#21ac87"  deck="3"/>
+<define color="scratch1"   value="#00ff5a"  deck="3"/>
+<define color="scratch2"   value="#00f6ff"  deck="3"/>
+<define color="deckcolor"  value="#FF88DD"  deck="3"/>
+<define color="knobfillon" value="#21ac87"  deck="3"/>
 
-	<group name="deckcolors2" condition="var_equal '@$hauntingcolorsdecks' 0">
-		<!-- waveforms -->
-		<define color="waveform_active2" value="#c62b39"/>
-		<define color="waveform_passive2" value="#5f1620"/>
+<!-- Deck 4 -->
+<define color="waveform_active4"  value="#ca5d36"/>
+<define color="waveform_passive4" value="#52291c"/>
 
-		<define color="colorbass" value="#6e2328" deck="2"/>
-		<define color="colormed" value="#5f1620" deck="2"/>
-		<define color="colorhigh" value="#c62b39" deck="2"/>
-
-		<define color="scratch1" value="#33BBFF" deck="2"/>
-		<define color="scratch2" value="#33BBFF" deck="2"/>
-
-		<!-- Deck colors -->
-		<define color="deckcolor" value="#33BBFF" deck="2"/>
-
-		<!-- faders - knobs-->
-		<define color="knobfillon" value="#33FFBB" deck="2"/>
-	</group>
-
-	<group name="deckcolors3" condition="var_equal '@$hauntingcolorsdecks' 0">
-		<!-- waveforms -->
-		<define color="waveform_active3" value="#21ac87"/>
-		<define color="waveform_passive3" value="#153f39"/>
-
-		<define color="colorbass" value="#0a423a" deck="3"/>
-		<define color="colormed" value="#153f39" deck="3"/>
-		<define color="colorhigh" value="#21ac87" deck="3"/>
-
-		<define color="scratch1" value="#00ff5a" deck="3"/>
-		<define color="scratch2" value="#00f6ff" deck="3"/>
-
-		<!-- Deck colors -->
-		<define color="deckcolor" value="#FF88DD" deck="3"/>
-
-		<!-- faders - knobs-->
-		<define color="knobfillon" value="#21ac87" deck="3"/>
-	</group>
-
-	<group name="deckcolors4" condition="var_equal '@$hauntingcolorsdecks' 0">
-		<!-- waveforms -->
-		<define color="waveform_active4" value="#ca5d36"/>
-		<define color="waveform_passive4" value="#52291c"/>
-
-		<define color="colorbass" value="#6d270f" deck="4"/>
-		<define color="colormed" value="#52291c" deck="4"/>
-		<define color="colorhigh" value="#ca5d36" deck="4"/>
-
-		<define color="scratch1" value="#ff5400" deck="4"/>
-		<define color="scratch2" value="#ff9000" deck="4"/>
-
-		<!-- Deck colors -->
-		<define color="deckcolor" value="#AA44FF" deck="4"/>
-
-		<!-- faders - knobs-->
-		<define color="knobfillon" value="#ca5d36" deck="4"/>
-	</group>
-
+<define color="colorbass"  value="#6d270f"  deck="4"/>
+<define color="colormed"   value="#52291c"  deck="4"/>
+<define color="colorhigh"  value="#ca5d36"  deck="4"/>
+<define color="scratch1"   value="#ff5400"  deck="4"/>
+<define color="scratch2"   value="#ff9000"  deck="4"/>
+<define color="deckcolor"  value="#AA44FF"  deck="4"/>
+<define color="knobfillon" value="#ca5d36"  deck="4"/>
 
 	<group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 1">
 		<!-- waveforms -->
@@ -11939,15 +11910,15 @@
 					</dropzone>
 				</group>
 
-				<square x="+1920-[WAVEFORMHEIGHT]-10" y="+0" height="[WAVEFORMHEIGHT]" width="[WAVEFORMHEIGHT]*2" color="#88000000" />
+				<square x="+0" y="+0" height="[WAVEFORMHEIGHT]" width="[WAVEFORMHEIGHT]/2+10" color="#88000000" />
 			
 				<!-- PRO: HORIZONTAL WAVEFORM -->
 				<cover deck="left" rotate="no" visibility="1.0">
-					<pos x="+1920-[WAVEFORMHEIGHT]" y="+5"/>
+					<pos x="+10" y="+5"/>
 					<size width="[WAVEFORMHEIGHT]/2-10" height="[WAVEFORMHEIGHT]/2-10"/>
 				</cover>
 				<cover deck="right" rotate="no" visibility="1.0">
-					<pos x="+1920-[WAVEFORMHEIGHT]" y="+[WAVEFORMHEIGHT]/2"/>
+					<pos x="+10" y="+[WAVEFORMHEIGHT]/2"/>
 					<size width="[WAVEFORMHEIGHT]/2-10" height="[WAVEFORMHEIGHT]/2-10"/>
 				</cover>
 
@@ -13211,6 +13182,7 @@
 			</panel>
 		</group>
 
+		<!-- WAVEFORM OPTIONS -->
 		<panel name="wave_options">
 			<!-- ZOOM SLIDER -->
 			<!-- <slider action="zoom & zoom_scratch" dblclick="zoom 28% & zoom_scratch 28%" orientation="vertical" frommiddle="false" visibility="0.8"> -->
@@ -13221,11 +13193,12 @@
 				<!-- <fader color="needle" width="18" height="7"/> -->
 			<!-- </slider> -->
 
-			<button class="button_main" x="+10" y="+10" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' -14 & load_skin" coloron="button_background" textcoloron="needle" sysicon="arrowup" iconsize="20" visibility="0.8"/>
-			<button class="button_main" x="+10" y="+10+30+4" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' +14 & load_skin" coloron="button_background" textcoloron="needle" sysicon="arrowdown" iconsize="20" visibility="0.8"/>
+			<!-- WAVEFORM SIZE UP DOWN -->
+			<button class="button_main" x="+1920-26-10" y="+10" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' +14 & load_skin" coloron="button_background" textcoloron="needle" sysicon="plus" iconsize="20" visibility="0.8"/>
+			<button class="button_main" x="+1920-26-10" y="+10+30+4" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' -14 & load_skin" coloron="button_background" textcoloron="needle" sysicon="minus" iconsize="20" visibility="0.8"/>
 
 			<menu tooltip="WAVEFORM OPTIONS" visibility="0.8">
-				<pos x="+10" y="+[WAVEFORMHEIGHT]-40"/>
+				<pos x="+1920-26-10" y="+[WAVEFORMHEIGHT]-40"/>
 				<size width="26" height="30"/>
 				<off shape="square" color="button_background"/>
 				<icon sysicon="settings" height="24" width="24" color="textoff" colorover="needle" colordown="needle"/>
@@ -15962,11 +15935,44 @@
 
 	<!-- TRANSPORT PANEL -->
 	<define class="xfader_panel">
+		<!-- PLAY SELECT -->
+		<define class="deck_playselect"
+		         placeholders="deck,side,width=60,textsize=14,textcolor=#888888,offcolor=#111111,overcolor=#222222">
 
-		<!-- GLASS BACKGROUND -->
-		<!-- <square x="+0" y="+0" width="312" height="64" color="#AA101415" /> -->
+		  <!-- Deck Select Button -->
+		  <deck deck="[DECK]">
+		    <button x="+0" y="+0" width="[WIDTH]" height="20"
+		            action="[SIDE]"
+		            border_size="0">
+		      <up color="black"/>
+		      <over color="[OVERCOLOR]"/>
+		      <selected color="deckcolor"/>
+		      <text fontsize="[TEXTSIZE]" color="[TEXTCOLOR]"
+		            colorselected="black" align="center" text="[DECK]"/>
+		    </button>
 
-		<!-- PLAY BUTTON -->
+		    <!-- Play/Pause Button -->
+		    <button x="+0" y="+21"
+		            width="[WIDTH]" height="33"
+		            action="play_pause"
+		            border_size="0">
+		      <off color="#111111"/>
+		      <over color="[OVERCOLOR]"/>
+		      <selected color="deckcolor"/>
+		      <icon dx="-2" sysicon="play"
+		            width="37" height="33"
+		            color="[TEXTCOLOR]" colordown="white"
+		            colorselected="black"/>
+		    </button>
+		  </deck>
+		</define>
+
+		<panel class="deck_playselect" deck="3" side="leftdeck" x="+0" y="+31"/>
+		<panel class="deck_playselect" deck="1" side="leftdeck" x="+61" y="+31"/>
+		<panel class="deck_playselect" deck="2" side="rightdeck" x="+191" y="+31"/>
+		<panel class="deck_playselect" deck="4" side="rightdeck" x="+252" y="+31"/>
+
+		<!-- PLAY ALL BUTTON -->
 		<group name="playpause_global">
 		  <!-- PLAY state (no decks playing) -->
 		  <button x="+125" y="+25" width="60" height="60"
@@ -15983,7 +15989,7 @@
 
 		  <!-- STOP state (any deck playing) -->
 		  <button x="+125" y="+25" width="60" height="60"
-		          visibility="deck 1 play or deck 2 play"
+		          visibility="deck 1 play or deck 2 play or deck 3 play or deck 4 play"
 		          action="deck all pause"
 		          query="on">
 		    <off color="#333333" border="#000000" border_size="6" shape="circle"/>
@@ -15998,8 +16004,8 @@
 
 		<!-- <button class="button_main" x="+30" y="+20" width="40" height="40" border="deck 1 deckcolor" border_size="3" action="invert_deck left" coloroff="deckcolor" text="" textcolor="white" iconsize="40" sysicon="play" border="0" shape="circle"/> -->
 
-		<button class="button_main" x="+5" y="+55" width="30" height="30" action="invert_deck left" coloroff="#222222" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
-		<button class="button_main" x="+276" y="+55" width="30" height="30" action="invert_deck right" coloroff="#222222" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
+		<!-- <button class="button_main" x="+5" y="+55" width="30" height="30" action="invert_deck left" coloroff="#222222" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/> -->
+		<!-- <button class="button_main" x="+276" y="+55" width="30" height="30" action="invert_deck right" coloroff="#222222" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/> -->
 		
 		<!-- HAS LINKED TRACKS -->
 		<!-- <button class="button_main" -->
@@ -16013,16 +16019,15 @@
 		<!-- /> -->
 		
 		<!-- LINK TRACKS BUTTON -->
-		<button class="button_main"
-		        x="+65" y="+68" width="50" height="15"
-		        action="mark_linked_tracks"
-		        text="LINK"
-		        textcolor="#888888"
-		        textcolorover="white"
-						textcoloron="black"
-						coloron="green"
-		        textsize="10"
-		/>
+		<!-- <button class="button_main" -->
+		        <!-- x="+65" y="+64" width="50" height="15" -->
+		        <!-- action="mark_linked_tracks" -->
+		        <!-- text="LINK" -->
+		        <!-- textcolor="#888888" -->
+		        <!-- textcolorover="white" -->
+						<!-- textcoloron="black" -->
+						<!-- coloron="green" -->
+		        <!-- textsize="10" /> -->
 		
 		<!-- <button class="button_main" x="+62*3" y="+70" width="63" height="17" action="crossfader_curve 'custom' ? setting 'crossfaderDisable' : crossfader_curve 'custom'" query="crossfader_curve 'custom' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUSTOM'"/> -->
 		<!-- <button class="button_main" x="+62*4" y="+70" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/> -->
