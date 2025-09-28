@@ -8293,10 +8293,10 @@
 
 			<!-- BANK SELECT -->
 			<panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-				<button class="button_main" x="+2" y="+0" width="116" height="22" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118" y="+0" width="116" height="22" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118+118" y="+0" width="116" height="22" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118+118+118" y="+0" width="116" height="22" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="13" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2" y="+0" width="116" height="22" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118" y="+0" width="116" height="22" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118+118" y="+0" width="116" height="22" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118+118+118" y="+0" width="116" height="22" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			</panel>
 			
 			<!-- PAD BUTTONS -->
@@ -8321,8 +8321,11 @@
 			<panel class="padbutton2" x="+118*3+2" y="+40*3+25" source="16"/>
 
 
+			<!-- MENU BUTTON -->
 			<button class="button_main" x="+2" y="+40*4+25" width="64" height="26" action="pad_menu" query="off" text="MENU" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
+			<!-- SELECT BUTTON -->
 			<button class="button_main" x="+2+64+1" y="+40*4+25" width="65" height="26" action="pad_page_select" query="off" text="SELECT" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
+			<!-- EDIT BUTTON -->
 			<button class="button_main" x="+2+64+1+65+2" y="+40*4+25" width="65" height="26" action="pad_edit" query="off" text="EDIT" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
 
 			<!-- PARAM 1 -->
