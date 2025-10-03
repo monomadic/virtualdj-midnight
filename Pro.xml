@@ -9014,24 +9014,37 @@
 			<square x="+0" y="+0" width="236+28" height="132" color="#44000000" />
 
 			<!-- FX1 -->
-			<textzone class="text" x="+10" y="+10" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
-			<!-- <panel class="fx_slot4" x="+10" y="+30" width="236" source="1"/> -->
-
-			<group x="+8" y="+27">
-				<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active" rightclick="effect_select" textaction="effect_select & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
-				<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<group>
+				<textzone class="text" x="+10" y="+10" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
+				<group x="+50" y="+5">
+					<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+					<button class="button_main" x="+26" y="+0" width="82" height="26" action="effect_active" rightclick="effect_select" textaction="effect_select & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
+					<button class="button_main" x="+26+82" y="+0" width="26" height="26" action="effect_select +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				</group>
+				<button class="button_main" x="+50+26+82+26+10" y="+5" width="25" height="25" action="effect_show_gui 1" iconsize="20" sysicon="settings" brcoloron="transparent" />
 			</group>
-			
+
+			<!-- FX2 -->
+			<group y="+30">
+				<textzone class="text" x="+10" y="+10" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX2"/>
+				<group x="+50" y="+5">
+					<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select 2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+					<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active 2" rightclick="effect_select 2" textaction="effect_select 2 & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker"/>
+					<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select 2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				</group>
+				<button class="button_main" x="+50+26+82+26+10" y="+5" width="25" height="25" action="effect_show_gui 2" iconsize="20" sysicon="settings" brcoloron="transparent" />
+			</group>
 
 			<!-- COLORFX -->
-			<textzone class="text" x="+10" y="+70" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="COLORFX"/>
-			<!-- <panel class="fx_colorfx" x="+10" y="+90" width="236" source="colorfx"/> -->
 
-			<group x="+8" y="+87">
-				<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
-				<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+			<group y="+60">
+				<textzone class="text" x="+10" y="+10" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="CFX"/>
+				<group x="+50" y="+5">
+					<button class="button_main" x="+0" y="+0" width="26" height="26" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+					<button class="button_main" x="+0+26" y="+0" width="82" height="26" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
+					<button class="button_main" x="+0+26+82" y="+0" width="26" height="26" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				</group>
+				<button class="button_main" x="+50+26+82+26+10" y="+5" width="25" height="25" action="effect_show_gui colorfx" iconsize="20" sysicon="settings" brcoloron="transparent" />
 			</group>
 			
 		</panel>
