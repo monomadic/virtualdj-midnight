@@ -1739,7 +1739,7 @@
 	</group>
 
 	<group name="buttons">
-		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=13,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0">
+		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=12,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
 			<off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<down color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
@@ -6698,27 +6698,28 @@
 		<group visibility="loaded" x="+10" y="+10">
 
 		<!-- CLASS: STEM BUTTONS -->
-		<define class="stem_item" placeholders="stem,label,color,width=65,height=20,fontsize=13,granularity=23">
+		<define class="stem_button" placeholders="*stem,*label,*color,width=65,height=20,fontsize=13,granularity=23">
 	    <button x="+0" action="stem_pad '[STEM]'" border_size="1">
 				<size width="[WIDTH]" height="[HEIGHT]"/>
-	      <off  color="transparent" border="[COLOR]" radius="3"/>
-	      <down color="[COLOR]"      border="[COLOR]" radius="3"/>
-	      <selected color="[COLOR]"  border="[COLOR]" radius="3"/>
-	      <text fontsize="[FONTSIZE]" color="[COLOR]" colorselected="black" colordown="black" align="center" text="[LABEL]"/>
+      	<off  color="#222222" border="#444444" radius="3"/>
+	      <down color="#222222"      border="[COLOR]" radius="3"/>
+      	<selected color="transparent"  border="[COLOR]" radius="3"/>
+	      <text fontsize="[FONTSIZE]" color="#555555" colorselected="[COLOR]"
+	      	colordown="[COLOR]" align="center" text="[LABEL]"/>
 	    </button>
 
 	    <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
-	      <pos x="+0" y="+[HEIGHT]+22"/>
-	      <size width="[WIDTH]" height="5"/>
+	      <pos x="+0" y="+[HEIGHT]+2"/>
+	      <size width="[WIDTH]" height="3"/>
 	      <off shape="square" border="#444444" color="#333333" radius="1" />
 	      <on  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
 	    </visual>
 		</define>
 
 		<group visibility="has_stems" x="+5" y="+25">
-		  <panel class="stem_item" x="+0"   y="+0" stem="vocal"  label="VOCAL" color="colorvocal"/>
-		  <panel class="stem_item" x="+70"  y="+0" stem="melody" label="INSTR" color="colorinstru"/>
-		  <panel class="stem_item" x="+140" y="+0" stem="rhythm" label="DRUM"  color="colorbeat"/>
+		  <panel class="stem_button" x="+0"   y="+0" stem="vocal"  label="VOCAL" color="colorvocal"/>
+		  <panel class="stem_button" x="+70"  y="+0" stem="melody" label="INSTR" color="colorinstru"/>
+		  <panel class="stem_button" x="+140" y="+0" stem="rhythm" label="DRUM"  color="colorbeat"/>
 		</group>
 
 			<!-- KNOB: COLORFX -->
@@ -8330,10 +8331,10 @@
 
 			<!-- BANK SELECT -->
 			<panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-				<button class="button_main" x="+2" y="+0" width="116" height="22" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118" y="+0" width="116" height="22" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118+118" y="+0" width="116" height="22" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-				<button class="button_main" x="+2+118+118+118" y="+0" width="116" height="22" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="10" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2" y="+0" width="118" height="24" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn1 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118" y="+0" width="118" height="24" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118+118" y="+0" width="118" height="24" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn3 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+				<button class="button_main" x="+2+118+118+118" y="+0" width="116" height="24" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn4 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 			</panel>
 			
 			<!-- PAD BUTTONS -->
@@ -16001,10 +16002,58 @@
 		  </deck>
 		</define>
 
-		<panel class="deck_playselect" deck="3" side="leftdeck" x="+0" y="+1" visibility="var_equal '@$4decks' 1"/>
-		<panel class="deck_playselect" deck="1" side="leftdeck" x="+61" y="+1"/>
-		<panel class="deck_playselect" deck="2" side="rightdeck" x="+191" y="+1"/>
-		<panel class="deck_playselect" deck="4" side="rightdeck" x="+252" y="+1" visibility="var_equal '@$4decks' 1"/>
+		<define class="deck_select"
+		         placeholders="deck,side,width=60,textsize=14,textcolor=#888888,offcolor=#111111,overcolor=#111111">
+
+		  <!-- Deck Select Button -->
+		  <deck deck="[DECK]">
+		    <button x="+0" y="+0" width="[WIDTH]" height="2"
+		            action="[SIDE]"
+		            border_size="0">
+		      <up color="deckcolor"/>
+		      <over color="deckcolor"/>
+		      <selected color="deckcolor"/>
+		      <text fontsize="[TEXTSIZE]" color="#222222"
+		      		colorover="#444444" colorselected="black" align="center" text=""/>
+		    </button>
+
+		    <button x="+0" y="+9" width="[WIDTH]" height="20"
+		            action="[SIDE]"
+		            border_size="0">
+		      <up color="black"/>
+		      <over color="black"/>
+		      <selected color="black"/>
+		      <text fontsize="[TEXTSIZE]" color="#222222"
+		      		colorover="#444444" colorselected="white" align="center" weight="bold" text="[DECK]"/>
+		    </button>
+
+			<visual source="get_level" type="linear" orientation="horizontal" direction="right" granularity="23">
+			  <pos x="+0" y="+3"/>
+			  <size width="[WIDTH]" height="2"/>
+			  <off shape="square" color="transparent"/>
+			  <on  shape="square" color="green"/>
+			</visual>
+
+		    <!-- Play/Pause Button -->
+		    <!-- <button x="+0" y="+17" -->
+		            <!-- width="[WIDTH]" height="15" -->
+		            <!-- action="play_pause" -->
+		            <!-- border_size="0"> -->
+		      <!-- <off color="#111111"/> -->
+		      <!-- <over color="[OVERCOLOR]"/> -->
+		      <!-- <selected color="deckcolor"/> -->
+		      <!-- <icon dx="-2" sysicon="play" -->
+		            <!-- width="37" height="33" -->
+		            <!-- color="[TEXTCOLOR]" colordown="white" -->
+		            <!-- colorselected="black"/> -->
+		    <!-- </button> -->
+		  </deck>
+		</define>
+
+		<panel class="deck_select" deck="3" side="leftdeck" x="+0" y="+1"/>
+		<panel class="deck_select" deck="1" side="leftdeck" x="+61" y="+1"/>
+		<panel class="deck_select" deck="2" side="rightdeck" x="+191" y="+1"/>
+		<panel class="deck_select" deck="4" side="rightdeck" x="+252" y="+1"/>
 
 		<!-- PLAY ALL BUTTON -->
 		<group name="playpause_global">
@@ -16013,12 +16062,12 @@
 		          visibility="true"
 		          action="deck left play & deck right play & deck all sync & phrase_sync"
 		          >
-		    <off color="#333333" border="#000000" border_size="0" shape="square"/>
-		    <on  color="#444444" border="#111111" border_size="0" shape="square"/>
-		    <over color="#444444" border="#000000" border_size="0" shape="square"/>
-		    <selected color="#555555" border="#0000FF" border_size="0" shape="square"/>
-		    <icon dx="-3" sysicon="play" width="60" height="60"
-		          color="#888888" colordown="white" colorselected="#888888"/>
+		    <off color="#000000" border="#222222" border_size="1" shape="square"/>
+		    <on  color="#444444" border="#111111" border_size="1" shape="square"/>
+		    <over color="#111111" border="#333333" border_size="1" shape="square"/>
+		    <selected color="#555555" border="green" border_size="1" shape="square"/>
+		    <icon dx="-3" sysicon="play" width="50" height="50"
+		          color="#555555" colorover="#FFFFFF" colordown="white" colorselected="#888888"/>
 		  </button>
 
 		  <!-- STOP state (any deck playing) -->
@@ -16027,11 +16076,11 @@
 		          action="deck all pause & sampler stop all"
 		          query="on">
 		    <off color="#333333" border="#000000" border_size="0" shape="square"/>
-		    <on  color="#444444" border="#111111" border_size="0" shape="square"/>
+		    <on  color="#222222" border="#111111" border_size="0" shape="square"/>
 		    <over color="#444444" border="#000000" border_size="0" shape="square"/>
-		    <selected color="#555555" border="#0000FF" border_size="2" shape="square"/>
-		    <icon dx="+0" sysicon="stop" width="40" height="40"
-		          color="#999999" colordown="white" colorselected="#888888"/>
+		    <selected color="#222222" border="green" border_size="1" shape="square"/>
+		    <icon dx="+0" sysicon="stop" width="50" height="50"
+		          color="#FFFFFF" colordown="white" colorselected="#FFFFFF"/>
 		  </button>
 		</group>
 
@@ -16120,10 +16169,11 @@
 		<!-- KNOB -->
     <button x="+0" y="+37" action="stem_pad '[STEM]'" border_size="1">
 			<size width="40" height="13"/>
-      <off  color="transparent" border="[COLOR]" radius="3"/>
+      <off  color="#222222" border="#444444" radius="3"/>
       <down color="[COLOR]"      border="[COLOR]" radius="3"/>
-      <selected color="[COLOR]"  border="[COLOR]" radius="3"/>
-      <text fontsize="10" color="[COLOR]" colorselected="black" colordown="black" align="center" text="[LABEL]"/>
+      <selected color="transparent"  border="[COLOR]" radius="3"/>
+      <text fontsize="10" color="#555555" colorselected="[COLOR]"
+      	colordown="black" align="center" text="[LABEL]"/>
     </button>
 
    	<!-- SIMPLE VECTOR VU METER -->
@@ -16131,7 +16181,7 @@
       <pos x="+1" y="+37+15+2"/>
       <size width="38" height="5"/>
       <off shape="square" color="#333333" radius="1" />
-      <on  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
+      <on  shape="square" border="transparent" color="[COLOR]" radius="1"/>
     </visual>
 
   </group>
