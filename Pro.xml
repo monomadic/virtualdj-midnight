@@ -7015,7 +7015,7 @@
 			<visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip="">
 				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
 				<off border_size="2" border="transparent" color="mixerbackground" shape="circle"/>
-				<on border_size="5" border="deckcolor" color="ixerbackground" shape="circle"/>
+				<on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/>
 			</visual>
 			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="14" heightfader="32" radius="42"/>
 			<slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/>
@@ -7080,20 +7080,21 @@
 				<off shape="circle" color="jogprogressoff" border="jogprogressoff"/>
 			</visual>
 
+			<!-- outer progress border -->
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded">
 				<tooltip/>
 				<pos x="+0" y="+0"/>
 				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
-				<off shape="circle" color="jogprogressoff" border="jogprogressoff"/>
-				<on shape="circle" color="knobfillon" />
+				<off shape="circle" color="#111111" border="#111111"/>
+				<on shape="circle" color="deckcolor" />
 			</visual>
 
 			<!-- EJECT BUTTON -->
-			<visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" />
-			<button class="button_main" action="load ''" width="20" height="20"
-				x="+0" y="+0" color="transparent" bordersize="0"
-				textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'"
-				visibility="loaded" />
+			<!-- <visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" /> -->
+			<!-- <button class="button_main" action="load ''" width="20" height="20" -->
+				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
+				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
+				<!-- visibility="loaded" /> -->
 
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded" color="red" width="40" height="40" x="+0" y="+0" />
 
@@ -7101,6 +7102,7 @@
 				tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent"
 				colorfader="jog_slider" widthfader="8" heightfader="8" radius="66"/>
 
+			<!-- black circle mask -->
 			<visual name="innercircle_border">
 				<pos x="+10" y="+10"/>
 				<size width="[JOGSIZE]-20" height="[JOGSIZE]-20"/>
@@ -7114,7 +7116,10 @@
 				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
 			<!-- </visual> -->
 			<!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
-			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="deckcolor" widthfader="4" heightfader="5" radius="60"/>
+
+			<!-- time spinner -->
+			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
+				offcolor="transparent" colorfader="white" widthfader="2" heightfader="15" radius="60"/>
 
 			<!-- masterdeck -->
 			<!-- <visual name="innercircle_border" visibility="masterdeck"> -->
@@ -7619,10 +7624,10 @@
 
 	<!-- PRO: VFX PANEL -->
 	<define class="vfx_slot">
-		<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+25" y="+10" />
-		<panel class="stem_control" stem="instru" label="INSTR" color="colorinstru" x="+83" y="+10" />
-		<panel class="stem_control" stem="bass" label="BASS" color="colorbass" x="+142" y="+10" />
-		<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+200" y="+10" />
+		<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+20" y="+10" />
+		<panel class="stem_control" stem="instru" label="INSTR" color="colorinstru" x="+80" y="+10" />
+		<panel class="stem_control" stem="bass" label="BASS" color="colorbass" x="+139" y="+10" />
+		<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+196" y="+10" />
 	</define>
 
 	<define class="vfx_slot_ex" placeholders="*deck">
@@ -9021,7 +9026,7 @@
 				<textzone class="text" x="+10" y="+30" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
 				<group x="+50" y="+25">
 					<button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-					<button class="button_main" x="+26" y="+3" width="82" height="20" action="effect_active" rightclick="effect_select" textaction="effect_select & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
+					<button class="button_main" x="+26" y="+3" width="82" height="20" action="effect_active" rightclick="effect_select" textaction="effect_select & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
 					<button class="button_main" x="+26+82" y="+3" width="26" height="20" action="effect_select +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 				</group>
 				<button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui 1" iconsize="20" sysicon="settings" brcoloron="transparent" />
@@ -9032,7 +9037,7 @@
 				<textzone class="text" x="+10" y="+30" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX2"/>
 				<group x="+50" y="+25">
 					<button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select 2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-					<button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active 2" rightclick="effect_select 2" textaction="effect_select 2 & param_uppercase" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
+					<button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active 2" rightclick="effect_select 2" textaction="effect_select 2 & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
 					<button class="button_main" x="+0+26+82" y="+3" width="26" height="20" action="effect_select 2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 				</group>
 				<button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui 2" iconsize="20" sysicon="settings" brcoloron="transparent" />
@@ -9044,7 +9049,7 @@
 				<textzone class="text" x="+10" y="+30" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="CFX"/>
 				<group x="+50" y="+25">
 					<button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-					<button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="10" textcolor="textdarker" textcoloron="black"/>
+					<button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
 					<button class="button_main" x="+0+26+82" y="+3" width="26" height="20" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
 				</group>
 				<button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui colorfx" iconsize="20" sysicon="settings" brcoloron="transparent" />
@@ -16134,7 +16139,7 @@
 
     <!-- Knob (muted state visible) -->
     <panel class="knob"
-           x="+2" y="+0"
+           x="+10" y="+0"
            textwidth="40" textsize="12"
            textbelow="+37" textleft="-2"
            knobsize="34" knobradius="7" faderradius="6"
@@ -16148,7 +16153,7 @@
 
     <!-- Knob (unmuted state visible) -->
     <panel class="knob"
-           x="+2" y="+0"
+           x="+10" y="+0"
            textwidth="40" textsize="12"
            textbelow="+37" textleft="-2"
            knobsize="34" knobradius="8" faderradius="6"
@@ -16168,9 +16173,9 @@
 		  <!-- <on  shape="square" color="[COLOR]" radius="0"/> -->
 		<!-- </visual> -->
 	
-		<!-- KNOB -->
+		<!-- BUTTON -->
     <button x="+0" y="+37" action="stem_pad '[STEM]'" border_size="1">
-			<size width="40" height="13"/>
+			<size width="50" height="15"/>
       <off  color="#222222" border="#444444" radius="3"/>
       <down color="[COLOR]"      border="[COLOR]" radius="3"/>
       <selected color="transparent"  border="[COLOR]" radius="3"/>
@@ -16180,8 +16185,8 @@
 
    	<!-- SIMPLE VECTOR VU METER -->
     <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
-      <pos x="+0" y="+37+15"/>
-      <size width="40" height="6"/>
+      <pos x="+0" y="+40+15"/>
+      <size width="50" height="4"/>
       <off shape="square" color="#333333" radius="1" />
       <on  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
     </visual>
