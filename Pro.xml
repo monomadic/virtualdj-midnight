@@ -5898,10 +5898,10 @@
 		<!-- PRO: TRACK INFO: LEFT DECK -->
 		
 		<!-- BACKGROUND -->
-		<button class="button_main" action="select" width="484" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+		<button class="button_main" action="select" width="484" height="72" coloroff="#000000" coloron="#111111" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
 		<!-- PRO: LEFT DECK: DECK BUTTON -->
-		<button class="button_main" x="+7" y="+8" width="32" height="50" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+		<button class="button_main" x="+5" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 		
 		<!-- PRO: LEFT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+45" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
@@ -6066,12 +6066,12 @@
 
 		<!-- COVER ART (PRO) -->
 		<!-- left -->
-		<panel class="cover_art_hntg" size="180-6-6" x="+2+4+28+7" y="+5" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
+		<panel class="cover_art_hntg" size="184-6-6" x="+2+4+32" y="+2" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
 		<!-- right -->
-		<panel class="cover_art_hntg" size="180-6-6" x="+484-2-4-28-170-6" y="+6" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<panel class="cover_art_hntg" size="184-6-6" x="+484-2-4-28-181" y="+3" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK BUTTON -->
-		<button class="button_main" x="+484-40" y="+8" width="32" height="50" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<button class="button_main" x="+484-40" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+484/2" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
@@ -6698,7 +6698,7 @@
 		<group visibility="loaded" x="+10" y="+10">
 
 		<!-- CLASS: STEM BUTTONS -->
-		<define class="stem_button" placeholders="*stem,*label,*color,width=65,height=20,fontsize=13,granularity=23">
+		<define class="stem_button" placeholders="*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
 	    <button x="+0" action="stem_pad '[STEM]'" border_size="1">
 				<size width="[WIDTH]" height="[HEIGHT]"/>
       	<off  color="#222222" border="#444444" radius="3"/>
@@ -6709,14 +6709,14 @@
 	    </button>
 
 	    <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
-	      <pos x="+0" y="+[HEIGHT]+2"/>
-	      <size width="[WIDTH]" height="3"/>
-	      <off shape="square" border="#444444" color="#333333" radius="1" />
-	      <on  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
+	      <pos x="+1" y="+[HEIGHT]-3"/>
+	      <size width="[WIDTH]-2" height="2"/>
+	      <off shape="square" border="transparent" color="transparent" radius="1" />
+	      <down  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
 	    </visual>
 		</define>
 
-		<group visibility="has_stems" x="+5" y="+25">
+		<group visibility="has_stems" x="+15" y="+40">
 		  <panel class="stem_button" x="+0"   y="+0" stem="vocal"  label="VOCAL" color="colorvocal"/>
 		  <panel class="stem_button" x="+70"  y="+0" stem="melody" label="INSTR" color="colorinstru"/>
 		  <panel class="stem_button" x="+140" y="+0" stem="rhythm" label="DRUM"  color="colorbeat"/>
@@ -16178,10 +16178,10 @@
 
    	<!-- SIMPLE VECTOR VU METER -->
     <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
-      <pos x="+1" y="+37+15+2"/>
-      <size width="38" height="5"/>
+      <pos x="+0" y="+37+15"/>
+      <size width="40" height="6"/>
       <off shape="square" color="#333333" radius="1" />
-      <on  shape="square" border="transparent" color="[COLOR]" radius="1"/>
+      <on  shape="square" border="[COLOR]" color="[COLOR]" radius="1"/>
     </visual>
 
   </group>
