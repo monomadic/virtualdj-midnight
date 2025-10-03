@@ -3180,8 +3180,8 @@
 			<!-- KEY MATCH BUTTON -->
 			<button class="button_main" action="key_match_button"
 				width="100-26-26" height="14" x="+32" y="+22" 
-				coloroff="button_background" bordersize="0" textsize="13" textcolor="white"
-				textcoloron="black" textaction="get_key_modifier_text" visibility="not masterdeck" />
+				coloroff="black" coloron="black" bordersize="0" textsize="13" textcolor="red"
+				textcoloron="green" textaction="param_equal '`get_key_modifier_text`' 'KEY' ? get_text '+0' : get_key_modifier_text" visibility="not masterdeck" />
 
 			<!-- KEY UP BUTTON -->
 			<button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
@@ -7085,7 +7085,7 @@
 				<tooltip/>
 				<pos x="+0" y="+0"/>
 				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
-				<off shape="circle" color="#111111" border="#111111"/>
+				<off shape="circle" color="#222222" border="transparent"/>
 				<on shape="circle" color="deckcolor" />
 			</visual>
 
@@ -7095,6 +7095,10 @@
 				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
 				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
 				<!-- visibility="loaded" /> -->
+				
+			<!-- time spinner -->
+			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
+				offcolor="transparent" colorfader="black" widthfader="5" heightfader="50" radius="27"/>
 
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded" color="red" width="40" height="40" x="+0" y="+0" />
 
@@ -7116,10 +7120,6 @@
 				<!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
 			<!-- </visual> -->
 			<!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
-
-			<!-- time spinner -->
-			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
-				offcolor="transparent" colorfader="white" widthfader="2" heightfader="15" radius="60"/>
 
 			<!-- masterdeck -->
 			<!-- <visual name="innercircle_border" visibility="masterdeck"> -->
@@ -7171,7 +7171,7 @@
 			<button class="button_main" action="phrase_sync 32" width="50" height="16"
 				x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1"
 				textsize="12" textcolor="red" textcoloron="green" text="BEAT"
-				query="phrase_sync 32"
+				query="is_sync"
 				visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true" />
 
 			<!-- MASTER BUTTON -->
