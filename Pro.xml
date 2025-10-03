@@ -3172,19 +3172,19 @@
 			<visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
 
 			<!-- KEY TEXT -->
-			<textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="17" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
+			<textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="22" color="`get_key_color`" align="center" weight="bold" textaction="get_key" />
 
 			<!-- KEY DOWN BUTTON -->
-			<button class="button_main" x="+6" y="+15" width="26" height="48-20" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="22" sysicon="arrowleft"/>
+			<button class="button_main" x="+6" y="+0" width="26" height="15" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="15" sysicon="minus"/>
 
 			<!-- KEY MATCH BUTTON -->
 			<button class="button_main" action="key_match_button"
 				width="100-26-26" height="14" x="+32" y="+22" 
-				coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker"
-				textcoloron="black" textaction="get_key_modifier_text" visibility="" />
+				coloroff="button_background" bordersize="0" textsize="13" textcolor="white"
+				textcoloron="black" textaction="get_key_modifier_text" visibility="not masterdeck" />
 
 			<!-- KEY UP BUTTON -->
-			<button class="button_main" x="+118-26-12" y="+15" width="26" height="48-20" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="22" sysicon="arrowright"/>
+			<button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
 
 			<!-- KEY MISMATCH WARNING -->
 			<visual type="square" x="+10" y="+40" width="10" height="10" color="red"
@@ -7129,9 +7129,13 @@
 			<!-- </visual> -->
 
 			<!-- BPM -->
-			<textzone class="text" x="+18" y="+22" width="[JOGSIZE]-36" height="46" fontsize="26"
+			<textzone class="text" x="+18" y="+40" width="[JOGSIZE]-36" fontsize="22"
 				color="needle" align="center" weight="bold"
 				textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+
+			<!-- BPM+ -->
+			<button class="button_main" x="+27" y="+42" width="26" height="16" action="bpm -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
+			<button class="button_main" x="+102" y="+42" width="26" height="16" action="bpm +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
 
 			<!-- <button action="nothing" bordersize="0" color="red" > -->
 			        <!-- visibility="sync_hint 'phase' ? blink 1bt : 0"> -->
@@ -7145,40 +7149,47 @@
 			  <text fontsize="12" color="blue" format="PHRASE" />
 			</textzone>
 
-			<!-- JOGWHEEL: KEY (OUT OF TUNE) -->
+			<!-- JOGWHEEL: KEY TEXT (OUT OF TUNE) -->
 			<button class="button_main"
 			        action="key_match_button"
-			        width="45"
+			        width="50"
 			        height="16"
-			        x="+16+10"
+			        x="+14+10"
 			        y="+70"
-			        coloroff="red"
-			        coloron="black"
-			        bordersize="0"
+			        coloroff="transparent"
+			        coloron="transparent"
+			        brcoloroff="red"
+			        brcoloron="green"
+			        bordersize="1"
 			        textsize="12"
-			        textcolor="black"
+			        textcolor="red"
 			        textcoloron="green"
-			        textaction="get_text 'KEY'"
+			        text="KEY"
 			        visibility="loaded ? not masterdeck" />
 
-		  <!-- BEAT DESYNC WARNING -->
-			<button class="button_main" action="key_match_button" width="45" height="16"
-				x="+16+6+60" y="+70" color="blue" coloroff="red" coloron="black" bordersize="0"
-				textsize="12" textcolor="black" textcoloron="green" textaction="get_text 'SYNC'"
+		  <!-- SYNC TEXT BEAT DESYNC WARNING -->
+			<button class="button_main" action="phrase_sync 32" width="50" height="16"
+				x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1"
+				textsize="12" textcolor="red" textcoloron="green" text="BEAT"
+				query="phrase_sync 32"
 				visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true" />
 
+			<!-- MASTER BUTTON -->
 			<button class="button_main"
 			        action="key_match_button"
 			        width="110"
 			        height="16"
 			        x="+16+6"
 			        y="+70"
-			        coloroff="orange"
-			        coloron="orange"
-			        bordersize="0"
+			        coloroff="black"
+			        coloron="black"
+			        bordersize="1"
+			        brcoloroff="orange"
+			        brcoloron="orange"
+			        radius="1"
 			        textsize="12"
-			        textcolor="black"
-			        textcoloron="black"
+			        textcolor="orange"
+			        textcoloron="orange"
 			        textaction="get_text 'MASTER'"
 			        visibility="loaded ? masterdeck" />
 
@@ -7194,7 +7205,7 @@
 			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/> -->
 			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/> -->
 
-			<panel class="key_display" x="+22" y="+91"/>
+			<panel class="key_display" x="+22" y="+98"/>
 			
 			<!-- <visual name="innercircle_border"> -->
 				<!-- <pos x="+68" y="+68"/> -->
