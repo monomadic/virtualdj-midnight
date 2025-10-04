@@ -5901,8 +5901,10 @@
 		<button class="button_main" action="select" width="484" height="72" coloroff="#000000" coloron="#111111" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
 		<!-- PRO: LEFT DECK: DECK BUTTON -->
-		<button class="button_main" x="+5" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+		<button class="button_main" x="+5" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" query="false" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 		
+		<!-- <button class="button_main" x="+5" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+
 		<!-- PRO: LEFT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+45" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
@@ -6071,7 +6073,7 @@
 		<panel class="cover_art_hntg" size="184-6-6" x="+484-2-4-28-181" y="+3" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK BUTTON -->
-		<button class="button_main" x="+484-40" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<button class="button_main" x="+484-40" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" query="false" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+484/2" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
@@ -16274,13 +16276,13 @@
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
 				<size width="800" height="216"/>
-				<down color="transparent" border_size="2" border="deckcolor" shape="square"/>
+				<down color="transparent" border_size="1" border="deckcolor" shape="square"/>
 			</visual>
 
 			<!-- SELECTED DECK BORDER -->
-			<visual source="deck [DECK] leftdeck" visibility="select">
-				<size width="800" height="216"/>
-				<down color="transparent" border_size="1" border="#22FFFFFF" shape="square"/>
+			<visual source="deck [DECK] leftdeck" visibility="select" x="-2" y="-2">
+				<size width="804" height="436"/>
+				<down color="transparent" border_size="1" border="#77FFFFFF" shape="square" radius="5"/>
 			</visual>
 
 			<dropzone visibility="var_equal '@$hauntinglayout' 0">
@@ -16477,9 +16479,9 @@
 		</visual>
 
 		<!-- SELECTED DECK BORDER -->
-		<visual source="deck [DECK] rightdeck" visibility="select">
-			<size width="800" height="216"/>
-			<down color="transparent" border_size="1" border="#22FFFFFF" shape="square"/>
+		<visual source="deck [DECK] rightdeck" visibility="select" x="-2" y="-2">
+			<size width="804" height="436"/>
+			<down color="transparent" border_size="1" border="#77FFFFFF" shape="square" radius="5"/>
 		</visual>
 
 		<dropzone visibility="var_equal '@$hauntinglayout' 0">
@@ -17326,7 +17328,7 @@
 
 		<!-- MIXER PANEL / MIDDLE PANEL -->
 		<!-- TABS -->
-			<group x="+800" y="+0">
+			<group x="+802" y="+0">
 				<button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="AUDIO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 				<button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 				<button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
