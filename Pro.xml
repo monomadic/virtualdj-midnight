@@ -16486,7 +16486,7 @@
 		<button class="button_main" x="+3+80+1+80+2+80+2+80+2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2+80+2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="black" coloroff="button_background4" coloron="orange" bordersize="0"/>
+		<button class="button_main" x="+3+80+1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="orange" coloroff="button_background4" coloron="button_background4" bordersize="1" brcoloron="orange"/>
 		<button class="button_main" x="+3" textsize="11" y="+176" width="80" height="36" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 
