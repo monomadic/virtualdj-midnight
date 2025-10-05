@@ -3279,10 +3279,8 @@
 			  	<text fontsize="15" weight="normal" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/>
 				</textzone>
 
-				<!-- MASTER DECK BUTTON -->
-				<!-- <button class="button_main" x="+15" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
 
-				<button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/>
+				<!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/> -->
 				<textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM" visibility="var_equal '@$hauntingjogtype' 0"/>
 			</group>
 
@@ -3291,7 +3289,7 @@
 
 				<textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
 
-				<button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/>
+				<!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
 				<textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM"/>
 			</group>
 		</define>
@@ -3305,10 +3303,8 @@
 				<textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/>
 				<textzone class="text" x="+0" y="+0" width="136" height="50" fontsize="30" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="var_not_equal '@$hauntingjogtype' 0"/>
 
-					<!-- MASTER DECK BUTTON -->
-				<!-- <button class="button_main" x="+15" y="+50" width="136-30" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcolor="textoff4" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
 
-				<button class="button_main" x="+56" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/>
+				<!-- <button class="button_main" x="+56" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/> -->
 				<textzone class="text" x="+0" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM" visibility="var_equal '@$hauntingjogtype' 0"/>
 			</group>
 
@@ -3317,7 +3313,7 @@
 
 				<textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
 
-				<button class="button_main" x="+56" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/>
+				<!-- <button class="button_main" x="+56" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
 				<textzone class="text" x="+0" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM"/>
 			</group>
 		</define>
@@ -6719,7 +6715,7 @@
 		</define>
 
 		<group visibility="not has_stems" y="+30">
-			<textzone class="text" width="300" height="48" fontsize="10" color="textdarker" align="center" weight="" text="NO STEMS FOUND"/>
+			<textzone class="text" width="300" height="48" fontsize="10" color="textdarker" align="center" weight="" text="STEMS NOT FOUND"/>
 		</group>
 
 		<group x="+5" y="+20" visibility="has_stems">
@@ -6769,6 +6765,15 @@
 	       textaction="filter_label 'colorfx' &amp; param_cast 'text' 9"             
 	       actiontxt="filter_selectcolorfx" />
 
+		  <button x="+370" y="+22" width="90" height="18"
+		          action="masterdeck"       
+		          border_size="1"
+		          query="effects_used 'colorfx'">           
+		    <off color="#222222"/>                
+		    <selected color="orange" textcolor="black"/>               
+		    <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLOR FX"/>
+		  </button>
+
 	    <!-- FX ACTIVE INDICATOR -->
 		  <button x="+370" y="+42" width="90" height="18"
 		          action="sampler_play_stop"       
@@ -6779,63 +6784,19 @@
 		    <text fontsize="12" color="#111111" colorselected="black" align="center" text="SAMPLER"/>
 		  </button>
 
-		  <button x="+370" y="+62" width="90" height="18"
-		          action="effect_active off"       
-		          border_size="1"
-		          query="effects_used">           
-		    <off color="#222222"/>                
-		    <selected color="magenta" textcolor="white"/>               
-		    <text fontsize="12" color="#111111" colorselected="black" align="center" text="FX"/>
-		  </button>
-
-			<!-- MASTER BUTTON INDICATOR -->
-			<!-- <button class="button_main" x="+5" y="+60" width="216" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" brcoloroff="orange" textcolor="orange" textcoloron="black" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
-		  <button x="+370" y="+22" width="90" height="18"
-		          action="masterdeck"       
-		          border_size="1">
-		    <off color="#222222"/>                
-		    <selected color="orange" textcolor="black"/>               
-		    <text fontsize="12" color="#111111" colorselected="black" align="center" text="MASTER"/>
-		  </button>
-		
-     	<!-- SIMPLE VECTOR VU METER -->
-			<!-- <visual source="get_level" type="linear" orientation="vertical" direction="up" granularity="23"> -->
-			  <!-- <pos x="+250" y="+30"/> -->
-			  <!-- <size width="5" height="30"/> -->
-			  <!-- <off shape="square" color="#333333" radius="2"/> -->
-			  <!-- <on  shape="square" color="green" radius="2"/> -->
-			<!-- </visual> -->
-
-    	<!-- <button class="button_main" -->
-            <!-- x="+250" y="+30" width="50" height="15" -->
-            <!-- action="effect_select" -->
-            <!-- coloroff="#111111" brcoloroff="#111111" -->
-            <!-- coloron="magenta" brcoloron="magenta" -->
-            <!-- textcoloroff="magenta" textcoloron="black" -->
-            <!-- text="COLORFX" textsize="11" /> -->
-
-    	<!-- <panel class="knob" -->
-           <!-- x="+256" y="+30" -->
-           <!-- textbelow="+37" textleft="-7" -->
-           <!-- textwidth="48" textsize="9" -->
-           <!-- knobsize="39" knobradius="11" faderradius="9" -->
-           <!-- action="effect_slider 'colorfx'" -->
-           <!-- textaction="filter_label & param_cast 'text' 9" -->
-					 <!-- actiontxt="filter_selectcolorfx" -->
-					 <!-- rgclick="effect_select" -->
-           <!-- dblclick=" 'colorfx' 50%" -->
-           <!-- frommiddle="true" -->
-           <!-- fillcolor="magenta" fillcoloroff="#000000" -->
-           <!-- text="FX" /> -->
+			<button x="+370" y="+62" width="90" height="18"
+        action="effect_active off"
+        border_size="1"
+        query="effects_used">
+			  <off color="#222222"/>
+			  <selected color="magenta"/>
+			  <text fontsize="12" color="#111111" colorselected="black" align="center"
+			        action="get_text 'EFFECTS: `get_effects_used`'"/>
+			</button>
 
 			<!-- <panel class="key_display_left" x="+2+4+220+4+120" y="+14"/> -->
 			<!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
-
-			<!-- MASTER BUTTON -->
-			<!-- <button class="button_main" x="+5" y="+60" width="216" height="20" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" brcoloroff="orange" textcolor="orange" textcoloron="black" text="MASTER" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
 		</group>
-
-		<!-- <panel class="syncoptions_display" x="+2+6" y="+81" /> -->
 	</define>
 
 	<!-- STACK VIEW: times (when pad is showing) -->
@@ -7121,14 +7082,7 @@
 				<off shape="circle" color="#111111" border="transparent"/>
 				<on shape="circle" color="deckcolor" />
 			</visual>
-
-			<!-- EJECT BUTTON -->
-			<!-- <visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" /> -->
-			<!-- <button class="button_main" action="load ''" width="20" height="20" -->
-				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
-				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
-				<!-- visibility="loaded" /> -->
-				
+		
 			<!-- time spinner -->
 			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
 				offcolor="transparent" colorfader="#222222" widthfader="6" heightfader="50" radius="27"/>
@@ -7164,13 +7118,18 @@
 			<!-- </visual> -->
 
 			<!-- BPM -->
-			<textzone class="text" x="+18" y="+40" width="[JOGSIZE]-36" fontsize="22"
-				color="needle" align="center" weight="bold"
-				textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+			<!-- <textzone class="text" x="+18" y="+40" width="[JOGSIZE]-36" fontsize="22" -->
+				<!-- color="needle" align="center" weight="bold" -->
+				<!-- textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
 
+			<button action="pitch_reset 8bt"
+			        x="+18" y="+40" width="[JOGSIZE]-36" height="22" border_size="0">
+			  <text fontsize="22" coloron="red" colorselected="green" weight="bold" align="center"
+			  	action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'" />
+			</button>
 			<!-- BPM+ -->
-			<button class="button_main" x="+27" y="+42" width="26" height="16" action="bpm -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
-			<button class="button_main" x="+102" y="+42" width="26" height="16" action="bpm +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
+			<button class="button_main" x="+27" y="+42" width="26" height="16" action="pitch -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
+			<button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
 
 			<!-- <button action="nothing" bordersize="0" color="red" > -->
 			        <!-- visibility="sync_hint 'phase' ? blink 1bt : 0"> -->
@@ -7180,7 +7139,7 @@
 
 			<textzone align="center" fontsize="12" weight="bold" color="blue" visibility="sync_hint 'phase'">
 			  <pos  x="+20" y="+90"/>
-			  <size width="38" height="18"/>
+			  <size width="38" height="16"/>
 			  <text fontsize="12" color="blue" format="PHRASE" />
 			</textzone>
 
@@ -7188,7 +7147,7 @@
 			<button class="button_main"
 			        action="key_match_button"
 			        width="50"
-			        height="16"
+			        height="15"
 			        x="+14+10"
 			        y="+70"
 			        coloroff="transparent"
@@ -7203,7 +7162,7 @@
 			        visibility="loaded ? not masterdeck" />
 
 		  <!-- SYNC TEXT BEAT DESYNC WARNING -->
-			<button class="button_main" action="phrase_sync 32" width="50" height="16"
+			<button class="button_main" action="phrase_sync 32" width="50" height="15"
 				x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1"
 				textsize="12" textcolor="red" textcoloron="green" text="BEAT"
 				query="is_sync"
@@ -7213,9 +7172,9 @@
 			<button class="button_main"
 			        action="key_match_button"
 			        width="110"
-			        height="16"
+			        height="18"
 			        x="+16+6"
-			        y="+70"
+			        y="+69"
 			        coloroff="black"
 			        coloron="black"
 			        bordersize="1"
@@ -7249,6 +7208,28 @@
 			<!-- </visual> -->
 
 			<!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="deckcolor" widthfader="6" heightfader="52" radius="10"/> -->
+
+			<!-- CORNER BUTTONS -->
+
+			<!-- EJECT BUTTON -->
+			<!-- <visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" /> -->
+			<!-- <button class="button_main" action="load ''" width="20" height="20" -->
+				<!-- x="+0" y="+0" color="transparent" bordersize="0" -->
+				<!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
+				<!-- visibility="loaded" /> -->
+
+			<!-- MASTER BUTTON -->
+			<group visibility="play ? not masterdeck">
+				<visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23">
+				  <off shape="circle" color="jogwheelbackground2" border="transparent" border_size="0"/>
+				</visual>
+				<button action="masterdeck" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22">
+				  <off  color="transparent" border_size="0"/>
+				  <down color="transparent" border_size="0"/>
+				  <on   color="#333333" border_size="0"/>
+				  <text fontsize="10" weight="bold" color="`masterdeck ? color 'orange' : color '#777777'`" align="center" text="M"/>
+				</button>
+			</group>
 		</group>
 
 		<!-- PRO: JOGWHEEL -->
@@ -16303,21 +16284,22 @@
 			<!-- TRANSPORT BAR -->
 			<button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
 			<!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
-			<button class="button_main" x="+800-80-8-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-8-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-8-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-8" textsize="11" y="+179" width="80" height="30" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+			<button class="button_main" x="+800-80-6-80-2-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-6-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-6-80-2-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-6-80-2" textsize="11" y="+179" text="MASTER" width="80" height="30" action="masterdeck" textcoloron="black" coloroff="button_background4" coloron="orange" bordersize="0"/>
+			<button class="button_main" x="+800-80-6" textsize="11" y="+179" width="80" height="30" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
-			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
-				<size width="800" height="216"/>
-				<down color="transparent" border_size="1" border="deckcolor" shape="square"/>
+			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2">
+				<size width="804" height="220"/>
+				<down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/>
 			</visual>
 
 			<!-- SELECTED DECK BORDER -->
 			<visual source="deck [DECK] leftdeck" visibility="select" x="-2" y="-2">
 				<size width="804" height="436"/>
-				<down color="transparent" border_size="1" border="#77FFFFFF" shape="square" radius="5"/>
+				<down color="transparent" border_size="2" border="#77FFFFFF" shape="square" radius="5"/>
 			</visual>
 
 			<dropzone visibility="var_equal '@$hauntinglayout' 0">
@@ -16501,22 +16483,23 @@
 
 		<!-- TRANSPORT BAR -->
 		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+7+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+7+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+7+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+7+80+2" textsize="11" y="+179" text="MASTER" width="80" height="30" action="masterdeck" textcoloron="black" coloroff="button_background4" coloron="orange" bordersize="0"/>
 		<button class="button_main" x="+7" textsize="11" y="+179" width="80" height="30" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 
 		<!-- ACTIVE DECK BORDER: RIGHT -->
-		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
-			<size width="800" height="216"/>
-			<down color="transparent" border_size="2" border="deckcolor" shape="square"/>
+		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true" x="-2" y="-2">
+			<size width="804" height="220"/>
+			<down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/>
 		</visual>
 
 		<!-- SELECTED DECK BORDER -->
 		<visual source="deck [DECK] rightdeck" visibility="select" x="-2" y="-2">
 			<size width="804" height="436"/>
-			<down color="transparent" border_size="1" border="#77FFFFFF" shape="square" radius="5"/>
+			<down color="transparent" border_size="2" border="#77FFFFFF" shape="square" radius="5"/>
 		</visual>
 
 		<dropzone visibility="var_equal '@$hauntinglayout' 0">
