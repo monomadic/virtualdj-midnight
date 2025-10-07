@@ -420,7 +420,7 @@
 		<!-- backgrounds -->
 		<define color="skin_background" value="#171819"/>
 		<define color="panel_background" value="#242729"/>
-		<define color="xf_background" value="#0e0f0f"/>
+		<define color="xf_background" value="blue"/>
 
 		<define color="xf_progressbackground" value="#09090a"/>
 		<define color="wave_background" value="#090a0a"/>
@@ -10664,8 +10664,8 @@
 			</menu>
 		</group>
 
-			<button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="2" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-			<button class="button_main" x="335" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="4" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
+		<button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="2" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
+		<button class="button_main" x="335" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="4" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
 
 		<!-- PRO: TOP BAR -->
 		<group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
