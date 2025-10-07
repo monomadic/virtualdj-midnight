@@ -1734,14 +1734,14 @@
 					<size width="11" height="4"/>
 					<off shape="square" color="needle" radius="0" border="black" border_size="0"/>
 				</fader>
-			</slider>
+			</slider>H
         </define>
 	</group>
 
 	<group name="buttons">
-		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=12,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0">
+		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=12,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0,radius">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
-			<off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
+			<off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="[RADIUS]"/>
 			<down color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<selected color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 		  <text dx="[TEXTDX]" dy="[TEXTDY]"
@@ -1751,7 +1751,6 @@
         action="[TEXTACTION]" text="[TEXT]" localize="true"
         scroll="[TEXTSCROLL]" important="[IMPORTANT]"/>
 			<icon dx="[ICONDX]" sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
-			<!-- <action rgclick="[RIGHTCLICK]"/> -->
 		</define>
 	
 		<define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=13,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no" condition="var_equal '@$hauntingcolorscheme' 4">
@@ -16043,17 +16042,9 @@
 
 		  <!-- Deck Select Button -->
 		  <deck deck="[DECK]">
-		    <button x="+0" y="+0" width="[WIDTH]" height="2"
-		            action="[SIDE]"
-		            border_size="0">
-		      <up color="deckcolor"/>
-		      <over color="deckcolor"/>
-		      <selected color="deckcolor"/>
-		      <text fontsize="[TEXTSIZE]" color="#222222"
-		      		colorover="#444444" colorselected="black" align="center" text=""/>
-		    </button>
+				<visual class="gfx_shape" x="+0" y="+0" width="[WIDTH]" height="38" coloroff="infos_background" bordercoloroff="#333333" bordersize="1"/>
 
-		    <button x="+0" y="+9" width="[WIDTH]" height="20"
+		    <button x="+0" y="+1" width="[WIDTH]" height="28"
 		            action="[SIDE]"
 		            border_size="0">
 		      <up color="black"/>
@@ -16063,12 +16054,13 @@
 		      		colorover="#444444" colorselected="white" align="center" weight="bold" text="[DECK]"/>
 		    </button>
 
-			<visual source="get_level" type="linear" orientation="horizontal" direction="right" granularity="23">
-			  <pos x="+0" y="+3"/>
-			  <size width="[WIDTH]" height="2"/>
-			  <off shape="square" color="transparent"/>
-			  <on  shape="square" color="green"/>
-			</visual>
+		  	<!-- VOLUME -->
+				<visual source="get_level" type="linear" orientation="horizontal" direction="right" granularity="23">
+				  <pos x="+0" y="-1"/>
+				  <size width="[WIDTH]" height="2"/>
+				  <off shape="square" color="transparent"/>
+				  <on  shape="square" color="green"/>
+				</visual>
 
 		    <!-- Play/Pause Button -->
 		    <!-- <button x="+0" y="+17" -->
@@ -16083,6 +16075,16 @@
 		            <!-- color="[TEXTCOLOR]" colordown="white" -->
 		            <!-- colorselected="black"/> -->
 		    <!-- </button> -->
+
+		    <button x="+0" y="+29" width="[WIDTH]" height="3"
+		            action="[SIDE]"
+		            border_size="0">
+		      <up color="deckcolor"/>
+		      <over color="deckcolor"/>
+		      <selected color="deckcolor"/>
+		      <text fontsize="[TEXTSIZE]" color="#222222"
+		      		colorover="#444444" colorselected="black" align="center" text=""/>
+		    </button>
 		  </deck>
 		</define>
 
@@ -16098,12 +16100,12 @@
 		          visibility="true"
 		          action="deck left play & deck right play & deck all sync & phrase_sync"
 		          >
-		    <off color="#000000" border="#222222" border_size="1" shape="square"/>
+		    <off color="#333333" border="#333333" border_size="1" shape="square"/>
 		    <on  color="#444444" border="#111111" border_size="1" shape="square"/>
-		    <over color="#111111" border="#333333" border_size="1" shape="square"/>
+		    <over color="#444444" border="#555555" border_size="1" shape="square"/>
 		    <selected color="#555555" border="green" border_size="1" shape="square"/>
 		    <icon dx="-3" sysicon="play" width="50" height="50"
-		          color="#555555" colorover="#FFFFFF" colordown="white" colorselected="#888888"/>
+		          color="#666666" colorover="#FFFFFF" colordown="white" colorselected="#000000"/>
 		  </button>
 
 		  <!-- STOP state (any deck playing) -->
@@ -16114,9 +16116,9 @@
 		    <off color="#333333" border="#000000" border_size="0" shape="square"/>
 		    <on  color="#222222" border="#111111" border_size="0" shape="square"/>
 		    <over color="#444444" border="#000000" border_size="0" shape="square"/>
-		    <selected color="#222222" border="green" border_size="1" shape="square"/>
+		    <selected color="green" border="green" border_size="1" shape="square"/>
 		    <icon dx="+0" sysicon="stop" width="50" height="50"
-		          color="#FFFFFF" colordown="white" colorselected="#FFFFFF"/>
+		          color="#FFFFFF" colordown="white" colorselected="#000000"/>
 		  </button>
 		</group>
 
@@ -16281,14 +16283,20 @@
 				<fader color="faderbackgroundline" width="38" height="6"/>
 			</slider>
 
-			<!-- TRANSPORT BAR -->
+			 <button x="+50" y="+183" width="80" height="20" action="masterdeck" query="masterdeck">
+			  <off color="orange" bordercolor="orange" border_size="1" textcolor="white" radius="4"/>
+			  <up color="#444444" bordercolor="#222222" border_size="1" textcolor="white" radius="4"/>
+			  <selected color="#333333" bordercolor="orange" border_size="1" textcolor="orange" radius="4"/>
+			  <text fontsize="15" align="center">MASTER</text>
+			</button>
+
 			<button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
+			<!-- TRANSPORT BAR -->
 			<!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2-80-2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-80-1-80-2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-80-1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="orange" coloroff="button_background4" coloron="button_background4" bordersize="1" brcoloron="orange"/>
-			<button class="button_main" x="+800-80-3" textsize="11" y="+176" width="80" height="36" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-80-1-80-2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-3" textsize="11" y="+176" width="80" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2">
@@ -16485,10 +16493,9 @@
 		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2+80+2+80+2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2+80+2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1+80+2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="orange" coloroff="button_background4" coloron="button_background4" bordersize="1" brcoloron="orange"/>
-		<button class="button_main" x="+3" textsize="11" y="+176" width="80" height="36" action="play_pause" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
-
+		<button class="button_main" x="+3+80+1+80+2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+3+80+1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="orange" coloroff="button_background4" coloron="button_background4" colordown="#222222" bordersize="2" brcoloron="orange" brcoloroff="button_background4"/>
+		<button class="button_main" x="+3" textsize="11" y="+176" width="80" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 		<!-- ACTIVE DECK BORDER: RIGHT -->
 		<visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true" x="-2" y="-2">
@@ -16512,6 +16519,9 @@
 		</dropzone>
 
 		<panel class="video_preview" x="+2+60+11+1" y="+6" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/>
+
+		
+
 		</deck>
 	</define>
 
