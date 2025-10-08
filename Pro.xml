@@ -6696,6 +6696,7 @@
 
 		<!-- CLASS: STEM BUTTONS -->
 		<define class="stem_button" placeholders="*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
+			<!-- TOGGLE -->
 	    <button x="+0" action="stem_pad '[STEM]'" border_size="1">
 				<size width="[WIDTH]" height="[HEIGHT]"/>
       	<off  color="#222222" border="#444444" radius="3"/>
@@ -6705,18 +6706,27 @@
 	      	colordown="[COLOR]" align="center" text="[LABEL]"/>
 	    </button>
 
+	  	<!-- LEVEL -->
 	    <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
 	      <pos x="+0" y="+[HEIGHT]+2"/>
-	      <size width="[WIDTH]" height="6"/>
-	      <off shape="square" border="#222222" color="black" radius="1" />
-	      <down  shape="square" border="#222222" color="[COLOR]" radius="1"/>
+	      <size width="[WIDTH]" height="7"/>
+	      <off shape="square" border="#2A2A2A" color="black" radius="2" />
+	      <down  shape="square" border="[COLOR]" color="[COLOR]" radius="2"/>
 	    </visual>
+
+			<!-- VOLUME -->
+			<slider action="get_level [STEM]" dblclick="sampler_volume_master 80%" orientation="horizontal" direction="up" frommiddle="false">
+			  <pos x="+0" y="++[HEIGHT]+2"/>
+			  <size width="[WIDTH]" height="7"/>
+			  <fader color="#FFFFFF" width="2" height="7"/>
+			</slider>
 		</define>
 
 		<group visibility="not has_stems" y="+30">
 			<textzone class="text" width="300" height="48" fontsize="10" color="textdarker" align="center" weight="" text="STEMS NOT FOUND"/>
 		</group>
 
+		<!-- STEM BUTTONS -->
 		<group x="+5" y="+20" visibility="has_stems">
 		  <panel class="stem_button" x="+0"   y="+0" stem="vocal"  label="VOCAL" color="colorvocal"/>
 		  <panel class="stem_button" x="+70"  y="+0" stem="INSTRU" label="INSTR" color="colorinstru"/>
@@ -6724,6 +6734,7 @@
 		  <panel class="stem_button" x="+210" y="+0" stem="rhythm" label="DRUM"  color="colorbeat"/>
 		</group>
 
+		<!-- STEM GROUPS -->
 		<group x="+3" y="+55" visibility="has_stems">
 	    <button x="+0" action="mute_stem Vocals off & mute_stem Instru+Bass+HiHat+Kick on" border_size="1" query="mute_stem Vocals off & mute_stem Instru+Bass+HiHat+Kick on">
 				<size width="90" height="26"/>
@@ -10112,9 +10123,11 @@
 	<!-- MASTER PANEL -->
 	<define class="mic/headphones_controls">
 		<visual class="gfx_shape" width="77" height="432-56-1" coloroff="panel_background" visibility="var_not_equal '@$hauntinglayout' 1"/>
-		<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="panel_background" visibility="var_equal '@$hauntinglayout' 1"/>
 
 		<group name="2decks_view" visibility="var_not_equal '@$hauntinglayout' 1">
+			<!-- background -->
+			<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="panel_background"/>
+
 			<!-- <panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="mic_volume" rgclick="mic_volume 62% while_pressed" dblclick="mic_volume 62%" frommiddle="false" fillcolor="br_focus" text="MIC VOL"/> -->
 
 			<!-- <button class="button_main" x="+10" y="+74" width="77-10-10" height="26" action="mic" textsize="11" text="ON" coloron="br_focus" bordersize="0"/> -->
@@ -10209,11 +10222,12 @@
 		</group>
 	</define>
 
+	<!-- MASTER CONTROLS: RIGHT PANEL -->
 	<define class="master_controls">
-		<visual class="gfx_shape" width="77" height="432-56-1" coloroff="panel_background" visibility="var_not_equal '@$hauntinglayout' 1"/>
-		<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="panel_background" visibility="var_equal '@$hauntinglayout' 1"/>
+			<visual class="gfx_shape" width="77" height="432-56-1+216+2" coloroff="panel_background" visibility="var_equal '@$hauntinglayout' 1"/>
 
 		<group name="2decks_view" visibility="var_not_equal '@$hauntinglayout' 1">
+			<visual class="gfx_shape" width="77" height="432-56-1" coloroff="panel_background"/>
 			<menu class="dropdown_menu" tooltip="Zero dB">
 				<pos x="+58" y="+6"/>
 				<separator text="Headroom"/>
@@ -10232,6 +10246,15 @@
 			<button class="button_main" x="+10" y="+74+60" width="77-10-10" height="26" action="mono_mix" textsize="11" text="MONO" coloron="br_focus" bordersize="0"/>
 			<button class="button_main" x="+10" y="+74+24+12+60" width="77-10-10" height="26" action="sampler_rec 'master'" textsize="11" text="REC" coloron="br_focus" bordersize="0"/>
 
+			<group x="+10" y="+220">
+				<button class="custom_button" source="200" y="+0" width="57" height="19"/>
+				<button class="custom_button" source="201" y="+20" width="57" height="19"/>
+				<button class="custom_button" source="202" y="+40" width="57" height="19"/>
+				<button class="custom_button" source="203" y="+60" width="57" height="19"/>
+				<button class="custom_button" source="204" y="+80" width="57" height="19"/>
+				<button class="custom_button" source="205" y="+100" width="57" height="19"/>
+				<button class="custom_button" source="206" y="+120" width="57" height="19"/>
+			</group>
 			<!-- PRO: MASTER PANEL -->
 			<!-- <button class="button_main" x="+10" y="+74+24+12+60+164" width="77-10-10" height="26" action="setting 'exclusiveAudioAccess'" tooltip="Exclusive Audio Access To Virtual DJ" textsize="11" text="ONLY" coloron="br_focus" bordersize="0"/> -->
 
@@ -11010,7 +11033,7 @@
 			</textzone>
 		</group>
 
-		<button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/>
+		<!-- <button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/> -->
 		<button class="button_main" x="1920-40-155-90+60" y="8" width="30" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="S" coloron="br_focus" bordersize="0"/>
 
 		<!-- <group name="battery" visibility="var_equal '@$hauntinggetbattery' 1"> -->
@@ -16478,7 +16501,7 @@
 
 		<panel class="pitch_zone" x="+250" />
 
-		<panel class="jogwheel" x="+2+8+58+14" y="+2+6+4" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+		<panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 
 		<visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/>
 		<panel class="vvu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
