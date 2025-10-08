@@ -6706,20 +6706,21 @@
 	      	colordown="[COLOR]" align="center" text="[LABEL]"/>
 	    </button>
 
-	  	<!-- LEVEL -->
+	  	<!-- VU METER -->
 	    <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]">
 	      <pos x="+0" y="+[HEIGHT]+2"/>
 	      <size width="[WIDTH]" height="7"/>
 	      <off shape="square" border="#2A2A2A" color="black" radius="2" />
 	      <down  shape="square" border="[COLOR]" color="[COLOR]" radius="2"/>
 	    </visual>
-
-			<!-- VOLUME -->
-			<slider action="get_level [STEM]" dblclick="sampler_volume_master 80%" orientation="horizontal" direction="up" frommiddle="false">
-			  <pos x="+0" y="++[HEIGHT]+2"/>
+	  
+			<!-- GAIN SLIDER -->
+			<slider action="param_multiply 50% &amp; stem '[STEM]'" dblclick="stem '[STEM]' 50%" orientation="horizontal" direction="up" frommiddle="false">
+			  <pos x="+0" y="+[HEIGHT]+2"/>
 			  <size width="[WIDTH]" height="7"/>
-			  <fader color="#FFFFFF" width="2" height="7"/>
+			  <fader color="#AAAAAA" width="2" height="5"/>
 			</slider>
+
 		</define>
 
 		<group visibility="not has_stems" y="+30">
@@ -6727,38 +6728,57 @@
 		</group>
 
 		<!-- STEM BUTTONS -->
-		<group x="+5" y="+20" visibility="has_stems">
+		<group x="+5" y="+22" visibility="has_stems">
 		  <panel class="stem_button" x="+0"   y="+0" stem="vocal"  label="VOCAL" color="colorvocal"/>
 		  <panel class="stem_button" x="+70"  y="+0" stem="INSTRU" label="INSTR" color="colorinstru"/>
 		  <panel class="stem_button" x="+140"  y="+0" stem="bass" label="BASS" color="colorbass"/>
 		  <panel class="stem_button" x="+210" y="+0" stem="rhythm" label="DRUM"  color="colorbeat"/>
 		</group>
 
+    <!-- <button x="+3" y="+60" action="" border_size="1" query="mute_stem Vocals off &amp; mute_stem Instru+Bass+HiHat+Kick on"> -->
+			<!-- <size width="32" height="16"/> -->
+    	<!-- <off  color="#222222" border="#444444" radius="3"/> -->
+      <!-- <down color="#222222" border="green" radius="3"/> -->
+    	<!-- <selected color="transparent"  border="green" radius="3"/> -->
+      <!-- <text fontsize="9" color="#555555" colorselected="green" -->
+      	<!-- colordown="green" align="center" text="ISO"/> -->
+    <!-- </button> -->
+
+    <!-- <button x="+37" y="+60" action="mute_stem Vocals off &amp; mute_stem Instru+Bass+HiHat+Kick on" border_size="1" query="mute_stem Vocals off &amp; mute_stem Instru+Bass+HiHat+Kick on"> -->
+			<!-- <size width="32" height="16"/> -->
+    	<!-- <off  color="#222222" border="#444444" radius="3"/> -->
+      <!-- <down color="#222222" border="green" radius="3"/> -->
+    	<!-- <selected color="transparent"  border="green" radius="3"/> -->
+      <!-- <text fontsize="9" color="#555555" colorselected="green" -->
+      	<!-- colordown="green" align="center" text="SOLO"/> -->
+    <!-- </button> -->
+
+
 		<!-- STEM GROUPS -->
-		<group x="+3" y="+55" visibility="has_stems">
-	    <button x="+0" action="mute_stem Vocals off & mute_stem Instru+Bass+HiHat+Kick on" border_size="1" query="mute_stem Vocals off & mute_stem Instru+Bass+HiHat+Kick on">
-				<size width="90" height="26"/>
+		<group x="+3" y="+62" visibility="has_stems">
+	    <button x="+0" action="stem_pad 'acapella'" border_size="1">
+				<size width="90" height="18"/>
       	<off  color="#222222" border="#444444" radius="3"/>
-	      <down color="#222222"      border="green" radius="3"/>
-      	<selected color="transparent"  border="green" radius="3"/>
-	      <text fontsize="10" color="#555555" colorselected="green"
-	      	colordown="green" align="center" text="ACAPELLA"/>
+	      <down color="#222222" border="pink" radius="3"/>
+      	<selected color="transparent"  border="pink" radius="3"/>
+	      <text fontsize="10" color="#555555" colorselected="pink"
+	      	colordown="pink" align="center" text="ACAPELLA"/>
 	    </button>
-	    <button x="+94" action="mute_stem vocals on" border_size="1">
-				<size width="90" height="26"/>
+	    <button x="+94" action="stem_pad 'instrumental'" border_size="1">
+				<size width="90" height="18"/>
       	<off  color="#222222" border="#444444" radius="3"/>
-	      <down color="#222222"      border="green" radius="3"/>
-      	<selected color="transparent"  border="green" radius="3"/>
-	      <text fontsize="10" color="#555555" colorselected="green"
-	      	colordown="green" align="center" text="INSTRUMENTAL"/>
+	      <down color="#222222" border="#CC55FF" radius="3"/>
+      	<selected color="transparent"  border="#CC55FF" radius="3"/>
+	      <text fontsize="10" color="#555555" colorselected="#CC55FF"
+	      	colordown="#CC55FF" align="center" text="INSTRUMENTAL"/>
 	    </button>
-	    <button x="+188" action="mute_stem vocals on" border_size="1">
-				<size width="90" height="26"/>
+	    <button x="+188" action="effect_stems +1" border_size="1">
+				<size width="90" height="18"/>
       	<off  color="#222222" border="#444444" radius="3"/>
-	      <down color="#222222"      border="green" radius="3"/>
-      	<selected color="transparent"  border="green" radius="3"/>
-	      <text fontsize="10" color="#555555" colorselected="green"
-	      	colordown="green" align="center" text="VOC+DRUM"/>
+	      <down color="#222222" border="yellow" radius="3"/>
+      	<selected color="transparent"  border="yellow" radius="3"/>
+	      <text fontsize="10" color="#555555" colorselected="yellow"
+	      	colordown="yellow" align="center" action="effect_stems & param_uppercase"/>
 	    </button>
 	  </group>
 
@@ -16198,7 +16218,7 @@
            textbelow="+37" textleft="-2"
            knobsize="34" knobradius="7" faderradius="6"
            action="stem '[STEM]'"
-           rgclick="sampler_volume_master 100%"
+           rgclick="stem_pad '[STEM]'"
            dblclick="stem '[STEM]' 50%"
            frommiddle="false"
            fillcolor="#333333" fillcoloroff="#000000"
@@ -16212,7 +16232,7 @@
            textbelow="+37" textleft="-2"
            knobsize="34" knobradius="8" faderradius="6"
            action="stem '[STEM]'"
-           rgclick="sampler_volume_master 100%"
+           rgclick="stem_pad '[STEM]'"
            dblclick="stem '[STEM]' 50%"
            frommiddle="false"
            fillcolor="[COLOR]" fillcoloroff="#000000"
