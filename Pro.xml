@@ -17512,8 +17512,8 @@
 		<panel class="area_deck_left" x="+2" panelname="deck3" deck="3" visibility="deck 3 leftdeck"/>
 
 		<!-- LEFT: BOTTOM -->
-		<panel class="area_deck_left" x="+2" y="+432+2" panelname="deck1" deck="1" visibility="deck 3 leftdeck" />
-		<panel class="area_deck_left" x="+2" y="+432+2" panelname="deck3" deck="3" visibility="deck 1 leftdeck"/>
+		<panel class="area_deck_mini_extended" x="+2" y="+432+2" panelname="deck1" deck="1" visibility="deck 3 leftdeck" />
+		<panel class="area_deck_mini_extended" x="+2" y="+432+2" panelname="deck3" deck="3" visibility="deck 1 leftdeck"/>
 
 		<!-- MIXER PANEL / MIDDLE PANEL -->
 		<!-- TABS -->
