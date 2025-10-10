@@ -1,8 +1,7 @@
 ﻿<Skin name="DeathDisco Performance Deck" width="1920" height="1280" version="2020" author="DeathDisco" comment="" image="haunting.png" preview="skinpreview.png" breakline="1280-42" breakline2="1280-42" dpi="100%">
 <!-- note: originally loosely based around Alex Zaik's work -->
+
 <font name="Helvetica Neue"/>
-<!-- finding keys: -->
-<!-- bpm sliders: define class="pitch_zone -->
 
 <nbdecks value="2" condition="var_equal '@$4decks' 0"/>
 <nbdecks value="4" condition="var_not_equal '@$4decks' 0"/>
@@ -6887,7 +6886,7 @@
 		<button class="button_main" x="+0" textsize="11" y="+6+33+4+30" width="60" height="30" action="shift ? phrase_sync 16 : phrase_sync 32" text="PHRASE" textcolor="textoff2" textcoloron="black"/>
 		<button class="button_main" x="+0" textsize="11" y="+6+33+4+28+4+31" width="60" height="30" action="sync" text="SYNC" textcolor="textoff2" textcoloron="black"/>
 		<!-- <button class="button_main" x="+0" y="+6+30+4+62" width="60" height="30" action="cue_button" textaction="cue_button" textcolor="textoff2" textcoloron="black"/> -->
-		<button class="button_main" x="+0" textsize="11" y="+6+33+4+30+6+60" width="60" height="30" action="play_pause" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background2"/>
+		<button class="button_main" x="+0" textsize="11" y="+6+33+4+30+6" width="120" height="30" action="play_pause" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="button_background2"/>
 	</define>
 
 	<!-- PERFORMANCE: EXTENDED: TRANSPORT (SYNC CUE ETC) -->
@@ -6923,8 +6922,13 @@
 
 	<!-- BPM SLIDER -->
 	<define class="pitch_zone">
-		<visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#111111"/>
-
+		<visual class="gfx_shape"
+        x="+0" y="+0"
+        width="58" height="170"
+        coloroff="#111111"
+        bordercolor="#333333"
+        border_size="2"/>
+      
 		<!-- PITCH RANGE -->
 		<button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '±%pitchrange'" />
 
@@ -16321,7 +16325,7 @@
 			<!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
 
 
-			<panel class="pitch_zone" x="+800-314" y="+2"/>
+			<panel class="pitch_zone" x="+800-318" y="+2"/>
 
 			<panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
 
@@ -16347,7 +16351,7 @@
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2-80-2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-3-80-1-80-2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3" textsize="11" y="+176" width="80" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-80" textsize="11" y="+176" width="160" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> -->
@@ -18418,8 +18422,6 @@
 			<pos x="0" y="0"/>
 			<size width="4" height="768"/>
 		</resizezone>
-
-		<panel x="0" y="0" width="100" height="100" color="red"> </panel>
 	</window>
 </group>
 </Skin>
