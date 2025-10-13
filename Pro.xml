@@ -11833,7 +11833,7 @@
 					<define class="horizontal_main_waveform" placeholders="*deck,*height">
 						<deck deck="[DECK]">
 							<!-- WAVE -->
-							<scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal"  visibility="not deck 3 leftdeck">
+							<scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
 								<pos x="+2" y="+14+8"/>
 								<size width="1920-8" height="[HEIGHT]-32-8"/>
 								<grid size="1" mainsize="4" height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
@@ -11876,7 +11876,7 @@
 							</button>
 
 							<!-- COVER -->
-							<cover rotate="no" visibility="1.0" rightclick="" dblclick="">
+							<cover rotate="no" rightclick="" dblclick="">
 								<pos x="+23" y="+3"/>
 								<size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
 							</cover>
