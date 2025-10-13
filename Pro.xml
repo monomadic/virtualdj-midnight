@@ -10692,11 +10692,11 @@
 		<!-- </button> -->
 
 		<!-- SKIN LAYOUT MENU -->
-		<group name="layout_options" x="100" y="8">
+		<group name="layout_options" x="20" y="8">
 			<menu tooltip="SKIN LAYOUT\nSelect the layout adapted to your mixing style">
 				<pos x="+50" y="+0"/>
 				<size width="136" height="27"/>
-				<off shape="square" color="xf_background"/>
+				<off shape="square" color="panel_background"/>
 				<text dx="10" width="102" fontsize="11" weight="" color="textoff2" colorover="needle" align="left" action="browser_zoom ?  get_text 'BROWSER' : NOT browser_zoom ? var_equal '@$hauntingproskinmode' 0 ? get_text 'PRO' : var_equal '@$hauntingproskinmode' 1 ? get_text 'PERFORMANCE' : var_equal '@$hauntingproskinmode' 2 ? get_text 'STACK'" localize="true" important="true"/>
 				<icon dx="54" dy="-1" sysicon="chevrondown" height="17" width="17" color="textoff" colorover="needle" colordown="needle"/>
 				<item text="PRO" action="set '@$hauntingproskinmode' 0 & load_skin" check="var_equal '@$hauntingproskinmode' 0"/>
@@ -10718,8 +10718,10 @@
 			</menu>
 		</group>
 
-		<button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="panel_background" bordersize="0"/>
-		<button class="button_main" x="335" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="30" height="27" textsize="12" textcoloron="needle" text="4" coloroff="panel_background" coloron="panel_background" bordersize="0"/>
+		<!-- <button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 0"/> -->
+		<!-- <button class="button_main" x="330" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="S" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/> -->
+		<button class="button_main" x="240" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/>
+		<button class="button_main" x="270" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="4" coloroff="panel_background" coloron="#333333" bordersize="0"/>
 
 		<!-- PRO: TOP BAR -->
 		<group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
@@ -11115,10 +11117,10 @@
 				</logo>
 
 			<menu tooltip="DIRECT OPTIONS">
-				<pos x="+100" y="8"/>
-				<size width="32" height="27"/>
-				<off color="button_background" shape="square"/>
-				<over color="button_background" shape="square"/>
+				<pos x="+10" y="8"/>
+				<size width="40" height="27"/>
+				<off color="panel_background" shape="square"/>
+				<over color="#333333" shape="square"/>
 				<selected color="button_background" shape="square"/>
 				<text dx="+2" dy="+6" fontsize="25" text="iii" color="textoff" colorselected="needle" colorover="needle" orientation="vertical-cw"/>
 				<submenu text="Top Bar">
