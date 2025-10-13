@@ -10472,7 +10472,7 @@
 						<mask x="0" y="0" width="12" height="12"/>
 					</cue>
 					<overlay>
-						<pos x="-18" y="+160+25+136+1" condition="var_equal '@$hauntinglayout' 1"/>
+						<pos x="-18" y="+160+25+137+1" condition="var_equal '@$hauntinglayout' 1"/>
 						<pos x="-18" y="+160+25+27" condition="var_equal '@$hauntinglayout' 0"/>
 						<size width="98+18+18" height="2"/>
 						<background color="needle" shape="square"/>
@@ -17395,7 +17395,7 @@
 		<!-- MIXER PANEL / MIDDLE PANEL -->
 		<!-- TABS -->
 			<group x="+802" y="+0">
-				<button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="AUDIO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+				<button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 				<button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 				<button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 				<button class="button_main" x="+2+78+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
@@ -17490,10 +17490,10 @@
 		<!-- MIXER PANEL / MIDDLE PANEL -->
 		<!-- TABS -->
 		<group x="+802" y="+0">
-			<button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="AUDIO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-			<button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-			<button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-			<button class="button_main" x="+2+78+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+			<button class="button_main" x="+12" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+			<button class="button_main" x="+7+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+			<button class="button_main" x="+0+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+			<button class="button_main" x="+0+76+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
 		</group>
 		<!-- MIDDLE -->
 		<panel class="mixer_4decks" x="+2+800+2" y="+24"/>
