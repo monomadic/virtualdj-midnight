@@ -7106,30 +7106,31 @@
 				<off shape="circle" color="jogprogressoff" border="jogprogressoff"/>
 			</visual>
 
+			<!-- outer progress ring -->
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded">
 				<tooltip/>
 				<pos x="-1" y="-1"/>
 				<size width="[JOGSIZE]+2" height="[JOGSIZE]+2"/>
 				<off shape="circle" color="#000000" border="transparent"/>
-				<on shape="circle" color="deckcolor" />
+				<on shape="circle" color="deckcolor" border="transparent" />
 			</visual>
-		
 
 			<!-- outer progress border -->
-			<visual source="song_pos 'show warning'" type="circle" visibility="loaded">
-				<tooltip/>
-				<pos x="+0" y="+0"/>
-				<size width="[JOGSIZE]" height="[JOGSIZE]"/>
-				<off shape="circle" color="#111111" border="transparent"/>
-				<on shape="circle" color="deckcolor" />
-			</visual>
+			<!-- <visual source="song_pos 'show warning'" type="circle" visibility="loaded"> -->
+				<!-- <tooltip/> -->
+				<!-- <pos x="+0" y="+0"/> -->
+				<!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
+				<!-- <off shape="circle" color="transparent"/> -->
+				<!-- <on shape="circle" color="deckcolor" /> -->
+			<!-- </visual> -->
 		
 			<!-- time spinner -->
 			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
-				offcolor="transparent" colorfader="#222222" widthfader="6" heightfader="50" radius="27"/>
+				offcolor="transparent" colorfader="#222222" widthfader="10" heightfader="50" radius="30"/>
 			<slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10"
-				offcolor="transparent" colorfader="#999999" widthfader="3" heightfader="50" radius="27"/>
+				offcolor="transparent" colorfader="#DDDDDD" widthfader="5" heightfader="50" radius="28"/>
 
+			<!-- WARNING: SONG POS -->
 			<visual source="song_pos 'show warning'" type="circle" visibility="loaded" color="red" width="40" height="40" x="+0" y="+0" />
 
 			<slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active"
@@ -11938,7 +11939,7 @@
 							</cover>
 
 							<!-- MASTER -->
-							<button class="button_main" x="+23" y="+[HEIGHT]-20" width="[HEIGHT]-4" height="18" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="12" text="MASTER" visibility="masterdeck"/>
+							<button class="button_main" x="+23" y="+[HEIGHT]-35" width="[HEIGHT]-4" height="18" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="12" text="MASTER" visibility="masterdeck"/>
 							
 							<!-- COVER CLICK AREA -->
 							<button action="select" visibility="loaded">
