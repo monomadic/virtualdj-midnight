@@ -11699,21 +11699,21 @@
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+34" width="349-70+100-6" height="5" coloroff="color_mix" visibility="1.0"/> -->
 					<visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" />
-					<visual x="+0" y="+13" width="35" height="14" visibility="1.0">
-						<off shape="square" color="#111111" border_size="1" border="color_mix" radius="2"/>
+					<visual x="+0" y="+13" width="35" height="14" border_size="0">
+						<off shape="square" color="#000000" border_size="0" border="transparent" radius="2"/>
 					</visual>
 					<!-- LABEL -->
 					<textzone class="text" x="+0" y="+13" width="35" height="13" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
 					<!-- BUTTONS -->
 					<panel class="filter_tag_button" x="+40" y="+4" accent_color="color_mix" tag="#Acapella" width="84" />
-					<panel class="filter_tag_button" x="+158" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
-					<panel class="filter_tag_button" x="+279" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
-					<panel class="filter_tag_button" x="+343" y="+4" accent_color="color_mix" tag="#Transition" />
+					<panel class="filter_tag_button" x="+128" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
+					<panel class="filter_tag_button" x="+249" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
+					<panel class="filter_tag_button" x="+313" y="+4" accent_color="color_mix" tag="#Mixed" width="60" />
 					<!-- HIGHLIGHT -->
-					<visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/>
+					<!-- <visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/> -->
 				</group>
 
-				<group name="mix_timing" x="+930">
+				<group name="mix_timing" x="+940">
 					<visual class="gfx_shape" x="+67" y="+0" width="129" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
 					<!-- LABEL -->
 					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="right" weight="" text="TIMING"/>
@@ -11730,7 +11730,7 @@
 					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_mood" align="right" weight="" text="MOOD"/>
 					<!-- BUTTONS -->
 					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_mood" tag="#Club" width="56" />
-					<panel class="filter_tag_button" x="+70+56+3" y="+4" accent_color="color_mood" tag="#FredAgain" width="86"/>
+					<panel class="filter_tag_button" x="+70+56+3" y="+4" accent_color="color_mood" tag="#FredAgain" width="96"/>
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+35" width="144" height="2" coloroff="color_mood" visibility="0.8"/> -->
 				</group>
