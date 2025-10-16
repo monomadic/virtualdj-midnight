@@ -11663,14 +11663,12 @@
 			  <off color="#111111" border="#22AAAAAA" border_size="1" shape="[SHAPE]" radius="3"/>
 			  <over color="#111111" border="#111111" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
 			  <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
-			  <selected color="#222222" border="#333333" border_size="1" shape="[SHAPE]" radius="3"/>
+			  <selected color="#222222" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="3"/>
 			  <text action="get_text '[TAG]' & param_uppercase" dx="+7" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]" />
 			  <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
 		  </button>
 
-			<visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="1.0"/>
-			<!-- <visual class="gfx_shape" x="-1" y="+1" width="[WIDTH]+2" height="4" coloroff="[ACCENT_COLOR]" radius="3" border_size="0"/> -->
-			<!-- <visual class="gfx_shape" x="-2" y="+3" width="[WIDTH]+4" height="4" coloroff="black" radius="0" border_size="0"/> -->
+			<visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/>
 
 			<visual x="+6" y="+8" width="5" height="16">
 				<off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/>
@@ -11685,7 +11683,7 @@
 						<off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/>
 					</visual>
 					<!-- TEXT LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_genre" align="right" weight="" text="GENRE"/>
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_genre" align="center" weight="" text="GENRE"/>
 					<!-- BUTTONS -->
 					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_genre" tag="#BassHouse" text="Bass House" />
 					<panel class="filter_tag_button" x="+172" y="+4" accent_color="color_genre" tag="#Techno" width="72" />
@@ -11698,17 +11696,18 @@
 				<group name="mix_tags" x="+530">
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+34" width="349-70+100-6" height="5" coloroff="color_mix" visibility="1.0"/> -->
-					<visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" />
-					<visual x="+0" y="+13" width="35" height="14" border_size="0">
-						<off shape="square" color="#000000" border_size="0" border="transparent" radius="2"/>
+					<!-- <visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" /> -->
+					<!-- BACKGROUND -->
+					<visual x="+0" y="+1" width="399" height="36" visibility="1.0">
+						<off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/>
 					</visual>
 					<!-- LABEL -->
-					<textzone class="text" x="+0" y="+13" width="35" height="13" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="13" color="color_mix" align="center" weight="" text="MIX"/>
 					<!-- BUTTONS -->
-					<panel class="filter_tag_button" x="+40" y="+4" accent_color="color_mix" tag="#Acapella" width="84" />
-					<panel class="filter_tag_button" x="+128" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
-					<panel class="filter_tag_button" x="+249" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
-					<panel class="filter_tag_button" x="+313" y="+4" accent_color="color_mix" tag="#Mixed" width="60" />
+					<panel class="filter_tag_button" x="+60" y="+4" accent_color="color_mix" tag="#Acapella" width="84" />
+					<panel class="filter_tag_button" x="+148" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
+					<panel class="filter_tag_button" x="+269" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
+					<panel class="filter_tag_button" x="+333" y="+4" accent_color="color_mix" tag="#Mixed" width="60" />
 					<!-- HIGHLIGHT -->
 					<!-- <visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/> -->
 				</group>
@@ -11716,7 +11715,7 @@
 				<group name="mix_timing" x="+940">
 					<visual class="gfx_shape" x="+67" y="+0" width="129" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
 					<!-- LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="right" weight="" text="TIMING"/>
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="center" weight="" text="TIMING"/>
 					<!-- BUTTONS -->
 					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_timing" tag="#Intro" width="64" />
 					<panel class="filter_tag_button" x="+70+64+3" y="+4" accent_color="color_timing" tag="#Peak" width="56"/>
