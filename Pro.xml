@@ -7206,93 +7206,94 @@
 				<!-- color="needle" align="center" weight="bold" -->
 				<!-- textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
 
-			<button action="pitch_reset 8bt"
-			        x="+18" y="+40" width="[JOGSIZE]-36" height="22" border_size="0">
-			  <text fontsize="22" coloron="red" colorselected="green" weight="bold" align="center"
-			  	action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'" />
-			</button>
-			<!-- BPM+ -->
-			<button class="button_main" x="+27" y="+42" width="26" height="16" action="pitch -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
-			<button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
+			<group name="jogwheel_content" visibility="loaded">
+				<button action="pitch_reset 8bt"
+				        x="+18" y="+40" width="[JOGSIZE]-36" height="22" border_size="0">
+				  <text fontsize="22" coloron="red" colorselected="green" weight="bold" align="center"
+				  	action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'" />
+				</button>
+				<!-- BPM+ -->
+				<button class="button_main" x="+27" y="+42" width="26" height="16" action="pitch -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
+				<button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
 
-			<!-- <button action="nothing" bordersize="0" color="red" > -->
-			        <!-- visibility="sync_hint 'phase' ? blink 1bt : 0"> -->
-			  <!-- <pos  x="+10" y="+10"/> -->
-			  <!-- <size width="38" height="18"/> -->
-			<!-- </button> -->
+				<!-- <button action="nothing" bordersize="0" color="red" > -->
+				        <!-- visibility="sync_hint 'phase' ? blink 1bt : 0"> -->
+				  <!-- <pos  x="+10" y="+10"/> -->
+				  <!-- <size width="38" height="18"/> -->
+				<!-- </button> -->
 
-			<textzone align="center" fontsize="12" weight="bold" color="blue" visibility="sync_hint 'phase'">
-			  <pos  x="+20" y="+90"/>
-			  <size width="38" height="16"/>
-			  <text fontsize="12" color="blue" format="PHRASE" />
-			</textzone>
+				<textzone align="center" fontsize="12" weight="bold" color="blue" visibility="sync_hint 'phase'">
+				  <pos  x="+20" y="+90"/>
+				  <size width="38" height="16"/>
+				  <text fontsize="12" color="blue" format="PHRASE" />
+				</textzone>
 
-			<!-- JOGWHEEL: KEY TEXT (OUT OF TUNE) -->
-			<button class="button_main"
-			        action="key_match_button"
-			        width="50"
-			        height="15"
-			        x="+14+10"
-			        y="+70"
-			        coloroff="transparent"
-			        coloron="transparent"
-			        brcoloroff="red"
-			        brcoloron="green"
-			        bordersize="1"
-			        textsize="12"
-			        textcolor="red"
-			        textcoloron="green"
-			        text="KEY"
-			        visibility="loaded ? not masterdeck" />
+				<!-- JOGWHEEL: KEY TEXT (OUT OF TUNE) -->
+				<button class="button_main"
+				        action="key_match_button"
+				        width="50"
+				        height="15"
+				        x="+14+10"
+				        y="+70"
+				        coloroff="transparent"
+				        coloron="transparent"
+				        brcoloroff="red"
+				        brcoloron="green"
+				        bordersize="1"
+				        textsize="12"
+				        textcolor="red"
+				        textcoloron="green"
+				        text="KEY"
+				        visibility="loaded ? not masterdeck" />
 
-		  <!-- SYNC TEXT BEAT DESYNC WARNING -->
-			<button class="button_main" action="phrase_sync 32" width="50" height="15"
-				x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1"
-				textsize="12" textcolor="red" textcoloron="green" text="BEAT"
-				query="is_sync"
-				visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true" />
+			  <!-- SYNC TEXT BEAT DESYNC WARNING -->
+				<button class="button_main" action="phrase_sync 32" width="50" height="15"
+					x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1"
+					textsize="12" textcolor="red" textcoloron="green" text="BEAT"
+					query="is_sync"
+					visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true" />
 
-			<!-- MASTER BUTTON -->
-			<button class="button_main"
-			        action="key_match_button"
-			        width="110"
-			        height="18"
-			        x="+16+6"
-			        y="+69"
-			        coloroff="black"
-			        coloron="black"
-			        bordersize="1"
-			        brcoloroff="orange"
-			        brcoloron="orange"
-			        radius="1"
-			        textsize="12"
-			        textcolor="orange"
-			        textcoloron="orange"
-			        textaction="get_text 'MASTER'"
-			        visibility="loaded ? masterdeck" />
+				<!-- MASTER BUTTON -->
+				<button class="button_main"
+				        action="key_match_button"
+				        width="110"
+				        height="18"
+				        x="+16+6"
+				        y="+69"
+				        coloroff="black"
+				        coloron="black"
+				        bordersize="1"
+				        brcoloroff="orange"
+				        brcoloron="orange"
+				        radius="1"
+				        textsize="12"
+				        textcolor="orange"
+				        textcoloron="orange"
+				        textaction="get_text 'MASTER'"
+				        visibility="loaded ? masterdeck" />
 
-			<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/> -->
+				<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/> -->
 
-			<!-- JOGWHEEL: PITCH RANGE -->
-			<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/> -->
-			<!-- <button class="button_main" width="45" height="16" x="+18+6+45+15" y="+68" coloroff="transparent" coloron="transparent" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
+				<!-- JOGWHEEL: PITCH RANGE -->
+				<!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/> -->
+				<!-- <button class="button_main" width="45" height="16" x="+18+6+45+15" y="+68" coloroff="transparent" coloron="transparent" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
 
-			<!-- BOTTOM TEXT -->
-			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="23" fontsize="14" color="deckcolor" align="center" weight="" textaction="wheel_mode & param_uppercase" visibility="loaded ? var_equal '@$haunting_jog_text' 0"/> -->
-			<!-- <button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="23" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/> -->
-			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/> -->
-			<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/> -->
+				<!-- BOTTOM TEXT -->
+				<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="23" fontsize="14" color="deckcolor" align="center" weight="" textaction="wheel_mode & param_uppercase" visibility="loaded ? var_equal '@$haunting_jog_text' 0"/> -->
+				<!-- <button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="23" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/> -->
+				<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/> -->
+				<!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/> -->
 
-			<panel class="key_display" x="+22" y="+98"/>
+				<panel class="key_display" x="+22" y="+98"/>
 			
-			<!-- <visual name="innercircle_border"> -->
-				<!-- <pos x="+68" y="+68"/> -->
-				<!-- <size width="[JOGSIZE]-136" height="[JOGSIZE]-136"/> -->
-				<!-- <off shape="circle" color="deckcolor" border_size="0" border="jogprogressoff" /> -->
-			<!-- </visual> -->
+				<!-- <visual name="innercircle_border"> -->
+					<!-- <pos x="+68" y="+68"/> -->
+					<!-- <size width="[JOGSIZE]-136" height="[JOGSIZE]-136"/> -->
+					<!-- <off shape="circle" color="deckcolor" border_size="0" border="jogprogressoff" /> -->
+				<!-- </visual> -->
 
-			<!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="deckcolor" widthfader="6" heightfader="52" radius="10"/> -->
-
+				<!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="deckcolor" widthfader="6" heightfader="52" radius="10"/> -->
+			</group>
 			<!-- CORNER BUTTONS -->
 
 			<!-- EJECT BUTTON -->
@@ -16243,10 +16244,10 @@
 			<button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
 			<!-- PRO: LEFT: TRANSPORT BAR -->
 			<!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
-			<button class="button_main" x="+800-80-3-80-1-80-2-80-2-80-2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-80-1-80-2-80-2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-80-1-80-2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-30" textsize="11" y="+176" width="110" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
+			<button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-30" textsize="11" y="+179" width="106" height="30" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
 					<off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>␍
 					<over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>␍
 			</button>
@@ -16454,11 +16455,13 @@
 
 		<!-- PRO: RIGHT: TRANSPORT BAR -->
 		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1+80+2+80+2+80+2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1+80+2+80+2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<button class="button_main" x="+3+80+1+80+2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-		<!-- <button class="button_main" x="+3+80+1" textsize="11" y="+176" text="MASTER" width="80" height="36" action="masterdeck" textcoloron="orange" coloroff="button_background4" coloron="button_background4" colordown="#222222" bordersize="2" brcoloron="orange" brcoloroff="button_background4"/> -->
-		<button class="button_main" x="+3" textsize="11" y="+176" width="80" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+		<button class="button_main" x="+3+30+1+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+3+30+1+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+3+30+1+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+		<button class="button_main" x="+6" textsize="11" y="+179" width="106" height="30" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
+				<off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>␍
+				<over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>␍
+		</button>
 
 		<!-- ACTIVE DECK BORDER: RIGHT -->
 		<!-- <visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true" x="-2" y="-2"> -->
