@@ -61,7 +61,15 @@
 <define color="waveform_active1"  value="#219cbf"/>
 <define color="waveform_passive1" value="#113845"/>
 
+<define value="#60FF8E" color="color_genre"    />
+<define value="#CE42FF" color="color_mood"     />
+<define value="#49FFFF" color="color_elements" />
+<define value="#FF026B" color="color_mix"      />
+<define value="#FFF138" color="color_timing"   />
+
 <define color="colorbass"  value="#FF4551"  deck="1"/>
+<define color="colorkick"  value="#FF45FF"  deck="1"/>
+<define color="colorhihat" value="#F0CF0C"  deck="1"/>
 <define color="colormed"   value="#113845"  deck="1"/>
 <define color="colorhigh"  value="#219cbf"  deck="1"/>
 <define color="scratch1"   value="#007eff"  deck="1"/>
@@ -74,6 +82,8 @@
 <define color="waveform_passive2" value="#5f1620"/>
 
 <define color="colorbass"  value="#FF4551"  deck="2"/>
+<define color="colorkick"  value="#FF45FF"  deck="2"/>
+<define color="colorhihat" value="#F0CF0C"  deck="2"/>
 <define color="colormed"   value="#5f1620"  deck="2"/>
 <define color="colorhigh"  value="#c62b39"  deck="2"/>
 <define color="scratch1"   value="#33BBFF"  deck="2"/>
@@ -86,6 +96,8 @@
 <define color="waveform_passive3" value="#153f39"/>
 
 <define color="colorbass"  value="#FF4551"  deck="3"/>
+<define color="colorkick"  value="#FF45FF"  deck="3"/>
+<define color="colorhihat" value="#F0CF0C"  deck="3"/>
 <define color="colormed"   value="#153f39"  deck="3"/>
 <define color="colorhigh"  value="#21ac87"  deck="3"/>
 <define color="scratch1"   value="#00ff5a"  deck="3"/>
@@ -98,6 +110,8 @@
 <define color="waveform_passive4" value="#52291c"/>
 
 <define color="colorbass"  value="#FF4551"  deck="4"/>
+<define color="colorkick"  value="#FF45FF"  deck="4"/>
+<define color="colorhihat" value="#F0CF0C"  deck="4"/>
 <define color="colormed"   value="#52291c"  deck="4"/>
 <define color="colorhigh"  value="#ca5d36"  deck="4"/>
 <define color="scratch1"   value="#ff5400"  deck="4"/>
@@ -1769,6 +1783,16 @@
 			<down color="[COLOROFF]" border="deckcolor" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<selected color="[COLOROFF]" border="deckcolor" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
 			<text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="" color="[TEXTCOLOR]" colorselected="[TEXTCOLORON]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" action="custom_button_name [SOURCE]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
+		</define>
+
+		<define class="tag_button" action="custom_button [SOURCE]" rightclick="custom_button_edit [SOURCE]" placeholders="*source,width=100,height=26,text,textheight=height,important=true,textaction,color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
+			<over color="[COLOROFF]" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
+			<down color="[COLOROFF]" border="deckcolor" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
+			<selected color="[COLOR]" border="[COLOR]" border_size="1" shape="[SHAPE]" radius="6"/>
+			<text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="" color="[COLOR]" colorselected="black" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" action="custom_button_name [SOURCE]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
 			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
 		</define>
 
@@ -3667,7 +3691,6 @@
 			</loops>
 		</define>
 
-
 		<define class="haunting_browser_basic" showzoom="yes">
 			<background color="br_background" bordercolortop="br_background" bordercolor="br_background" bordersize="3"/>
 			<colors >
@@ -5535,8 +5558,9 @@
 			<button action="select" visibility="loaded">
 				<pos x="+3" y="+3"/>
 				<size width="[SIZE]-4" height="[SIZE]-4"/>
-				<over shape="square" color="transparent" border="needle" border_size="4"/>
-				<on shape="square" color="transparent" border="needle" border_size="4"/>
+				<over shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
+				<off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
+				<on shape="square" color="transparent" border="#33FFFFFF" border_size="1"/>
 			</button>
 		</deck>
 	</define>
@@ -5782,12 +5806,12 @@
 			<group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
 				<group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
 					<textzone tooltip="" >
-						<pos x="+2+4+28+8+50+8" y="+4"/>
+						<pos x="+2+4+28+8+100+8" y="+4"/>
 						<size width="478-50-8" height="34"/>
-						<text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
-						<pos x="+2+4+28+8+50+8" y="+4+28" />
+						<pos x="+2+4+28+8+100+8" y="+4+28" />
 						<size width="478-50-8" height="28"/>
 						<text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/>
 					</textzone>
@@ -5795,12 +5819,12 @@
 
 				<group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
 					<textzone tooltip="" >
-						<pos x="+2+4+28+8+50+8" y="+4"/>
+						<pos x="+2+4+28+8+100+8" y="+4"/>
 						<size width="478-50-8" height="34"/>
-						<text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+						<text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix`'" localize="true" important="true"/>
 					</textzone>
 					<textzone tooltip="">
-						<pos x="+2+4+28+8+50+8" y="+4+28" />
+						<pos x="+2+4+28+8+100+8" y="+4+28" />
 						<size width="478-50-8" height="28"/>
 						<text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
 					</textzone>
@@ -5809,8 +5833,8 @@
 
 			<!-- COVER -->
 			<cover rotate="no" rightclick="" dblclick="">
-				<pos x="+2+4+32+6" y="+8"/>
-				<size width="50" height="50"/>
+				<pos x="+2+4+33" y="+4"/>
+				<size width="100-8-1" height="100-8-1"/>
 			</cover>
 
 			<button class="button_main" x="+878-10-90" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
@@ -5899,7 +5923,6 @@
 
 			<!-- MINI DECK: RIGHT: DECK BUTTON -->
 			<button class="button_main" x="+878-2-4-32" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-			<!-- <button class="button_main" x="+2+4" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
 
 			<!-- MINI DECK: RIGHT: SETTINGS -->
 			<menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/>
@@ -5914,15 +5937,13 @@
 
 	<!-- PRO: TRACK INFO -->
 	<define class="infos">
-		<!-- PRO: TRACK INFO: LEFT DECK -->
 		
+		<!-- PRO: TRACK INFO: LEFT DECK -->		
 		<!-- BACKGROUND -->
 		<button class="button_main" action="select" width="484" height="72" coloroff="#000000" coloron="black" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
 		
 		<!-- PRO: LEFT DECK: DECK BUTTON -->
-		<button class="button_main" x="+0" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
-		
-		<!-- <button class="button_main" x="+5" y="+5" width="33" height="40" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textheight="58" textsize="35" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+		<button class="button_main" x="+0" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
 
 		<!-- PRO: LEFT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+450" y="+45" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
@@ -5968,7 +5989,6 @@
 			</textzone>
 
 			<button class="button_main" action="search `get_title_before_remix`" rightclick="file_info" x="+2+4+28+6+170+8" y="+1" tooltip="" width="484-2-4-28-6-2-4-210" height="70-6-6-26" coloroff="transparent" coloron="transparent" brcoloroff="transparent" brcoloron="transparent" bordersize="2"/>
-
 			
 			<!-- LINE 2 -->
 			<textzone tooltip="" visibility="get_deck 1 ? true : get_deck 3 ? true : false">
@@ -5988,7 +6008,6 @@
 			<group visibility="loaded">
 			<button action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' & set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' & set 'keyDisplayToggle' 1"
 			        query="var_equal 'keyDisplayToggle' 1"
-			        deck="default"
 			        visibility="loaded">
 			  <pos  x="+2+4+28+6+170+8+80" y="+4+20+20"/>
 			  <size width="40" height="25"/>
@@ -6042,8 +6061,7 @@
 			<group visibility="loaded">
 				<button action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' & set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' & set 'keyDisplayToggle' 1"
 				        query="var_equal 'keyDisplayToggle' 1"
-				        visibility="loaded"
-				        deck="default">
+				        visibility="loaded">
 				  <pos  x="+100" y="+4+20+20"/>
 				  <size width="40" height="25"/>
 
@@ -6085,14 +6103,14 @@
 			<!-- </group> -->
 		</group>
 
-		<!-- COVER ART (PRO) -->
-		<!-- left -->
-		<panel class="cover_art_hntg" size="184-6-6" x="+2+4+32" y="+2" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
-		<!-- right -->
-		<panel class="cover_art_hntg" size="184-6-6" x="+484-3-28-181" y="+3" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<!-- PRO: COVER ART -->
+		<!-- LEFT -->
+		<panel class="cover_art_hntg" size="184-6-6" x="+2+4+30" y="+0" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
+		<!-- RIGHT -->
+		<panel class="cover_art_hntg" size="184-6-6" x="+484-2-28-180" y="+0" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK BUTTON -->
-		<button class="button_main" x="+484-36" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textsize="35" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+		<button class="button_main" x="+484-36" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="50" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
 
 		<!-- PRO: RIGHT DECK: DECK MENU -->
 		<menu class="menu_maindecks" query="select" x="+484/2" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
@@ -7715,12 +7733,24 @@
 		</video>
 	</define>
 
-	<!-- PRO: VFX PANEL -->
+	<!-- PRO: RIGHT DECK: 4STEM PANEL -->
 	<define class="4_stem_controls">
 		<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+20" y="+10" />
 		<panel class="stem_control" stem="instru" label="INSTR" color="colorinstru" x="+80" y="+10" />
 		<panel class="stem_control" stem="bass" label="BASS" color="colorbass" x="+139" y="+10" />
 		<panel class="stem_control" stem="rhythm" label="DRUM" color="colorbeat" x="+196" y="+10" />
+	</define>
+
+	<!-- PRO: RIGHT DECK: 5STEM PANEL -->
+	<define class="5_stem_controls">
+		<!-- background -->
+		<visual class="gfx_shape" x="+0" y="+0" width="474" height="213" coloroff="panel_background"/>
+		
+		<panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+10" y="+10" />
+		<panel class="stem_control" stem="instru" label="INSTR" color="colorinstru" x="+70" y="+10" />
+		<panel class="stem_control" stem="bass" label="BASS" color="colorbass" x="+130" y="+10" />
+		<panel class="stem_control" stem="kick" label="KICK" color="colorkick" x="+185" y="+10" />
+		<panel class="stem_control" stem="hihat" label="HI-HAT" color="colorhihat" x="+240" y="+10" />
 	</define>
 
 	<define class="vfx_slot_ex" placeholders="*deck">
@@ -8980,8 +9010,12 @@
 				<button class="button_main" x="+10" y="+6+30+7" width="38+35" height="30" action="edit_bpm" coloroff="button_background2" brcoloroff="button_background2" text="EDIT"/>
 			</panel>
 
-			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="STEM 3">
+			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="4STEM">
 				<panel class="4_stem_controls" visibility="loaded ? has_stems"/>
+			</panel>
+
+			<panel name="@vfx_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="5STEM">
+				<panel class="5_stem_controls" visibility="loaded ? has_stems"/>
 			</panel>
 
 			<panel name="@svloops_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="no" displayname="Saved Loops">
@@ -10681,29 +10715,29 @@
 
 	<define class="custom_buttons_zone_left" placeholders="*deck">
 		<deck deck="[DECK]">
-			<button class="custom_button" source="24" x="+0" y="+6"/>
-			<button class="custom_button" source="25" x="+105" y="+6"/>
-			<button class="custom_button" source="26" x="+105*2" y="+6"/>
-			<button class="custom_button" source="27" x="+105*3" y="+6"/>
-			<button class="custom_button" source="28" x="+105*4" y="+6"/>
-			<button class="custom_button" source="29" x="+105*5" y="+6"/>
-			<button class="custom_button" source="30" x="+105*6" y="+6"/>
-			<button class="custom_button" source="31" x="+105*7" y="+6"/>
-			<button class="custom_button" source="32" x="+105*8" y="+6"/>
+			<button class="tag_button" source="24" x="+0" y="+6"/>
+			<button class="tag_button" source="25" x="+105" y="+6"/>
+			<button class="tag_button" source="26" x="+105*2" y="+6"/>
+			<button class="tag_button" source="27" x="+105*3" y="+6"/>
+			<button class="tag_button" source="28" x="+105*4" y="+6"/>
+			<button class="tag_button" source="29" x="+105*5" y="+6" color="#CC00FF"/>
+			<button class="tag_button" source="30" x="+105*6" y="+6" color="#CC00FF"/>
+			<button class="tag_button" source="31" x="+105*7" y="+6" color="#CC00FF"/>
+			<button class="tag_button" source="32" x="+105*8" y="+6" color="#CC00FF"/>
 		</deck>
 	</define>
 
 	<define class="custom_buttons_zone_right" placeholders="*deck">
 		<deck deck="[DECK]">
-			<button class="custom_button" source="33" x="+0" y="+6"/>
-			<button class="custom_button" source="34" x="+105" y="+6"/>
-			<button class="custom_button" source="35" x="+105*2" y="+6"/>
-			<button class="custom_button" source="36" x="+105*3" y="+6"/>
-			<button class="custom_button" source="37" x="+105*4" y="+6"/>
-			<button class="custom_button" source="38" x="+105*5" y="+6"/>
-			<button class="custom_button" source="39" x="+105*6" y="+6"/>
-			<button class="custom_button" source="40" x="+105*7" y="+6"/>
-			<button class="custom_button" source="41" x="+105*8" y="+6"/>
+			<button class="tag_button" source="33" x="+0" y="+6" color="#CC00FF"/>
+			<button class="tag_button" source="34" x="+105" y="+6" color="#FF3344"/>
+			<button class="tag_button" source="35" x="+105*2" y="+6" color="#FF3344"/>
+			<button class="tag_button" source="36" x="+105*3" y="+6" color="#FF3344"/>
+			<button class="tag_button" source="37" x="+105*4" y="+6" color="#FF3344"/>
+			<button class="tag_button" source="38" x="+105*5" y="+6" color="#44FFFF"/>
+			<button class="tag_button" source="39" x="+105*6" y="+6" color="#44FFFF"/>
+			<button class="tag_button" source="40" x="+105*7" y="+6" color="#44FFFF"/>
+			<button class="tag_button" source="41" x="+105*8" y="+6" color="#44FFFF"/>
 		</deck>
 	</define>
 </group>
@@ -10729,7 +10763,7 @@
 				<pos x="+50" y="+0"/>
 				<size width="136" height="27"/>
 				<off shape="square" color="panel_background"/>
-				<text dx="10" width="102" fontsize="11" weight="" color="textoff2" colorover="needle" align="left" action="browser_zoom ?  get_text 'BROWSER' : NOT browser_zoom ? var_equal '@$hauntingproskinmode' 0 ? get_text 'PRO' : var_equal '@$hauntingproskinmode' 1 ? get_text 'PERFORMANCE' : var_equal '@$hauntingproskinmode' 2 ? get_text 'STACK'" localize="true" important="true"/>
+			<text dx="10" width="102" fontsize="11" weight="" color="textoff2" colorover="needle" align="left" action="browser_zoom ?  get_text 'BROWSER' : NOT browser_zoom ? var_equal '@$hauntingproskinmode' 0 ? get_text 'PRO' : var_equal '@$hauntingproskinmode' 1 ? get_text 'PERFORMANCE' : var_equal '@$hauntingproskinmode' 2 ? get_text 'STACK'" localize="true" important="true"/>
 				<icon dx="54" dy="-1" sysicon="chevrondown" height="17" width="17" color="textoff" colorover="needle" colordown="needle"/>
 				<item text="PRO" action="set '@$hauntingproskinmode' 0 & load_skin" check="var_equal '@$hauntingproskinmode' 0"/>
 				<item text="PERFORMANCE" action="set '@$hauntingproskinmode' 1 & load_skin" check="var_equal '@$hauntingproskinmode' 1"/>
@@ -10754,6 +10788,8 @@
 		<!-- <button class="button_main" x="330" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="S" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/> -->
 		<button class="button_main" x="240" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/>
 		<button class="button_main" x="270" y="8" action="set '@$hauntinglayout' 1 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="4" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+
+		<button class="button_main" x="350" y="8" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcoloron="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" bordersize="0"/>
 
 		<!-- PRO: TOP BAR -->
 		<group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
@@ -11612,83 +11648,138 @@
 		</group>
 	</define>
 
+	<!-- BOTTOM BAR (UTILITY BAR) -->
 	<define class="h_utility_bar">
-		<visual class="gfx_shape" width="1920-2-2" height="38" coloroff="br_tb_background"/>
+		<!-- <visual class="gfx_shape" width="1920" height="38" coloroff="#111111"/> -->
+		<visual width="1920-2" height="38">
+			<off shape="square" color="#111111" border_size="1" border="#222222" radius="3"/>
+		</visual>
+
+		<!-- CLASS: CUSTOM TAG BUTTON -->
+		<define class="filter_tag_button" placeholders="*tag,width=98,height=27,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+			<button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2">
+			  <size width="[WIDTH]" height="[HEIGHT]"/>
+			  <off color="#111111" border="#22AAAAAA" border_size="1" shape="[SHAPE]" radius="3"/>
+			  <over color="#111111" border="#111111" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
+			  <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
+			  <selected color="#222222" border="#333333" border_size="1" shape="[SHAPE]" radius="3"/>
+			  <text action="get_text '[TAG]' & param_uppercase" dx="+7" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]" />
+			  <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
+		  </button>
+
+			<visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="1.0"/>
+			<!-- <visual class="gfx_shape" x="-1" y="+1" width="[WIDTH]+2" height="4" coloroff="[ACCENT_COLOR]" radius="3" border_size="0"/> -->
+			<!-- <visual class="gfx_shape" x="-2" y="+3" width="[WIDTH]+4" height="4" coloroff="black" radius="0" border_size="0"/> -->
+
+			<visual x="+6" y="+8" width="5" height="16">
+				<off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/>
+			</visual>
+		</define>
 
 		<group name="browser_tools" visibility="var_equal '@$h_utility_barmode' 0">
 			<group name="search_for_#" x="-16">
-				<textzone class="text" x="+32" y="+0" width="58" height="38" fontsize="10" color="textdarker" align="right" weight="" text="• SEARCH:"/>
+				<group name="genre_tags" x="+50">
+					<!-- BACKGROUND -->
+					<visual x="+66" y="+1" width="389" height="36" visibility="1.0">
+						<off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/>
+					</visual>
+					<!-- TEXT LABEL -->
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_genre" align="right" weight="" text="GENRE"/>
+					<!-- BUTTONS -->
+					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_genre" tag="#BassHouse" text="Bass House" />
+					<panel class="filter_tag_button" x="+172" y="+4" accent_color="color_genre" tag="#Techno" width="72" />
+					<panel class="filter_tag_button" x="+248" y="+4" accent_color="color_genre" tag="#PsyTrance" width="98" />
+					<panel class="filter_tag_button" x="+349" y="+4" accent_color="color_genre" tag="#Synthwave" width="102" />
+					<!-- COLOR STRIP -->
+					<!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_genre" visibility="0.8"/> -->
+				</group>
 
-				<button class="button_main" x="+102" y="+7" width="70" height="24" action="search '`get_browsed_artist`'" rightclick="clear_search" query="on/off" tooltip="Search for artist\nRigth-click: Clear search" textsize="10" textcolor="br_textoff" textaction="get_text '#ARTIST'" coloroff="br_background" coloron="browser_iconbuttonactive" bordersize="0"/>
-				<button class="button_main" x="+102+70+2" y="+7" width="70" height="24" action="search '`get_browsed_title`'" rightclick="clear_search" query="on/off" tooltip="Search for title\nRigth-click: Clear search" textsize="10" textcolor="br_textoff" textaction="get_text '#TITLE'" coloroff="br_background" coloron="browser_iconbuttonactive" bordersize="0"/>
-				<button class="button_main" x="+102+70+2+70+2" y="+7" width="70" height="24" action="search '`get_browsed_album`'" rightclick="clear_search" query="on/off" tooltip="Search for album\nRigth-click: Clear search" textsize="10" textcolor="br_textoff" textaction="get_text '#ALBUM'" coloroff="br_background" coloron="browser_iconbuttonactive" bordersize="0"/>
-				<button class="button_main" x="+102+70+2+70+2+70+2" y="+7" width="70" height="24" action="search '`get_browsed_song bpm & param_cast integer & param_add -5`-`get_browsed_song bpm & param_cast integer & param_add +5`'" textcolor="br_textoff" rightclick="clear_search" query="on/off" tooltip="Search for similar bpm\nRigth-click: Clear search" textsize="10" textaction="get_text '#BPM'" coloroff="br_background" coloron="browser_iconbuttonactive" bordersize="0"/>
-				<button class="button_main" x="+102+70+2+70+2+70+2+70+2" y="+7" width="70" height="24" action="search '`get_browsed_song grouping`'" textcolor="br_textoff" rightclick="clear_search" query="on/off" tooltip="Search for grouping\nRigth-click: Clear search" textsize="10" textaction="get_text '#GROUP'" coloroff="br_background" coloron="browser_iconbuttonactive" bordersize="0"/>
+				<group name="mix_tags" x="+530">
+					<!-- COLOR STRIP -->
+					<!-- <visual class="gfx_shape" x="+70" y="+34" width="349-70+100-6" height="5" coloroff="color_mix" visibility="1.0"/> -->
+					<visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" />
+					<visual x="+0" y="+13" width="35" height="14" visibility="1.0">
+						<off shape="square" color="#111111" border_size="1" border="color_mix" radius="2"/>
+					</visual>
+					<!-- LABEL -->
+					<textzone class="text" x="+0" y="+13" width="35" height="13" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
+					<!-- BUTTONS -->
+					<panel class="filter_tag_button" x="+40" y="+4" accent_color="color_mix" tag="#Acapella" width="84" />
+					<panel class="filter_tag_button" x="+158" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
+					<panel class="filter_tag_button" x="+279" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
+					<panel class="filter_tag_button" x="+343" y="+4" accent_color="color_mix" tag="#Transition" />
+					<!-- HIGHLIGHT -->
+					<visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/>
+				</group>
 
-				<visual class="gfx_shape" x="+102" y="+7+24-2" width="70" height="2" coloroff="browser_iconbuttonactive"/>
-				<visual class="gfx_shape" x="+102+70+2" y="+7+24-2" width="70" height="2" coloroff="browser_iconbuttonactive"/>
-				<visual class="gfx_shape" x="+102+70+2+70+2" y="+7+24-2" width="70" height="2" coloroff="browser_iconbuttonactive"/>
-				<visual class="gfx_shape" x="+102+70+2+70+2+70+2" y="+7+24-2" width="70" height="2" coloroff="browser_iconbuttonactive"/>
-				<visual class="gfx_shape" x="+102+70+2+70+2+70+2+70+2" y="+7+24-2" width="70" height="2" coloroff="browser_iconbuttonactive"/>
+				<group name="mix_timing" x="+930">
+					<visual class="gfx_shape" x="+67" y="+0" width="129" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
+					<!-- LABEL -->
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="right" weight="" text="TIMING"/>
+					<!-- BUTTONS -->
+					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_timing" tag="#Intro" width="64" />
+					<panel class="filter_tag_button" x="+70+64+3" y="+4" accent_color="color_timing" tag="#Peak" width="56"/>
+					<!-- COLOR STRIP -->
+					<!-- <visual class="gfx_shape" x="+70" y="+35" width="123" height="2" coloroff="color_timing" visibility="0.8"/> -->
+				</group>
+
+				<group name="mix_mood" x="+1130">
+					<visual class="gfx_shape" x="+67" y="+0" width="152" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
+					<!-- LABEL -->
+					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_mood" align="right" weight="" text="MOOD"/>
+					<!-- BUTTONS -->
+					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_mood" tag="#Club" width="56" />
+					<panel class="filter_tag_button" x="+70+56+3" y="+4" accent_color="color_mood" tag="#FredAgain" width="86"/>
+					<!-- COLOR STRIP -->
+					<!-- <visual class="gfx_shape" x="+70" y="+35" width="144" height="2" coloroff="color_mood" visibility="0.8"/> -->
+				</group>
+				
 			</group>
 
-			<group name="track" x="+440">
-				<textzone class="text" x="+32" y="+0" width="58" height="38" fontsize="10" color="textdarker" align="right" weight="" text="• TRACKS:"/>
+			<!-- <group name="track" x="+440"> -->
+				<!-- <textzone class="text" x="+32" y="+0" width="58" height="38" fontsize="10" color="textdarker" align="right" weight="" text="MIX"/> -->
 
-				<button class="button_main" x="+102" y="+7" width="75" height="24" action="browsed_file_analyze" textsize="10" text="ANALIZE" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
-				<button class="button_main" x="+102+75+2" y="+7" width="75" height="24" action="browsed_file_analyze 'multi'" textsize="10" text="MULTI BPM" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
-				<button class="button_main" x="+102+75+2+75+2" y="+7" width="75" height="24" action="recurse_folder" textsize="10" text="RECURSE" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
-				<button class="button_main" x="+102+75+2+75+2+75+2" y="+7" width="75" height="24" action="browsed_file_info" textsize="10" text="TAG EDIT" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
-				<button class="button_main" x="+102+75+2+75+2+75+2+75+2" y="+7" width="75" height="24" action="browser_gotofolder" textsize="10" text="GO TO" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
-				<button class="button_main" x="+102+75+2+75+2+75+2+75+2+75+2" y="+7" width="75" height="24" action="relay_play" textsize="10" text="RELAY" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/>
+				<!-- <button class="button_main" x="+102" y="+7" width="75" height="24" action="browsed_file_analyze" textsize="10" text="ANALIZE" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
+				<!-- <button class="button_main" x="+102+75+2" y="+7" width="75" height="24" action="browsed_file_analyze 'multi'" textsize="10" text="MULTI BPM" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
+				<!-- <button class="button_main" x="+102+75+2+75+2" y="+7" width="75" height="24" action="recurse_folder" textsize="10" text="RECURSE" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
+				<!-- <button class="button_main" x="+102+75+2+75+2+75+2" y="+7" width="75" height="24" action="browsed_file_info" textsize="10" text="TAG EDIT" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
+				<!-- <button class="button_main" x="+102+75+2+75+2+75+2+75+2" y="+7" width="75" height="24" action="browser_gotofolder" textsize="10" text="GO TO" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
+				<!-- <button class="button_main" x="+102+75+2+75+2+75+2+75+2+75+2" y="+7" width="75" height="24" action="relay_play" textsize="10" text="RELAY" textcolor="br_textoff" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
 
-				<visual class="gfx_shape" x="+102" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-				<visual class="gfx_shape" x="+102+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-				<visual class="gfx_shape" x="+102+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-				<visual class="gfx_shape" x="+102+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-				<visual class="gfx_shape" x="+102+75+2+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-				<visual class="gfx_shape" x="+102+75+2+75+2+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/>
-			</group>
+				<!-- <visual class="gfx_shape" x="+102" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+				<!-- <visual class="gfx_shape" x="+102+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+				<!-- <visual class="gfx_shape" x="+102+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+				<!-- <visual class="gfx_shape" x="+102+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+				<!-- <visual class="gfx_shape" x="+102+75+2+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+				<!-- <visual class="gfx_shape" x="+102+75+2+75+2+75+2+75+2+75+2" y="+7+24-2" width="75" height="2" coloroff="br_focus"/> -->
+			<!-- </group> -->
 
 			<group name="color/rating/relayplay/automix" x="+1020" y="+9">
-				<panel class="trackcolorbtn" color="#800000" action="browsed_file_color '#800000'" dblclick="browsed_file_color 'reset'"/>
-				<panel class="trackcolorbtn" color="#e69696" action="browsed_file_color '#e69696'" dblclick="browsed_file_color 'reset'" x="+29"/>
-				<panel class="trackcolorbtn" color="#ff0000" action="browsed_file_color '#ff0000'" dblclick="browsed_file_color 'reset'" x="+29*2"/>
-				<panel class="trackcolorbtn" color="#ff7f00" action="browsed_file_color '#ff7f00'" dblclick="browsed_file_color 'reset'" x="+29*3"/>
-				<panel class="trackcolorbtn" color="#ffff00" action="browsed_file_color '#ffff00'" dblclick="browsed_file_color 'reset'" x="+29*4"/>
-				<panel class="trackcolorbtn" color="#ffff8b" action="browsed_file_color '#ffff8b'" dblclick="browsed_file_color 'reset'" x="+29*5"/>
-				<panel class="trackcolorbtn" color="#00ff00" action="browsed_file_color '#00ff00'" dblclick="browsed_file_color 'reset'" x="+29*6"/>
-				<panel class="trackcolorbtn" color="#00ff84" action="browsed_file_color '#00ff84'" dblclick="browsed_file_color 'reset'" x="+29*7"/>
-				<panel class="trackcolorbtn" color="#00ffff" action="browsed_file_color '#00ffff'" dblclick="browsed_file_color 'reset'" x="+29*8"/>
-				<panel class="trackcolorbtn" color="#4a86e6" action="browsed_file_color '#4a86e6'" dblclick="browsed_file_color 'reset'" x="+29*9"/>
-				<panel class="trackcolorbtn" color="#0000ff" action="browsed_file_color '#0000ff'" dblclick="browsed_file_color 'reset'" x="+29*10"/>
-				<panel class="trackcolorbtn" color="#9600ff" action="browsed_file_color '#9600ff'" dblclick="browsed_file_color 'reset'" x="+29*11"/>
-				<panel class="trackcolorbtn" color="#ff00ff" action="browsed_file_color '#ff00ff'" dblclick="browsed_file_color 'reset'" x="+29*12"/>
+				<!-- <panel class="trackcolorbtn" color="#800000" action="browsed_file_color '#800000'" dblclick="browsed_file_color 'reset'"/> -->
+				<!-- <panel class="trackcolorbtn" color="#e69696" action="browsed_file_color '#e69696'" dblclick="browsed_file_color 'reset'" x="+29"/> -->
+				<!-- <panel class="trackcolorbtn" color="#ff0000" action="browsed_file_color '#ff0000'" dblclick="browsed_file_color 'reset'" x="+29*2"/> -->
+				<!-- <panel class="trackcolorbtn" color="#ff7f00" action="browsed_file_color '#ff7f00'" dblclick="browsed_file_color 'reset'" x="+29*3"/> -->
+				<!-- <panel class="trackcolorbtn" color="#ffff00" action="browsed_file_color '#ffff00'" dblclick="browsed_file_color 'reset'" x="+29*4"/> -->
+				<!-- <panel class="trackcolorbtn" color="#ffff8b" action="browsed_file_color '#ffff8b'" dblclick="browsed_file_color 'reset'" x="+29*5"/> -->
+				<!-- <panel class="trackcolorbtn" color="#00ff00" action="browsed_file_color '#00ff00'" dblclick="browsed_file_color 'reset'" x="+29*6"/> -->
+				<!-- <panel class="trackcolorbtn" color="#00ff84" action="browsed_file_color '#00ff84'" dblclick="browsed_file_color 'reset'" x="+29*7"/> -->
+				<!-- <panel class="trackcolorbtn" color="#00ffff" action="browsed_file_color '#00ffff'" dblclick="browsed_file_color 'reset'" x="+29*8"/> -->
+				<!-- <panel class="trackcolorbtn" color="#4a86e6" action="browsed_file_color '#4a86e6'" dblclick="browsed_file_color 'reset'" x="+29*9"/> -->
+				<!-- <panel class="trackcolorbtn" color="#0000ff" action="browsed_file_color '#0000ff'" dblclick="browsed_file_color 'reset'" x="+29*10"/> -->
+				<!-- <panel class="trackcolorbtn" color="#9600ff" action="browsed_file_color '#9600ff'" dblclick="browsed_file_color 'reset'" x="+29*11"/> -->
+				<!-- <panel class="trackcolorbtn" color="#ff00ff" action="browsed_file_color '#ff00ff'" dblclick="browsed_file_color 'reset'" x="+29*12"/> -->
 
 				<textzone tooltip="">
-					<pos x="+388+5" y="-4"/><size width="100" height="22"/>
-					<text fontsize="22" color="textdarker" action="get_text '★★★★★'" align="left"/>
+					<pos x="+388+5" y="-1"/>
+					<size width="100" height="22"/>
+					<text fontsize="11" color="textdarker" action="get_text '★★★★★'" align="left"/>
 				</textzone>
 				<textzone tooltip="">
-					<pos x="+388+5" y="-4"/><size width="100" height="22"/>
-					<text fontsize="22" color="needle" action="get browsed_song 'stars'" align="left"/>
+					<pos x="+388+5" y="-1"/>
+					<size width="100" height="22"/>
+					<text fontsize="11" color="yellow" action="get browsed_song 'stars'" align="left"/>
 				</textzone>
-				<button action="browsed_song rating 1 ? browsed_song rating 0 : browsed_song rating 1">
-					<pos x="+388+5" y="-4"/><size width="18" height="22"/>
-				</button>
-				<button action="browsed_song rating 2 ? browsed_song rating 0 : browsed_song rating 2">
-					<pos x="+388+5+18" y="-4"/><size width="18" height="22"/>
-				</button>
-				<button action="browsed_song rating 3 ? browsed_song rating 0 : browsed_song rating 3">
-					<pos x="+388+5+18+18" y="-4"/><size width="18" height="22"/>
-				</button>
-				<button action="browsed_song rating 4 ? browsed_song rating 0 : browsed_song rating 4">
-					<pos x="+388+5+16+18+18" y="-4"/><size width="18" height="22"/>
-				</button>
-				<button action="browsed_song rating 5 ? browsed_song rating 0 : browsed_song rating 5">
-					<pos x="+388+5+18+18+18+18" y="-4"/><size width="18" height="22"/>
-				</button>
-
+			
 				<textzone class="text" x="+494" y="+0" width="78" height="22" fontsize="10" color="textdarker" align="right" weight="" text="• PLAYLIST:"/>
 				<button class="button_main" x="+494-32+122" y="-2" width="105" height="24" action="automix" textsize="10" textcolor="br_textoff" text="AUTOMIX" coloroff="br_background" coloron="br_automix2" bordersize="0" query="automix ? blink 1200ms"/>
 				<button class="button_main" x="+494-32+122+105+2" y="-2" width="55" height="24" action="automix_skip" textsize="10" textcolor="br_textoff" text="NEXT" coloroff="br_background" coloron="br_focus" bordersize="0"/>
@@ -11708,6 +11799,8 @@
 			<panel class="custom_buttons_zone_right" deck="2" x="+966" visibility="not deck 4 rightdeck"/>
 			<panel class="custom_buttons_zone_right" deck="4" x="+966" visibility="deck 4 rightdeck"/>
 		</group>
+
+		<button class="button_main" x="+5" y="+5" action="toggle '@$h_utility_barmode'" width="28" height="28" textsize="12" textcoloron="needle" coloroff="panel_background" coloron="#333333" bordersize="0" sysicon="settings" iconsize="20" />
 	</define>
 
 	<!-- PRO: MAIN HORIZONTAL WAVEFORMS -->
@@ -11873,8 +11966,8 @@
 						
 							<!-- PLAY BUTTON -->
 							<button x="+26" y="+6" width="[HEIGHT]-8" height="[HEIGHT]-12" action="play_button" coloroff="#333333" textcolor="white">
-								<off color="black" border="#777777" border_size="1" shape="square"/>
-								<over color="black" border="white" border_size="1" shape="square"/>
+								<off color="black" border="#222222" border_size="4" shape="square"/>
+								<over color="black" border="white" border_size="4" shape="square"/>
 								<icon dx="+3" sysicon="arrowright" color="#777777" colordown="white" colorselected="white" colorover="white" width="40" height="40" />
 							</button>
 
@@ -11903,11 +11996,11 @@
 							
 							<!-- COVER CLICK AREA -->
 							<button action="select" visibility="loaded">
-								<pos x="+22" y="+2"/>
-								<size width="[HEIGHT]-2" height="[HEIGHT]-4"/>
-								<off shape="square" color="transparent" border="#33FFFFFF" border_size="1"/>
-								<over shape="square" color="transparent" border="#33FFFFFF" border_size="1"/>
-								<on shape="square" color="transparent" border="#33FFFFFF" border_size="1"/>
+								<pos x="+23" y="+2"/>
+								<size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
+								<off shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
+								<over shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
+								<on shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
 							</button>
 					  </deck>
 					</define>
@@ -14831,11 +14924,6 @@
 			</overlay>
 		</scratchwave>
 
-		<!-- <cover rotate="no" visibility="1.0"> -->
-			<!-- <pos x="+[WIDTH]-[HEIGHT]+2" y="+2"/> -->
-			<!-- <size width="[HEIGHT]-4" height="[HEIGHT]-4"/> -->
-		<!-- </cover> -->
-
 	
 			<panel class="cover_art_hntg" size="[HEIGHT]" x="+[WIDTH]-[HEIGHT]" y="+0" visibility=""/>
 
@@ -16153,12 +16241,15 @@
 			</button>
 
 			<button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
-			<!-- TRANSPORT BAR -->
+			<!-- PRO: LEFT: TRANSPORT BAR -->
 			<!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2-80-2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-3-80-1-80-2-80-2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 			<button class="button_main" x="+800-80-3-80-1-80-2" textsize="11" y="+176" text="SYNC" width="80" height="36" action="select & sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-			<button class="button_main" x="+800-80-3-80" textsize="11" y="+176" width="160" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" coloroff="#333333" bordersize="0"/>
+			<button class="button_main" x="+800-80-3-30" textsize="11" y="+176" width="110" height="36" action="select & play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
+					<off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>␍
+					<over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>␍
+			</button>
 
 			<!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
 			<!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> -->
@@ -16361,7 +16452,7 @@
 			<fader color="faderbackgroundline" width="38" height="6"/>
 		</slider>
 
-		<!-- TRANSPORT BAR -->
+		<!-- PRO: RIGHT: TRANSPORT BAR -->
 		<button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2+80+2+80+2" textsize="11" y="+176" text="PHRASE32" width="80" height="36" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
 		<button class="button_main" x="+3+80+1+80+2+80+2" textsize="11" y="+176" text="PHRASE16" width="80" height="36" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
@@ -18136,6 +18227,7 @@
 		<panel class="performancemini_decks_no_waves" condition="var_equal '@$hauntingwavesviewminidecks' 1" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/>
 	</group>
 
+	<!-- BOTTOM BAR (UTILITY BAR) -->
 	<panel class="h_utility_bar" x="+2" y="+1280-38" condition="var_equal '@$hauntingutilitybar' 1"/>
 
 	<!-- external browser -->
