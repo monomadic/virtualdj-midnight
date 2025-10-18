@@ -57,67 +57,67 @@
 	</group>
 <!-- ===== Top-level color defines (always active) ===== -->
 
-<!-- Deck 1 -->
-<define color="waveform_active1"  value="#219cbf"/>
-<define color="waveform_passive1" value="#113845"/>
+	<!-- Deck 1 -->
+	<define color="waveform_active1"  value="#219cbf"/>
+	<define color="waveform_passive1" value="#113845"/>
 
-<define value="#60FF8E" color="color_genre"    />
-<define value="#CE42FF" color="color_mood"     />
-<define value="#49FFFF" color="color_elements" />
-<define value="#FF026B" color="color_mix"      />
-<define value="#FFF138" color="color_timing"   />
+	<define value="#60FF8E" color="color_genre"    />
+	<define value="#CE42FF" color="color_mood"     />
+	<define value="#49FFFF" color="color_elements" />
+	<define value="#FF026B" color="color_mix"      />
+	<define value="#FFF138" color="color_timing"   />
 
-<define color="colorbass"  value="#FF4551"  deck="1"/>
-<define color="colorkick"  value="#FF45FF"  deck="1"/>
-<define color="colorhihat" value="#F0CF0C"  deck="1"/>
-<define color="colormed"   value="#113845"  deck="1"/>
-<define color="colorhigh"  value="#219cbf"  deck="1"/>
-<define color="scratch1"   value="#007eff"  deck="1"/>
-<define color="scratch2"   value="#00c6ff"  deck="1"/>
-<define color="deckcolor"  value="#00FF44"  deck="1"/>
-<define color="knobfillon" value="#FF44AA"  deck="1"/>
+	<define color="colorbass"  value="#FF4551"  deck="1"/>
+	<define color="colorkick"  value="#FF45FF"  deck="1"/>
+	<define color="colorhihat" value="#F0CF0C"  deck="1"/>
+	<define color="colormed"   value="#113845"  deck="1"/>
+	<define color="colorhigh"  value="#219cbf"  deck="1"/>
+	<define color="scratch1"   value="#007eff"  deck="1"/>
+	<define color="scratch2"   value="#00c6ff"  deck="1"/>
+	<define color="deckcolor"  value="#00FF44"  deck="1"/>
+	<define color="knobfillon" value="#FF44AA"  deck="1"/>
 
-<!-- Deck 2 -->
-<define color="waveform_active2"  value="#c62b39"/>
-<define color="waveform_passive2" value="#5f1620"/>
+	<!-- Deck 2 -->
+	<define color="waveform_active2"  value="#c62b39"/>
+	<define color="waveform_passive2" value="#5f1620"/>
 
-<define color="colorbass"  value="#FF4551"  deck="2"/>
-<define color="colorkick"  value="#FF45FF"  deck="2"/>
-<define color="colorhihat" value="#F0CF0C"  deck="2"/>
-<define color="colormed"   value="#5f1620"  deck="2"/>
-<define color="colorhigh"  value="#c62b39"  deck="2"/>
-<define color="scratch1"   value="#33BBFF"  deck="2"/>
-<define color="scratch2"   value="#33BBFF"  deck="2"/>
-<define color="deckcolor"  value="#33BBFF"  deck="2"/>
-<define color="knobfillon" value="#33FFBB"  deck="2"/>
+	<define color="colorbass"  value="#FF4551"  deck="2"/>
+	<define color="colorkick"  value="#FF45FF"  deck="2"/>
+	<define color="colorhihat" value="#F0CF0C"  deck="2"/>
+	<define color="colormed"   value="#5f1620"  deck="2"/>
+	<define color="colorhigh"  value="#c62b39"  deck="2"/>
+	<define color="scratch1"   value="#33BBFF"  deck="2"/>
+	<define color="scratch2"   value="#33BBFF"  deck="2"/>
+	<define color="deckcolor"  value="#33BBFF"  deck="2"/>
+	<define color="knobfillon" value="#33FFBB"  deck="2"/>
 
-<!-- Deck 3 -->
-<define color="waveform_active3"  value="#21ac87"/>
-<define color="waveform_passive3" value="#153f39"/>
+	<!-- Deck 3 -->
+	<define color="waveform_active3"  value="#21ac87"/>
+	<define color="waveform_passive3" value="#153f39"/>
 
-<define color="colorbass"  value="#FF4551"  deck="3"/>
-<define color="colorkick"  value="#FF45FF"  deck="3"/>
-<define color="colorhihat" value="#F0CF0C"  deck="3"/>
-<define color="colormed"   value="#153f39"  deck="3"/>
-<define color="colorhigh"  value="#21ac87"  deck="3"/>
-<define color="scratch1"   value="#00ff5a"  deck="3"/>
-<define color="scratch2"   value="#00f6ff"  deck="3"/>
-<define color="deckcolor"  value="#FF88DD"  deck="3"/>
-<define color="knobfillon" value="#21ac87"  deck="3"/>
+	<define color="colorbass"  value="#FF4551"  deck="3"/>
+	<define color="colorkick"  value="#FF45FF"  deck="3"/>
+	<define color="colorhihat" value="#F0CF0C"  deck="3"/>
+	<define color="colormed"   value="#153f39"  deck="3"/>
+	<define color="colorhigh"  value="#21ac87"  deck="3"/>
+	<define color="scratch1"   value="#00ff5a"  deck="3"/>
+	<define color="scratch2"   value="#00f6ff"  deck="3"/>
+	<define color="deckcolor"  value="#FF88DD"  deck="3"/>
+	<define color="knobfillon" value="#21ac87"  deck="3"/>
 
-<!-- Deck 4 -->
-<define color="waveform_active4"  value="#ca5d36"/>
-<define color="waveform_passive4" value="#52291c"/>
+	<!-- Deck 4 -->
+	<define color="waveform_active4"  value="#ca5d36"/>
+	<define color="waveform_passive4" value="#52291c"/>
 
-<define color="colorbass"  value="#FF4551"  deck="4"/>
-<define color="colorkick"  value="#FF45FF"  deck="4"/>
-<define color="colorhihat" value="#F0CF0C"  deck="4"/>
-<define color="colormed"   value="#52291c"  deck="4"/>
-<define color="colorhigh"  value="#ca5d36"  deck="4"/>
-<define color="scratch1"   value="#ff5400"  deck="4"/>
-<define color="scratch2"   value="#ff9000"  deck="4"/>
-<define color="deckcolor"  value="#AA44FF"  deck="4"/>
-<define color="knobfillon" value="#ca5d36"  deck="4"/>
+	<define color="colorbass"  value="#FF4551"  deck="4"/>
+	<define color="colorkick"  value="#FF45FF"  deck="4"/>
+	<define color="colorhihat" value="#F0CF0C"  deck="4"/>
+	<define color="colormed"   value="#52291c"  deck="4"/>
+	<define color="colorhigh"  value="#ca5d36"  deck="4"/>
+	<define color="scratch1"   value="#ff5400"  deck="4"/>
+	<define color="scratch2"   value="#ff9000"  deck="4"/>
+	<define color="deckcolor"  value="#AA44FF"  deck="4"/>
+	<define color="knobfillon" value="#ca5d36"  deck="4"/>
 
 	<group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 1">
 		<!-- waveforms -->
@@ -1788,8 +1788,8 @@
 
 		<define class="tag_button" action="custom_button [SOURCE]" rightclick="custom_button_edit [SOURCE]" placeholders="*source,width=100,height=26,text,textheight=height,important=true,textaction,color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
-			<off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
-			<over color="[COLOROFF]" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
+			<off color="[COLOROFF]" border="#444444" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
+			<over color="[COLOROFF]" border="#555555" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
 			<down color="[COLOROFF]" border="deckcolor" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="6"/>
 			<selected color="[COLOR]" border="[COLOR]" border_size="1" shape="[SHAPE]" radius="6"/>
 			<text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="" color="[COLOR]" colorselected="black" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" action="custom_button_name [SOURCE]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
@@ -11653,42 +11653,43 @@
 	<define class="h_utility_bar">
 		<!-- <visual class="gfx_shape" width="1920" height="38" coloroff="#111111"/> -->
 		<visual width="1920-2" height="38">
-			<off shape="square" color="#111111" border_size="1" border="#222222" radius="3"/>
+			<off shape="square" color="#000000" border_size="1" border="#222222" radius="3"/>
 		</visual>
 
 		<!-- CLASS: CUSTOM TAG BUTTON -->
-		<define class="filter_tag_button" placeholders="*tag,width=98,height=27,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+		<define class="filter_tag_button" placeholders="*tag,text,width=98,height=24,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
 			<button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2">
 			  <size width="[WIDTH]" height="[HEIGHT]"/>
-			  <off color="#111111" border="#22AAAAAA" border_size="1" shape="[SHAPE]" radius="3"/>
-			  <over color="#111111" border="#111111" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
-			  <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="3"/>
-			  <selected color="#222222" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="3"/>
-			  <text action="get_text '[TAG]' & param_uppercase" dx="+7" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]" />
+			  <off color="#000000" border="#55AAAAAA" border_size="1" shape="[SHAPE]" radius="5"/>
+			  <over color="#111111" border="#66AAAAAA" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+			  <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+			  <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
+			  <text action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="+20" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="left" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]" />
 			  <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]" />
 		  </button>
 
 			<visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/>
 
-			<visual x="+6" y="+8" width="5" height="16">
+			<visual x="+7" y="+7" width="5" height="15">
 				<off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/>
 			</visual>
 		</define>
 
 		<group name="browser_tools" visibility="var_equal '@$h_utility_barmode' 0">
 			<group name="search_for_#" x="-16">
-				<group name="genre_tags" x="+50">
+				<group name="genre_tags" x="+60">
 					<!-- BACKGROUND -->
-					<visual x="+66" y="+1" width="389" height="36" visibility="1.0">
-						<off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/>
-					</visual>
+					<!-- <visual x="+0" y="+2" width="448" height="34" visibility="1.0"> -->
+						<!-- <off shape="square" color="#000000" border_size="1" border="#222222" radius="0"/> -->
+					<!-- </visual> -->
 					<!-- TEXT LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_genre" align="center" weight="" text="GENRE"/>
+					<!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="12" color="#777777" align="right" weight="" text="GENRE"/> -->
 					<!-- BUTTONS -->
-					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_genre" tag="#BassHouse" text="Bass House" />
-					<panel class="filter_tag_button" x="+172" y="+4" accent_color="color_genre" tag="#Techno" width="72" />
-					<panel class="filter_tag_button" x="+248" y="+4" accent_color="color_genre" tag="#PsyTrance" width="98" />
-					<panel class="filter_tag_button" x="+349" y="+4" accent_color="color_genre" tag="#Synthwave" width="102" />
+					<panel class="filter_tag_button" x="+5" y="+5" accent_color="color_genre" tag="#BassHouse" text="Bass House" width="95" />
+					<panel class="filter_tag_button" x="+102" y="+5" accent_color="color_genre" tag="#TechHouse" text="Tech House" width="94" />
+					<panel class="filter_tag_button" x="+198" y="+5" accent_color="color_genre" tag="#Techno" text="Techno" width="71" />
+					<panel class="filter_tag_button" x="+272" y="+5" accent_color="color_genre" tag="#PsyTrance" text="Psy-Trance" width="93" />
+					<panel class="filter_tag_button" x="+368" y="+5" accent_color="color_genre" tag="#Synthwave" width="98" />
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_genre" visibility="0.8"/> -->
 				</group>
@@ -11698,38 +11699,46 @@
 					<!-- <visual class="gfx_shape" x="+70" y="+34" width="349-70+100-6" height="5" coloroff="color_mix" visibility="1.0"/> -->
 					<!-- <visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" /> -->
 					<!-- BACKGROUND -->
-					<visual x="+0" y="+1" width="399" height="36" visibility="1.0">
-						<off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/>
-					</visual>
+					<!-- <visual x="+0" y="+3" width="410" height="32" visibility="1.0"> -->
+						<!-- <off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/> -->
+					<!-- </visual> -->
 					<!-- LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="13" color="color_mix" align="center" weight="" text="MIX"/>
+					<textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
 					<!-- BUTTONS -->
-					<panel class="filter_tag_button" x="+60" y="+4" accent_color="color_mix" tag="#Acapella" width="84" />
-					<panel class="filter_tag_button" x="+148" y="+4" accent_color="color_mix" tag="#BackingTrack" width="117"/>
-					<panel class="filter_tag_button" x="+269" y="+4" accent_color="color_mix" tag="#DJMix" width="60"/>
-					<panel class="filter_tag_button" x="+333" y="+4" accent_color="color_mix" tag="#Mixed" width="60" />
+					<group x="+40">
+					<panel class="filter_tag_button" x="+0" y="+4" accent_color="color_mix" tag="#Acapella" text="Acapella" width="78" />
+					<panel class="filter_tag_button" x="+80" y="+4" accent_color="color_mix" tag="#BackingTrack" width="110"/>
+					<panel class="filter_tag_button" x="+192" y="+4" accent_color="color_mix" tag="#DJMix" width="70"/>
+					<panel class="filter_tag_button" x="+265" y="+4" accent_color="color_mix" tag="#Mixed" width="68" />
+					</group>
 					<!-- HIGHLIGHT -->
 					<!-- <visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/> -->
 				</group>
 
-				<group name="mix_timing" x="+940">
+				<group name="mix_timing" x="+910">
 					<visual class="gfx_shape" x="+67" y="+0" width="129" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
 					<!-- LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="center" weight="" text="TIMING"/>
+					<!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="center" weight="" text="TIMING"/> -->
+					<textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="8" color="color_timing" align="center" weight="" text="TIME"/>
 					<!-- BUTTONS -->
-					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_timing" tag="#Intro" width="64" />
-					<panel class="filter_tag_button" x="+70+64+3" y="+4" accent_color="color_timing" tag="#Peak" width="56"/>
+					<group x="+40">
+						<panel class="filter_tag_button" x="+0" y="+4" accent_color="color_timing" tag="#Intro" width="58" text="Intro" />
+						<panel class="filter_tag_button" x="+0+58+2" y="+4" accent_color="color_timing" tag="#Peak" text="Peak" width="60"/>
+					</group>
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+35" width="123" height="2" coloroff="color_timing" visibility="0.8"/> -->
 				</group>
 
-				<group name="mix_mood" x="+1130">
+				<group name="mix_mood" x="+1070">
 					<visual class="gfx_shape" x="+67" y="+0" width="152" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
 					<!-- LABEL -->
-					<textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_mood" align="right" weight="" text="MOOD"/>
+					<!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_mood" align="right" weight="" text="MOOD"/> -->
+					<textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="8" color="color_mood" align="center" weight="" text="MOOD"/>
 					<!-- BUTTONS -->
-					<panel class="filter_tag_button" x="+70" y="+4" accent_color="color_mood" tag="#Club" width="56" />
-					<panel class="filter_tag_button" x="+70+56+3" y="+4" accent_color="color_mood" tag="#FredAgain" width="96"/>
+					<group x="+40">
+						<panel class="filter_tag_button" x="+0" y="+4" accent_color="color_mood" tag="#Club" width="56" text="Club" />
+						<panel class="filter_tag_button" x="+0+56+3" y="+4" accent_color="color_mood" tag="#FredAgain" width="90" text="Fred Again"/>
+					</group>
 					<!-- COLOR STRIP -->
 					<!-- <visual class="gfx_shape" x="+70" y="+35" width="144" height="2" coloroff="color_mood" visibility="0.8"/> -->
 				</group>
@@ -11794,10 +11803,23 @@
 		</group>
 
 		<group name="custom_buttons" visibility="var_equal '@$h_utility_barmode' 1">
-			<panel class="custom_buttons_zone_left" deck="1" x="+10" visibility="not deck 3 leftdeck"/>
-			<panel class="custom_buttons_zone_left" deck="3" x="+10" visibility="deck 3 leftdeck"/>
-			<panel class="custom_buttons_zone_right" deck="2" x="+966" visibility="not deck 4 rightdeck"/>
-			<panel class="custom_buttons_zone_right" deck="4" x="+966" visibility="deck 4 rightdeck"/>
+
+			<group x="+40">
+				<button class="tag_button" source="24" x="+0" color="white" y="+6"/>
+				<button class="tag_button" source="25" x="+105" y="+6" color="color_genre"/>
+				<button class="tag_button" source="26" x="+105*2" y="+6"/>
+				<button class="tag_button" source="27" x="+105*3" y="+6"/>
+				<button class="tag_button" source="28" x="+105*4" y="+6"/>
+				<button class="tag_button" source="29" x="+105*5" y="+6" color="color_mix"/>
+				<button class="tag_button" source="30" x="+105*6" y="+6" color="#CC00FF"/>
+				<button class="tag_button" source="31" x="+105*7" y="+6" color="#CC00FF"/>
+				<button class="tag_button" source="32" x="+105*8" y="+6" color="#CC00FF"/>
+
+				<!-- <panel class="custom_buttons_zone_left" deck="1" x="+10" visibility="not deck 3 leftdeck"/> -->
+				<!-- <panel class="custom_buttons_zone_left" deck="3" x="+10" visibility="deck 3 leftdeck"/> -->
+				<!-- <panel class="custom_buttons_zone_right" deck="2" x="+966" visibility="not deck 4 rightdeck"/> -->
+				<!-- <panel class="custom_buttons_zone_right" deck="4" x="+966" visibility="deck 4 rightdeck"/> -->
+			</group>
 		</group>
 
 		<button class="button_main" x="+5" y="+5" action="toggle '@$h_utility_barmode'" width="28" height="28" textsize="12" textcoloron="needle" coloroff="panel_background" coloron="#333333" bordersize="0" sysicon="settings" iconsize="20" />
@@ -18282,50 +18304,9 @@
 			<zoomed width="1920-4" height="768-43-2-2"/>
 		</browser>
 
-		<!-- <panel condition="is_mac"> -->
-			<!-- <button action="show_window 'haunting_browser_window' off" tooltip="Close"> -->
-				<!-- <pos x="+10+2" y="+10"/> -->
-				<!-- <size width="15" height="15"/> -->
-				<!-- <off shape="circle" color="#bf4744"/> -->
-				<!-- <down shape="circle" color="#fc5753"/> -->
-				<!-- <selected shape="circle" color="#fc5753"/> -->
-			<!-- </button> -->
-			<!-- <logo> -->
-				<!-- <pos x="-100" y="-100"/> -->
-				<!-- <size width="108" height="23"/> -->
-			<!-- </logo> -->
-		<!-- </panel> -->
-
-		<!-- <group name="applicationbuttons_logo" condition="is_mac"> -->
-			<!-- <logo> -->
-				<!-- <pos x="+1920-115-10" y="8"/> -->
-				<!-- <size width="115" height="27"/> -->
-			<!-- </logo> -->
-
-			<!-- <button action="show_window 'haunting_browser_window' off" tooltip="Close"> -->
-				<!-- <pos x="15+2" y="+13"/> -->
-				<!-- <size width="17" height="17"/> -->
-				<!-- <off shape="circle" color="#bf4744"/> -->
-				<!-- <down shape="circle" color="#fc5753"/> -->
-				<!-- <selected shape="circle" color="#fc5753"/> -->
-			<!-- </button> -->
-		<!-- </group> -->
-
-		<!-- <group name="applicationbuttons_logo" condition="is_pc"> -->
-			<!-- <logo> -->
-				<!-- <pos x="+10+2" y="8"/> -->
-				<!-- <size width="115" height="27"/> -->
-			<!-- </logo> -->
-
-			<!-- <button action="show_window 'haunting_browser_window' off" tooltip="Close"> -->
-				<!-- <pos x="1920-40-2" y="0"/> -->
-				<!-- <size width="40" height="43"/> -->
-				<!-- <icon sysicon="close" color="textoff" colorover="texton" width="28" height="28"/> -->
-				<!-- <over color="#db333f"/> -->
-			<!-- </button> -->
-		<!-- </group> -->
-
 		<panel class="h_utility_bar" x="+2" y="+768-38"/>
+
+		<!-- RESIZE ZONES -->
 		<resizezone>
 			<pos x="1916" y="0"/>
 			<size width="4" height="768"/>
