@@ -9648,7 +9648,7 @@
                 <!-- WAVE -->
                 <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
                   <pos x="+2" y="+14+8"/>
-                  <size width="1920-8" height="[HEIGHT]-32-8"/>
+                  <size width="1920-8-40" height="[HEIGHT]-32-8"/>
                   <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
                   <gridlines width="1" color="gridlines" transparency="0.3"/>
                   <cue y="-15" height="[HEIGHT]">
@@ -9656,8 +9656,8 @@
                     <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/>
                   </cue>
                   <overlay>
-                    <pos x="960" y="-14"/>
-                    <size width="2" height="[HEIGHT]-8"/>
+                    <pos x="940" y="-14"/>
+                    <size width="4" height="[HEIGHT]-14"/>
                     <background color="needle" shape="square"/>
                   </overlay>
                 </scratchwave>
@@ -9686,7 +9686,7 @@
                 </button>
                 <!-- BORDER -->
                 <visual source="select" x="-2" y="+0">
-                  <size width="1920-4" height="[HEIGHT]"/>
+                  <size width="1920-4-40" height="[HEIGHT]"/>
                   <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
                 </visual>
                 <!-- DECK BUTTON -->
