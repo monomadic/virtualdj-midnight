@@ -4351,11 +4351,11 @@
         <menu class="menu_maindecks" query="select" x="+2+4" y="+70" width="28" height="20"/>
         <!-- not cover -->
         <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
-          <group name="noscroll" visibility=" loaded & var_equal '@hntnhtxtscroll' 0">
+          <group name="noscroll" visibility=" loaded &amp; var_equal '@hntnhtxtscroll' 0">
             <textzone tooltip="">
               <pos x="+2+4+28+8" y="+4"/>
               <size width="478" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true" />
+              <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
             </textzone>
             <textzone tooltip="">
               <pos x="+2+4+28+8" y="+4+28"/>
@@ -8618,6 +8618,7 @@
       <button class="button_main" x="240" y="8" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/>
       <button class="button_main" x="270" y="8" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="4" coloroff="panel_background" coloron="#333333" bordersize="0"/>
       <button class="button_main" x="350" y="8" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcoloron="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+      <button class="button_main" x="380" y="8" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
       <!-- PRO: TOP BAR -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
@@ -9685,16 +9686,16 @@
                   <icon dx="+3" sysicon="arrowright" color="#777777" colordown="white" colorselected="white" colorover="white" width="40" height="40"/>
                 </button>
                 <!-- BORDER -->
-                <visual source="select" x="-2" y="+0">
+                <visual source="select" x="-2" y="+0" visibility="var_equal '@$dd_bordermode' 1">
                   <size width="1920-4-40" height="[HEIGHT]"/>
                   <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
                 </visual>
                 <!-- DECK BUTTON -->
                 <visual x="+6" y="+0" width="18" height="[HEIGHT]" visibility="select">
-                	<off shape="square" color="deckcolor" border_size="0" border="deckcolor" radius="0"/>
+                  <off shape="square" color="deckcolor" border_size="0" border="deckcolor" radius="0"/>
                 </visual>
                 <visual x="+0" y="+0" width="18" height="[HEIGHT]" visibility="select">
-                	<off shape="square" color="deckcolor" border_size="0" border="deckcolor" radius="6"/>
+                  <off shape="square" color="deckcolor" border_size="0" border="deckcolor" radius="6"/>
                 </visual>
                 <button x="+2" y="+3" width="22" height="[HEIGHT]-6" action="select" color="deckcolor" border="transparent" border_size="0" radius="0">
                   <off color="transparent" shape="square"/>
@@ -9702,20 +9703,20 @@
                   <text width="20" height="30" size="24" weight="normal" colorselected="black" color="deckcolor" action="get_deck" align="center"/>
                 </button>
                 <!-- COVER -->
-                <panel class="cover_art_hntg" size="[HEIGHT]-4" x="+22" y="+2" visibility=""/>
+                <panel class="cover_art_hntg" size="[HEIGHT]-4" x="+26" y="+2" visibility=""/>
                 <cover rotate="no" rightclick="" dblclick="">
-                  <pos x="+23" y="+2"/>
+                  <pos x="+26" y="+2"/>
                   <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                 </cover>
                 <!-- MASTER -->
-                <button orientation="vertical" class="button_main" x="+25" y="+5" width="15" height="[HEIGHT]-9" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="12" text="MASTER" visibility="masterdeck"/>
+                <button orientation="vertical" class="button_main" x="+26" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="12" text="MASTER" visibility="masterdeck"/>
                 <!-- COVER CLICK AREA -->
                 <button action="select" visibility="loaded">
-                  <pos x="+23" y="+2"/>
+                  <pos x="+26" y="+2"/>
                   <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
-                  <off shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
-                  <over shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
-                  <on shape="square" color="transparent" border="#33FFFFFF" border_size="2"/>
+                  <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
+                  <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
+                  <on shape="square" color="transparent" border="#55FFFFFF" border_size="1"/>
                 </button>
               </deck>
             </define>
@@ -13518,11 +13519,74 @@
     </define>
     <!-- PRO: LEFT DECK -->
     <define class="area_deck_left" placeholders="*deck,*panelname">
-      <deck deck="[DECK]"><visual class="gfx_shape" width="800" height="216" coloroff="panel_background"/><!-- cover, title etc --><panel class="infos" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/><!-- when video pane is active --><panel class="infos2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/><panel class="track_info_action_zone" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/><panel class="times_bpm_key2" y="+72-2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/><visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/><!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> --><!-- PRO: SONGPOS LEFT --><!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> --><songpos class="songpos" x="+5" y="+74" width="475" height="44-4-20" colorPlayed="blue"/><!-- non-video --><!-- <panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> --><!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> --><panel class="pitch_zone" x="+804-318" y="+2"/><panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/><visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/><panel class="vvu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/><panel class="vvu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/><slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false"><pos x="+800-52" y="+13"/><size width="38" height="172-24"/><fader color="faderbackgroundline" width="38" height="6"/></slider><button x="+50" y="+183" width="80" height="20" action="masterdeck" query="masterdeck"><off color="orange" bordercolor="orange" border_size="1" textcolor="white" radius="4"/><up color="#444444" bordercolor="#222222" border_size="1" textcolor="white" radius="4"/><selected color="#333333" bordercolor="orange" border_size="1" textcolor="orange" radius="4"/><text fontsize="15" align="center">MASTER</text></button><button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/><!-- PRO: LEFT: TRANSPORT BAR --><!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> --><button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/><button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/><button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/><button class="button_main" x="+800-80-3-30" textsize="11" y="+179" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"><off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>&#x240D; 
-        <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>&#x240D;</button><!-- ACTIVE DECK BORDER: LEFT (4 decks mode) --><!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> --><!-- <size width="804" height="436"/> --><!-- <down color="transparent" border_size="1" border="deckcolor" shape="square" radius="5"/> --><!-- </visual> --><!-- SELECTED DECK BORDER --><!-- <visual source="deck [DECK] leftdeck" visibility="select" x="-2" y="-2"> --><!-- <size width="804" height="436"/> --><!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/> --><!-- </visual> --><visual source="deck [DECK] select" visibility="deck [DECK] leftdeck" x="-2" y="-2"><size width="804" height="436"/><down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/></visual>
- 5      <visual source="deck [DECK] select" visibility="not deck [DECK] leftdeck" x="-2" y="-2"><size width="804" height="218"/><down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/></visual>
-        <dropzone visibility="var_equal '@$hauntinglayout' 0"><size width="800" height="216"/><over color="transparent" border_size="2" border="deckcolor" shape="square"/></dropzone>
-        <dropzone visibility="var_equal '@$hauntinglayout' 1"><size width="800" height="216"/><over color="transparent" border_size="2" border="needle" shape="square"/></dropzone>
+      <deck deck="[DECK]">
+        <visual class="gfx_shape" width="800" height="216" coloroff="panel_background"/>
+        <!-- cover, title etc -->
+        <panel class="infos" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <!-- when video pane is active -->
+        <panel class="infos2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
+        <panel class="track_info_action_zone" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <panel class="times_bpm_key2" y="+72-2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
+        <visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
+        <!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
+        <!-- PRO: SONGPOS LEFT -->
+        <!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
+        <songpos class="songpos" x="+5" y="+74" width="475" height="44-4-20" colorPlayed="blue"/>
+        <!-- non-video -->
+        <!-- <panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
+        <!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
+        <panel class="pitch_zone" x="+804-318" y="+2"/>
+        <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/>
+        <panel class="vvu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
+        <panel class="vvu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
+        <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
+          <pos x="+800-52" y="+13"/>
+          <size width="38" height="172-24"/>
+          <fader color="faderbackgroundline" width="38" height="6"/>
+        </slider>
+        <!-- <button x="+50" y="+183" width="80" height="20" action="masterdeck" query="masterdeck"> -->
+        <!-- <off color="orange" bordercolor="orange" border_size="1" textcolor="white" radius="4"/> -->
+        <!-- <up color="#444444" bordercolor="#222222" border_size="1" textcolor="white" radius="4"/> -->
+        <!-- <selected color="#333333" bordercolor="orange" border_size="1" textcolor="orange" radius="4"/> -->
+        <!-- <text fontsize="15" align="center">MASTER</text> -->
+        <!-- </button> -->
+        <button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
+        <!-- PRO: LEFT: TRANSPORT BAR -->
+        <!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
+        <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+        <button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+        <button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+        <button class="button_main" x="+800-80-3-30" textsize="11" y="+179" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
+          <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
+          <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
+        </button>
+        <!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
+        <!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> -->
+        <!-- <size width="804" height="436"/> -->
+        <!-- <down color="transparent" border_size="1" border="deckcolor" shape="square" radius="5"/> -->
+        <!-- </visual> -->
+        <!-- SELECTED DECK BORDER -->
+        <!-- <visual source="deck [DECK] leftdeck" visibility="select" x="-2" y="-2"> -->
+        <!-- <size width="804" height="436"/> -->
+        <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/> -->
+        <!-- </visual> -->
+        <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] leftdeck" x="-2" y="-2">
+          <size width="804" height="436"/>
+          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
+        </visual>
+        <visual source="deck [DECK] select" visibility="not deck [DECK] leftdeck" x="-2" y="-2">
+          <size width="804" height="218"/>
+          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
+        </visual>
+        <dropzone visibility="var_equal '@$hauntinglayout' 0">
+          <size width="800" height="216"/>
+          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
+        </dropzone>
+        <dropzone visibility="var_equal '@$hauntinglayout' 1">
+          <size width="800" height="216"/>
+          <over color="transparent" border_size="2" border="needle" shape="square"/>
+        </dropzone>
         <panel class="video_preview" x="+404-2+60+11+4" y="+6" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
         <!-- <button action="select" color="red"> -->
         <!-- <pos x="0" y="0"/> -->
@@ -13663,7 +13727,7 @@
         <!-- <down color="transparent" border_size="1" border="deckcolor" shape="square" radius="5"/> -->
         <!-- </visual> -->
         <!-- SELECTED DECK BORDER -->
-        <visual source="deck [DECK] select" visibility="deck [DECK] rightdeck" x="-2" y="-2">
+        <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="436"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/>
         </visual>
@@ -14369,7 +14433,7 @@
       <pos y="+43+2+121+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 0"/>
       <panel class="area_deck_left" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
       <panel class="area_deck_left" x="+2" panelname="deck3" deck="3" visibility="deck 3 leftdeck"/>
-      <panel class="htng_racks" x="2"/>
+      <panel class="htng_racks" x="2" y="-2"/>
       <!-- MIXER PANEL / MIDDLE PANEL -->
       <!-- TABS -->
       <group x="+802" y="+0">
@@ -14462,7 +14526,7 @@
       <panel class="area_deck_right" x="+1920-2-800" y="+432+2" panelname="deck2" deck="2" visibility="deck 4 rightdeck"/>
       <panel class="area_deck_right" x="+1920-2-800" y="+432+2" panelname="deck4" deck="4" visibility="deck 2 rightdeck"/>
       <!-- RACKS (PADS, ETC) -->
-      <panel class="htng_racks" x="+2"/>
+      <panel class="htng_racks" x="+2" y="-2"/>
     </define>
     <define class="PERFORMANCE_4DECKS" placeholders="*panelname">
       <pos y="+43+2+381+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 13"/>
