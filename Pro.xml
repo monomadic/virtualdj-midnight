@@ -47,6 +47,7 @@
       <define color="colornobeat" value="#F9E5CC"/>
     </group>
     <!-- ===== Top-level color defines (always active) ===== -->
+    <define color="color_dropzone" value="white"/>
     <!-- Deck 1 -->
     <define color="waveform_active1" value="#219cbf"/>
     <define color="waveform_passive1" value="#113845"/>
@@ -1757,7 +1758,7 @@
       <define class="padbutton2" placeholders="*source" condition="var_not_equal '@$hauntingcolorscheme' 4">
         <visual>
           <tooltip/>
-          <size width="116" height="38"/>
+          <size width="125-1" height="38"/>
           <up color="button_background2" shape="square"/>
         </visual>
         <!-- border -->
@@ -1766,25 +1767,25 @@
         <!-- <size width="109" height="37"/> -->
         <!-- </visual> -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-          <size width="116" height="38"/>
+          <size width="124" height="38"/>
           <up color="button_background2" border="button_background2" border_size="1" shape="square"/>
           <selected color="button_background2" border="transparent" border_size="1" shape="square"/>
         </button>
         <!-- PUSHED -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="pad_pushed [SOURCE]">
-          <size width="116" height="38"/>
+          <size width="124" height="38"/>
           <up color="button_background2" border="button_background2" border_size="1" shape="square"/>
           <selected color="button_background2" border="needle" border_size="1" shape="square"/>
         </button>
         <!-- TEXT -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-          <size width="116" height="38"/>
-          <text dx="+20" width="109-20-10" size="16" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="center"/>
+          <size width="124" height="38"/>
+          <text dx="+24" width="115-10-10" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="left"/>
         </button>
         <visual type="color" source="pad_button_color [SOURCE]">
           <tooltip/>
-          <pos x="+10" y="+10"/>
-          <size width="4" height="38-10-10"/>
+          <pos x="+12" y="+12"/>
+          <size width="3" height="38-12-12"/>
         </visual>
         <visual novisibility="pad_button_color [SOURCE]">
           <tooltip/>
@@ -5960,12 +5961,12 @@
     <!-- PRO: RIGHT DECK: 5STEM PANEL -->
     <define class="5_stem_controls">
       <!-- background -->
-      <visual class="gfx_shape" x="+0" y="+0" width="474" height="213" coloroff="panel_background"/>
+      <visual class="gfx_shape" x="+0" y="+0" width="260" height="213" coloroff="panel_background"/>
       <panel class="stem_control" stem="vocal" label="VOCAL" color="colorvocal" x="+10" y="+10"/>
       <panel class="stem_control" stem="instru" label="INSTR" color="colorinstru" x="+70" y="+10"/>
       <panel class="stem_control" stem="bass" label="BASS" color="colorbass" x="+130" y="+10"/>
       <panel class="stem_control" stem="kick" label="KICK" color="colorkick" x="+185" y="+10"/>
-      <panel class="stem_control" stem="hihat" label="HI-HAT" color="colorhihat" x="+240" y="+10"/>
+      <!-- <panel class="stem_control" stem="hihat" label="HI-HAT" color="colorhihat" x="+240" y="+10"/> -->
     </define>
     <define class="vfx_slot_ex" placeholders="*deck">
       <deck deck="[DECK]">
@@ -6563,50 +6564,34 @@
       <button class="custom_button2" coloroff="button_background2" source="18" x="+88*2+1" y="+27+27" width="86" height="25"/>
     </define>
     <define class="effects" placeholders="*panelname">
-      <!-- <panel name="@1fx_[PANELNAME]" group="efx_[PANELNAME]" visible="no" available="yes" displayname="FX x1" forceshow="1fx"> -->
-      <!-- <panel class="fx_slot_ex" x="+10" y="+6" source="1"/> -->
-      <!-- </panel> -->
-      <!-- <panel name="@3fx_[PANELNAME]" group="efx_[PANELNAME]" visible="yes" available="yes" displayname="FX x3" forceshow="3fx"> -->
-      <!-- <panel class="fx_slot" x="+10" y="+6" source="1"/> -->
-      <!-- <panel class="fx_slot" x="+10+154" y="+6" source="2"/> -->
-      <!-- <panel class="fx_slot" x="+10+154+154" y="+6" source="3"/> -->
-      <!-- </panel> -->
-      <!-- <panel name="@6fx_[PANELNAME]" group="efx_[PANELNAME]" visible="no" available="no" displayname="FX x6" forceshow="6fx"> -->
-      <!-- <panel class="fx_slot3" x="+10" y="+6" source="1"/> -->
-      <!-- <panel class="fx_slot3" x="+10+156" y="+6" source="2"/> -->
-      <!-- <panel class="fx_slot3" x="+10+155+156" y="+6" source="3"/> -->
-      <!-- <panel class="fx_slot3" x="+10" y="+43" source="4"/> -->
-      <!-- <panel class="fx_slot3" x="+10+156" y="+43" source="5"/> -->
-      <!-- <panel class="fx_slot3" x="+10+155+156" y="+43" source="6"/> -->
-      <!-- </panel> -->
       <!-- PRO: PADS (16) -->
       <panel name="@pads16_[PANELNAME]" group="efx_[PANELNAME]" visible="yes" available="yes" displayname="Pads x16" forceshow="16pads">
         <!-- BACKGROUND -->
-        <visual class="gfx_shape" x="+0" y="+0" width="474" height="213" coloroff="panel_background"/>
+        <visual class="gfx_shape" x="+0" y="+0" width="505" height="213" coloroff="panel_background"/>
         <!-- BANK SELECT -->
         <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-          <button class="button_main" x="+2" y="+0" width="118" height="24" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+2+118" y="+0" width="118" height="24" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+2+118+118" y="+0" width="118" height="24" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+2+118+118+118" y="+0" width="116" height="24" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+2" y="+0" width="505/4" height="23" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+2+125" y="+0" width="505/4" height="23" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+2+125+125" y="+0" width="505/4" height="23" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+2+125+125+125" y="+0" width="505/4" height="23" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="Select this pad page.\nRigth-click: select a different pad page." textcoloron="needle" textsize="11" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
         </panel>
         <!-- PAD BUTTONS -->
         <panel class="padbutton2" x="+2" y="+25" source="1"/>
-        <panel class="padbutton2" x="+118*1+2" y="+25" source="2"/>
-        <panel class="padbutton2" x="+118*2+2" y="+25" source="3"/>
-        <panel class="padbutton2" x="+118*3+2" y="+25" source="4"/>
-        <panel class="padbutton2" x="+118*0+2" y="+25+40" source="5"/>
-        <panel class="padbutton2" x="+118*1+2" y="+25+40" source="6"/>
-        <panel class="padbutton2" x="+118*2+2" y="+25+40" source="7"/>
-        <panel class="padbutton2" x="+118*3+2" y="+25+40" source="8"/>
-        <panel class="padbutton2" x="+118*0+2" y="+40*2+25" source="9"/>
-        <panel class="padbutton2" x="+118*1+2" y="+40*2+25" source="10"/>
-        <panel class="padbutton2" x="+118*2+2" y="+40*2+25" source="11"/>
-        <panel class="padbutton2" x="+118*3+2" y="+40*2+25" source="12"/>
-        <panel class="padbutton2" x="+118*0+2" y="+40*3+25" source="13"/>
-        <panel class="padbutton2" x="+118*1+2" y="+40*3+25" source="14"/>
-        <panel class="padbutton2" x="+118*2+2" y="+40*3+25" source="15"/>
-        <panel class="padbutton2" x="+118*3+2" y="+40*3+25" source="16"/>
+        <panel class="padbutton2" x="+125*1+2" y="+25" source="2"/>
+        <panel class="padbutton2" x="+125*2+3" y="+25" source="3"/>
+        <panel class="padbutton2" x="+125*3+4" y="+25" source="4"/>
+        <panel class="padbutton2" x="+125*0+2" y="+25+40" source="5"/>
+        <panel class="padbutton2" x="+125*1+2" y="+25+40" source="6"/>
+        <panel class="padbutton2" x="+125*2+3" y="+25+40" source="7"/>
+        <panel class="padbutton2" x="+125*3+4" y="+25+40" source="8"/>
+        <panel class="padbutton2" x="+125*0+2" y="+40*2+25" source="9"/>
+        <panel class="padbutton2" x="+125*1+2" y="+40*2+25" source="10"/>
+        <panel class="padbutton2" x="+125*2+3" y="+40*2+25" source="11"/>
+        <panel class="padbutton2" x="+125*3+4" y="+40*2+25" source="12"/>
+        <panel class="padbutton2" x="+125*0+2" y="+40*3+25" source="13"/>
+        <panel class="padbutton2" x="+125*1+2" y="+40*3+25" source="14"/>
+        <panel class="padbutton2" x="+125*2+3" y="+40*3+25" source="15"/>
+        <panel class="padbutton2" x="+125*3+4" y="+40*3+25" source="16"/>
         <!-- MENU BUTTON -->
         <button class="button_main" x="+2" y="+40*4+25" width="66" height="26" action="pad_menu" query="off" text="MENU" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
         <!-- SELECT BUTTON -->
@@ -6994,6 +6979,12 @@
         <panel class="padbutton-16-small" x="+80*3" y="+8+24+33+33+33" source="16"/>
       </panel>
     </define>
+    <define class="cuejump" placeholders="*panelname">
+      <visual x="+0" y="+0" width="383" height="40" visibility="1.0">
+        <off shape="square" color="red" border_size="2" border="white" radius="6"/>
+      </visual>
+    </define>
+    <!-- PANEL: GRIDS -->
     <define class="grids" placeholders="*panelname">
       <panel visibility="get_deck 1 ? true : get_deck 3 ? true : false">
         <panel name="@grids_[PANELNAME]" group="grid_[PANELNAME]" visible="yes" available="yes" displayname="Edit Grid">
@@ -7019,6 +7010,9 @@
         </panel>
         <panel name="@tc_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="TimeCode &amp; Line-In" forceshow="timecode">
           <panel class="tc_line"/>
+        </panel>
+        <panel name="@cuejump_[PANELNAME]" group="cuejump_[PANELNAME]" visible="no" available="no" displayname="CueJump">
+          <panel class="cuejump"/>
         </panel>
         <panel name="@custom_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="no" displayname="Custom">
           <panel class="custom_buttons"/>
@@ -7051,6 +7045,9 @@
         </panel>
         <panel name="@hcues_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="no" displayname="Hot Cues">
           <panel class="hot_cues" panelname="[PANELNAME]"/>
+        </panel>
+        <panel name="@cuejump_[PANELNAME]" group="cuejump_[PANELNAME]" visible="no" available="yes" displayname="TimeCode &amp; Line-In" forceshow="timecode">
+          <panel class="cuejump"/>
         </panel>
         <panel name="@tc_[PANELNAME]" group="grid_[PANELNAME]" visible="no" available="yes" displayname="TimeCode &amp; Line-In" forceshow="timecode">
           <panel class="tc_line"/>
@@ -9703,21 +9700,26 @@
                   <text width="20" height="30" size="24" weight="normal" colorselected="black" color="deckcolor" action="get_deck" align="center"/>
                 </button>
                 <!-- COVER -->
-                <panel class="cover_art_hntg" size="[HEIGHT]-4" x="+26" y="+2" visibility=""/>
+                <panel class="cover_art_hntg" size="[HEIGHT]-4" x="+24" y="+2" visibility=""/>
                 <cover rotate="no" rightclick="" dblclick="">
-                  <pos x="+26" y="+2"/>
+                  <pos x="+24" y="+2"/>
                   <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                 </cover>
                 <!-- MASTER -->
-                <button orientation="vertical" class="button_main" x="+26" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="orange" brcoloron="orange" textcoloron="black" textcolor="textoff4" textsize="12" text="MASTER" visibility="masterdeck"/>
+                <button orientation="vertical" class="button_main" x="+1920-50-24" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="black" brcoloron="orange" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
                 <!-- COVER CLICK AREA -->
                 <button action="select" visibility="loaded">
-                  <pos x="+26" y="+2"/>
+                  <pos x="+24" y="+2"/>
                   <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                   <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
                   <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
-                  <on shape="square" color="transparent" border="#55FFFFFF" border_size="1"/>
+                  <on shape="square" color="transparent" border="#000000" border_size="1"/>
                 </button>
+                <dropzone>
+                  <pos x="-2" y="+0"/>
+                  <size width="1920-8-40+4" height="[WAVEFORMHEIGHT]/2"/>
+                  <over color="transparent" border="color_dropzone" border_size="4" radius="10"/>
+                </dropzone>
               </deck>
             </define>
             <panel class="horizontal_main_waveform" deck="3" height="[WAVEFORMHEIGHT]/2" x="+0" y="+0" visibility="deck 3 select ? true : deck 1 select ? false : deck 3 leftdeck"/>
@@ -12593,7 +12595,7 @@
     <define class="editgrid_rack" placeholders="deck,*panelname">
       <deck deck="[DECK]">
         <visual class="gfx_shape" width="294" height="80" coloroff="panel_background"/>
-        <panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : skin_panel '@custom_2_[PANELNAME]' ? get_text 'USER 2' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
+        <panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@cuejump_[PANELNAME]' ? 'CUEJUMP' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER' : skin_panel '@custom_2_[PANELNAME]' ? get_text 'USER 2' : get_text 'GRID'" menuvisible="no" visibility="leftdeck"/>
         <panel class="tab_button" action="skin_panelgroup 'grid_[PANELNAME]' +1" action3="skin_panelgroup_available 'grid_[PANELNAME]'" query="on/off" x="+294-30" width="30" height="80" orientation="vertical-cw" textheight="60" textaction="skin_panel '@vfx_[PANELNAME]' ? get_text 'STEM 3' : skin_panel '@svloops_[PANELNAME]' ? get_text 'SAVED' : skin_panel '@hcues_[PANELNAME]' ? get_text 'CUES' : skin_panel '@tc_[PANELNAME]' ? get_text 'LINE' : skin_panel '@custom_[PANELNAME]' ? get_text 'USER 1' : get_text 'GRID'" menuvisible="no" visibility="rightdeck"/>
         <panel class="grids" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/>
         <panel class="grids" x="+0" panelname="[PANELNAME]" visibility="rightdeck"/>
@@ -12616,22 +12618,22 @@
         <!-- <visual class="gfx_shape" width="504" height="80" coloroff="panel_background" visibility="not skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- <visual class="gfx_shape" width="504" height="80+2" coloroff="panel_background" visibility="skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- left deck fx panel tab button -->
-        <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" posrec="+27" heightrec="30" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="leftdeck ? not skin_panel '@pads16_[PANELNAME]'"/>
+        <!-- <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" width="30" height="80" orientation="vertical" posrec="+27" heightrec="30" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="leftdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- right deck fx panel tab button -->
-        <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="80" orientation="vertical-cw" posrec="+27" heightrec="30" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="rightdeck ? not skin_panel '@pads16_[PANELNAME]'"/>
+        <!-- <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="80" orientation="vertical-cw" posrec="+27" heightrec="30" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="rightdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- left deck 16-pad panel tab button -->
-        <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" width="30" height="80+2+132" orientation="vertical" posrec="+27" heightrec="160" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="leftdeck ? skin_panel '@pads16_[PANELNAME]'"/>
+        <!-- <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" width="30" height="80+2+132" orientation="vertical" posrec="+27" heightrec="160" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="leftdeck ? skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- right deck 16-pad panel tab button -->
-        <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="80+2+132" orientation="vertical-cw" posrec="+27" heightrec="160" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="rightdeck ? skin_panel '@pads16_[PANELNAME]'"/>
+        <!-- <panel class="tab_button" action="skin_panelgroup 'efx_[PANELNAME]' +1" action3="skin_panelgroup_available 'efx_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="80+2+132" orientation="vertical-cw" posrec="+27" heightrec="160" textaction="skin_panel '@pads16_[PANELNAME]' ? get_text 'PADS' : get_text 'FX'" visibility="rightdeck ? skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- left deck fx panel menu button -->
         <!-- <menu class="menu_button_fx" tooltip="FX OPTIONS" query="on/off" x="+6" y="+6" width="18" height="18" visibility="leftdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- left deck 16-pad panel menu button -->
-        <button class="menu_button" action="pad_menu" query="on/off" x="+6" y="+6" width="18" height="18" visibility="leftdeck ? skin_panel '@pads16_[PANELNAME]' ? pad_has_menu"/>
+        <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+6" y="+6" width="18" height="18" visibility="leftdeck ? skin_panel '@pads16_[PANELNAME]' ? pad_has_menu"/> -->
         <!-- right deck fx panel menu button -->
         <!-- <menu class="menu_button_fx" tooltip="FX OPTIONS" query="on/off" x="+504-30+6" y="+6" width="18" height="18" visibility="rightdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
         <!-- right deck 16-pad panel menu button -->
-        <button class="menu_button" action="pad_menu" query="on/off" x="+504-30+6" y="+6" width="18" height="18" visibility="rightdeck ? pad_has_menu ? skin_panel '@pads16_[PANELNAME]'"/>
-        <panel class="effects" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/>
+        <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+504-30+6" y="+6" width="18" height="18" visibility="rightdeck ? pad_has_menu ? skin_panel '@pads16_[PANELNAME]'"/> -->
+        <panel class="effects" x="-1" panelname="[PANELNAME]" visibility="leftdeck"/>
         <panel class="effects" panelname="[PANELNAME]" visibility="rightdeck"/>
       </deck>
     </define>
@@ -12903,18 +12905,18 @@
       </group>
     </define>
     <!-- PRO: RACK: PADS -->
-    <define class="pads_rack" placeholders="deck,*panelname">
-      <deck deck="[DECK]">
-        <!-- background -->
-        <!-- <visual class="gfx_shape" width="504" height="132" coloroff="panel_background"/> -->
-        <!-- <panel class="tab_button" action="skin_panelgroup 'pads16_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16_[PANELNAME]'" query="on/off" width="30" height="132" orientation="vertical" text="PADS" visibility="leftdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
-        <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+6" y="+6" width="18" height="18" visibility="leftdeck ? pad_has_menu"/> -->
-        <!-- <panel class="tab_button" action="skin_panelgroup 'pads16_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="132" orientation="vertical-cw" text="PADS" menuvisible="pad_has_menu" visibility="rightdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
-        <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+504-30+6" y="+6" width="18" height="18" visibility="rightdeck ? pad_has_menu"/> -->
-        <!-- <panel class="pads" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/> -->
-        <!-- <panel class="pads" panelname="[PANELNAME]" visibility="rightdeck"/> -->
-      </deck>
-    </define>
+    <!-- <define class="pads_rack" placeholders="deck,*panelname"> -->
+    <!-- <deck deck="[DECK]"> -->
+    <!-- background -->
+    <!-- <visual class="gfx_shape" width="504" height="132" coloroff="panel_background"/> -->
+    <!-- <panel class="tab_button" action="skin_panelgroup 'pads16_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16_[PANELNAME]'" query="on/off" width="30" height="132" orientation="vertical" text="PADS" visibility="leftdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
+    <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+6" y="+6" width="18" height="18" visibility="leftdeck ? pad_has_menu"/> -->
+    <!-- <panel class="tab_button" action="skin_panelgroup 'pads16_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16_[PANELNAME]'" query="on/off" x="+504-30" width="30" height="132" orientation="vertical-cw" text="PADS" menuvisible="pad_has_menu" visibility="rightdeck ? not skin_panel '@pads16_[PANELNAME]'"/> -->
+    <!-- <button class="menu_button" action="pad_menu" query="on/off" x="+504-30+6" y="+6" width="18" height="18" visibility="rightdeck ? pad_has_menu"/> -->
+    <!-- <panel class="pads" x="+32-2" panelname="[PANELNAME]" visibility="leftdeck"/> -->
+    <!-- <panel class="pads" panelname="[PANELNAME]" visibility="rightdeck"/> -->
+    <!-- </deck> -->
+    <!-- </define> -->
     <!-- PERFORMANCE: EXTENDED: PADS RACK -->
     <define class="pads_rack_ex" placeholders="deck,*panelname">
       <!-- PAD SELECT (4 decks) -->
@@ -13571,21 +13573,22 @@
         <!-- <size width="804" height="436"/> -->
         <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/> -->
         <!-- </visual> -->
+        <!-- BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] leftdeck" x="-2" y="-2">
           <size width="804" height="436"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
         </visual>
-        <visual source="deck [DECK] select" visibility="not deck [DECK] leftdeck" x="-2" y="-2">
-          <size width="804" height="218"/>
+        <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? not deck [DECK] leftdeck" x="-2" y="-2">
+          <size width="804" height="436"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
         </visual>
-        <dropzone visibility="var_equal '@$hauntinglayout' 0">
-          <size width="800" height="216"/>
-          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
+        <dropzone visibility="var_equal '@$hauntinglayout' 0" x="-2" y="-2">
+          <size width="804" height="436"/>
+          <over color="transparent" border_size="2" border="color_dropzone" shape="square" radius="10"/>
         </dropzone>
-        <dropzone visibility="var_equal '@$hauntinglayout' 1">
-          <size width="800" height="216"/>
-          <over color="transparent" border_size="2" border="needle" shape="square"/>
+        <dropzone visibility="var_equal '@$hauntinglayout' 1" x="-2" y="-2">
+          <size width="804" height="436"/>
+          <over color="transparent" border_size="2" border="color_dropzone" shape="square" radius="10"/>
         </dropzone>
         <panel class="video_preview" x="+404-2+60+11+4" y="+6" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
         <!-- <button action="select" color="red"> -->
