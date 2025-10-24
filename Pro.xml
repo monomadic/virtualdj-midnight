@@ -48,6 +48,7 @@
     </group>
     <!-- ===== Top-level color defines (always active) ===== -->
     <define color="color_dropzone" value="white"/>
+    <define color="color_masterdeck" value="orange"/>
     <!-- Deck 1 -->
     <define color="waveform_active1" value="#219cbf"/>
     <define color="waveform_passive1" value="#113845"/>
@@ -5299,7 +5300,6 @@
       <panel class="times_display_right" x="+404-2-4-200+80" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
       <panel class="key_display_right" x="+404-2-4-200-4-128+80" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
       <panel class="bpm_display_right" x="+404-2-4-200-4-128-4-136+80" y="+2" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-      <!-- <panel class="syncoptions_display2" x="+2+6" y="+81" /> -->
     </define>
     <!-- PRO: TRANSPORT -->
     <define class="transport">
@@ -5535,6 +5535,13 @@
         <!-- color="needle" align="center" weight="bold" -->
         <!-- textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '==.==' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
         <group name="jogwheel_content" visibility="loaded">
+          <!-- BPM % DIFF -->
+          <textzone>
+            <pos x="+[JOGSIZE]/3" y="+15"/>
+            <size width="50" height="25"/>
+            <text fontsize="10" weight="" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/>
+          </textzone>
+          <!-- BPM -->
           <button action="pitch_reset 8bt" x="+18" y="+40" width="[JOGSIZE]-36" height="22" border_size="0">
             <text fontsize="22" coloron="red" colorselected="green" weight="bold" align="center" action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'"/>
           </button>
@@ -5658,8 +5665,8 @@
         <!-- <pos x="+20" y="+54"/> -->
         <!-- <size width="[JOGSIZE]-40" height="[JOGSIZE]-56-56"/> -->
         <!-- <off shape="square" color="jogprogressoff" border="jogprogressoff" radius="6"/> -->
-        <!-- </visual> -->
         <!-- <textzone class="text" x="+18" y="+50" width="[JOGSIZE]-36" height="46" fontsize="26" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '==.==' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
+        <!-- </visual> -->
       </group>
       <!-- <scratch> -->
       <!-- <pos width="[JOGSIZE]" height="[JOGSIZE]"/> -->
@@ -7372,7 +7379,7 @@
         <group name="sampler_panel" x="+0" y="+0">
           <textzone class="text" x="+0" y="+0" width="144" height="20" fontsize="10" color="textoff" align="center" weight="" text="SAMPLER"/>
           <!-- SAMPLER ROUTING TOGGLE HEADPHONES/MASTER -->
-          <button class="button_main" x="+0" y="+22" width="144" height="26" textsize="10" action="sampler_output 'headphones' ? sampler_output 'master' : sampler_output 'headphones'" textaction="sampler_output 'headphones' ? get_text 'SAMP &#x2192; HEADPHONES' : get_text 'SAMP &#x2192; MASTER'" rightclick="sampler_output 'popup'" color="`sampler_output 'headphones' ? '#00D5FF' : 'transparent'`"/>
+          <button class="button_main" x="+0" y="+22" width="144" height="26" textsize="10" action="sampler_output 'headphones' ? sampler_output 'master' : sampler_output 'headphones'" textaction="sampler_output 'headphones' ? get_text 'SAMP -&gt; HEADPHONES' : get_text 'SAMP -&gt; MASTER'" rightclick="sampler_output 'popup'" color="`sampler_output 'headphones' ? '#00D5FF' : 'transparent'`"/>
           <!-- SAMPLER GROUP SELECT -->
           <group x="+0" y="+50">
             <button class="button_main" x="+0" y="+0" width="26" height="18" action="sampler_bank -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
@@ -8434,7 +8441,7 @@
           <!-- <text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/> -->
           <!-- </textzone> -->
           <!-- BPM -->
-          <textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+          <!-- <textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '\-\-\.\-\-' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
           <!-- "BPM" TEXT -->
           <textzone>
             <pos x="+12" y="+31"/>
@@ -9643,19 +9650,22 @@
             <!-- CLASS: HORIZONTAL WAVEFORM -->
             <define class="horizontal_main_waveform" placeholders="*deck,*height">
               <deck deck="[DECK]">
+                <visual x="+[HEIGHT]" y="+20" width="1920-175" height="[HEIGHT]-40">
+                  <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
+                </visual>
                 <!-- WAVE -->
                 <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
-                  <pos x="+2" y="+14+8"/>
-                  <size width="1920-8-40" height="[HEIGHT]-32-8"/>
+                  <pos x="+13" y="+12+10"/>
+                  <size width="1920-20-40" height="[HEIGHT]-32-12"/>
                   <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
                   <gridlines width="1" color="gridlines" transparency="0.3"/>
-                  <cue y="-15" height="[HEIGHT]">
-                    <mask x="42" y="0" width="7" height="12"/>
+                  <cue y="-18" height="[HEIGHT]">
+                    <mask x="49" y="0" width="7" height="13"/>
                     <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/>
                   </cue>
                   <overlay>
-                    <pos x="940" y="-14"/>
-                    <size width="4" height="[HEIGHT]-14"/>
+                    <pos x="946" y="+0"/>
+                    <size width="4" height="[HEIGHT]-42"/>
                     <background color="needle" shape="square"/>
                   </overlay>
                 </scratchwave>
@@ -9682,6 +9692,14 @@
                   <over color="black" border="white" border_size="4" shape="square"/>
                   <icon dx="+3" sysicon="arrowright" color="#777777" colordown="white" colorselected="white" colorover="white" width="40" height="40"/>
                 </button>
+                <!-- MASTER -->
+                <!-- <visual x="+[HEIGHT]" y="+2" width="1920-190" height="[HEIGHT]-4" visibility="masterdeck"> -->
+                <!-- <off shape="square" color="transparent" border_size="1" border="color_masterdeck" radius="10"/> -->
+                <!-- </visual> -->
+                <visual x="+1920-50-20" y="+2" width="24" height="[HEIGHT]-4" visibility="masterdeck">
+                  <off shape="square" color="color_masterdeck" border_size="0" border="color_masterdeck" radius="10"/>
+                </visual>
+                <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="color_masterdeck" brcoloron="color_masterdeck" textcoloron="black" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
                 <!-- BORDER -->
                 <visual source="select" x="-2" y="+0" visibility="var_equal '@$dd_bordermode' 1">
                   <size width="1920-4-40" height="[HEIGHT]"/>
@@ -9700,21 +9718,21 @@
                   <text width="20" height="30" size="24" weight="normal" colorselected="black" color="deckcolor" action="get_deck" align="center"/>
                 </button>
                 <!-- COVER -->
-                <panel class="cover_art_hntg" size="[HEIGHT]-4" x="+24" y="+2" visibility=""/>
-                <cover rotate="no" rightclick="" dblclick="">
-                  <pos x="+24" y="+2"/>
-                  <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
-                </cover>
-                <!-- MASTER -->
-                <button orientation="vertical" class="button_main" x="+1920-50-24" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="black" brcoloron="orange" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
-                <!-- COVER CLICK AREA -->
-                <button action="select" visibility="loaded">
-                  <pos x="+24" y="+2"/>
-                  <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
-                  <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
-                  <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
-                  <on shape="square" color="transparent" border="#000000" border_size="1"/>
-                </button>
+                <group name="horizontal-waveform-cover" x="+24" y="+2">
+                  <!-- cover (when not loaded) -->
+                  <panel class="cover_art_hntg" size="[HEIGHT]-4" visibility="not loaded"/>
+                  <!-- cover (when loaded) -->
+                  <cover rotate="no" rightclick="" dblclick="">
+                    <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
+                  </cover>
+                  <!-- border -->
+                  <button action="select" visibility="loaded">
+                    <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
+                    <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
+                    <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
+                    <on shape="square" color="transparent" border="#000000" border_size="1"/>
+                  </button>
+                </group>
                 <dropzone>
                   <pos x="-2" y="+0"/>
                   <size width="1920-8-40+4" height="[WAVEFORMHEIGHT]/2"/>
@@ -10852,7 +10870,7 @@
           <panel class="beat_counter" deck="4" x="1436-338-40" y="+106+2+[WAVEFORMHEIGHT]/2-39-2" visibility="var_equal '@$hauntingbarcounter' 1 ? setting 'waveformCenter' 'left'"/>
         </panel>
       </group>
-      <!-- WAVEFORM OPTIONS -->
+      <!-- WAVEFORM OPTIONS / WAVEFORM CONTROLS -->
       <panel name="wave_options">
         <!-- ZOOM SLIDER -->
         <!-- <slider action="zoom & zoom_scratch" dblclick="zoom 28% & zoom_scratch 28%" orientation="vertical" frommiddle="false" visibility="0.8"> -->
@@ -10863,10 +10881,14 @@
         <!-- <fader color="needle" width="18" height="7"/> -->
         <!-- </slider> -->
         <!-- WAVEFORM SIZE UP DOWN -->
-        <button class="button_main" x="+1920-26-10" y="+10" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="plus" iconsize="20" visibility="0.8"/>
-        <button class="button_main" x="+1920-26-10" y="+10+30+4" width="26" height="30" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="minus" iconsize="20" visibility="0.8"/>
+        <!-- bg -->
+        <visual x="+1920-34" y="+0" width="30" height="258">
+          <off shape="square" color="#222222" border_size="1" border="transparent" radius="0"/>
+        </visual>
+        <button class="button_main" x="+1920-26-7" y="+10" width="28" height="30" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="plus" iconsize="20"/>
+        <button class="button_main" x="+1920-26-7" y="+10+30+4" width="28" height="30" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="minus" iconsize="20"/>
         <menu tooltip="WAVEFORM OPTIONS" visibility="0.8">
-          <pos x="+1920-26-10" y="+[WAVEFORMHEIGHT]-40"/>
+          <pos x="+1920-26-7" y="+[WAVEFORMHEIGHT]-40"/>
           <size width="26" height="30"/>
           <off shape="square" color="button_background"/>
           <icon sysicon="settings" height="24" width="24" color="textoff" colorover="needle" colordown="needle"/>
