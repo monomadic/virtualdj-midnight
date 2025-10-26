@@ -13854,7 +13854,7 @@
     <define class="area_deck_mini_extended" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- background -->
-        <visual class="gfx_shape" width="878" height="100" coloroff="black"/>
+        <visual class="gfx_shape" width="878" height="97" coloroff="panel_background"/>
         <!-- deck info -->
         <panel>
           <!-- toggle scroll -->
@@ -13866,7 +13866,7 @@
             <!-- <button class="button_main" x="+0" y="+0" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
             <button class="button_main" x="+0" y="+0" width="36" height="94" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
             <!-- SETTINGS -->
-            <menu class="menu_maindecks" query="select" x="+2+4" y="+70" width="28" height="20"/>
+            <menu class="menu_maindecks" query="select" x="+4" y="+65" width="28" height="20"/>
             <!-- left: with cover -->
             <group x="+4+28+8+100" y="+2">
               <group name="scroll">
@@ -13886,12 +13886,33 @@
               <pos x="+2+4+33" y="+3"/>
               <size width="100-8-4" height="100-8-4"/>
             </cover>
+            <!-- tap -->
             <button class="button_main" x="+878-10-90" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'"/>
+            <!-- bpm -->
             <textzone class="text" x="+878-10-90" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
-            <button class="button_main" x="+878-10-90" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" bordersize="0" text="MASTER"/>
-            <textzone class="text" x="+878-10-90-10-80" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
-            <textzone class="text" x="+878-10-90-10-80" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '%Ppitchrange'"/>
-            <textzone class="text" x="+878-10-90-10-80-10-48" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/>
+            <!-- master -->
+            <!-- <button class="button_main" x="+878-10-90" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" bordersize="0" text="MASTER"/> -->
+            <!-- bpm change -->
+            <textzone class="text" x="+878-10-90" y="+25" action="pitch_reset" width="90" height="30" fontsize="12" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
+            <!-- pitch range -->
+            <!-- <textzone class="text" x="+878-10-90-10-80" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '%Ppitchrange'"/> -->
+            <!-- key -->
+            <!-- <textzone class="text" x="+878-10-90-10-40" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/> -->
+            <group x="+878-10-90-10-90" y="+15">
+              <visual class="gfx_shape" width="128" height="80" coloroff="transparent"/>
+              <!-- KEY TEXT -->
+              <textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="22" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/>
+              <!-- KEY DOWN BUTTON -->
+              <button class="button_main" x="+6" y="+0" width="26" height="15" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="15" sysicon="minus"/>
+              <!-- KEY MATCH BUTTON -->
+              <button class="button_main" action="key_match_button" width="100-26-26" height="14" x="+32" y="+21" coloroff="black" coloron="black" bordersize="0" textsize="12" textcolor="red" textcoloron="green" textaction="param_equal '`get_key_modifier_text`' 'KEY' ? get_text '+0' : get_key_modifier_text" visibility="not masterdeck"/>
+              <!-- KEY UP BUTTON -->
+              <button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
+              <!-- KEY MISMATCH WARNING -->
+              <visual type="square" x="+10" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/>
+              <!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+              <!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> -->
+            </group>
             <!-- <button class="button_main" x="+878-10-90-10-80-10-48" y="+36" width="48" height="18" action="deck all master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
             <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
             <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
@@ -13953,8 +13974,9 @@
               </group>
             </group>
             <!-- <button class="button_main" x="+10" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
-            <!-- text: bpm -->
+            <!-- right: text: bpm -->
             <textzone class="text" x="+10" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+            <!-- right: master -->
             <button class="button_main" x="+10" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" text="MASTER" bordersize="0"/>
             <textzone class="text" x="+10+90+10" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
             <textzone class="text" x="+10+90+10" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '&#xB1;%Ppitchrange'"/>
