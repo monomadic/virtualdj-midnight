@@ -8626,7 +8626,7 @@
       <!-- PRO: TOP BAR -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
-        <button class="button_main" x="115+80+1000" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
+        <button class="button_main" x="115+80+1260" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
         <button class="button_main" x="115+80+900" y="8" width="27" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SB" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
         <!-- disable sandbox button if cannot sandbox -->
         <group visibility="0.75">
@@ -8799,7 +8799,7 @@
           </panel>
         </group>
       </group>
-      <group name="master_options" x="+802+160+160+2+20+170" y="8">
+      <group name="master_options" x="+802+160+160+2+20+460" y="8">
         <visual class="gfx_shape" width="260+50" height="43-8-8" coloroff="xf_background"/>
         <textzone class="text" x="+6" y="+0" width="56" height="27" fontsize="10" color="textdarker" align="right" weight="" text="MASTER"/>
         <visual type="vumeter" source="get_vu_meter_left" x="+6+56+8" y="+6" width="70" height="6" smooth="no">
@@ -8938,7 +8938,7 @@
         </textzone>
       </group>
       <!-- <button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/> -->
-      <button class="button_main" x="1920-40-155-90+60" y="8" width="30" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="S" coloron="br_focus" bordersize="0"/>
+      <button class="button_main" x="1920-40-155-190" y="8" width="50" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="STEM" coloroff="panel_background" coloron="br_focus" bordersize="0"/>
       <!-- <group name="battery" visibility="var_equal '@$hauntinggetbattery' 1"> -->
       <!-- <visual type="linear" direction="right" source="get_battery"> -->
       <!-- <pos x="+1696" y="+8+2" width="42" height="27-4"/> -->
@@ -8963,7 +8963,7 @@
       <!-- </textzone> -->
       <!-- </group> -->
       <button action="settings">
-        <pos x="1920-40-133" y="8"/>
+        <pos x="1920-40-483" y="8"/>
         <size width="35" height="27"/>
         <off color="transparent" shape="square"/>
         <over color="button_background" shape="square"/>
@@ -13765,11 +13765,11 @@
         <!-- SELECTED DECK BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="436"/>
-          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/>
+          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
         </visual>
         <visual source="deck [DECK] select" visibility="not deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="218"/>
-          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/>
+          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
         </visual>
         <!-- <visual source="deck [DECK] rightdeck" visibility="select" x="-2" y="+432"> -->
         <!-- <size width="804" height="218"/> -->
