@@ -4341,163 +4341,163 @@
       <button class="button_main" x="+0" y="+23*2+6" width="44" height="20" action="skin_panel '@6fx_[PANELNAME]' on" coloroff="button_background2" bordersize="0" text="X6"/>
     </define>
     <!-- MINI DECK: TRACK INFO -->
-    <define class="deck_infos_mini_extended">
-      <!-- toggle scroll -->
-      <button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="878" height="64" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
-      <!-- LEFT -->
-      <group visibility="loaded ? get_deck 1 ? true : get_deck 3 ? true : false">
-        <!-- MINI: DECK BUTTON -->
-        <button class="button_main" x="+2" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
-        <!-- <button class="button_main" x="+2+4" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
-        <!-- SETTINGS -->
-        <menu class="menu_maindecks" query="select" x="+2+4" y="+70" width="28" height="20"/>
-        <!-- not cover -->
-        <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
-          <group name="noscroll" visibility=" loaded &amp; var_equal '@hntnhtxtscroll' 0">
-            <textzone tooltip="">
-              <pos x="+2+4+28+8" y="+4"/>
-              <size width="478" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+4+28+8" y="+4+28"/>
-              <size width="478" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-          <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
-            <textzone tooltip="">
-              <pos x="+2+4+28+8" y="+4"/>
-              <size width="478" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+4+28+8" y="+4+28"/>
-              <size width="478" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-        </group>
-        <!-- with cover -->
-        <group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
-          <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
-            <textzone tooltip="">
-              <pos x="+2+4+28+8+100+8" y="+4"/>
-              <size width="478-50-8" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+4+28+8+100+8" y="+4+28"/>
-              <size width="478-50-8" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-          <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
-            <textzone tooltip="">
-              <pos x="+2+4+28+8+100+8" y="+4"/>
-              <size width="478-50-8" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+4+28+8+100+8" y="+4+28"/>
-              <size width="478-50-8" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-        </group>
-        <!-- COVER -->
-        <cover rotate="no" rightclick="" dblclick="">
-          <pos x="+2+4+33" y="+4"/>
-          <size width="100-8-1" height="100-8-1"/>
-        </cover>
-        <button class="button_main" x="+878-10-90" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
-        <textzone class="text" x="+878-10-90" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
-        <button class="button_main" x="+878-10-90" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" bordersize="0" text="MASTER"/>
-        <textzone class="text" x="+878-10-90-10-80" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
-        <textzone class="text" x="+878-10-90-10-80" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '&#xB1;%Ppitchrange'"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/>
-        <button class="button_main" x="+878-10-90-10-80-10-48" y="+36" width="48" height="18" action="deck all master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
-      </group>
-      <!-- RIGHT -->
-      <group visibility="loaded ? get_deck 2 ? true : get_deck 4 ? true : false">
-        <!-- not cover -->
-        <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
-          <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4"/>
-              <size width="478" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4+28"/>
-              <size width="478" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-          <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4"/>
-              <size width="478" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4+28"/>
-              <size width="478" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-        </group>
-        <!-- with cover -->
-        <group x="-5+5" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
-          <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4"/>
-              <size width="478-50-8" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4+28"/>
-              <size width="478-50-8" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-          <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4"/>
-              <size width="478-50-8" height="34"/>
-              <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
-            </textzone>
-            <textzone tooltip="">
-              <pos x="+2+354" y="+4+28"/>
-              <size width="478-50-8" height="28"/>
-              <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
-            </textzone>
-          </group>
-        </group>
-        <button class="button_main" x="+10" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
-        <textzone class="text" x="+10" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
-        <button class="button_main" x="+10" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" text="MASTER" bordersize="0"/>
-        <textzone class="text" x="+10+90+10" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
-        <textzone class="text" x="+10+90+10" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '&#xB1;%Ppitchrange'"/>
-        <textzone class="text" x="+10+90+10+80+10" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/>
-        <button class="button_main" x="+10+90+10+80+10" y="+36" width="48" height="18" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/>
-        <textzone class="text" x="+10+90+10+80+10+48+10" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
-        <textzone class="text" x="+10+90+10+80+10+48+10" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
-        <button class="button_main" x="+878-2-4-28" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/>
-        <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+64-8-22" width="28" height="20"/>
-        <!-- MINI DECK: RIGHT: DECK BUTTON -->
-        <button class="button_main" x="+878-2-4-32" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
-        <!-- MINI DECK: RIGHT: SETTINGS -->
-        <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/>
-        <!-- COVER -->
-        <cover rotate="no" rightclick="" dblclick="">
-          <pos x="+878-2-4-28-56-6+6" y="+8"/>
-          <size width="50" height="50"/>
-        </cover>
-      </group>
-    </define>
+    <!-- <define class="deck_infos_mini_extended"> -->
+    <!-- toggle scroll -->
+    <!-- <button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="878" height="64" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/> -->
+    <!-- LEFT -->
+    <!-- <group visibility="loaded ? get_deck 1 ? true : get_deck 3 ? true : false"> -->
+    <!-- MINI: DECK BUTTON -->
+    <!-- <button class="button_main" x="+2" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+    <!-- <button class="button_main" x="+2+4" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
+    <!-- SETTINGS -->
+    <!-- <menu class="menu_maindecks" query="select" x="+2+4" y="+70" width="28" height="20"/> -->
+    <!-- not cover -->
+    <!-- <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0"> -->
+    <!-- <group name="noscroll" visibility=" loaded &amp; var_equal '@hntnhtxtscroll' 0"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8" y="+4"/> -->
+    <!-- <size width="478" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8" y="+4+28"/> -->
+    <!-- <size width="478" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8" y="+4"/> -->
+    <!-- <size width="478" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8" y="+4+28"/> -->
+    <!-- <size width="478" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- </group> -->
+    <!-- with cover -->
+    <!-- <group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1"> -->
+    <!-- <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8+100+8" y="+4"/> -->
+    <!-- <size width="478-50-8" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="left" scroll="no" action="get_text '`get_title_before_remix`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8+100+8" y="+4+28"/> -->
+    <!-- <size width="478-50-8" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="left" scroll="no" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8+100+8" y="+4"/> -->
+    <!-- <size width="478-50-8" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="left" scroll="yes" action="get_text '`get_title_before_remix`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+4+28+8+100+8" y="+4+28"/> -->
+    <!-- <size width="478-50-8" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="left" scroll="yes" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- </group> -->
+    <!-- COVER -->
+    <!-- <cover rotate="no" rightclick="" dblclick=""> -->
+    <!-- <pos x="+2+4+33" y="+4"/> -->
+    <!-- <size width="100-8-1" height="100-8-1"/> -->
+    <!-- </cover> -->
+    <!-- <button class="button_main" x="+878-10-90" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'"/> -->
+    <!-- <textzone class="text" x="+878-10-90" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
+    <!-- <button class="button_main" x="+878-10-90" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" bordersize="0" text="MASTER"/> -->
+    <!-- <textzone class="text" x="+878-10-90-10-80" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/> -->
+    <!-- <textzone class="text" x="+878-10-90-10-80" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '%Ppitchrange'"/> -->
+    <!-- <textzone class="text" x="+878-10-90-10-80-10-48" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/> -->
+    <!-- <button class="button_main" x="+878-10-90-10-80-10-48" y="+36" width="48" height="18" action="deck all master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+    <!-- <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/> -->
+    <!-- <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/> -->
+    <!-- </group> -->
+    <!-- RIGHT -->
+    <!-- <group visibility="loaded ? get_deck 2 ? true : get_deck 4 ? true : false"> -->
+    <!-- not cover -->
+    <!-- <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0"> -->
+    <!-- <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4"/> -->
+    <!-- <size width="478" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4+28"/> -->
+    <!-- <size width="478" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4"/> -->
+    <!-- <size width="478" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4+28"/> -->
+    <!-- <size width="478" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- </group> -->
+    <!-- with cover -->
+    <!-- <group x="-5+5" y="-2" visibility="var_equal '@$haunting_showcover_title' 1"> -->
+    <!-- <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4"/> -->
+    <!-- <size width="478-50-8" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4+28"/> -->
+    <!-- <size width="478-50-8" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1"> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4"/> -->
+    <!-- <size width="478-50-8" height="34"/> -->
+    <!-- <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- <textzone tooltip=""> -->
+    <!-- <pos x="+2+354" y="+4+28"/> -->
+    <!-- <size width="478-50-8" height="28"/> -->
+    <!-- <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/> -->
+    <!-- </textzone> -->
+    <!-- </group> -->
+    <!-- </group> -->
+    <!-- <button class="button_main" x="+10" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+    <!-- <textzone class="text" x="+10" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
+    <!-- <button class="button_main" x="+10" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" text="MASTER" bordersize="0"/> -->
+    <!-- <textzone class="text" x="+10+90+10" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/> -->
+    <!-- <textzone class="text" x="+10+90+10" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '&#xB1;%Ppitchrange'"/> -->
+    <!-- <textzone class="text" x="+10+90+10+80+10" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/> -->
+    <!-- <button class="button_main" x="+10+90+10+80+10" y="+36" width="48" height="18" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+    <!-- <textzone class="text" x="+10+90+10+80+10+48+10" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/> -->
+    <!-- <textzone class="text" x="+10+90+10+80+10+48+10" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/> -->
+    <!-- <button class="button_main" x="+878-2-4-28" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
+    <!-- <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+64-8-22" width="28" height="20"/> -->
+    <!-- MINI DECK: RIGHT: DECK BUTTON -->
+    <!-- <button class="button_main" x="+878-2-4-32" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/> -->
+    <!-- MINI DECK: RIGHT: SETTINGS -->
+    <!-- <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/> -->
+    <!-- COVER -->
+    <!-- <cover rotate="no" rightclick="" dblclick=""> -->
+    <!-- <pos x="+878-2-4-28-56-6+6" y="+8"/> -->
+    <!-- <size width="50" height="50"/> -->
+    <!-- </cover> -->
+    <!-- </group> -->
+    <!-- </define> -->
     <!-- PRO: TRACK INFO -->
     <define class="infos">
       <!-- PRO: TRACK INFO: LEFT DECK -->
@@ -4918,7 +4918,7 @@
         <textzone class="text" x="+10+90+10+80+10+48+10-20" y="+4+2" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
         <textzone class="text" x="+10+90+10+80+10+48+10-20" y="+4+24+2" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="34" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
         <panel class="cover_art_hntg" size="68-6-6" x="+878-2-4-28-56-6-78" y="+6" visibility="var_equal '@$haunting_showcover_title' 1"/>
-        <button class="button_main" x="+878-2-4-28-78" y="+6" width="28" height="68-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/>
+        <!-- <button class="button_main" x="+878-2-4-28-78" y="+6" width="28" height="68-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
         <menu class="menu_maindecks" query="select" x="+878-2-4-28-78" y="+70-8-22" width="28" height="20"/>
       </group>
     </define>
@@ -8414,14 +8414,14 @@
           </scratchwave>
           <!-- <square width="100" height="370+216+2" x="+0" y="+0" color="red" border="0" bordercolor="red" visibility="0.6" /> -->
           <!-- PRO: SCRATCHWAVE: background under text -->
-          <square color="black" x="+0" y="+2" width="98" height="53" coloroff="wave_background" visibility="0.7"/>
+          <!-- <square color="black" x="+0" y="+2" width="98" height="53" coloroff="wave_background" visibility="0.7"/> -->
           <!-- border on masterdeck -->
           <!-- <square x="+10" y="+4" width="80" height="20" border="2" border_color="#FFEF8632" color="#00EF8632" radius="0" visibility="masterdeck" /> -->
           <!-- BPM WARNING -->
           <!-- more than 20% -->
-          <square x="+5" y="+36" width="90" height="16" radius="5" color="red" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
+          <!-- <square x="+5" y="+36" width="90" height="16" radius="5" color="red" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
           <!-- less than -5% -->
-          <square x="+5" y="+36" width="90" height="16" radius="5" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
+          <!-- <square x="+5" y="+36" width="90" height="16" radius="5" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
           <!-- <item text="1 Phrase" action="setting 'beatCounterRange' 16" check="setting 'beatCounterRange' 16"/> -->
           <!-- <item text="2 Phrases" action="setting 'beatCounterRange' 32" check="setting 'beatCounterRange' 32"/> -->
           <!-- <square -->
@@ -8443,19 +8443,19 @@
           <!-- BPM -->
           <!-- <textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '\-\-\.\-\-' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
           <!-- "BPM" TEXT -->
-          <textzone>
-            <pos x="+12" y="+31"/>
-            <size width="30" height="26"/>
-            <text fontsize="14" weight="" color="white" align="left" format="BPM" important="true"/>
-          </textzone>
+          <!-- <textzone> -->
+          <!-- <pos x="+12" y="+31"/> -->
+          <!-- <size width="30" height="26"/> -->
+          <!-- <text fontsize="14" weight="" color="white" align="left" format="BPM" important="true"/> -->
+          <!-- </textzone> -->
           <!-- PITCH RANGE -->
           <!-- <button class="button_main" width="68" height="25" x="+40" y="+30" coloroff="transparent" coloron="transparent" bordersize="0" textsize="13" textcolor="white" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
           <!-- BPM % DIFF -->
-          <textzone>
-            <pos x="+44" y="+31"/>
-            <size width="45" height="25"/>
-            <text fontsize="14" weight="" color="white" align="right" format="`get_text '%Ppitch%'`" important="true"/>
-          </textzone>
+          <!-- <textzone> -->
+          <!-- <pos x="+44" y="+31"/> -->
+          <!-- <size width="45" height="25"/> -->
+          <!-- <text fontsize="14" weight="" color="white" align="right" format="`get_text '%Ppitch%'`" important="true"/> -->
+          <!-- </textzone> -->
           <dropzone>
             <pos x="-14-2" y="+2"/>
             <size width="98+14+2+14+2" height="370+216+2" condition="var_equal '@$hauntinglayout' 1"/>
@@ -9520,7 +9520,7 @@
           <!-- COLOR STRIP -->
           <!-- <visual class="gfx_shape" x="+70" y="+35" width="144" height="2" coloroff="color_mood" visibility="0.8"/> -->
         </group>
-        <group name="color/rating/relayplay/automix" x="+1020" y="+9">
+        <group name="color/rating/relayplay/automix" x="+1000" y="+9">
           <button class="button_main" x="+494-32+122" y="-2" width="105" height="24" action="automix" textsize="10" textcolor="br_textoff" text="AUTOMIX" coloroff="br_background" coloron="br_automix2" bordersize="0" query="automix ? blink 1200ms"/>
           <button class="button_main" x="+494-32+122+105+2" y="-2" width="55" height="24" action="automix_skip" textsize="10" textcolor="br_textoff" text="NEXT" coloroff="br_background" coloron="br_focus" bordersize="0"/>
           <button class="button_main" x="+494-32+122+105+2+55+2" y="-2" width="65" height="24" action="switch_sidelist_playlist" textsize="10" textcolor="br_textoff" text="SIDELIST" coloroff="br_background" coloron="br_focus" bordersize="0"/>
@@ -9654,14 +9654,17 @@
                   <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
                 </visual>
                 <!-- WAVE -->
-                <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
+                <scratchwave orientation="horizontal" cuecolor="blue" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
                   <pos x="+13" y="+12+10"/>
                   <size width="1920-20-40" height="[HEIGHT]-32-12"/>
                   <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
                   <gridlines width="1" color="gridlines" transparency="0.3"/>
-                  <cue y="-18" height="[HEIGHT]">
-                    <mask x="49" y="0" width="7" height="13"/>
-                    <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/>
+                  <!-- <cue y="-18" height="[HEIGHT]"> -->
+                  <!-- <mask x="49" y="0" width="7" height="13"/> -->
+                  <!-- <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/> -->
+                  <!-- </cue> -->
+                  <cue>
+                    <text dx="+0" dy="-18" fontsize="14"/>
                   </cue>
                   <overlay>
                     <pos x="946" y="+0"/>
@@ -9696,16 +9699,16 @@
                 <!-- <visual x="+[HEIGHT]" y="+2" width="1920-190" height="[HEIGHT]-4" visibility="masterdeck"> -->
                 <!-- <off shape="square" color="transparent" border_size="1" border="color_masterdeck" radius="10"/> -->
                 <!-- </visual> -->
-                <visual x="+1920-50-20" y="+2" width="24" height="[HEIGHT]-4" visibility="masterdeck">
-                  <off shape="square" color="color_masterdeck" border_size="0" border="color_masterdeck" radius="10"/>
-                </visual>
-                <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="button_background" coloron="color_masterdeck" brcoloron="color_masterdeck" textcoloron="black" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
+                <!-- <visual x="+1920-50-20" y="+2" width="24" height="[HEIGHT]-4" visibility="masterdeck"> -->
+                <!-- <off shape="square" color="color_masterdeck" border_size="0" border="color_masterdeck" radius="10"/> -->
+                <!-- </visual> -->
+                <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
                 <!-- BORDER -->
                 <visual source="select" x="-2" y="+0" visibility="var_equal '@$dd_bordermode' 1">
-                  <size width="1920-4-40" height="[HEIGHT]"/>
+                  <size width="1920-31" height="[HEIGHT]"/>
                   <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
                 </visual>
-                <!-- DECK BUTTON -->
+                <!-- PRO: DECK BUTTON -->
                 <visual x="+6" y="+0" width="18" height="[HEIGHT]" visibility="select">
                   <off shape="square" color="deckcolor" border_size="0" border="deckcolor" radius="0"/>
                 </visual>
@@ -10882,16 +10885,16 @@
         <!-- </slider> -->
         <!-- WAVEFORM SIZE UP DOWN -->
         <!-- bg -->
-        <visual x="+1920-34" y="+0" width="30" height="258">
-          <off shape="square" color="#222222" border_size="1" border="transparent" radius="0"/>
+        <visual x="+1920-34" y="+0" width="32" height="258">
+          <off shape="square" color="#000000" border_size="1" border="transparent" radius="0"/>
         </visual>
-        <button class="button_main" x="+1920-26-7" y="+10" width="28" height="30" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="plus" iconsize="20"/>
-        <button class="button_main" x="+1920-26-7" y="+10+30+4" width="28" height="30" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloron="button_background" textcoloron="needle" sysicon="minus" iconsize="20"/>
-        <menu tooltip="WAVEFORM OPTIONS" visibility="0.8">
-          <pos x="+1920-26-7" y="+[WAVEFORMHEIGHT]-40"/>
-          <size width="26" height="30"/>
-          <off shape="square" color="button_background"/>
-          <icon sysicon="settings" height="24" width="24" color="textoff" colorover="needle" colordown="needle"/>
+        <button class="button_main" x="+1920-26-5" y="+10" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloroff="#000000" textcoloron="needle" sysicon="plus" iconsize="20"/>
+        <button class="button_main" x="+1920-26-5" y="+10+29" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloroff="#000000" textcoloron="needle" sysicon="minus" iconsize="20"/>
+        <menu tooltip="WAVEFORM OPTIONS">
+          <pos x="+1920-26-5" y="+[WAVEFORMHEIGHT]-37"/>
+          <size width="26" height="26"/>
+          <off shape="square" color="#000000"/>
+          <icon sysicon="settings" height="22" width="22" color="textoff" colorover="needle" colordown="needle"/>
           <submenu text="Waveform Type" localize="true">
             <item text="Beats" localize="true" action="setting skinWaveformType 0 &amp;&amp; set '@$hauntingmirrorwaves' 0" check="setting skinWaveformType 0 ? var_equal '@$hauntingmirrorwaves' 0"/>
             <item text="Beats Mirrored" localize="true" action="setting skinWaveformType 0 &amp;&amp; set '@$hauntingmirrorwaves' 1" check="setting skinWaveformType 0 ? var_equal '@$hauntingmirrorwaves' 1"/>
@@ -13575,16 +13578,24 @@
         <!-- <selected color="#333333" bordercolor="orange" border_size="1" textcolor="orange" radius="4"/> -->
         <!-- <text fontsize="15" align="center">MASTER</text> -->
         <!-- </button> -->
-        <button class="button_main" x="+7" y="+179" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
         <!-- PRO: LEFT: TRANSPORT BAR -->
         <!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
-        <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+800-80-3-30" textsize="11" y="+179" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
-          <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
-          <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
-        </button>
+        <group name="button_bar_left" y="+179">
+          <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
+          <!-- BPM WARNING -->
+          <!-- more than 20% -->
+          <!-- <square x="+7+30+10+300" y="10" width="90" height="30" color="button_background4" brcolor="red" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
+          <button x="+7+30+10+300" y="10" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" border_size="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
+          <!-- less than -5% -->
+          <square x="+7+30+10+300" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
+          <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+800-80-3-30" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
+            <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
+            <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
+          </button>
+        </group>
         <!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
         <!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> -->
         <!-- <size width="804" height="436"/> -->
@@ -13839,20 +13850,139 @@
         </dropzone>
       </deck>
     </define>
-    <!-- MINI DECK -->
+    <!-- DECK: MINI -->
     <define class="area_deck_mini_extended" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- background -->
-        <visual class="gfx_shape" width="878" height="38" coloroff="panel_background"/>
+        <visual class="gfx_shape" width="878" height="100" coloroff="black"/>
         <!-- deck info -->
-        <panel class="deck_infos_mini_extended"/>
+        <panel>
+          <!-- toggle scroll -->
+          <button class="button_main" action="toggle '@hntnhtxtscroll'" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="878" height="64" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+          <!-- LEFT -->
+          <group visibility="loaded ? get_deck 1 ? true : get_deck 3 ? true : false">
+            <!-- <visual class="gfx_shape" x="+0" width="878" height="64" coloroff="red" radius="10"/> -->
+            <!-- MINI: DECK BUTTON -->
+            <!-- <button class="button_main" x="+0" y="+0" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+            <button class="button_main" x="+0" y="+0" width="36" height="94" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+            <!-- SETTINGS -->
+            <menu class="menu_maindecks" query="select" x="+2+4" y="+70" width="28" height="20"/>
+            <!-- left: with cover -->
+            <group x="+4+28+8+100" y="+2">
+              <group name="scroll">
+                <textzone tooltip="">
+                  <size width="478-50-8" height="34"/>
+                  <text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="get_title_before_remix &amp; param_uppercase" localize="true" important="true"/>
+                </textzone>
+                <textzone tooltip="">
+                  <pos y="+20"/>
+                  <size width="478-50-8" height="28"/>
+                  <text fontsize="12" weight="" color="#888888" align="left" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/>
+                </textzone>
+              </group>
+            </group>
+            <!-- COVER -->
+            <cover rotate="no" rightclick="" dblclick="">
+              <pos x="+2+4+33" y="+3"/>
+              <size width="100-8-4" height="100-8-4"/>
+            </cover>
+            <button class="button_main" x="+878-10-90" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'"/>
+            <textzone class="text" x="+878-10-90" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+            <button class="button_main" x="+878-10-90" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" bordersize="0" text="MASTER"/>
+            <textzone class="text" x="+878-10-90-10-80" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
+            <textzone class="text" x="+878-10-90-10-80" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '%Ppitchrange'"/>
+            <textzone class="text" x="+878-10-90-10-80-10-48" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/>
+            <!-- <button class="button_main" x="+878-10-90-10-80-10-48" y="+36" width="48" height="18" action="deck all master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+            <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
+            <textzone class="text" x="+878-10-90-10-80-10-48-10-80" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
+          </group>
+          <!-- RIGHT -->
+          <group visibility="loaded ? get_deck 2 ? true : get_deck 4 ? true : false">
+            <!-- not cover -->
+            <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
+              <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4"/>
+                  <size width="478" height="34"/>
+                  <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+                </textzone>
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4+28"/>
+                  <size width="478" height="28"/>
+                  <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
+                </textzone>
+              </group>
+              <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4"/>
+                  <size width="478" height="34"/>
+                  <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+                </textzone>
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4+28"/>
+                  <size width="478" height="28"/>
+                  <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
+                </textzone>
+              </group>
+            </group>
+            <!-- with cover -->
+            <group x="-5+5" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
+              <group name="noscroll" visibility="var_equal '@hntnhtxtscroll' 0">
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4"/>
+                  <size width="478-50-8" height="34"/>
+                  <text fontsize="20" weight="" color="needle" align="right" scroll="no" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+                </textzone>
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4+28"/>
+                  <size width="478-50-8" height="28"/>
+                  <text fontsize="17" weight="" color="deckcolor" align="right" scroll="no" action="get_artist" localize="true" important="true"/>
+                </textzone>
+              </group>
+              <group name="scroll" visibility="var_equal '@hntnhtxtscroll' 1">
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4"/>
+                  <size width="478-50-8" height="34"/>
+                  <text fontsize="20" weight="" color="needle" align="right" scroll="yes" action="get_text '`get_title_before_remix` `get_remix_after_title`'" localize="true" important="true"/>
+                </textzone>
+                <textzone tooltip="">
+                  <pos x="+2+354" y="+4+28"/>
+                  <size width="478-50-8" height="28"/>
+                  <text fontsize="17" weight="" color="deckcolor" align="right" scroll="yes" action="get_artist" localize="true" important="true"/>
+                </textzone>
+              </group>
+            </group>
+            <!-- <button class="button_main" x="+10" y="+4" width="90" height="30" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+            <!-- text: bpm -->
+            <textzone class="text" x="+10" y="+4" width="90" height="30" fontsize="22" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
+            <button class="button_main" x="+10" y="+36" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" coloron="orange" textcoloron="black" text="MASTER" bordersize="0"/>
+            <textzone class="text" x="+10+90+10" y="+4" action="pitch_reset" width="80" height="30" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'"/>
+            <textzone class="text" x="+10+90+10" y="+4+30" action="pitch_range '8,16,32,50' +1" width="80" height="24" fontsize="16" color="textoff" align="center" weight="" textaction="get_text '&#xB1;%Ppitchrange'"/>
+            <textzone class="text" x="+10+90+10+80+10" y="+4" width="48" height="30" action="key 0" fontsize="22" color="`get_key_color`" align="center" weight="" textaction="get_key"/>
+            <!-- <button class="button_main" x="+10+90+10+80+10" y="+36" width="48" height="18" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+            <textzone class="text" x="+10+90+10+80+10+48+10" y="+4" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
+            <textzone class="text" x="+10+90+10+80+10+48+10" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
+            <!-- deck number -->
+            <button class="button_main" x="+878-2-4-28" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/>
+            <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+64-8-22" width="28" height="20"/>
+            <!-- MINI DECK: RIGHT: DECK BUTTON -->
+            <button class="button_main" x="+878-2-4-32" y="+1" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+            <!-- MINI DECK: RIGHT: SETTINGS -->
+            <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/>
+            <!-- COVER -->
+            <cover rotate="no" rightclick="" dblclick="">
+              <pos x="+878-2-4-28-56-6+6" y="+8"/>
+              <size width="50" height="50"/>
+            </cover>
+          </group>
+        </panel>
         <!-- <visual class="gfx_shape" y="+62-2" width="878" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/> -->
         <!-- <panel class="beat_divider_area" x="+2+4" y="+62+4" width="878-4-8" height="38-4-8"/> -->
-        <songpos class="songpos" x="+2+4+40" y="+62+4" width="790" height="38-4-8" colorPlayed="blue"/>
+        <songpos class="songpos" x="+4+30+100" y="+62+6" width="734" height="38-4-8-4" colorPlayed="blue"/>
         <!-- BORDER: LEFT -->
-        <visual source="select">
+        <visual source="select" visibility="var_equal '@$dd_bordermode' 1" x="-2" y="-2">
           <size width="878" height="98"/>
-          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="6"/>
+          <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
         </visual>
         <!-- BORDER: RIGHT -->
         <!-- <visual source="deck [DECK] rightdeck" visibility="select"> -->
@@ -13869,6 +13999,7 @@
         </dropzone>
       </deck>
     </define>
+    <!-- -->
     <!-- STACK VIEW PANELS -->
     <define class="area_deck_stack" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
