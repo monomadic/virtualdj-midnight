@@ -2278,19 +2278,19 @@
         <fader color="needle" width="8" height="[HEIGHT]+10" radius="[FADERRADIUS]" anglemin="-140" anglemax="140"/>
       </define>
       <define class="pitch">
-        <line color="faderlines2" x="+0" y="+0" width="38" height="1"/>
-        <line color="faderlines2" x="+2" y="+13" width="34" height="1"/>
-        <line color="faderlines2" x="+2" y="+13*2" width="34" height="1"/>
-        <line color="faderlines2" x="+2" y="+13*3" width="34" height="1"/>
-        <line color="faderlines2" x="+0" y="+13*4" width="38" height="1"/>
-        <line color="faderlines2" x="+2" y="+13*5" width="34" height="1"/>
-        <line color="faderlines2" x="+2" y="+13*6" width="34" height="1"/>
-        <line color="faderlines2" x="+2" y="+13*7" width="34" height="1"/>
-        <line color="faderlines2" x="+0" y="+13*8" width="38" height="1"/>
+        <line color="faderlines" x="+0" y="+0" width="38" height="1"/>
+        <line color="faderlines" x="+2" y="+13" width="34" height="1"/>
+        <line color="faderlines" x="+2" y="+13*2" width="34" height="1"/>
+        <line color="faderlines" x="+2" y="+13*3" width="34" height="1"/>
+        <line color="faderlines" x="+0" y="+13*4" width="38" height="1"/>
+        <line color="faderlines" x="+2" y="+13*5" width="34" height="1"/>
+        <line color="faderlines" x="+2" y="+13*6" width="34" height="1"/>
+        <line color="faderlines" x="+2" y="+13*7" width="34" height="1"/>
+        <line color="faderlines" x="+0" y="+13*8" width="38" height="1"/>
         <slider action="pitch" rightclick="pitch_zero" dblclick="pitch_reset" orientation="vertical" direction="down" frommiddle="true">
           <pos x="+0" y="-7"/>
           <size width="38" height="119"/>
-          <on width="-24" height="-8" color="knobprogressoff" border="panel_background" border_size="4" shape="square"/>
+          <on width="-24" height="-8" color="knobprogressoff" border="panel_background" border_size="1" shape="square"/>
           <off width="-24" height="-8" color="deckcolor" border="panel_background" border_size="4" shape="square"/>
           <fader color="faderbackground" width="38" height="14"/>
         </slider>
@@ -2566,7 +2566,7 @@
     <!-- </textzone> -->
     <!-- </panel> -->
     <define class="transport_left_stack"><button class="button_main" x="+0" y="+10" width="50" height="22" action="sync" coloroff="button_background" text="SYNC" textcolor="white" iconsize="20" sysicon="" border="0"/><button class="button_main" x="+50+4" y="+10" width="50" height="22" action="play_button" coloroff="button_background" textcolor="white" iconsize="20" sysicon="arrowright" border="0"/></define>
-    <define class="key_display"><visual class="gfx_shape" width="128" height="80" coloroff="transparent"/><!-- KEY TEXT --><textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="22" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/><!-- KEY DOWN BUTTON --><button class="button_main" x="+6" y="+0" width="26" height="15" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="15" sysicon="minus"/><!-- KEY MATCH BUTTON --><button class="button_main" action="key_match_button" width="100-26-26" height="14" x="+32" y="+21" coloroff="black" coloron="black" bordersize="0" textsize="12" textcolor="red" textcoloron="green" textaction="param_equal '`get_key_modifier_text`' 'KEY' ? get_text '+0' : get_key_modifier_text" visibility="not masterdeck"/><!-- KEY UP BUTTON --><button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/><!-- KEY MISMATCH WARNING --><visual type="square" x="+10" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/><!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> --><!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> --></define>
+    <define class="key_display"><visual class="gfx_shape" width="128" height="80" coloroff="transparent"/><!-- KEY TEXT --><textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="22" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/><!-- KEY DOWN BUTTON --><button class="button_main" x="+6" y="+0" width="26" height="15" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="15" sysicon="minus"/><!-- KEY MATCH BUTTON --><button class="button_main" action="key_match_button" width="100-26-26" height="14" x="+32" y="+21" coloroff="black" coloron="black" bordersize="0" textsize="12" textcolor="red" textcoloron="green" textaction="get_key_modifier"/><!-- KEY UP BUTTON --><button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/><!-- KEY MISMATCH WARNING --><visual type="square" x="+10" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/></define>
     <!-- TRANSPORT: KEY INDICATOR -->
     <define class="key_display_left"><visual class="gfx_shape" width="128" height="80" coloroff="transparent"/><button class="button_main" x="+16" y="+34" width="26" height="48-16" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" border="0" iconsize="22" sysicon="arrowleft"/><textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="26" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/><button class="button_main" x="+128-26-12" y="+34" width="26" height="48-16" action="key_move +1" textcoloron="white" coloron="transparent" brcoloron="transparent" iconsize="22" sysicon="arrowright"/><!-- <textzone class="text" --><!-- x="+26" y="+40" --><!-- width="128-26-26" height="20" --><!-- fontsize="12" align="center" weight="" --><!-- color="#999999" --><!-- textaction="get_key_modifier_text"/> --><!-- <button class="button_main" action="key_match_button" width="128-26-26" height="16" x="+26" --><!-- y="+5" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" --><!-- textcoloron="black" textaction="get_text 'SYNC'" visibility="not is_sync ? blink : false" /> --><!-- loaded ? key 0 --><button class="button_main" action="key_match_button" width="100-26-26" height="16" x="+42" y="+42" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_key_modifier_text" visibility=""/><visual type="square" x="+20" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/><!-- <button class="button_main" x="+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> --><!-- <textzone class="text" x="+72-10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> --></define>
     <define class="key_display_right"><visual class="gfx_shape" width="128" height="80" coloroff="transparent"/><button class="button_main" x="+0" y="+8" width="26" height="48-16" action="key_move -1" coloroff="button_background" textcolor="textoff4" iconsize="22" sysicon="arrowleft"/><textzone class="text" x="+26" y="+0" width="128-26-26" height="48" action="key_match_menu" fontsize="30" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/><button class="button_main" x="+128-26" y="+8" width="26" height="48-16" action="key_move +1" coloroff="button_background" textcolor="textoff4" iconsize="22" sysicon="arrowright"/><!-- <button class="button_main" x="+56+10" y="+50" width="72-20" height="20" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> --><!-- <textzone class="text" x="+10" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="KEY"/> --></define>
@@ -5346,44 +5346,46 @@
     </define>
     <!-- BPM SLIDER -->
     <define class="pitch_zone">
-      <visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#111111" bordercolor="#333333" border_size="2"/>
-      <!-- PITCH RANGE -->
-      <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/>
-      <panel class="pitch" x="+11" y="+6+26"/>
-      <!-- PITCH RESET -->
-      <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#000000" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
-      <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="red" brcoloroff="button_background3" textsize="14" textcolor="white" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
-      <!-- + and - -->
-      <!-- <button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend -2% 500ms" rightclick="pitch_range '8,16,32,50' -1"  tooltip="Pitch Bend.\nRigth-click: Pitch range -8,16,32,50." textsize="14" text="-" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
-      <!-- <button class="button_main" x="+29" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend +2% 500ms" rightclick="pitch_range '8,16,32,50' +1" tooltip="Pitch Bend.\nRigth-click: Pitch range +8,16,32,50." textsize="14" text="+" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
-      <!-- <button x="+0" y="+0" width="26" height="26" action="master_tempo on ? master_tempo off : master_tempo on" coloroff="cue_color [SOURCE]" textcolor="white"> -->
-      <!-- <off color="cue_color [SOURCE]"/> -->
-      <!-- <over color="cue_color [SOURCE] ? constant 0.4"/> -->
-      <!-- <icon dx="+2" sysicon="arrowright" color="white" colordown="white" colorselected="white" width="25" height="25" /> -->
-      <!-- <text size="8" dx="22" dy="2">PITCH LOCK</text> -->
-      <!-- </button> -->
-      <!-- Master Tempo (Pitch Lock) toggle button -->
-      <!-- <button class="button_main" -->
-      <!-- x="+5" y="+150" width="50" height="15" -->
-      <!-- visible="yes" available="yes" -->
-      <!-- action="master_tempo on ? master_tempo off : master_tempo on" -->
-      <!-- query="master_tempo" -->
-      <!-- text="PITCHLOCK" -->
-      <!-- textdx="22" textdy="2" -->
-      <!-- textsize="8" align="center" -->
-      <!-- textcolor="#CCCCCC" textcoloron="#FFFFFF" -->
-      <!-- coloroff="#444444" coloron="#444444" -->
-      <!-- brcoloroff="#000000" brcoloron="#FFFFFF" -->
-      <!-- > -->
-      <!-- lock vs. unlock icon -->
-      <!-- <icon width="16" height="16" -->
-      <!-- sysicon="lock" sysiconon="lock_open" -->
-      <!-- colordown="white" colorselected="white" -->
-      <!-- color="#CCCCCC" coloron="#00FF00"/> -->
-      <!-- <icon dx="+2" sysicon="lock" color="white" colordown="white" colorselected="white" width="25" height="25" /> -->
-      <!-- </button> -->
-      <!-- PITCH SLIDER: PITCH LOCK BUTTON -->
-      <!-- <button class="button_main" x="+0" y="+150" width="60" height="16" action="master_tempo on ? master_tempo off : master_tempo on" query="master_tempo" textsize="8" text="PITCH LOCK" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
+      <visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#000000" bordercolor="#333333" border_size="2"/>
+      <group visibility="loaded">
+        <!-- PITCH RANGE -->
+        <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/>
+        <panel class="pitch" x="+11" y="+6+26"/>
+        <!-- PITCH RESET -->
+        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#000000" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
+        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="red" brcoloroff="button_background3" textsize="14" textcolor="white" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
+        <!-- + and - -->
+        <!-- <button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend -2% 500ms" rightclick="pitch_range '8,16,32,50' -1"  tooltip="Pitch Bend.\nRigth-click: Pitch range -8,16,32,50." textsize="14" text="-" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
+        <!-- <button class="button_main" x="+29" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend +2% 500ms" rightclick="pitch_range '8,16,32,50' +1" tooltip="Pitch Bend.\nRigth-click: Pitch range +8,16,32,50." textsize="14" text="+" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
+        <!-- <button x="+0" y="+0" width="26" height="26" action="master_tempo on ? master_tempo off : master_tempo on" coloroff="cue_color [SOURCE]" textcolor="white"> -->
+        <!-- <off color="cue_color [SOURCE]"/> -->
+        <!-- <over color="cue_color [SOURCE] ? constant 0.4"/> -->
+        <!-- <icon dx="+2" sysicon="arrowright" color="white" colordown="white" colorselected="white" width="25" height="25" /> -->
+        <!-- <text size="8" dx="22" dy="2">PITCH LOCK</text> -->
+        <!-- </button> -->
+        <!-- Master Tempo (Pitch Lock) toggle button -->
+        <!-- <button class="button_main" -->
+        <!-- x="+5" y="+150" width="50" height="15" -->
+        <!-- visible="yes" available="yes" -->
+        <!-- action="master_tempo on ? master_tempo off : master_tempo on" -->
+        <!-- query="master_tempo" -->
+        <!-- text="PITCHLOCK" -->
+        <!-- textdx="22" textdy="2" -->
+        <!-- textsize="8" align="center" -->
+        <!-- textcolor="#CCCCCC" textcoloron="#FFFFFF" -->
+        <!-- coloroff="#444444" coloron="#444444" -->
+        <!-- brcoloroff="#000000" brcoloron="#FFFFFF" -->
+        <!-- > -->
+        <!-- lock vs. unlock icon -->
+        <!-- <icon width="16" height="16" -->
+        <!-- sysicon="lock" sysiconon="lock_open" -->
+        <!-- colordown="white" colorselected="white" -->
+        <!-- color="#CCCCCC" coloron="#00FF00"/> -->
+        <!-- <icon dx="+2" sysicon="lock" color="white" colordown="white" colorselected="white" width="25" height="25" /> -->
+        <!-- </button> -->
+        <!-- PITCH SLIDER: PITCH LOCK BUTTON -->
+        <!-- <button class="button_main" x="+0" y="+150" width="60" height="16" action="master_tempo on ? master_tempo off : master_tempo on" query="master_tempo" textsize="8" text="PITCH LOCK" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
+      </group>
     </define>
     <define class="pitch_zone_ex">
       <button class="button_main" x="+0" y="+6" width="58" height="18" action="pitch_reset" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
@@ -6097,42 +6099,59 @@
       <button class="button_main" x="+499" y="+22" width="28" height="28" action="effect_show_gui [SOURCE]" text="+"/>
     </define>
     <define class="loop_direct">
+      <group y="+2">
+        <button class="custom_button2" coloroff="button_background2" source="301" x="+88*0+1" y="+0" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="302" x="+88*1+1" y="+0" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="303" x="+88*2+1" y="+0" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="304" x="+88*0+1" y="+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="305" x="+88*1+1" y="+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="306" x="+88*2+1" y="+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="307" x="+88*0+1" y="+27+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="308" x="+88*1+1" y="+27+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="309" x="+88*2+1" y="+27+27" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="310" x="+88*0+1" y="+27*3" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="311" x="+88*1+1" y="+27*3" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="312" x="+88*2+1" y="+27*3" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="313" x="+88*0+1" y="+27*4" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="314" x="+88*1+1" y="+27*4" width="86" height="25"/>
+        <button class="custom_button2" coloroff="button_background2" source="315" x="+88*2+1" y="+27*4" width="86" height="25"/>
+      </group>
       <!-- LOOP SELECT -->
-      <group name="dark_buttons" condition="var_not_equal '@$hauntingcolorscheme' 4">
-        <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.03125 &amp; loop : loop_pad_page 2 ? loop_select 0.0625 &amp; loop : loop_pad_page 3 ? loop_select 0.125 &amp; loop : loop_pad_page 4 ? loop_select 0.25 &amp; loop : loop_pad_page 5 ? loop_select 0.5 &amp; loop : loop_pad_page 6 ? loop_select 1 &amp; loop" textaction="loop_pad 1" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.0625 &amp; loop : loop_pad_page 2 ? loop_select 0.125 &amp; loop : loop_pad_page 3 ? loop_select 0.25 &amp; loop : loop_pad_page 4 ? loop_select 0.5 &amp; loop : loop_pad_page 5 ? loop_select 1 &amp; loop : loop_pad_page 6 ? loop_select 2 &amp; loop" textaction="loop_pad 2" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.125 &amp; loop : loop_pad_page 2 ? loop_select 0.25 &amp; loop : loop_pad_page 3 ? loop_select 0.5 &amp; loop : loop_pad_page 4 ? loop_select 1 &amp; loop : loop_pad_page 5 ? loop_select 2 &amp; loop : loop_pad_page 6 ? loop_select 4 &amp; loop" textaction="loop_pad 3" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.25 &amp; loop : loop_pad_page 2 ? loop_select 0.5 &amp; loop : loop_pad_page 3 ? loop_select 1 &amp; loop : loop_pad_page 4 ? loop_select 2 &amp; loop : loop_pad_page 5 ? loop_select 4 &amp; loop : loop_pad_page 6 ? loop_select 8 &amp; loop" textaction="loop_pad 4" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.5 &amp; loop : loop_pad_page 2 ? loop_select 1 &amp; loop : loop_pad_page 3 ? loop_select 2 &amp; loop : loop_pad_page 4 ? loop_select 4 &amp; loop : loop_pad_page 5 ? loop_select 8 &amp; loop : loop_pad_page 6 ? loop_select 16 &amp; loop" textaction="loop_pad 5" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 1 &amp; loop : loop_pad_page 2 ? loop_select 2 &amp; loop : loop_pad_page 3 ? loop_select 4 &amp; loop : loop_pad_page 4 ? loop_select 8 &amp; loop : loop_pad_page 5 ? loop_select 16 &amp; loop : loop_pad_page 6 ? loop_select 32 &amp; loop" textaction="loop_pad 6" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 2 &amp; loop : loop_pad_page 2 ? loop_select 4 &amp; loop : loop_pad_page 3 ? loop_select 8 &amp; loop : loop_pad_page 4 ? loop_select 16 &amp; loop : loop_pad_page 5 ? loop_select 32 &amp; loop : loop_pad_page 6 ? loop_select 64 &amp; loop" textaction="loop_pad 7" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 4 &amp; loop : loop_pad_page 2 ? loop_select 8 &amp; loop : loop_pad_page 3 ? loop_select 16 &amp; loop : loop_pad_page 4 ? loop_select 32 &amp; loop : loop_pad_page 5 ? loop_select 64 &amp; loop : loop_pad_page 6 ? loop_select 128 &amp; loop" textaction="loop_pad 8" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/>
-      </group>
-      <group name="day_buttons" condition="var_equal '@$hauntingcolorscheme' 4">
-        <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.03125 &amp; loop : loop_pad_page 2 ? loop_select 0.0625 &amp; loop : loop_pad_page 3 ? loop_select 0.125 &amp; loop : loop_pad_page 4 ? loop_select 0.25 &amp; loop : loop_pad_page 5 ? loop_select 0.5 &amp; loop : loop_pad_page 6 ? loop_select 1 &amp; loop" textaction="loop_pad 1" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.0625 &amp; loop : loop_pad_page 2 ? loop_select 0.125 &amp; loop : loop_pad_page 3 ? loop_select 0.25 &amp; loop : loop_pad_page 4 ? loop_select 0.5 &amp; loop : loop_pad_page 5 ? loop_select 1 &amp; loop : loop_pad_page 6 ? loop_select 2 &amp; loop" textaction="loop_pad 2" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.125 &amp; loop : loop_pad_page 2 ? loop_select 0.25 &amp; loop : loop_pad_page 3 ? loop_select 0.5 &amp; loop : loop_pad_page 4 ? loop_select 1 &amp; loop : loop_pad_page 5 ? loop_select 2 &amp; loop : loop_pad_page 6 ? loop_select 4 &amp; loop" textaction="loop_pad 3" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.25 &amp; loop : loop_pad_page 2 ? loop_select 0.5 &amp; loop : loop_pad_page 3 ? loop_select 1 &amp; loop : loop_pad_page 4 ? loop_select 2 &amp; loop : loop_pad_page 5 ? loop_select 4 &amp; loop : loop_pad_page 6 ? loop_select 8 &amp; loop" textaction="loop_pad 4" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.5 &amp; loop : loop_pad_page 2 ? loop_select 1 &amp; loop : loop_pad_page 3 ? loop_select 2 &amp; loop : loop_pad_page 4 ? loop_select 4 &amp; loop : loop_pad_page 5 ? loop_select 8 &amp; loop : loop_pad_page 6 ? loop_select 16 &amp; loop" textaction="loop_pad 5" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 1 &amp; loop : loop_pad_page 2 ? loop_select 2 &amp; loop : loop_pad_page 3 ? loop_select 4 &amp; loop : loop_pad_page 4 ? loop_select 8 &amp; loop : loop_pad_page 5 ? loop_select 16 &amp; loop : loop_pad_page 6 ? loop_select 32 &amp; loop" textaction="loop_pad 6" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 2 &amp; loop : loop_pad_page 2 ? loop_select 4 &amp; loop : loop_pad_page 3 ? loop_select 8 &amp; loop : loop_pad_page 4 ? loop_select 16 &amp; loop : loop_pad_page 5 ? loop_select 32 &amp; loop : loop_pad_page 6 ? loop_select 64 &amp; loop" textaction="loop_pad 7" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-        <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 4 &amp; loop : loop_pad_page 2 ? loop_select 8 &amp; loop : loop_pad_page 3 ? loop_select 16 &amp; loop : loop_pad_page 4 ? loop_select 32 &amp; loop : loop_pad_page 5 ? loop_select 64 &amp; loop : loop_pad_page 6 ? loop_select 128 &amp; loop" textaction="loop_pad 8" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/>
-      </group>
+      <!-- <group name="dark_buttons" condition="var_not_equal '@$hauntingcolorscheme' 4"> -->
+      <!-- <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.03125 &amp; loop : loop_pad_page 2 ? loop_select 0.0625 &amp; loop : loop_pad_page 3 ? loop_select 0.125 &amp; loop : loop_pad_page 4 ? loop_select 0.25 &amp; loop : loop_pad_page 5 ? loop_select 0.5 &amp; loop : loop_pad_page 6 ? loop_select 1 &amp; loop" textaction="loop_pad 1" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.0625 &amp; loop : loop_pad_page 2 ? loop_select 0.125 &amp; loop : loop_pad_page 3 ? loop_select 0.25 &amp; loop : loop_pad_page 4 ? loop_select 0.5 &amp; loop : loop_pad_page 5 ? loop_select 1 &amp; loop : loop_pad_page 6 ? loop_select 2 &amp; loop" textaction="loop_pad 2" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.125 &amp; loop : loop_pad_page 2 ? loop_select 0.25 &amp; loop : loop_pad_page 3 ? loop_select 0.5 &amp; loop : loop_pad_page 4 ? loop_select 1 &amp; loop : loop_pad_page 5 ? loop_select 2 &amp; loop : loop_pad_page 6 ? loop_select 4 &amp; loop" textaction="loop_pad 3" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.25 &amp; loop : loop_pad_page 2 ? loop_select 0.5 &amp; loop : loop_pad_page 3 ? loop_select 1 &amp; loop : loop_pad_page 4 ? loop_select 2 &amp; loop : loop_pad_page 5 ? loop_select 4 &amp; loop : loop_pad_page 6 ? loop_select 8 &amp; loop" textaction="loop_pad 4" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.5 &amp; loop : loop_pad_page 2 ? loop_select 1 &amp; loop : loop_pad_page 3 ? loop_select 2 &amp; loop : loop_pad_page 4 ? loop_select 4 &amp; loop : loop_pad_page 5 ? loop_select 8 &amp; loop : loop_pad_page 6 ? loop_select 16 &amp; loop" textaction="loop_pad 5" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 1 &amp; loop : loop_pad_page 2 ? loop_select 2 &amp; loop : loop_pad_page 3 ? loop_select 4 &amp; loop : loop_pad_page 4 ? loop_select 8 &amp; loop : loop_pad_page 5 ? loop_select 16 &amp; loop : loop_pad_page 6 ? loop_select 32 &amp; loop" textaction="loop_pad 6" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 2 &amp; loop : loop_pad_page 2 ? loop_select 4 &amp; loop : loop_pad_page 3 ? loop_select 8 &amp; loop : loop_pad_page 4 ? loop_select 16 &amp; loop : loop_pad_page 5 ? loop_select 32 &amp; loop : loop_pad_page 6 ? loop_select 64 &amp; loop" textaction="loop_pad 7" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 4 &amp; loop : loop_pad_page 2 ? loop_select 8 &amp; loop : loop_pad_page 3 ? loop_select 16 &amp; loop : loop_pad_page 4 ? loop_select 32 &amp; loop : loop_pad_page 5 ? loop_select 64 &amp; loop : loop_pad_page 6 ? loop_select 128 &amp; loop" textaction="loop_pad 8" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" textcoloron="needle" textsize="14"/> -->
+      <!-- </group> -->
+      <!-- <group name="day_buttons" condition="var_equal '@$hauntingcolorscheme' 4"> -->
+      <!-- <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.03125 &amp; loop : loop_pad_page 2 ? loop_select 0.0625 &amp; loop : loop_pad_page 3 ? loop_select 0.125 &amp; loop : loop_pad_page 4 ? loop_select 0.25 &amp; loop : loop_pad_page 5 ? loop_select 0.5 &amp; loop : loop_pad_page 6 ? loop_select 1 &amp; loop" textaction="loop_pad 1" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.0625 &amp; loop : loop_pad_page 2 ? loop_select 0.125 &amp; loop : loop_pad_page 3 ? loop_select 0.25 &amp; loop : loop_pad_page 4 ? loop_select 0.5 &amp; loop : loop_pad_page 5 ? loop_select 1 &amp; loop : loop_pad_page 6 ? loop_select 2 &amp; loop" textaction="loop_pad 2" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.125 &amp; loop : loop_pad_page 2 ? loop_select 0.25 &amp; loop : loop_pad_page 3 ? loop_select 0.5 &amp; loop : loop_pad_page 4 ? loop_select 1 &amp; loop : loop_pad_page 5 ? loop_select 2 &amp; loop : loop_pad_page 6 ? loop_select 4 &amp; loop" textaction="loop_pad 3" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.25 &amp; loop : loop_pad_page 2 ? loop_select 0.5 &amp; loop : loop_pad_page 3 ? loop_select 1 &amp; loop : loop_pad_page 4 ? loop_select 2 &amp; loop : loop_pad_page 5 ? loop_select 4 &amp; loop : loop_pad_page 6 ? loop_select 8 &amp; loop" textaction="loop_pad 4" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 0.5 &amp; loop : loop_pad_page 2 ? loop_select 1 &amp; loop : loop_pad_page 3 ? loop_select 2 &amp; loop : loop_pad_page 4 ? loop_select 4 &amp; loop : loop_pad_page 5 ? loop_select 8 &amp; loop : loop_pad_page 6 ? loop_select 16 &amp; loop" textaction="loop_pad 5" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 1 &amp; loop : loop_pad_page 2 ? loop_select 2 &amp; loop : loop_pad_page 3 ? loop_select 4 &amp; loop : loop_pad_page 4 ? loop_select 8 &amp; loop : loop_pad_page 5 ? loop_select 16 &amp; loop : loop_pad_page 6 ? loop_select 32 &amp; loop" textaction="loop_pad 6" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 2 &amp; loop : loop_pad_page 2 ? loop_select 4 &amp; loop : loop_pad_page 3 ? loop_select 8 &amp; loop : loop_pad_page 4 ? loop_select 16 &amp; loop : loop_pad_page 5 ? loop_select 32 &amp; loop : loop_pad_page 6 ? loop_select 64 &amp; loop" textaction="loop_pad 7" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad_page 1 ? loop_select 4 &amp; loop : loop_pad_page 2 ? loop_select 8 &amp; loop : loop_pad_page 3 ? loop_select 16 &amp; loop : loop_pad_page 4 ? loop_select 32 &amp; loop : loop_pad_page 5 ? loop_select 64 &amp; loop : loop_pad_page 6 ? loop_select 128 &amp; loop" textaction="loop_pad 8" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textcoloron="needle" textsize="14"/> -->
+      <!-- </group> -->
       <!-- LOOP ACTIVE -->
-      <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad 1" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 1" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad 2" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 2" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad 3" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 3" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad 4" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 4" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad 5" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 5" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad 6" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 6" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad 7" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 7" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad 8" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 8" textsize="14" visibility="loop ? true : false"/>
-      <button class="button_main" x="+10" y="+62" width="58+4+58" height="16" action="loop_pad_page -1" sysicon="arrowleft" iconsize="20" query="on/off" textcolor="textdarker" textcoloron="needle" coloroff="infos_background" coloron="infos_background" bordersize="0"/>
-      <button class="button_main" x="+10+62+62" y="+62" width="58+4+58" height="16" action="loop_pad_page +1" sysicon="arrowright" iconsize="20" query="on/off" textcolor="textdarker" textcoloron="needle" coloroff="infos_background" coloron="infos_background" bordersize="0"/>
-      <button class="button_main" x="+10" y="+6+88" width="50" height="30" action="loop_half" sysicon="chevronleft" iconsize="22"/>
-      <button class="button_main" x="+10+55" y="+6+88" width="134" height="30" action="reloop_exit" query="loop" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="1" textsize="12" textcoloron="needle" textaction="get_text 'RELOOP/EXIT'" condition="var_not_equal '@$hauntingcolorscheme' 4"/>
-      <button class="button_main" x="+10+55" y="+6+88" width="134" height="30" action="reloop_exit" query="loop" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textsize="12" textcoloron="needle" textaction="get_text 'RELOOP/EXIT'" condition="var_equal '@$hauntingcolorscheme' 4"/>
-      <button class="button_main" x="+10+55+134+5" y="+6+88" width="50" height="30" action="loop_double" sysicon="chevronright" iconsize="22"/>
+      <!-- <button class="button_main" x="+10" y="+6" width="58" height="24" action="loop_pad 1" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 1" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6" width="58" height="24" action="loop_pad 2" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 2" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6" width="58" height="24" action="loop_pad 3" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 3" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6" width="58" height="24" action="loop_pad 4" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 4" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10" y="+6+28" width="58" height="24" action="loop_pad 5" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 5" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62" y="+6+28" width="58" height="24" action="loop_pad 6" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 6" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+6+28" width="58" height="24" action="loop_pad 7" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 7" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10+62+62+62" y="+6+28" width="58" height="24" action="loop_pad 8" coloroff="button_background2" brcoloroff="button_background2" textaction="loop_pad 8" textsize="14" visibility="loop ? true : false"/> -->
+      <!-- <button class="button_main" x="+10" y="+62" width="58+4+58" height="16" action="loop_pad_page -1" sysicon="arrowleft" iconsize="20" query="on/off" textcolor="textdarker" textcoloron="needle" coloroff="infos_background" coloron="infos_background" bordersize="0"/> -->
+      <!-- <button class="button_main" x="+10+62+62" y="+62" width="58+4+58" height="16" action="loop_pad_page +1" sysicon="arrowright" iconsize="20" query="on/off" textcolor="textdarker" textcoloron="needle" coloroff="infos_background" coloron="infos_background" bordersize="0"/> -->
+      <!-- <button class="button_main" x="+10" y="+6+88" width="50" height="30" action="loop_half" sysicon="chevronleft" iconsize="22"/> -->
+      <!-- <button class="button_main" x="+10+55" y="+6+88" width="134" height="30" action="reloop_exit" query="loop" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="1" textsize="12" textcoloron="needle" textaction="get_text 'RELOOP/EXIT'" condition="var_not_equal '@$hauntingcolorscheme' 4"/> -->
+      <!-- <button class="button_main" x="+10+55" y="+6+88" width="134" height="30" action="reloop_exit" query="loop" coloroff="button_background2" coloron="button_background2" brcoloroff="button_background2" bordersize="2" textsize="12" textcoloron="needle" textaction="get_text 'RELOOP/EXIT'" condition="var_equal '@$hauntingcolorscheme' 4"/> -->
+      <!-- <button class="button_main" x="+10+55+134+5" y="+6+88" width="50" height="30" action="loop_double" sysicon="chevronright" iconsize="22"/> -->
     </define>
     <define class="hot_cues" placeholders="*panelname">
       <panel name="hcuespage1_[PANELNAME]" group="cues_[PANELNAME]" visible="yes">
@@ -8626,7 +8645,7 @@
       <!-- PRO: TOP BAR -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
-        <button class="button_main" x="115+80+1260" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
+        <button class="button_main" x="115+80+900" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
         <button class="button_main" x="115+80+900" y="8" width="27" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SB" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
         <!-- disable sandbox button if cannot sandbox -->
         <group visibility="0.75">
@@ -8638,13 +8657,13 @@
           <pos x="115+80+960" y="15"/>
           <size width="150" height="15"/>
         </songpos>
-        <group x="840+80+880" y="8">
+        <group x="840+80+600" y="8">
           <!-- MASTERTEMPO BUTTON -->
-          <button class="button_main" x="+0" y="+0" width="35" height="27" tooltip="Master Tempo" action="master_tempo" textsize="15" text="MT" coloron="#000000" textcoloron="#FF2288" bordersize="2" brcoloron="#FF2288" visibility="sandbox on ? false : true"/>
+          <button class="button_main" x="+0" y="+3" width="26" height="21" tooltip="Master Tempo" action="master_tempo" textsize="10" text="MT" coloron="#000000" textcoloron="#FF2288" bordersize="1" brcoloron="#FF2288" visibility="sandbox on ? false : true"/>
           <!-- MASTERDECK AUTO BUTTON -->
-          <button class="button_main" x="+40" y="+0" width="35" height="27" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="15" text="M" coloron="#000000" textcoloron="orange" bordersize="2" brcoloron="orange" visibility="sandbox on ? false : true"/>
+          <button class="button_main" x="+30" y="+3" width="26" height="21" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="10" text="M" coloron="#000000" textcoloron="orange" bordersize="1" brcoloron="orange" visibility="sandbox on ? false : true"/>
           <!-- QUANTIZE BUTTON -->
-          <button class="button_main" x="+80" y="+0" width="35" height="27" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="15" text="Q" coloron="#000000" textcoloron="#88FF88" bordersize="2" brcoloron="#88FF88" visibility="sandbox on ? false : true"/>
+          <button class="button_main" x="+60" y="+3" width="26" height="21" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="10" text="Q" coloron="#000000" textcoloron="#88FF88" bordersize="1" brcoloron="#88FF88" visibility="sandbox on ? false : true"/>
         </group>
         <!-- MIXER PANEL / MIDDLE PANEL TABS -->
         <!-- <group x="+800" y="+8"> -->
@@ -8938,7 +8957,7 @@
         </textzone>
       </group>
       <!-- <button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/> -->
-      <button class="button_main" x="1920-40-155-190" y="8" width="50" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="STEM" coloroff="panel_background" coloron="br_focus" bordersize="0"/>
+      <button class="button_main" x="1920-40-155-280" y="8" width="50" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="STEM" coloroff="panel_background" coloron="br_focus" bordersize="0"/>
       <!-- <group name="battery" visibility="var_equal '@$hauntinggetbattery' 1"> -->
       <!-- <visual type="linear" direction="right" source="get_battery"> -->
       <!-- <pos x="+1696" y="+8+2" width="42" height="27-4"/> -->
@@ -13562,7 +13581,7 @@
         <!-- non-video -->
         <!-- <panel class="transport" x="+484+7+235" y="+2" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
         <!-- <panel class="transport" x="+484+7-80+[JOGSIZE]" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
-        <panel class="pitch_zone" x="+804-318" y="+2"/>
+        <panel class="pitch_zone" x="+804-320" y="+2"/>
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/>
         <panel class="vvu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
@@ -13582,15 +13601,25 @@
         <!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
         <group name="button_bar_left" y="+179">
           <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
-          <!-- BPM WARNING -->
-          <!-- more than 20% -->
-          <!-- <square x="+7+30+10+300" y="10" width="90" height="30" color="button_background4" brcolor="red" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
-          <button x="+7+30+10+300" y="10" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" border_size="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
-          <!-- less than -5% -->
-          <square x="+7+30+10+300" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
-          <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-          <button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-          <button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <group visibility="loaded">
+            <!-- BPM WARNING -->
+            <!-- more than 20% -->
+            <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
+            <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
+            <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/>
+            <button action="select ? pitch +20% 2bars" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+              <pos x="+7+30+10+300" y="+0"/>
+              <size width="90" height="30"/>
+              <off color="#330000" shape="square"/>
+              <text size="14" align="center" color="red" text="BPM RESET"/>
+            </button>
+            <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" bordersize="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_bigger `param_abs_diff `get_bpm` `get_bpm 'absolute'`` 20"/> -->
+            <!-- less than -5% -->
+            <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-2" textsize="11" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+            <button class="button_main" x="+800-80-3-30-1-80-2-80-2" textsize="11" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+            <button x="+800-80-3-30-1-80-2" y="+0" width="80" height="30" text="SYNC" fontsize="11" textcolor="white" textcoloron="black" coloroff="#222222" coloron="#00FFAA" colorover="#333333" border_size="2" bordercoloroff="#222222" bordercoloron="#00FFAA" action="select &amp; sync" query="sync"/>
+            <button class="button_main" x="+800-80-3-30-1-80-2" textsize="11" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          </group>
           <button class="button_main" x="+800-80-3-30" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
             <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
             <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
@@ -13739,7 +13768,7 @@
         <!-- <panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
         <!-- <panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
         <!-- BPM SLIDER -->
-        <panel class="pitch_zone" x="+256" y="+2"/>
+        <panel class="pitch_zone" x="+257" y="+2"/>
         <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT DECK: VU METER -->
         <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/>
