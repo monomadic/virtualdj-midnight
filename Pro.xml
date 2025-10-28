@@ -12,54 +12,45 @@
   <customicons file="icons_daylight.png" nb="64" nbx="16" condition="var_equal '@$hauntingcolorscheme' 4"/>
   <!-- DEFINES -->
   <group name="DEFINES">
-    <!-- DENON DJ -->
-    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 2 ? not var_equal '@$hauntingcolorscheme' 4">
+    <!-- Shape Colors: DENON DJ & PIONEER DJ -->
+    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 2">
+      <!-- DENON DJ -->
       <define color="colorvocal" value="#0064E8"/>
       <define color="colorinstru" value="#0CFF00"/>
-      <define color="colorbeat" value="#edffec"/>
-      <define color="colornovocal" value="#000000"/>
-      <define color="colornoinstru" value="#000000"/>
-      <define color="colornobeat" value="#000000"/>
+      <define color="colorbeat" value="#edffec" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorbeat" value="#000000" condition="var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornovocal" value="#000000" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornovocal" value="#303030" condition="var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornoinstru" value="#000000" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornoinstru" value="#303030" condition="var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornobeat" value="#000000" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornobeat" value="#F9E5CC" condition="var_equal '@$hauntingcolorscheme' 4"/>
     </group>
-    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 2 ? var_equal '@$hauntingcolorscheme' 4">
-      <define color="colorvocal" value="#0064E8"/>
-      <define color="colorinstru" value="#0CFF00"/>
-      <define color="colorbeat" value="#000000"/>
+    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 1">
+      <!-- PIONEER DJ -->
+      <define color="colorvocal" value="green" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorvocal" value="#0064E8" condition="var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorinstru" value="orange" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorinstru" value="#FFA800" condition="var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorbeat" value="#1E70CD" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colorbeat" value="#000000" condition="var_equal '@$hauntingcolorscheme' 4"/>
       <define color="colornovocal" value="#303030"/>
       <define color="colornoinstru" value="#303030"/>
-      <define color="colornobeat" value="#F9E5CC"/>
-    </group>
-    <!-- PIONEER DJ -->
-    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 1 ? not var_equal '@$hauntingcolorscheme' 4">
-      <define color="colorvocal" value="green"/>
-      <define color="colorinstru" value="orange"/>
-      <define color="colorbeat" value="#1E70CD"/>
-      <define color="colornovocal" value="#303030"/>
-      <define color="colornoinstru" value="#303030"/>
-      <define color="colornobeat" value="#303030"/>
-    </group>
-    <group name="shapecolors" condition="var_equal '@$hauntingcolorshapescolors' 1 ? var_equal '@$hauntingcolorscheme' 4">
-      <define color="colorvocal" value="#0064E8"/>
-      <define color="colorinstru" value="#FFA800"/>
-      <define color="colorbeat" value="#000000"/>
-      <define color="colornovocal" value="#303030"/>
-      <define color="colornoinstru" value="#303030"/>
-      <define color="colornobeat" value="#F9E5CC"/>
+      <define color="colornobeat" value="#303030" condition="not var_equal '@$hauntingcolorscheme' 4"/>
+      <define color="colornobeat" value="#F9E5CC" condition="var_equal '@$hauntingcolorscheme' 4"/>
     </group>
     <!-- ===== Top-level color defines (always active) ===== -->
     <define color="color_dropzone" value="white"/>
     <define color="color_masterdeck" value="orange"/>
+    <!-- Common colors for all decks -->
+    <define color="color_genre" value="#60FF8E"/>
+    <define color="color_mood" value="#CE42FF"/>
+    <define color="color_elements" value="#49FFFF"/>
+    <define color="color_mix" value="#FF026B"/>
+    <define color="color_timing" value="#FFF138"/>
     <!-- Deck 1 -->
     <define color="waveform_active1" value="#219cbf"/>
     <define color="waveform_passive1" value="#113845"/>
-    <define value="#60FF8E" color="color_genre"/>
-    <define value="#CE42FF" color="color_mood"/>
-    <define value="#49FFFF" color="color_elements"/>
-    <define value="#FF026B" color="color_mix"/>
-    <define value="#FFF138" color="color_timing"/>
-    <define color="colorbass" value="#FF4551" deck="1"/>
-    <define color="colorkick" value="#FF45FF" deck="1"/>
-    <define color="colorhihat" value="#F0CF0C" deck="1"/>
     <define color="colormed" value="#113845" deck="1"/>
     <define color="colorhigh" value="#219cbf" deck="1"/>
     <define color="scratch1" value="#007eff" deck="1"/>
@@ -69,9 +60,6 @@
     <!-- Deck 2 -->
     <define color="waveform_active2" value="#c62b39"/>
     <define color="waveform_passive2" value="#5f1620"/>
-    <define color="colorbass" value="#FF4551" deck="2"/>
-    <define color="colorkick" value="#FF45FF" deck="2"/>
-    <define color="colorhihat" value="#F0CF0C" deck="2"/>
     <define color="colormed" value="#5f1620" deck="2"/>
     <define color="colorhigh" value="#c62b39" deck="2"/>
     <define color="scratch1" value="#33BBFF" deck="2"/>
@@ -81,9 +69,6 @@
     <!-- Deck 3 -->
     <define color="waveform_active3" value="#21ac87"/>
     <define color="waveform_passive3" value="#153f39"/>
-    <define color="colorbass" value="#FF4551" deck="3"/>
-    <define color="colorkick" value="#FF45FF" deck="3"/>
-    <define color="colorhihat" value="#F0CF0C" deck="3"/>
     <define color="colormed" value="#153f39" deck="3"/>
     <define color="colorhigh" value="#21ac87" deck="3"/>
     <define color="scratch1" value="#00ff5a" deck="3"/>
@@ -93,17 +78,27 @@
     <!-- Deck 4 -->
     <define color="waveform_active4" value="#ca5d36"/>
     <define color="waveform_passive4" value="#52291c"/>
-    <define color="colorbass" value="#FF4551" deck="4"/>
-    <define color="colorkick" value="#FF45FF" deck="4"/>
-    <define color="colorhihat" value="#F0CF0C" deck="4"/>
     <define color="colormed" value="#52291c" deck="4"/>
     <define color="colorhigh" value="#ca5d36" deck="4"/>
     <define color="scratch1" value="#ff5400" deck="4"/>
     <define color="scratch2" value="#ff9000" deck="4"/>
     <define color="deckcolor" value="#AA44FF" deck="4"/>
     <define color="knobfillon" value="#ca5d36" deck="4"/>
-    <group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 1">
-      <!-- waveforms -->
+    <!-- Common stem colors (same for all decks) -->
+    <define color="colorbass" value="#FF4551" deck="1"/>
+    <define color="colorkick" value="#FF45FF" deck="1"/>
+    <define color="colorhihat" value="#F0CF0C" deck="1"/>
+    <define color="colorbass" value="#FF4551" deck="2"/>
+    <define color="colorkick" value="#FF45FF" deck="2"/>
+    <define color="colorhihat" value="#F0CF0C" deck="2"/>
+    <define color="colorbass" value="#FF4551" deck="3"/>
+    <define color="colorkick" value="#FF45FF" deck="3"/>
+    <define color="colorhihat" value="#F0CF0C" deck="3"/>
+    <define color="colorbass" value="#FF4551" deck="4"/>
+    <define color="colorkick" value="#FF45FF" deck="4"/>
+    <define color="colorhihat" value="#F0CF0C" deck="4"/>
+    <!-- Monochrome deck colors: Decks 1-2 blue, Decks 3-4 orange -->
+    <group name="deckcolors-mono" condition="var_equal '@$hauntingcolorsdecks' 1 ? not var_equal '@$hauntingcolorscheme' 4">
       <define color="waveform_active1" value="#219cbf"/>
       <define color="waveform_passive1" value="#113845"/>
       <define color="colorbass" value="#0e4551" deck="1"/>
@@ -111,13 +106,8 @@
       <define color="colorhigh" value="#219cbf" deck="1"/>
       <define color="scratch1" value="#007eff" deck="1"/>
       <define color="scratch2" value="#00c6ff" deck="1"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#219cbf" deck="1"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#219cbf" deck="1"/>
-    </group>
-    <group name="deckcolors2" condition="var_equal '@$hauntingcolorsdecks' 1">
-      <!-- waveforms -->
       <define color="waveform_active2" value="#219cbf"/>
       <define color="waveform_passive2" value="#113845"/>
       <define color="colorbass" value="#0e4551" deck="2"/>
@@ -125,13 +115,8 @@
       <define color="colorhigh" value="#219cbf" deck="2"/>
       <define color="scratch1" value="#007eff" deck="2"/>
       <define color="scratch2" value="#00c6ff" deck="2"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#219cbf" deck="2"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#219cbf" deck="2"/>
-    </group>
-    <group name="deckcolors3" condition="var_equal '@$hauntingcolorsdecks' 1">
-      <!-- waveforms -->
       <define color="waveform_active3" value="#ca5d36"/>
       <define color="waveform_passive3" value="#52291c"/>
       <define color="colorbass" value="#6d270f" deck="3"/>
@@ -139,13 +124,8 @@
       <define color="colorhigh" value="#ca5d36" deck="3"/>
       <define color="scratch1" value="#ff5400" deck="3"/>
       <define color="scratch2" value="#ff9000" deck="3"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#ca5d36" deck="3"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#ca5d36" deck="3"/>
-    </group>
-    <group name="deckcolors4" condition="var_equal '@$hauntingcolorsdecks' 1">
-      <!-- waveforms -->
       <define color="waveform_active4" value="#ca5d36"/>
       <define color="waveform_passive4" value="#52291c"/>
       <define color="colorbass" value="#6d270f" deck="4"/>
@@ -153,13 +133,11 @@
       <define color="colorhigh" value="#ca5d36" deck="4"/>
       <define color="scratch1" value="#ff5400" deck="4"/>
       <define color="scratch2" value="#ff9000" deck="4"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#ca5d36" deck="4"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#ca5d36" deck="4"/>
     </group>
-    <group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 0 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
+    <!-- Daylight scheme normal mode -->
+    <group name="deckcolors-daylight" condition="var_equal '@$hauntingcolorsdecks' 0 ? var_equal '@$hauntingcolorscheme' 4">
       <define color="waveform_active1" value="#2ec3ed"/>
       <define color="waveform_passive1" value="#113845"/>
       <define color="colorbass" value="#0e4551" deck="1"/>
@@ -167,13 +145,8 @@
       <define color="colorhigh" value="#2ec3ed" deck="1"/>
       <define color="scratch1" value="#007eff" deck="1"/>
       <define color="scratch2" value="#00c6ff" deck="1"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#2ec3ed" deck="1"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#2ec3ed" deck="1"/>
-    </group>
-    <group name="deckcolors2" condition="var_equal '@$hauntingcolorsdecks' 0 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active2" value="#f84353"/>
       <define color="waveform_passive2" value="#5f1620"/>
       <define color="colorbass" value="#6e2328" deck="2"/>
@@ -181,13 +154,8 @@
       <define color="colorhigh" value="#f84353" deck="2"/>
       <define color="scratch1" value="#f30d0d" deck="2"/>
       <define color="scratch2" value="#ff0084" deck="2"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#f84353" deck="2"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#f84353" deck="2"/>
-    </group>
-    <group name="deckcolors3" condition="var_equal '@$hauntingcolorsdecks' 0 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active3" value="#2ee8b7"/>
       <define color="waveform_passive3" value="#153f39"/>
       <define color="colorbass" value="#0a423a" deck="3"/>
@@ -195,13 +163,8 @@
       <define color="colorhigh" value="#2ee8b7" deck="3"/>
       <define color="scratch1" value="#FFFF33" deck="3"/>
       <define color="scratch2" value="#00f6ff" deck="3"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#2ee8b7" deck="3"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#2ee8b7" deck="3"/>
-    </group>
-    <group name="deckcolors4" condition="var_equal '@$hauntingcolorsdecks' 0 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active4" value="#f97b4e"/>
       <define color="waveform_passive4" value="#52291c"/>
       <define color="colorbass" value="#6d270f" deck="4"/>
@@ -209,13 +172,11 @@
       <define color="colorhigh" value="#f97b4e" deck="4"/>
       <define color="scratch1" value="#ff5400" deck="4"/>
       <define color="scratch2" value="#ff9000" deck="4"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#f97b4e" deck="4"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#f97b4e" deck="4"/>
     </group>
-    <group name="deckcolors1" condition="var_equal '@$hauntingcolorsdecks' 1 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
+    <!-- Daylight scheme monochrome mode: Decks 1-2 blue, Decks 3-4 orange -->
+    <group name="deckcolors-daylight-mono" condition="var_equal '@$hauntingcolorsdecks' 1 ? var_equal '@$hauntingcolorscheme' 4">
       <define color="waveform_active1" value="#2ec3ed"/>
       <define color="waveform_passive1" value="#113845"/>
       <define color="colorbass" value="#0e4551" deck="1"/>
@@ -223,13 +184,8 @@
       <define color="colorhigh" value="#2ec3ed" deck="1"/>
       <define color="scratch1" value="#007eff" deck="1"/>
       <define color="scratch2" value="#00c6ff" deck="1"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#2ec3ed" deck="1"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#2ec3ed" deck="1"/>
-    </group>
-    <group name="deckcolors2" condition="var_equal '@$hauntingcolorsdecks' 1 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active2" value="#2ec3ed"/>
       <define color="waveform_passive2" value="#113845"/>
       <define color="colorbass" value="#0e4551" deck="2"/>
@@ -237,13 +193,8 @@
       <define color="colorhigh" value="#2ec3ed" deck="2"/>
       <define color="scratch1" value="#007eff" deck="2"/>
       <define color="scratch2" value="#00c6ff" deck="2"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#2ec3ed" deck="2"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#2ec3ed" deck="2"/>
-    </group>
-    <group name="deckcolors3" condition="var_equal '@$hauntingcolorsdecks' 1 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active3" value="#f97b4e"/>
       <define color="waveform_passive3" value="#52291c"/>
       <define color="colorbass" value="#6d270f" deck="3"/>
@@ -251,13 +202,8 @@
       <define color="colorhigh" value="#f97b4e" deck="3"/>
       <define color="scratch1" value="#ff5400" deck="3"/>
       <define color="scratch2" value="#ff9000" deck="3"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#f97b4e" deck="3"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#f97b4e" deck="3"/>
-    </group>
-    <group name="deckcolors4" condition="var_equal '@$hauntingcolorsdecks' 1 ? var_equal '@$hauntingcolorscheme' 4">
-      <!-- waveforms -->
       <define color="waveform_active4" value="#f97b4e"/>
       <define color="waveform_passive4" value="#52291c"/>
       <define color="colorbass" value="#6d270f" deck="4"/>
@@ -265,9 +211,7 @@
       <define color="colorhigh" value="#f97b4e" deck="4"/>
       <define color="scratch1" value="#ff5400" deck="4"/>
       <define color="scratch2" value="#ff9000" deck="4"/>
-      <!-- Deck colors -->
       <define color="deckcolor" value="#f97b4e" deck="4"/>
-      <!-- faders - knobs-->
       <define color="knobfillon" value="#f97b4e" deck="4"/>
     </group>
     <!-- master source colors vu-meters,etc -->
