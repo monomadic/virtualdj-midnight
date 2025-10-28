@@ -557,9 +557,25 @@
       <define color="br_textoff" value="#2e2e2e"/>
       <define color="browser_iconbuttonoff" value="#c1c1c1"/>
     </group>
+    <!-- ========================================
+         VU METER LED DEFINITIONS
+         ========================================
+         Master VU meter with 26 LEDs (rows 0-25)
+         - Rows 2-25: Use deckcolor
+         - Rows 0-1: Use needle color (bottom indicator)
+
+         Placeholders:
+         - source: Audio source (e.g., get_level, get_level_left)
+         - ledw: LED width (default: 11)
+         - ledh: LED height (default: 4)
+         - gap: Gap between LEDs (default: 2)
+         - vucoloroff: Background color (default: vu_background)
+
+         Usage: <panel class="vu_meter_LEDs" source="get_level" />
+         ======================================== -->
     <define class="vu_meter_LEDs" placeholders="*source,ledw=11,ledh=4,gap=2,vucoloroff=vu_background">
       <visual type="vumeter" source="[SOURCE]" width="[LEDW]" height="([LEDH]*26+[GAP]*25)" smooth="no" visibility="1">
-        <!-- Top (row 25) to bottom (row 0). Use stride: ([LEDH]+[GAP]) * ROW -->
+        <!-- LEDs from top (row 25) to bottom (row 0). Y position: ([LEDH]+[GAP]) * ROW -->
         <led x="+0" y="+([LEDH]+[GAP])*25" width="[LEDW]" height="[LEDH]">
           <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
           <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
@@ -667,116 +683,7 @@
         </led>
       </visual>
     </define>
-    <define class="vvu_meter_LEDs" placeholders="*source,ledw=11,ledh=4,gap=2,vucoloroff=vu_background">
-      <visual type="vumeter" source="[SOURCE]" width="[LEDW]" height="([LEDH]+[GAP])*25" smooth="no" visibility="1">
-        <!-- Top (row 25) to bottom (row 0). Use stride: ([LEDH]+[GAP]) * ROW -->
-        <led x="+0" y="+[LEDH]*25+[GAP]*25" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*24" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*23" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*22" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*21" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*20" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*19" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*18" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*17" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*16" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*15" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*14" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*13" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*12" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*11" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*10" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*9" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*8" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*7" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*6" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*5" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*4" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*3" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+([LEDH]+[GAP])*2" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="deckcolor" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <!-- Bottom two as needle -->
-        <led x="+0" y="+([LEDH]+[GAP])*1" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="needle" radius="0" border="contrast" border_size="0"/>
-        </led>
-        <led x="+0" y="+0" width="[LEDW]" height="[LEDH]">
-          <off color="[VUCOLOROFF]" radius="0" border="contrast" border_size="0"/>
-          <on color="needle" radius="0" border="contrast" border_size="0"/>
-        </led>
-      </visual>
-    </define>
+    <!-- vvu_meter_LEDs removed: duplicate of vu_meter_LEDs (110 lines saved) -->
     <group name="visuals">
       <define class="gfx_shape" placeholders="width,height,coloroff,coloron,bordercoloroff,bordercoloron,bordersize,radius=0,shape">
         <size width="[WIDTH]" height="[HEIGHT]"/>
@@ -13587,8 +13494,8 @@
         <panel class="pitch_zone" x="+804-320" y="+2"/>
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/>
-        <panel class="vvu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
-        <panel class="vvu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
+        <panel class="vu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
+        <panel class="vu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
           <pos x="+800-52" y="+13"/>
           <size width="38" height="172-24"/>
@@ -13775,8 +13682,8 @@
         <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT DECK: VU METER -->
         <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/>
-        <panel class="vvu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
-        <panel class="vvu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
+        <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
+        <panel class="vu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
           <pos x="+65-52" y="+13"/>
           <size width="38" height="172-24"/>
