@@ -8464,11 +8464,12 @@
       <!-- <text dx="+10" width="45" fontsize="11" weight="" color="textoff4" colordown="textoff2" colorselected="textoff2" align="left" action="connect ? get_text '@`get_username & param_uppercase`' : get_text '- NOT LOGGED IN -'" important="true"/> -->
       <!-- </button> -->
       <!-- SKIN LAYOUT MENU -->
-      <group name="layout_options" x="20" y="8">
+      <group name="layout_options" x="10" y="8">
         <menu tooltip="SKIN LAYOUT\nSelect the layout adapted to your mixing style">
           <pos x="+50" y="+0"/>
           <size width="136" height="27"/>
           <off shape="square" color="panel_background"/>
+          <over shape="square" color="#222222"/>
           <text dx="10" width="102" fontsize="11" weight="" color="textoff2" colorover="needle" align="left" action="browser_zoom ? get_text 'BROWSER' : NOT browser_zoom ? var_equal '@$hauntingproskinmode' 0 ? get_text 'PRO' : var_equal '@$hauntingproskinmode' 1 ? get_text 'PERFORMANCE' : var_equal '@$hauntingproskinmode' 2 ? get_text 'STACK'" localize="true" important="true"/>
           <icon dx="54" dy="-1" sysicon="chevrondown" height="17" width="17" color="textoff" colorover="needle" colordown="needle"/>
           <item text="PRO" action="set '@$hauntingproskinmode' 0 &amp; load_skin" check="var_equal '@$hauntingproskinmode' 0"/>
@@ -8491,10 +8492,30 @@
       </group>
       <!-- <button class="button_main" x="300" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 0 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 0"/> -->
       <!-- <button class="button_main" x="330" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="S" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/> -->
-      <button class="button_main" x="240" y="8" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="2" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/>
-      <button class="button_main" x="270" y="8" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="4" coloroff="panel_background" coloron="#333333" bordersize="0"/>
-      <button class="button_main" x="350" y="8" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcoloron="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" bordersize="0"/>
-      <button class="button_main" x="380" y="8" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+      <!-- DECK LAYOUT BUTTONS -->
+      <group x="220" y="8">
+        <button tooltip="2 Decks (4 Swap)" class="button_main" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
+          <off color="black"/>
+          <on color="#222222"/>
+          <over color="#111111"/>
+          <down color="#222222"/>
+          <selected color="#333333"/>
+          <text overcolor="white" size="12" oncolor="white" text="2"/>
+        </button>
+        <button tooltip="4 Decks" class="button_main" x="+30" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" width="26" height="27" bordersize="0">
+          <off color="black"/>
+          <on color="#222222"/>
+          <over color="#111111"/>
+          <down color="#222222"/>
+          <selected color="#333333"/>
+          <text overcolor="white" size="12" oncolor="white" text="4"/>
+        </button>
+      </group>
+      <!-- DECK MODE BUTTONS -->
+      <group x="295" y="8">
+        <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcoloron="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+        <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+      </group>
       <!-- PRO: TOP BAR -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
@@ -8526,9 +8547,15 @@
         <!-- <button class="button_main" x="+2+78+78+78" width="78" height="27" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/> -->
         <!-- </group> -->
         <!-- CUSTOM BUTTONS -->
-        <button class="custom_button" source="102" x="+430" y="+8" width="80"/>
         <button class="custom_button" source="101" x="+515" y="+8" width="80"/>
-        <button class="custom_button" source="100" x="+600" y="+8" width="175"/>
+        <button class="custom_button" source="100" x="+960-100" y="+8" width="200" coloroff="black">
+          <off color="black"/>
+          <on color="#000000"/>
+          <over color="#000000"/>
+          <down color="#000000"/>
+          <selected color="#000000"/>
+          <text overcolor="white" size="12" oncolor="white" align="center"/>
+        </button>
         <!-- <button action="custom button 25"> -->
         <!-- <pos x="+540" y="+8"/> -->
         <!-- <size width="44" height="44"/> -->
@@ -8543,66 +8570,66 @@
           <visual class="gfx_shape" x="960-160" width="320" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/>
         </group>
         <!-- ? phrase circles in 4 deck swap ? -->
-        <!-- <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 3 leftdeck"> -->
-        <!-- <deck deck="1"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
-        <!-- <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? deck 3 leftdeck"> -->
-        <!-- <deck deck="3"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
-        <!-- <group name="barsright" x="+660+530" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 4 rightdeck"> -->
-        <!-- <deck deck="2"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
-        <!-- <group name="barsright" x="+660+530" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? deck 4 rightdeck"> -->
-        <!-- <deck deck="4"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
-        <!-- <group name="barsleft4" x="+660-30" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 1"> -->
-        <!-- <deck deck="1"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17" y="+0" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*2" y="+0" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*3" y="+0" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- <deck deck="3"> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17" y="+15" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*2" y="+15" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*3" y="+15" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
-        <!-- <group name="barsright4" x="+660+530+30" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 1"> -->
-        <!-- <deck deck="2"> -->
-        <!-- <button class="button_main" x="+0" y="+0" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17" y="+0" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*2" y="+0" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*3" y="+0" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- <deck deck="4"> -->
-        <!-- <button class="button_main" x="+0" y="+15" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17" y="+15" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*2" y="+15" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- <button class="button_main" x="+17*3" y="+15" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/> -->
-        <!-- </deck> -->
-        <!-- </group> -->
+        <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 3 leftdeck">
+          <deck deck="1">
+            <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
+        <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? deck 3 leftdeck">
+          <deck deck="3">
+            <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
+        <group name="barsright" x="+660+530" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 4 rightdeck">
+          <deck deck="2">
+            <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
+        <group name="barsright" x="+660+530" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? deck 4 rightdeck">
+          <deck deck="4">
+            <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+0" y="+15" width="30" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+34" y="+15" width="30" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
+        <group name="barsleft4" x="+660-30" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 1">
+          <deck deck="1">
+            <button class="button_main" x="+0" y="+0" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17" y="+0" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*2" y="+0" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*3" y="+0" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+          <deck deck="3">
+            <button class="button_main" x="+0" y="+15" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17" y="+15" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*2" y="+15" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*3" y="+15" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
+        <group name="barsright4" x="+660+530+30" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 1">
+          <deck deck="2">
+            <button class="button_main" x="+0" y="+0" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17" y="+0" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*2" y="+0" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*3" y="+0" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+          <deck deck="4">
+            <button class="button_main" x="+0" y="+15" width="15" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17" y="+15" width="15" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*2" y="+15" width="15" height="10" shape="square" query="goto_bar 3" coloroff="infos_background" brcoloroff="infos_background"/>
+            <button class="button_main" x="+17*3" y="+15" width="15" height="10" shape="square" query="goto_bar 4" coloroff="infos_background" brcoloroff="infos_background"/>
+          </deck>
+        </group>
       </group>
       <group name="performance_skin_utility" visibility="var_equal '@$hauntingproskinmode' 1">
         <button class="button_main" x="+1150" y="+8" width="60" height="12" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/>
@@ -9601,11 +9628,12 @@
                     <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                   </cover>
                   <!-- border -->
-                  <button action="select" visibility="loaded">
+                  <button action="select &amp; play_button" visibility="loaded">
                     <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                     <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
                     <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
                     <on shape="square" color="transparent" border="#000000" border_size="1"/>
+                    <icon dx="-4" sysicon="play" width="[HEIGHT]*0.8" height="[HEIGHT]*0.8" coloroff="transparent" coloron="#55FFFFFF" colorover="#FFFFFFFF" condition="loaded &amp; playing"/>
                   </button>
                 </group>
                 <dropzone>
