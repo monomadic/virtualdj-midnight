@@ -8516,6 +8516,10 @@
         <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcoloron="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" bordersize="0"/>
         <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
       </group>
+      <button tooltip="RELOAD SKIN" x="1370" y="+8" class="button_main" action="load_skin" width="26" height="27" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
+        <off color="black"/>
+        <icon sysicon="sampler_loop" color="#555555" colorover="#888888" width="22" height="22"/>
+      </button>
       <!-- PRO: TOP BAR -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
@@ -8549,7 +8553,7 @@
         <!-- CUSTOM BUTTONS -->
         <button class="custom_button" source="101" x="+515" y="+8" width="80"/>
         <button class="custom_button" source="100" x="+960-100" y="+8" width="200" coloroff="black">
-          <off color="black"/>
+          <off color="black" border="#111111"/>
           <on color="#000000"/>
           <over color="#000000"/>
           <down color="#000000"/>
