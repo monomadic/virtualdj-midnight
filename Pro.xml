@@ -8546,11 +8546,30 @@
       <!-- SYNC BUTTONS -->
       <group x="740" y="8">
         <!-- MASTERTEMPO BUTTON -->
-        <button class="button_main" x="+0" y="+3" width="26" height="21" tooltip="Master Tempo" action="master_tempo" textsize="10" text="MT" coloron="#000000" textcoloron="#FF2288" bordersize="1" brcoloron="#FF2288" visibility="sandbox on ? false : true"/>
+        <button class="button_main" x="+0" y="+0" width="30" height="28" tooltip="Master Tempo" action="master_tempo" textsize="13" text="MT" coloron="#3D0725" textcoloron="#FF2288" bordersize="0" brcoloron="#FF2288"/>
         <!-- MASTERDECK AUTO BUTTON -->
-        <button class="button_main" x="+30" y="+3" width="26" height="21" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="10" text="M" coloron="#000000" textcoloron="orange" bordersize="1" brcoloron="orange" visibility="sandbox on ? false : true"/>
+        <!-- <button tooltip="MASTER TEMPO" action="master_tempo" width="30" height="28" bordersize="1"> -->
+        <!-- <off color="#000000" border="#FF2288"/> -->
+        <!-- <selected color="#5D1735" border="#FF2288"/> -->
+        <!-- <text coloroff="#FF2288" coloron="#FF2288" colorover="#FF2288" colorselected="#FF2288" align="center" size="13" text="MT"/> -->
+        <!-- </button> -->
+        <!-- <button tooltip="2 Decks (4 Swap)" action="master_tempo" width="30" height="28" border_size="1" text="MT" textsize="13" align="center" textcolor="#FF2288" textcoloroff="#FF2288" textcoloron="#FF2288" textcolorover="#FF2288" textcolorselected="#FF2288"> -->
+        <!-- <off color="#00FF2288" border="#FF2288"/> -->
+        <!-- <on color="#66FF2288" border="#FF2288"/> -->
+        <!-- <over color="#66FF2288" border="#FF2288"/> -->
+        <!-- <down color="#66FF2288" border="#FF2288"/> -->
+        <!-- <selected color="#66FF2288" border="#FF2288"/> -->
+        <!-- </button> -->
+        <!-- <button action="master_tempo" border_size="1"> -->
+        <!-- <size width="30" height="28"/> -->
+        <!-- <off color="#222222" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="red" radius="3"/> -->
+        <!-- <selected color="#5D1735" border="blue" radius="3"/> -->
+        <!-- <text fontsize="15" color="#555555" colorselected="green" colordown="yellow" align="center" text="MT"/> -->
+        <!-- </button> -->
+        <button class="button_main" x="+35" y="+0" width="30" height="28" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="13" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#221000"/>
         <!-- QUANTIZE BUTTON -->
-        <button class="button_main" x="+60" y="+3" width="26" height="21" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="10" text="Q" coloron="#000000" textcoloron="#88FF88" bordersize="1" brcoloron="#88FF88" visibility="sandbox on ? false : true"/>
+        <button class="button_main" x="+70" y="+0" width="30" height="28" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="13" text="Q" textcoloron="#88FF88" bordersize="0" brcoloron="#88FF88" coloron="#002200"/>
       </group>
       <!-- DECK MODE BUTTONS -->
       <group x="295" y="8">
@@ -8573,16 +8592,18 @@
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
         <button class="button_main" x="115+80+900" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
-        <button class="button_main" x="115+80+900" y="8" width="27" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SB" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
+        <button class="button_main" x="115+80+900" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
         <!-- disable sandbox button if cannot sandbox -->
-        <group visibility="0.75">
-          <visual class="gfx_shape" x="115+80+300" y="8" width="75" height="27" coloroff="panel_background" visibility="not can_sandbox"/>
-        </group>
+        <!-- <group visibility="0.75"> -->
+        <!-- <visual class="gfx_shape" x="115+100+300" y="8" width="75" height="27" coloroff="panel_background" visibility="not can_sandbox"/> -->
+        <!-- </group> -->
         <!-- sandbox button + wavepos: on state -->
-        <visual class="gfx_shape" x="115+80+960-1" y="14" width="152" height="17" bordersize="1" brcoloron="white" coloroff="#222222" visibility="sandbox off ? false : true"/>
+        <visual x="115+100+960-1" y="8" width="160" height="27" visibility="sandbox off ? false : true">
+          <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
+        </visual>
         <songpos class="songpos" deck="sandbox">
-          <pos x="115+80+960" y="15"/>
-          <size width="150" height="15"/>
+          <pos x="118+100+960" y="13"/>
+          <size width="150" height="16"/>
         </songpos>
         <!-- ? phrase circles in 4 deck swap ? -->
         <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 3 leftdeck">
@@ -8681,7 +8702,7 @@
       <!-- STACK: TOP BAR -->
       <group name="stack_skin_utility" visibility="var_equal '@$hauntingproskinmode' 2">
         <!-- PANEL TOGGLES -->
-        <group x="110+80+294" y="+8">
+        <group x="720+80+294" y="+8">
           <button tooltip="Show/Hide Pad Panel" class="button_main" x="+60*0" action="toggle '@$hauntingdeckstack'" width="55" height="27" bordersize="0">
             <off color="black"/>
             <on color="#222222"/>
