@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Skin name="DeathDisco Performance Deck" width="1920" height="1280" version="2020" author="DeathDisco" comment="" image="haunting.png" preview="skinpreview.png" breakline="1280-42" breakline2="1280-42" dpi="100%">
+<Skin name="DeathDisco Performance Deck" width="1920" height="1280" version="2025" author="DeathDisco" comment="" image="haunting.png" preview="skinpreview.png" breakline="1280-42" breakline2="1280-42">
   <!-- note: originally loosely based around Alex Zaik's work -->
   <!-- @$hauntinglayout 0=2deck, 1=4deck -->
   <font name="Helvetica Neue"/>
@@ -9,7 +9,6 @@
   <tooltip size="14" color="#e2e3e4" back="#2f2f2f" shortcut="gray" localize="true"/>
   <dialogs darkmode="true" condition="var_not_equal '@$hauntingcolorscheme' 4"/>
   <dialogs darkmode="false" condition="var_equal '@$hauntingcolorscheme' 4"/>
-  <customicons file="icons_daylight.png" nb="64" nbx="16" condition="var_equal '@$hauntingcolorscheme' 4"/>
   <!-- DEFINES -->
   <group name="DEFINES">
     <!-- Shape Colors: DENON DJ & PIONEER DJ -->
@@ -8536,8 +8535,16 @@
           <text overcolor="white" size="12" oncolor="white" text="4"/>
         </button>
       </group>
+      <!-- BEAT KEEPER -->
+      <group x="+550" y="+4">
+        <!-- <visual class="gfx_shape" width="140" height="27" coloroff="#111111"/> -->
+        <panel class="beat_keeper_ex" y="+0" deck="3"/>
+        <panel class="beat_keeper_ex" y="+10" deck="1"/>
+        <panel class="beat_keeper_ex" y="+20" deck="2"/>
+        <panel class="beat_keeper_ex" y="+30" deck="4"/>
+      </group>
       <!-- SYNC BUTTONS -->
-      <group x="840+80+600" y="8">
+      <group x="740" y="8">
         <!-- MASTERTEMPO BUTTON -->
         <button class="button_main" x="+0" y="+3" width="26" height="21" tooltip="Master Tempo" action="master_tempo" textsize="10" text="MT" coloron="#000000" textcoloron="#FF2288" bordersize="1" brcoloron="#FF2288" visibility="sandbox on ? false : true"/>
         <!-- MASTERDECK AUTO BUTTON -->
@@ -8547,15 +8554,11 @@
       </group>
       <!-- DECK MODE BUTTONS -->
       <group x="295" y="8">
-        <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="panel_background" query="false" bordersize="0"/>
+        <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" query="true" bordersize="0"/>
         <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
         <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#333333" bordersize="0"/>
         <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#333333" bordersize="0"/>
       </group>
-      <button tooltip="RELOAD SKIN" x="1370" y="+8" class="button_main" action="load_skin" width="26" height="27" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
-        <off color="black"/>
-        <icon sysicon="sampler_loop" color="#555555" colorover="#888888" width="22" height="22"/>
-      </button>
       <!-- CUSTOM BUTTONS -->
       <!-- <button class="custom_button" source="101" x="+515" y="+8" width="80"/> -->
       <button class="custom_button" source="100" x="+960-100" y="+8" width="200" coloroff="black">
@@ -8581,14 +8584,6 @@
           <pos x="115+80+960" y="15"/>
           <size width="150" height="15"/>
         </songpos>
-        <!-- BEAT KEEPER -->
-        <group x="+650" y="+4">
-          <!-- <visual class="gfx_shape" width="140" height="27" coloroff="#111111"/> -->
-          <panel class="beat_keeper_ex" y="+0" deck="3"/>
-          <panel class="beat_keeper_ex" y="+10" deck="1"/>
-          <panel class="beat_keeper_ex" y="+20" deck="2"/>
-          <panel class="beat_keeper_ex" y="+30" deck="4"/>
-        </group>
         <!-- ? phrase circles in 4 deck swap ? -->
         <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 3 leftdeck">
           <deck deck="1">
@@ -8685,39 +8680,72 @@
       </group>
       <!-- STACK: TOP BAR -->
       <group name="stack_skin_utility" visibility="var_equal '@$hauntingproskinmode' 2">
-        <!-- pads, fx, mixer, video buttons -->
-        <button class="button_main" x="119+80+294" y="8" action="toggle '@$hauntingdeckstack'" width="60" height="27" textsize="12" textcoloron="needle" text="PADS" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-        <button class="button_main" x="119+80+294+60" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-        <button class="button_main" x="119+80+294+60+60" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinvideorack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinvideorack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-        <button class="button_main" x="119+80+294+60+60+60" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinfxrack' &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinfxrack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="EFFECTS" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-        <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0 : constant 0.75">
-          <visual class="gfx_shape" x="+490" width="220" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/>
+        <!-- PANEL TOGGLES -->
+        <group x="110+80+294" y="+8">
+          <button tooltip="Show/Hide Pad Panel" class="button_main" x="+60*0" action="toggle '@$hauntingdeckstack'" width="55" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="PADS"/>
+          </button>
+          <button tooltip="Show/Hide Mixer Rack" class="button_main" x="+60*1" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="55" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="MIXER"/>
+          </button>
+          <button tooltip="Show/Hide Video Rack" class="button_main" x="+60*2" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinvideorack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinvideorack' &amp; load_skin" width="55" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="VIDEO"/>
+          </button>
+          <button tooltip="Show/Hide Effects Rack" class="button_main" x="+60*3" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinfxrack' &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinfxrack' &amp; load_skin" width="65" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="EFFECTS"/>
+          </button>
         </group>
-        <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0.75">
-          <visual class="gfx_shape" x="+490" width="58" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/>
-        </group>
+        <!-- <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0 : constant 0.75"> -->
+        <!-- <visual class="gfx_shape" x="+490" width="220" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/> -->
+        <!-- </group> -->
+        <!-- <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0.75"> -->
+        <!-- <visual class="gfx_shape" x="+490" width="58" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/> -->
+        <!-- </group> -->
+        <!-- SANDBOX -->
         <button class="button_main" x="115+80+300+90+643" y="8" width="75" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms"/>
+        <!-- DISABLED SANDBOX -->
         <group visibility="0.75">
           <visual class="gfx_shape" x="115+80+300+90+643" y="8" width="75" height="27" coloroff="panel_background" visibility="not can_sandbox"/>
         </group>
-        <group name="beatbar">
-          <panel condition="var_equal '@$4decks' 0">
-            <panel class="beat_keeper_ex" deck="1" x="+884" y="+8"/>
-            <panel class="beat_keeper_ex" deck="2" x="+884" y="+8+12+4"/>
-          </panel>
-          <panel condition="var_not_equal '@$4decks' 0">
-            <panel class="beat_keeper_ex" deck="1" x="+890-86" y="+8"/>
-            <panel class="beat_keeper_ex" deck="2" x="+890+75" y="+8"/>
-            <panel class="beat_keeper_ex" deck="3" x="+890-86" y="+8+12+4"/>
-            <panel class="beat_keeper_ex" deck="4" x="+890+75" y="+8+12+4"/>
-            <panel class="phrase_circle" x="+890-128-40" y="+6" deck="3" visibility="var_equal '@$phrasecircle' 1"/>
-            <panel class="phrase_circle" x="+890-128" y="+6" deck="1" visibility="var_equal '@$phrasecircle' 1"/>
-            <panel class="phrase_circle" x="+890+234" y="+6" deck="2" visibility="var_equal '@$phrasecircle' 1"/>
-            <panel class="phrase_circle" x="+890+234+40" y="+6" deck="4" visibility="var_equal '@$phrasecircle' 1"/>
-          </panel>
-        </group>
+        <!-- <group name="beatbar"> -->
+        <!-- <panel condition="var_equal '@$4decks' 0"> -->
+        <!-- <panel class="beat_keeper_ex" deck="1" x="+884" y="+8"/> -->
+        <!-- <panel class="beat_keeper_ex" deck="2" x="+884" y="+8+12+4"/> -->
+        <!-- </panel> -->
+        <!-- <panel condition="var_not_equal '@$4decks' 0"> -->
+        <!-- <panel class="beat_keeper_ex" deck="1" x="+890-86" y="+8"/> -->
+        <!-- <panel class="beat_keeper_ex" deck="2" x="+890+75" y="+8"/> -->
+        <!-- <panel class="beat_keeper_ex" deck="3" x="+890-86" y="+8+12+4"/> -->
+        <!-- <panel class="beat_keeper_ex" deck="4" x="+890+75" y="+8+12+4"/> -->
+        <!-- <panel class="phrase_circle" x="+890-128-40" y="+6" deck="3" visibility="var_equal '@$phrasecircle' 1"/> -->
+        <!-- <panel class="phrase_circle" x="+890-128" y="+6" deck="1" visibility="var_equal '@$phrasecircle' 1"/> -->
+        <!-- <panel class="phrase_circle" x="+890+234" y="+6" deck="2" visibility="var_equal '@$phrasecircle' 1"/> -->
+        <!-- <panel class="phrase_circle" x="+890+234+40" y="+6" deck="4" visibility="var_equal '@$phrasecircle' 1"/> -->
+        <!-- </panel> -->
+        <!-- </group> -->
       </group>
-      <group name="master_options" x="+802+160+160+2+20+460" y="8">
+      <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
+      <group name="master_options" x="+802+160+160+2+440" y="8">
         <visual class="gfx_shape" width="260+50" height="43-8-8" coloroff="xf_background"/>
         <textzone class="text" x="+6" y="+0" width="56" height="27" fontsize="10" color="textdarker" align="right" weight="" text="MASTER"/>
         <visual type="vumeter" source="get_vu_meter_left" x="+6+56+8" y="+6" width="70" height="6" smooth="no">
@@ -8825,38 +8853,66 @@
           <off color="tab_menu" border="tab_menu" shape="circle"/>
           <on color="red" border="red" shape="circle"/>
         </visual>
-        <textzone class="text" x="+6+135" y="+0" width="56" height="27" fontsize="10" color="textdarker" align="right" weight="" text="CPU"/>
-        <visual type="vumeter" source="get_cpu" x="+6+56+8+135" y="+6+4" width="28" height="6" smooth="true">
-          <led x="+0" y="+0" width="4" height="6">
-            <off color="vu_background" radius="0" border="contrast" border_size="0"/>
-            <on color="green_vu" radius="0" border="contrast" border_size="0"/>
-          </led>
-          <led x="+6" y="+0" width="4" height="6">
-            <off color="vu_background" radius="0" border="contrast" border_size="0"/>
-            <on color="green_vu" radius="0" border="contrast" border_size="0"/>
-          </led>
-          <led x="+6*2" y="+0" width="4" height="6">
-            <off color="vu_background" radius="0" border="contrast" border_size="0"/>
-            <on color="green_vu" radius="0" border="contrast" border_size="0"/>
-          </led>
-          <led x="+6*3" y="+0" width="4" height="6">
-            <off color="vu_background" radius="0" border="contrast" border_size="0"/>
-            <on color="green_vu" radius="0" border="contrast" border_size="0"/>
-          </led>
-          <led x="+6*4" y="+0" width="4" height="6">
-            <off color="vu_background" radius="0" border="contrast" border_size="0"/>
-            <on color="orange_vu" radius="0" border="contrast" border_size="0"/>
-          </led>
-        </visual>
+        <!-- CPU + BATTERY LEDS -->
+        <group x="+150" y="+4">
+          <!-- CPU -->
+          <textzone class="text" y="+0" width="56" fontsize="10" color="textdarker" align="right" weight="" text="CPU"/>
+          <visual type="vumeter" source="get_cpu" x="+56+8" y="+1" width="28" height="8" smooth="true">
+            <led x="+0" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*2" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*3" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*4" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="orange_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+          </visual>
+          <!-- BATTERY -->
+          <textzone class="text" y="+12" width="56" fontsize="10" color="textdarker" align="right" weight="" text="BAT"/>
+          <visual type="vumeter" source="get_battery" x="+56+8" y="+14" width="28" height="6" smooth="true">
+            <led x="+0" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*2" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*3" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+            <led x="+6*4" width="4" height="6">
+              <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+              <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+            </led>
+          </visual>
+        </group>
+        <!-- CLOCK -->
         <textzone>
-          <pos x="+6+56+8+135+30" y="+0"/>
-          <size width="76" height="27"/>
-          <text fontsize="13" color="textoff" align="center" weight="" action="get_clock" important="true"/>
-          <text2 fontsize="13" color="textoff" align="center" weight="" format="%counter" important="true"/>
+          <pos x="+6+56+8+175+20" y="+0"/>
+          <size width="70" height="27"/>
+          <text fontsize="15" color="white" align="right" weight="" action="get_clock" important="true"/>
+          <text2 fontsize="15" color="white" align="right" weight="" format="%counter" important="true"/>
         </textzone>
       </group>
       <!-- <button class="button_main" x="1920-40-155-90" y="8" width="55" height="27" action="eventscheduler" textsize="10" textcoloron="texton" text="EVENT" coloron="br_focus" bordersize="0" query="eventscheduler_start ? blink"/> -->
-      <button class="button_main" x="1920-40-155-280" y="8" width="50" height="27" action="open_stem_creator" textsize="10" textcoloron="texton" text="STEM" coloroff="panel_background" coloron="br_focus" bordersize="0"/>
       <!-- <group name="battery" visibility="var_equal '@$hauntinggetbattery' 1"> -->
       <!-- <visual type="linear" direction="right" source="get_battery"> -->
       <!-- <pos x="+1696" y="+8+2" width="42" height="27-4"/> -->
@@ -8880,14 +8936,26 @@
       <!-- <text fontsize="13" weight="bold" color="needle" align="center" action="get_battery" localize="true" important="true"/> -->
       <!-- </textzone> -->
       <!-- </group> -->
-      <button action="settings">
-        <pos x="1920-40-483" y="8"/>
-        <size width="35" height="27"/>
-        <off color="transparent" shape="square"/>
-        <over color="button_background" shape="square"/>
-        <selected color="button_background" shape="square"/>
-        <icon sysicon="settings" color="textoff" colorselected="needle" colorover="needle" width="27" height="27"/>
-      </button>
+      <group x="1920-40-440" y="8">
+        <!-- REFRESH BUTTON -->
+        <button tooltip="RELOAD SKIN" action="load_skin" width="32" height="27" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
+          <icon sysicon="sampler_loop" width="22" height="22" coloroff="#888888" colorover="#CCCCCC"/>
+          <off color="transparent" border="#222222" border_size="1"/>
+        </button>
+        <!-- SETTINGS BUTTON -->
+        <button action="settings" x="+40*2">
+          <size width="35" height="27"/>
+          <off color="transparent" border="#222222" border_size="1"/>
+          <icon sysicon="settings" width="25" height="25" coloroff="#888888" colorover="#CCCCCC"/>
+        </button>
+        <!-- STEM CREATOR BUTTON -->
+        <button action="open_stem_creator" x="+40*1">
+          <size width="32" height="27"/>
+          <icon x="32*0" y="32*2" dx="+7" dy="+5" width="32" height="32" coloroff="#888888" colorover="#CCCCCC"/>
+          <off color="transparent" border="#222222" border_size="1"/>
+        </button>
+      </group>
+      <!-- TOP BAR: SETTINGS MENU -->
       <group name="applicationbuttons_logo" condition="is_mac">
         <logo>
           <pos x="+1920" y="-40"/>
@@ -13401,7 +13469,6 @@
       <!-- action="mark_linked_tracks" -->
       <!-- text="LINK" -->
       <!-- textcolor="#888888" -->
-      <!-- textcolorover="white" -->
       <!-- textcoloron="black" -->
       <!-- coloron="green" -->
       <!-- textsize="10" /> -->
