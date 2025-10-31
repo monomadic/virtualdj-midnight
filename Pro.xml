@@ -5244,7 +5244,7 @@
         <panel class="pitch" x="+11" y="+6+26"/>
         <!-- PITCH RESET -->
         <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#000000" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
-        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="red" brcoloroff="button_background3" textsize="14" textcolor="white" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
+        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#330000" brcoloroff="button_background3" textsize="14" textcolor="red" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
         <!-- + and - -->
         <!-- <button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend -2% 500ms" rightclick="pitch_range '8,16,32,50' -1"  tooltip="Pitch Bend.\nRigth-click: Pitch range -8,16,32,50." textsize="14" text="-" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
         <!-- <button class="button_main" x="+29" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend +2% 500ms" rightclick="pitch_range '8,16,32,50' +1" tooltip="Pitch Bend.\nRigth-click: Pitch range +8,16,32,50." textsize="14" text="+" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
@@ -13616,11 +13616,17 @@
             <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
             <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
             <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/>
-            <button action="select ? pitch +20% 2bars" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
               <pos x="+7+30+10+300" y="+0"/>
-              <size width="90" height="30"/>
+              <size width="90" height="15"/>
               <off color="#330000" shape="square"/>
-              <text size="14" align="center" color="red" text="BPM RESET"/>
+              <text size="14" align="center" color="red" text="FAST"/>
+            </button>
+            <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+              <pos x="+7+30+10+300" y="+15"/>
+              <size width="90" height="15"/>
+              <off color="#330000" shape="square"/>
+              <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
             </button>
             <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" bordersize="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_bigger `param_abs_diff `get_bpm` `get_bpm 'absolute'`` 20"/> -->
             <!-- less than -5% -->
@@ -13775,6 +13781,19 @@
           <fader color="faderbackgroundline" width="38" height="6"/>
         </slider>
         <!-- PRO: RIGHT: TRANSPORT BAR -->
+        <group x="+7+30+10+300+15" y="+179">
+          <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <size width="90" height="15"/>
+            <off color="#330000" shape="square"/>
+            <text size="14" align="center" color="red" text="FAST"/>
+          </button>
+          <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <pos y="+15"/>
+            <size width="90" height="15"/>
+            <off color="#330000" shape="square"/>
+            <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
+          </button>
+        </group>
         <button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
         <button class="button_main" x="+3+30+1+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
         <button class="button_main" x="+3+30+1+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
