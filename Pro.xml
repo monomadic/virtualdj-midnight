@@ -214,6 +214,14 @@
       <define color="deckcolor" value="#f97b4e" deck="4"/>
       <define color="knobfillon" value="#f97b4e" deck="4"/>
     </group>
+    <!-- Common colors shared across multiple color schemes -->
+    <define color="faderbackgroundline" value="#ffffff"/>
+    <define color="gridlines" value="#505050"/>
+    <define color="knobfilloff" value="#8c8e91"/>
+    <define color="br_automix" value="#7c4000"/>
+    <define color="br_automix2" value="#ee8b23"/>
+    <define color="br_coloron" value="#46484c"/>
+    <define color="br_textoff" value="#a3a8b2"/>
     <!-- master source colors vu-meters,etc -->
     <group name="mastercolors">
       <define color="mastercoloron" value="#9197a1"/>
@@ -257,10 +265,8 @@
       <!-- faders - knobs-->
       <define color="faderbackground" value="#242427"/>
       <define color="faderbackground2" value="#2c2d2f"/>
-      <define color="faderbackgroundline" value="#ffffff"/>
       <define color="faderlines" value="#3e4043"/>
       <define color="faderlines2" value="#515256"/>
-      <define color="knobfilloff" value="#8c8e91"/>
       <!-- others -->
       <define color="tab_buttons" value="#171819"/>
       <define color="tab_menu" value="#424447"/>
@@ -273,16 +279,11 @@
       <define color="jogprogressoff" value="#171819"/>
       <define color="jog_slider" value="#e4ebf3"/>
       <define color="needle" value="#eaeaea"/>
-      <define color="gridlines" value="#505050"/>
       <define color="colorplayed" value="#686e74"/>
       <!-- browser -->
-      <define color="br_automix" value="#7c4000"/>
-      <define color="br_automix2" value="#ee8b23"/>
-      <define color="br_coloron" value="#46484c"/>
       <define color="br_slcolor" value="#525356"/>
       <define color="br_stripes" value="#232426"/>
       <define color="br_background" value="#0d0e0f"/>
-      <define color="br_textoff" value="#a3a8b2"/>
       <define color="browser_iconbuttonoff" value="#343537"/>
     </group>
     <group name="colorscheme-darkgray" condition="var_equal '@$hauntingcolorscheme' 1">
@@ -311,10 +312,8 @@
       <!-- faders - knobs-->
       <define color="faderbackground" value="#171819"/>
       <define color="faderbackground2" value="#232325"/>
-      <define color="faderbackgroundline" value="#ffffff"/>
       <define color="faderlines" value="#323437"/>
       <define color="faderlines2" value="#47484c"/>
-      <define color="knobfilloff" value="#8c8e91"/>
       <!-- others -->
       <define color="tab_buttons" value="#101111"/>
       <define color="tab_menu" value="#36383b"/>
@@ -327,16 +326,11 @@
       <define color="jogprogressoff" value="#101111"/>
       <define color="jog_slider" value="#e4ebf3"/>
       <define color="needle" value="#eaeaea"/>
-      <define color="gridlines" value="#505050"/>
       <define color="colorplayed" value="#575c61"/>
       <!-- browser -->
-      <define color="br_automix" value="#7c4000"/>
-      <define color="br_automix2" value="#ee8b23"/>
-      <define color="br_coloron" value="#46484c"/>
       <define color="br_slcolor" value="#4a4c53"/>
       <define color="br_stripes" value="#181a1b"/>
       <define color="br_background" value="#050606"/>
-      <define color="br_textoff" value="#a3a8b2"/>
       <define color="browser_iconbuttonoff" value="#2a2b2c"/>
     </group>
     <group name="colorscheme-darker" condition="var_equal '@$hauntingcolorscheme' 2">
@@ -365,10 +359,8 @@
       <!-- faders - knobs-->
       <define color="faderbackground" value="#101012"/>
       <define color="faderbackground2" value="#15171a"/>
-      <define color="faderbackgroundline" value="#ffffff"/>
       <define color="faderlines" value="#232528"/>
       <define color="faderlines2" value="#383a3f"/>
-      <define color="knobfilloff" value="#8c8e91"/>
       <!-- others -->
       <define color="tab_buttons" value="#060808"/>
       <define color="tab_menu" value="#27292d"/>
@@ -381,12 +373,8 @@
       <define color="jogprogressoff" value="#060808"/>
       <define color="jog_slider" value="#e4ebf3"/>
       <define color="needle" value="#eaeaea"/>
-      <define color="gridlines" value="#505050"/>
       <define color="colorplayed" value="#575c61"/>
       <!-- browser -->
-      <define color="br_automix" value="#7c4000"/>
-      <define color="br_automix2" value="#ee8b23"/>
-      <define color="br_coloron" value="#46484c"/>
       <define color="br_slcolor" value="#393b3f"/>
       <define color="br_stripes" value="#0e0f10"/>
       <define color="br_background" value="#000000"/>
@@ -419,7 +407,6 @@
       <!-- faders - knobs-->
       <define color="faderbackground" value="#1f2123"/>
       <define color="faderbackground2" value="#1f2123"/>
-      <define color="faderbackgroundline" value="#ffffff"/>
       <define color="faderlines" value="#222222"/>
       <define color="faderlines2" value="#262626"/>
       <define color="knobfilloff" value="#585a60"/>
@@ -435,7 +422,6 @@
       <define color="jogprogressoff" value="#0e0f10"/>
       <define color="jog_slider" value="#e4ebf3"/>
       <define color="needle" value="#d1d1d1"/>
-      <define color="gridlines" value="#505050"/>
       <define color="colorplayed" value="#3b3b3b"/>
       <!-- browser -->
       <define color="br_automix" value="#722e00"/>
@@ -1245,6 +1231,17 @@
           <size width="[WIDTH]" height="[ARTISTHEIGHT]"/>
           <text fontsize="[ARTISTFONTSIZE]" weight="[ARTISTWEIGHT]" color="[ARTISTCOLOR]" align="[ALIGN]" scroll="[SCROLL]" action="[ARTISTACTION]" localize="true" important="true"/>
         </textzone>
+      </define>
+      <!-- REUSABLE DROPZONE COMPONENT -->
+      <define class="dual_dropzone" placeholders="*width,*height,x=0,y=0">
+        <dropzone visibility="var_equal '@$hauntinglayout' 0" x="[X]" y="[Y]">
+          <size width="[WIDTH]" height="[HEIGHT]"/>
+          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
+        </dropzone>
+        <dropzone visibility="var_equal '@$hauntinglayout' 1" x="[X]" y="[Y]">
+          <size width="[WIDTH]" height="[HEIGHT]"/>
+          <over color="transparent" border_size="2" border="needle" shape="square"/>
+        </dropzone>
       </define>
     </group>
     <group name="buttons">
@@ -13757,14 +13754,7 @@
           <size width="878+77+2" height="264"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square"/>
         </visual>
-        <dropzone visibility="var_equal '@$hauntinglayout' 0">
-          <size width="878+77+2" height="264"/>
-          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
-        </dropzone>
-        <dropzone visibility="var_equal '@$hauntinglayout' 1">
-          <size width="878+77+2" height="264"/>
-          <over color="transparent" border_size="2" border="needle" shape="square"/>
-        </dropzone>
+        <panel class="dual_dropzone" width="878+77+2" height="264"/>
       </deck>
     </define>
     <!-- PERFORMANCE: VERTICAL: LEFT DECK -->
@@ -13817,14 +13807,7 @@
           <size width="800-81" height="333"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square"/>
         </visual>
-        <dropzone visibility="var_equal '@$hauntinglayout' 0">
-          <size width="800-81" height="333"/>
-          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
-        </dropzone>
-        <dropzone visibility="var_equal '@$hauntinglayout' 1">
-          <size width="800-81" height="333"/>
-          <over color="transparent" border_size="2" border="needle" shape="square"/>
-        </dropzone>
+        <panel class="dual_dropzone" width="800-81" height="333"/>
       </deck>
     </define>
     <!-- PRO: RIGHT DECK -->
@@ -13945,14 +13928,7 @@
           <size width="800-81" height="333"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square"/>
         </visual>
-        <dropzone visibility="var_equal '@$hauntinglayout' 0">
-          <size width="800-81" height="333"/>
-          <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
-        </dropzone>
-        <dropzone visibility="var_equal '@$hauntinglayout' 1">
-          <size width="800-81" height="333"/>
-          <over color="transparent" border_size="2" border="needle" shape="square"/>
-        </dropzone>
+        <panel class="dual_dropzone" width="800-81" height="333"/>
       </deck>
     </define>
     <!-- DECK: MINI -->
