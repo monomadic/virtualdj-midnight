@@ -4826,7 +4826,7 @@
       <!-- RIGHT -->
       <panel class="cover_art_hntg" size="184-6-6" x="+484-2-28-180" y="+0" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
       <!-- PRO: RIGHT DECK: DECK BUTTON -->
-      <button class="button_main" x="+484-36" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="button_background" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="50" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
+      <button class="button_main" x="+484-36" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="50" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
       <!-- PRO: RIGHT DECK: DECK MENU -->
       <menu class="menu_maindecks" query="select" x="+484/2" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
     </define>
@@ -8596,10 +8596,11 @@
         <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" query="true" bordersize="0"/>
         <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
         <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#333333" bordersize="0"/>
-        <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+      </group>
+      <group visibility="browser_zoom" x="1250" y="8">
+        <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="WAVES" coloroff="panel_background" coloron="#333333" bordersize="0"/>
       </group>
       <!-- CUSTOM BUTTONS -->
-      <!-- <button class="custom_button" source="101" x="+515" y="+8" width="80"/> -->
       <button class="custom_button" source="100" x="+960-100" y="+8" width="200" coloroff="black">
         <off color="black" border="#111111"/>
         <on color="#000000"/>
@@ -8611,20 +8612,25 @@
       <!-- PRO: TOP BAR UTILITIES -->
       <group name="pro_skin_utility" visibility="var_equal '@$hauntingproskinmode' 0">
         <!-- sandbox button -->
-        <button class="button_main" x="115+80+900" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
-        <button class="button_main" x="115+80+900" y="8" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
-        <!-- disable sandbox button if cannot sandbox -->
-        <!-- <group visibility="0.75"> -->
-        <!-- <visual class="gfx_shape" x="115+100+300" y="8" width="75" height="27" coloroff="panel_background" visibility="not can_sandbox"/> -->
-        <!-- </group> -->
-        <!-- sandbox button + wavepos: on state -->
-        <visual x="115+100+960-1" y="8" width="160" height="27" visibility="sandbox off ? false : true">
-          <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
-        </visual>
-        <songpos class="songpos" deck="sandbox">
-          <pos x="118+100+960" y="13"/>
-          <size width="150" height="16"/>
-        </songpos>
+        <group name="sandbox area" x="115+80+900" y="8" visibility="can_sandbox ? false">
+          <button class="button_main" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox on ? false : true"/>
+          <button class="button_main" width="75" height="27" action="sandbox" coloroff="panel_background" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms" visibility="sandbox off ? false : true"/>
+          <visual x="115+100+960-1" y="8" width="160" height="27" visibility="sandbox off ? false : true">
+            <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
+          </visual>
+          <!-- sandbox button + wavepos: on state -->
+          <songpos class="songpos" deck="sandbox">
+            <pos x="118+100+960" y="13"/>
+            <size width="150" height="16"/>
+          </songpos>
+          <visual x="115+100+960-1" y="8" width="160" height="27" visibility="sandbox off ? false : true">
+            <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
+          </visual>
+          <songpos class="songpos" deck="sandbox">
+            <pos x="118+100+960" y="13"/>
+            <size width="150" height="16"/>
+          </songpos>
+        </group>
         <!-- ? phrase circles in 4 deck swap ? -->
         <group name="barsleft" x="+660" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? not deck 3 leftdeck">
           <deck deck="1">
@@ -13613,16 +13619,28 @@
           <group visibility="loaded">
             <!-- BPM WARNING -->
             <!-- more than 20% -->
-            <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/>
-            <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/>
-            <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/>
-            <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
+              <pos x="+7+30+10+300" y="+0"/>
+              <size width="90" height="15"/>
+              <off color="#000033" shape="square"/>
+              <text size="14" align="center" color="blue" text="SLOW"/>
+            </button>
+            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
+              <pos x="+7+30+10+300" y="+15"/>
+              <size width="90" height="15"/>
+              <off color="#000033" shape="square"/>
+              <text size="18" align="center" color="blue" weight="bold" action="get_text '%Ppitch%'"/>
+            </button>
+            <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
+            <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
+            <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/> -->
+            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
               <pos x="+7+30+10+300" y="+0"/>
               <size width="90" height="15"/>
               <off color="#330000" shape="square"/>
               <text size="14" align="center" color="red" text="FAST"/>
             </button>
-            <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
               <pos x="+7+30+10+300" y="+15"/>
               <size width="90" height="15"/>
               <off color="#330000" shape="square"/>
