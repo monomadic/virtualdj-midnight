@@ -4313,15 +4313,16 @@
   <group name="ELEMENTS">
     <define class="cover_art_hntg" placeholders="deck,*size">
       <deck deck="[DECK]">
+        <!-- bg -->
         <visual>
           <pos x="+0" y="+0"/>
           <size width="[SIZE]" height="[SIZE]"/>
-          <off shape="square" color="button_background"/>
+          <off shape="square" color="button_background" border="#222222" border_size="1"/>
         </visual>
         <visual type="circle" novisibility="? has_cover ?">
-          <pos x="+0" y="+0"/>
-          <size width="[SIZE]" height="[SIZE]"/>
-          <off shape="circle" color="infos_background" border="button_background" border_size="6"/>
+          <pos x="+3" y="+3"/>
+          <size width="[SIZE]-6" height="[SIZE]-6"/>
+          <off shape="circle" color="infos_background" border="black" border_size="0"/>
         </visual>
         <visual type="circle" novisibility="loaded ? has_cover ?">
           <pos x="+10" y="+10"/>
@@ -8566,7 +8567,7 @@
       <!-- SYNC BUTTONS -->
       <group x="740" y="8">
         <!-- MASTERTEMPO BUTTON -->
-        <button class="button_main" x="+0" y="+0" width="30" height="28" tooltip="Master Tempo" action="master_tempo" textsize="13" text="MT" coloron="#3D0725" textcoloron="#FF2288" bordersize="0" brcoloron="#FF2288"/>
+        <button class="button_main" x="+0" y="+0" width="30" height="28" tooltip="Master Tempo" action="master_tempo" textsize="13" text="MT" coloron="#2D003D" textcoloron="#A800FF" bordersize="0" brcoloron="#FF2288"/>
         <!-- MASTERDECK AUTO BUTTON -->
         <!-- <button tooltip="MASTER TEMPO" action="master_tempo" width="30" height="28" bordersize="1"> -->
         <!-- <off color="#000000" border="#FF2288"/> -->
@@ -8587,7 +8588,7 @@
         <!-- <selected color="#5D1735" border="blue" radius="3"/> -->
         <!-- <text fontsize="15" color="#555555" colorselected="green" colordown="yellow" align="center" text="MT"/> -->
         <!-- </button> -->
-        <button class="button_main" x="+35" y="+0" width="30" height="28" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="13" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#221000"/>
+        <button class="button_main" x="+35" y="+0" width="30" height="28" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="13" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#222200"/>
         <!-- QUANTIZE BUTTON -->
         <button class="button_main" x="+70" y="+0" width="30" height="28" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="13" text="Q" textcoloron="#88FF88" bordersize="0" brcoloron="#88FF88" coloron="#002200"/>
       </group>
