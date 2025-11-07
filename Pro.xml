@@ -13679,9 +13679,10 @@
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
         </visual>
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? not deck [DECK] leftdeck" x="-2" y="-2">
-          <size width="804" height="436"/>
+          <size width="804" height="218"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/>
         </visual>
+        <!-- DROP ZONE -->
         <dropzone visibility="var_equal '@$hauntinglayout' 0" x="-2" y="-2">
           <size width="804" height="436"/>
           <over color="transparent" border_size="2" border="color_dropzone" shape="square" radius="10"/>
@@ -13833,7 +13834,7 @@
           <size width="804" height="436"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
         </visual>
-        <visual source="deck [DECK] select" visibility="not deck [DECK] rightdeck" x="-2" y="-2">
+        <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? not deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="218"/>
           <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
         </visual>
