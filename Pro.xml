@@ -1915,7 +1915,7 @@
       <!-- menus -->
       <define class="menu_maindecks" tooltip="Deck Options" placeholders="width,height">
         <size width="[WIDTH]" height="[HEIGHT]"/>
-        <icon sysicon="settings" color="black" colorover="black" colordown="black" colorselected="black" width="26" height="26"/>
+        <icon sysicon="settings" color="#888888" colorover="white" colordown="white" colorselected="black" width="20" height="20"/>
         <item text="Auto Match BPM" action="auto_match_bpm" check="auto_match_bpm" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
         <item text="Auto Match KEY" action="auto_match_key" check="auto_match_key" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
         <item text="Auto Sync on Play" action="auto_sync" check="auto_sync" visibility="var_equal '@$hauntingproskinmode' 2 ? false : var_equal '@$hauntingproskinmode' 0 ? false : true"/>
@@ -7955,13 +7955,13 @@
     <!-- SCRATCH WAVE: VU -->
     <define class="scratch_controls">
       <!-- borders -->
-      <visual class="gfx_shape" width="40" height="35" coloroff="infos_background" bordercoloroff="panel_background" bordersize="1"/>
+      <!-- <visual class="gfx_shape" width="40" height="35" coloroff="infos_background" bordercoloroff="panel_background" bordersize="1"/> -->
       <!-- <visual class="gfx_shape" width="40" height="432-56-1" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 0 ? var_not_equal '@$hauntinglayout' 1"/> -->
       <!-- <visual class="gfx_shape" width="40" height="432-56-1+216+2" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 0 ? var_equal '@$hauntinglayout' 1"/> -->
       <!-- <visual class="gfx_shape" width="40" height="432-56-1+57" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 1 ? var_not_equal '@$hauntinglayout' 1"/> -->
       <!-- <visual class="gfx_shape" width="40" height="432-56-1+216+2+57" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 1 ? var_equal '@$hauntinglayout' 1"/> -->
       <menu tooltip="WAVEFORM OPTIONS" visibility="0.8">
-        <pos x="960-11" y="+4"/>
+        <pos x="+140" y="+4"/>
         <size width="22" height="24"/>
         <icon sysicon="settings" height="24" width="24" color="textoff" colorover="needle" colordown="needle"/>
         <submenu text="Waveform Type" localize="true">
@@ -8306,21 +8306,27 @@
         <!-- SHOW TRANSPORT -->
         <group name="no_hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 0">
           <!-- WAVEFORM (ALL) -->
+          <!-- grid border -->
+          <visual x="+3" y="+15" width="92" height="370+195">
+            <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
+          </visual>
+          <!-- wave -->
           <scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
-            <pos x="+4" y="+4"/>
+            <pos x="+4" y="+15+2"/>
             <!-- 4 deck -->
-            <size width="90" height="370+250" condition="var_equal '@$hauntinglayout' 1"/>
+            <size width="90" height="370+195-4" condition="var_equal '@$hauntinglayout' 1"/>
             <!-- 2 deck -->
             <size width="90" height="370+57" condition="var_equal '@$hauntinglayout' 0"/>
             <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="2" phrasecolor="white" maincolor="white" color="darkgray" mirrored="true"/>
             <!-- <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="5" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/> -->
             <gridlines width="1" color="darkgray" transparency="0.5"/>
-            <cue x="0" y="-10" height="12">
-              <mask x="0" y="0" width="12" height="12"/>
+            <cue y="-10" height="6">
+              <mask x="0" y="50" width="10" height="12"/>
+              <text dx="+10" dy="-1" weight="" fontsize="12" important="true"/>
             </cue>
             <overlay>
               <!-- 4 deck -->
-              <pos x="+0" y="+309" condition="var_equal '@$hauntinglayout' 1"/>
+              <pos x="+0" y="+279" condition="var_equal '@$hauntinglayout' 1"/>
               <!-- 2 deck -->
               <pos x="+0" y="+160+25+27" condition="var_equal '@$hauntinglayout' 0"/>
               <size width="90" height="4"/>
@@ -8329,7 +8335,7 @@
           </scratchwave>
           <!-- <square width="100" height="370+216+2" x="+0" y="+0" color="red" border="0" bordercolor="red" visibility="0.6" /> -->
           <!-- PRO: SCRATCHWAVE: background under text -->
-          <!-- <square color="black" x="+0" y="+2" width="98" height="53" coloroff="wave_background" visibility="0.7"/> -->
+          <!-- <square color="black" x="+0" y="+2" width="98" height="15" coloroff="wave_background" visibility="0.4"/> -->
           <!-- border on masterdeck -->
           <!-- <square x="+10" y="+4" width="80" height="20" border="2" border_color="#FFEF8632" color="#00EF8632" radius="0" visibility="masterdeck" /> -->
           <!-- BPM WARNING -->
@@ -8359,18 +8365,18 @@
           <!-- <textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '\-\-\.\-\-' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
           <!-- "BPM" TEXT -->
           <!-- <textzone> -->
-          <!-- <pos x="+12" y="+31"/> -->
-          <!-- <size width="30" height="26"/> -->
-          <!-- <text fontsize="14" weight="" color="white" align="left" format="BPM" important="true"/> -->
+          <!-- <pos x="+12" y="+2"/> -->
+          <!-- <size width="30" height="15"/> -->
+          <!-- <text fontsize="10" weight="" color="white" align="left" format="BPM" important="true"/> -->
           <!-- </textzone> -->
           <!-- PITCH RANGE -->
           <!-- <button class="button_main" width="68" height="25" x="+40" y="+30" coloroff="transparent" coloron="transparent" bordersize="0" textsize="13" textcolor="white" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
           <!-- BPM % DIFF -->
-          <!-- <textzone> -->
-          <!-- <pos x="+44" y="+31"/> -->
-          <!-- <size width="45" height="25"/> -->
-          <!-- <text fontsize="14" weight="" color="white" align="right" format="`get_text '%Ppitch%'`" important="true"/> -->
-          <!-- </textzone> -->
+          <textzone>
+            <pos x="+2" y="+2"/>
+            <size width="92" height="15"/>
+            <text fontsize="8" weight="" color="#888888" align="center" format="`get_text '%Ppitch%'`" important="true"/>
+          </textzone>
           <dropzone>
             <pos x="-14-2" y="+2"/>
             <size width="98+14+2+14+2" height="370+216+2" condition="var_equal '@$hauntinglayout' 1"/>
@@ -9589,7 +9595,7 @@
       </group>
       <button class="button_main" x="+5" y="+5" action="toggle '@$h_utility_barmode'" width="28" height="28" textsize="12" textcoloron="needle" coloroff="panel_background" coloron="#333333" bordersize="0" sysicon="settings" iconsize="20"/>
     </define>
-    <!-- PRO: MAIN HORIZONTAL WAVEFORMS -->
+    <!-- PRO: MAIN WAVEFORMS -->
     <define class="waveform" placeholders="*waveformheight">
       <group visibility="var_equal '@$hauntingsplitwaveform' 0">
         <!-- <visual class="gfx_shape" width="1920-2-2" height="[WAVEFORMHEIGHT]" coloroff="wave_background"/> -->
@@ -9684,24 +9690,26 @@
             <!-- CLASS: HORIZONTAL WAVEFORM -->
             <define class="horizontal_main_waveform" placeholders="*deck,*height">
               <deck deck="[DECK]">
+                <!-- grid border -->
                 <visual x="+[HEIGHT]" y="+20" width="1920-175" height="[HEIGHT]-40">
                   <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
                 </visual>
                 <!-- WAVE -->
-                <scratchwave orientation="horizontal" cuecolor="blue" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
+                <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
                   <pos x="+13" y="+12+10"/>
                   <size width="1920-20-40" height="[HEIGHT]-32-12"/>
                   <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
                   <gridlines width="1" color="gridlines" transparency="0.3"/>
-                  <cue y="-18" height="[HEIGHT]">
-                    <mask x="49" y="0" width="7" height="13"/>
-                    <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/>
-                  </cue>
-                  <!-- <cue> -->
-                  <!-- <text dx="+0" dy="-18" fontsize="14"/> -->
+                  <!-- <cue y="-18" height="[HEIGHT]"> -->
+                  <!-- <mask x="49" y="0" width="7" height="13"/> -->
+                  <!-- <text dx="+10" dy="-3" weight="" fontsize="14" important="true"/> -->
                   <!-- </cue> -->
+                  <cue y="-18" height="[HEIGHT]">
+                    <mask x="118" y="50" width="3" height="[HEIGHT]-12"/>
+                    <text dx="+8" dy="-2" weight="" fontsize="14" important="true"/>
+                  </cue>
                   <overlay>
-                    <pos x="945" y="+0"/>
+                    <pos x="943" y="+0"/>
                     <size width="4" height="[HEIGHT]-42"/>
                     <background color="needle" shape="square"/>
                   </overlay>
@@ -13913,7 +13921,7 @@
         <!-- deck info -->
         <panel>
           <!-- black upper bg -->
-          <button class="button_main" action="select" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="878" height="64" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
+          <button class="button_main" action="select" rightclick="file_info" tooltip="Text Scroll\nRigth-click: Tag Editor" width="878" height="100-4" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
           <!-- LEFT -->
           <group visibility="loaded ? get_deck 1 ? true : get_deck 3 ? true : false">
             <!-- <visual> -->
@@ -13931,7 +13939,7 @@
             <!-- <button class="button_main" x="+0" y="+0" width="36" height="100-4" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="35" textheight="55" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
             <button class="button_main" x="+0" y="+0" width="36" height="94" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
             <!-- SETTINGS -->
-            <menu class="menu_maindecks" query="select" x="+4" y="+65" width="28" height="20"/>
+            <menu class="menu_maindecks" query="select" x="+0" y="+64" width="40" height="20"/>
             <!-- TRACK INFO -->
             <group x="+4+28+4+100" y="+0">
               <!-- title -->
@@ -14037,12 +14045,12 @@
             <!-- <textzone class="text" x="+10+90+10+80+10+48+10" y="+4+24" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="30" fontsize="20" color="needle" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/> -->
             <!-- deck number -->
             <!-- <button class="button_main" x="+878-2-4-28" y="+6" width="28" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="button_background" textheight="30" textsize="16" textaction="get_deck"/> -->
-            <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+64-8-22" width="28" height="20"/>
             <!-- MINI DECK: RIGHT: DECK BUTTON -->
             <button class="button_main" x="+878-2-4-30" y="-2" width="36" height="100-2" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textheight="55" textaction="get_deck" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
             <!-- <button class="button_main" x="+0" y="+0" width="36" height="94" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
             <!-- MINI DECK: RIGHT: SETTINGS -->
-            <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/>
+            <!-- <menu class="menu_maindecks" query="select" x="+878-2-4-28" y="+70" width="28" height="20"/> -->
+            <menu class="menu_maindecks" query="select" x="+878-10-28" y="+64" width="40" height="20"/>
             <!-- COVER -->
             <cover rotate="no" rightclick="" dblclick="">
               <pos x="+878-27-100" y="+3"/>
