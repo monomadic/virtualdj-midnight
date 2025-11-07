@@ -8303,20 +8303,31 @@
     <!-- PRO: SCRATCHWAVE (VERTICAL) -->
     <define class="vertical_scratchwave" placeholders="deck">
       <deck deck="[DECK]">
-        <!-- SHOW TRANSPORT -->
-        <group name="no_hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 0">
+        <group>
           <!-- WAVEFORM (ALL) -->
           <!-- grid border -->
-          <visual x="+3" y="+15" width="92" height="370+195">
+          <visual x="+3" y="+15">
+            <!-- 2 deck, transport on -->
+            <size width="92" height="350" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 0"/>
+            <!-- 2 deck, transport off -->
+            <size width="92" height="350+55" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 1"/>
+            <!-- 4 deck, transport on -->
+            <size width="92" height="350+216" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 0"/>
+            <!-- 4 deck, transport off -->
+            <size width="92" height="350+216+30" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 1"/>
             <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
           </visual>
           <!-- wave -->
           <scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
             <pos x="+4" y="+15+2"/>
-            <!-- 4 deck -->
-            <size width="90" height="370+195-4" condition="var_equal '@$hauntinglayout' 1"/>
-            <!-- 2 deck -->
-            <size width="90" height="370+57" condition="var_equal '@$hauntinglayout' 0"/>
+            <!-- 4 deck, transport on -->
+            <size width="90" height="370+195-4" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 0"/>
+            <!-- 4 deck, transport off -->
+            <size width="90" height="370+195+30-4" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 1"/>
+            <!-- 2 deck, transport on -->
+            <size width="90" height="350-4" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 0"/>
+            <!-- 2 deck, transport off-->
+            <size width="90" height="400" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 1"/>
             <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="2" phrasecolor="white" maincolor="white" color="darkgray" mirrored="true"/>
             <!-- <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="5" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/> -->
             <gridlines width="1" color="darkgray" transparency="0.5"/>
@@ -8333,44 +8344,6 @@
               <background color="needle" shape="square"/>
             </overlay>
           </scratchwave>
-          <!-- <square width="100" height="370+216+2" x="+0" y="+0" color="red" border="0" bordercolor="red" visibility="0.6" /> -->
-          <!-- PRO: SCRATCHWAVE: background under text -->
-          <!-- <square color="black" x="+0" y="+2" width="98" height="15" coloroff="wave_background" visibility="0.4"/> -->
-          <!-- border on masterdeck -->
-          <!-- <square x="+10" y="+4" width="80" height="20" border="2" border_color="#FFEF8632" color="#00EF8632" radius="0" visibility="masterdeck" /> -->
-          <!-- BPM WARNING -->
-          <!-- more than 20% -->
-          <!-- <square x="+5" y="+36" width="90" height="16" radius="5" color="red" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
-          <!-- less than -5% -->
-          <!-- <square x="+5" y="+36" width="90" height="16" radius="5" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
-          <!-- <item text="1 Phrase" action="setting 'beatCounterRange' 16" check="setting 'beatCounterRange' 16"/> -->
-          <!-- <item text="2 Phrases" action="setting 'beatCounterRange' 32" check="setting 'beatCounterRange' 32"/> -->
-          <!-- <square -->
-          <!-- x="+10" y="+33" width="80" height="15" radius="5" -->
-          <!-- color="`deck left pitch & param_abs & param_greater_equal 0.16 ? 'blink 500ms red' : 'black'`" -->
-          <!-- /> -->
-          <!-- BPM CHANGE -->
-          <!-- <visual source="pitch & param_abs & param_greater 0.16 ? color 'blue' : color 'green'" type="color"> -->
-          <!-- <pos x="+10" y="+33"/> -->
-          <!-- <tooltip></tooltip> -->
-          <!-- <size width="80" height="15"/> -->
-          <!-- <mask x="195" y="1085"/> -->
-          <!-- </visual> -->
-          <!-- <textzone> -->
-          <!-- <pos x="+0" y="+6"/> -->
-          <!-- <size width="98" height="25"/> -->
-          <!-- <text fontsize="25" weight="bold" color="white" align="center" format="`get_bpm`" important="true"/> -->
-          <!-- </textzone> -->
-          <!-- BPM -->
-          <!-- <textzone class="text" x="+0" y="+7" width="100" height="28" fontsize="28" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '\-\-\.\-\-' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
-          <!-- "BPM" TEXT -->
-          <!-- <textzone> -->
-          <!-- <pos x="+12" y="+2"/> -->
-          <!-- <size width="30" height="15"/> -->
-          <!-- <text fontsize="10" weight="" color="white" align="left" format="BPM" important="true"/> -->
-          <!-- </textzone> -->
-          <!-- PITCH RANGE -->
-          <!-- <button class="button_main" width="68" height="25" x="+40" y="+30" coloroff="transparent" coloron="transparent" bordersize="0" textsize="13" textcolor="white" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
           <!-- BPM % DIFF -->
           <textzone>
             <pos x="+2" y="+2"/>
@@ -8383,45 +8356,45 @@
             <size width="98+14+2+14+2" height="370"/>
             <over color="transparent" border_size="2" border="deckcolor"/>
           </dropzone>
-          <panel class="scratch_buttons" x="-18" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/>
-          <panel class="scratch_buttons" x="-18" y="+216+2" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/>
-          <panel class="beat_counter2" deck="[DECK]" x="-12" y="+24+50" visibility="var_equal '@$hauntingbarcountervert' 1"/>
-        </group>
-        <!-- HIDE CROSSFADER -->
-        <group name="hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 1">
-          <!-- WAVEFORM (ALL) -->
-          <scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
-            <pos x="+4" y="+4"/>
-            <size width="90" height="370+250" condition="var_equal '@$hauntinglayout' 1"/>
-            <size width="90" height="370+57"/>
-            <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="2" phrasecolor="white" maincolor="white" color="darkgray" mirrored="true"/>
-            <gridlines width="1" color="darkgray" transparency="0.5"/>
-            <cue y="-19" height="12">
-              <mask x="0" y="0" width="12" height="12"/>
-            </cue>
-            <overlay>
-              <pos x="-18" y="+160+25+108+1+28" condition="var_equal '@$hauntinglayout' 1"/>
-              <pos x="-18" y="+160+25+28"/>
-              <size width="98+18+18" height="2"/>
-              <background color="needle" shape="square"/>
-            </overlay>
-          </scratchwave>
-          <dropzone>
-            <pos x="-14-2" y="+2"/>
-            <size width="98+14+2+14+2" height="370+216+2+57" condition="var_equal '@$hauntinglayout' 1"/>
-            <size width="98+14+2+14+2" height="370+57"/>
-            <over color="transparent" border_size="2" border="deckcolor"/>
-          </dropzone>
-          <!-- dB level in scratch -->
-          <textzone>
-            <pos x="+0" y="-2"/>
-            <size width="98" height="30"/>
-            <text fontsize="12" weight="bold" color="deckcolor" align="center" action="get_level 'db'" important="true"/>
-          </textzone>
-          <!-- <panel class="scratch_buttons" x="-18" y="+57" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
-          <!-- <panel class="scratch_buttons" x="-18" y="+216+2+57" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
+          <!-- <panel class="scratch_buttons" x="-18" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
+          <!-- <panel class="scratch_buttons" x="-18" y="+216+2" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
           <!-- <panel class="beat_counter2" deck="[DECK]" x="-12" y="+24+50" visibility="var_equal '@$hauntingbarcountervert' 1"/> -->
         </group>
+        <!-- HIDE CROSSFADER -->
+        <!-- <group name="hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 1"> -->
+        <!-- WAVEFORM (ALL) -->
+        <!-- <scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal"> -->
+        <!-- <pos x="+4" y="+4"/> -->
+        <!-- <size width="90" height="370+250" condition="var_equal '@$hauntinglayout' 1"/> -->
+        <!-- <size width="90" height="370+57"/> -->
+        <!-- <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="2" phrasecolor="white" maincolor="white" color="darkgray" mirrored="true"/> -->
+        <!-- <gridlines width="1" color="darkgray" transparency="0.5"/> -->
+        <!-- <cue y="-19" height="12"> -->
+        <!-- <mask x="0" y="0" width="12" height="12"/> -->
+        <!-- </cue> -->
+        <!-- <overlay> -->
+        <!-- <pos x="-18" y="+160+25+108+1+28" condition="var_equal '@$hauntinglayout' 1"/> -->
+        <!-- <pos x="-18" y="+160+25+28"/> -->
+        <!-- <size width="98+18+18" height="2"/> -->
+        <!-- <background color="needle" shape="square"/> -->
+        <!-- </overlay> -->
+        <!-- </scratchwave> -->
+        <!-- <dropzone> -->
+        <!-- <pos x="-14-2" y="+2"/> -->
+        <!-- <size width="98+14+2+14+2" height="370+216+2+57" condition="var_equal '@$hauntinglayout' 1"/> -->
+        <!-- <size width="98+14+2+14+2" height="370+57"/> -->
+        <!-- <over color="transparent" border_size="2" border="deckcolor"/> -->
+        <!-- </dropzone> -->
+        <!-- dB level in scratch -->
+        <!-- <textzone> -->
+        <!-- <pos x="+0" y="-2"/> -->
+        <!-- <size width="98" height="30"/> -->
+        <!-- <text fontsize="12" weight="bold" color="deckcolor" align="center" action="get_level 'db'" important="true"/> -->
+        <!-- </textzone> -->
+        <!-- <panel class="scratch_buttons" x="-18" y="+57" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
+        <!-- <panel class="scratch_buttons" x="-18" y="+216+2+57" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
+        <!-- <panel class="beat_counter2" deck="[DECK]" x="-12" y="+24+50" visibility="var_equal '@$hauntingbarcountervert' 1"/> -->
+        <!-- </group> -->
       </deck>
     </define>
     <define class="vertical_scratchwave_prf" placeholders="deck,*width,*height">
