@@ -8336,10 +8336,14 @@
               <text dx="+10" dy="-1" weight="" fontsize="12" important="true"/>
             </cue>
             <overlay>
-              <!-- 4 deck -->
-              <pos x="+0" y="+279" condition="var_equal '@$hauntinglayout' 1"/>
-              <!-- 2 deck -->
-              <pos x="+0" y="+160+25+27" condition="var_equal '@$hauntinglayout' 0"/>
+              <!-- 2 deck, transport on -->
+              <pos x="+0" y="+160+11" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 0"/>
+              <!-- 2 deck, transport off -->
+              <pos x="+0" y="+160+38" condition="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntinghidecrossfader' 1"/>
+              <!-- 4 deck, transport on -->
+              <pos x="+0" y="+279" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 0"/>
+              <!-- 4 deck, transport off -->
+              <pos x="+0" y="+279+15" condition="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntinghidecrossfader' 1"/>
               <size width="90" height="4"/>
               <background color="needle" shape="square"/>
             </overlay>
