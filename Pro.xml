@@ -8487,9 +8487,6 @@
       <!-- <button class="button_main" x="330" y="8" action="set '@$hauntinglayout' 0 & set '@$4decks' 1 & load_skin" width="26" height="27" textsize="12" textcoloron="needle" text="S" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1"/> -->
       <!-- DECK LAYOUT BUTTONS -->
       <group x="220" y="8">
-        <!-- <visual x="-1" y="-1" width="30*2+2" height="27+2"> -->
-        <!-- <off shape="square" color="transparent" border_size="1" border="#111111"/> -->
-        <!-- </visual> -->
         <button tooltip="2 Decks (4 Swap)" class="button_main" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" width="30" height="27" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
           <off color="black"/>
           <on color="#222222"/>
@@ -8508,12 +8505,22 @@
         </button>
       </group>
       <!-- BEAT KEEPER -->
-      <group x="+1150" y="+8">
+      <group x="+1050" y="+8">
         <!-- <visual class="gfx_shape" width="140" height="27" coloroff="#111111"/> -->
         <panel class="beat_keeper_ex" y="+0" deck="3"/>
         <panel class="beat_keeper_ex" y="+7" deck="1"/>
         <panel class="beat_keeper_ex" y="+14" deck="2"/>
         <panel class="beat_keeper_ex" y="+21" deck="4"/>
+      </group>
+      <!-- CUE STUTTER -->
+      <group x="+1233" y="+4">
+          <textzone>
+            <pos x="+0" y="+0"/>
+            <size width="65" height="16"/>
+            <text fontsize="9" weight="normal" color="#999999" align="center" text="CUE MODE" important="true"/>
+          </textzone>
+        <!-- <button class="button_main" x="+0" y="+0+14" width="65" height="18" action="setting 'hotcueMode'" textsize="12" textaction="setting 'hotCueMode' & param_uppercase" coloroff="#888888" coloron="#999999" colorselected="red" bordersize="0" textcolor="black" textcoloron="black" query="slip_mode ? blink 800ms : off"/> -->
+        <button class="button_main" x="+0" y="+0+14" width="65" height="18" action="setting 'hotcueMode'" textsize="12" textaction="setting 'hotCueMode' & param_uppercase" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
       </group>
       <!-- SYNC BUTTONS -->
       <group x="1330" y="8">
