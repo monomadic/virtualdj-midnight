@@ -2134,9 +2134,9 @@
         <slider action="pitch" rightclick="pitch_zero" dblclick="pitch_reset" orientation="vertical" direction="down" frommiddle="true">
           <pos x="+0" y="-7"/>
           <size width="38" height="119"/>
-          <on width="-24" height="-8" color="knobprogressoff" border="panel_background" border_size="1" shape="square"/>
-          <off width="-24" height="-8" color="deckcolor" border="panel_background" border_size="4" shape="square"/>
-          <fader color="faderbackground" width="38" height="14"/>
+          <on width="-27" height="-8" color="knobprogressoff" border="#222222" border_size="1" radius="3" shape="square"/>
+          <off width="-27" height="-8" color="deckcolor" border="#222222" border_size="1" radius="3" shape="square"/>
+          <fader color="#333333" width="38" height="14" border="#555555"/>
         </slider>
         <slider action="pitch" rightclick="pitch_zero" dblclick="pitch_reset" orientation="vertical" direction="down" frommiddle="true">
           <pos x="+0" y="-7+6"/>
@@ -2220,7 +2220,7 @@
         <line color="faderlines" x="+2" y="+12*8" width="34" height="1"/>
         <line color="faderlines" x="+2" y="+12*9" width="34" height="1"/>
         <line color="faderlines" x="+0" y="+12*10" width="38" height="1"/>
-        <group x="+16" y="-1">
+        <group x="+14" y="-1">
           <visual width="10" height="123">
             <off shape="square" color="black" radius="3"/>
           </visual>
@@ -2235,9 +2235,9 @@
         <!-- SLIDER -->
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
           <pos x="+0" y="-7"/>
-          <size width="40" height="135"/>
-          <off width="-28" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
-          <on width="-28" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
+          <size width="38" height="135"/>
+          <off width="-27" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
+          <on width="-27" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
           <fader color="#333333" width="38" height="14" border="#555555"/>
         </slider>
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
@@ -5127,7 +5127,6 @@
             </textzone>
           </panel>
         </group>
-        <!-- <panel class="knob" x="+300" y="+28" textsize="10" knobsize="31" knobradius="12" faderradius="1" fillcoloroff="#333333" frommiddle="true" resettomiddle="true" fillcolor="knobfillon" action="effect_slider 'colorfx'" rgclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" textaction="filter_label 'colorfx' &amp; param_cast 'text'" actiontxt="filter_selectcolorfx"/> -->
         <button x="+370" y="+22" width="90" height="18" action="effect_active colorfx" border_size="1">
           <off color="#222222"/>
           <selected color="orange" textcolor="black"/>
@@ -5220,7 +5219,7 @@
     </define>
     <!-- BPM SLIDER -->
     <define class="pitch_zone">
-      <visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#000000" bordercolor="#333333" border_size="2"/>
+      <!-- <visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#000000" bordercolor="#333333" border_size="2"/> -->
       <group visibility="loaded">
         <!-- PITCH RANGE -->
         <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/>
@@ -7281,22 +7280,26 @@
           </group>
           <!-- SAMPLE PLAYER -->
           <group y="+75">
-            <visual class="gfx_shape" width="144" height="22" coloroff="#000000" bordersize="0" bordercoloroff="#333333"/>
-            <textzone class="text" x="+26" y="+0" width="100" height="22" fontsize="12" color="#CCCCCC" align="left" weight="" textaction="sampler_pad 1 &amp; param_uppercase"/>
-            <button x="+0" y="+0" width="22" height="22" visibility="true" action="sampler_pad 1" query="sampler_play_stop 1">
+            <visual class="gfx_shape" width="144-26" height="22" coloroff="#000000" bordersize="0" bordercoloroff="#333333"/>
+            <visual type="color" source="sampler_loaded 1 ? sampler_color 1 : constant '#333333'">
+              <pos x="+0" y="+0"/>
+              <size width="4" height="22"/>
+            </visual>
+            <textzone class="text" x="+15" y="+0" width="100" height="22" fontsize="12" color="#AAAAAA" align="left" weight="" textaction="sampler_pad 1 &amp; param_uppercase"/>
+            <button x="+144-22" y="+0" width="22" height="22" visibility="true" action="sampler_pad 1" query="sampler_play_stop 1">
               <off color="#000000" border="#000000" border_size="0" shape="square"/>
               <on color="#4444FF" border="#111111" border_size="0" shape="square"/>
               <over color="#444444" border="#000000" border_size="0" shape="square"/>
               <selected color="#5555FF" border="#0000FF" border_size="0" shape="square"/>
               <icon dx="-1" sysicon="play" width="24" height="24" color="#888888" colordown="white" colorselected="#FFFFFF"/>
             </button>
-            <button x="+144-22" y="+0" width="22" height="22" visibility="true" action="sampler_edit 1">
-              <off color="transparent" border="#000000" border_size="0" shape="square"/>
-              <on color="#444444" border="#111111" border_size="0" shape="square"/>
-              <over color="transparent" border="#000000" border_size="0" shape="square"/>
-              <selected color="#555555" border="#0000FF" border_size="0" shape="square"/>
-              <icon dx="+0" sysicon="settings" width="17" height="17" color="#888888" colordown="white" colorover="#FFFFFF"/>
-            </button>
+            <!-- <button x="+144-22" y="+0" width="22" height="22" visibility="true" action="sampler_edit 1"> -->
+            <!-- <off color="transparent" border="#000000" border_size="0" shape="square"/> -->
+            <!-- <on color="#444444" border="#111111" border_size="0" shape="square"/> -->
+            <!-- <over color="transparent" border="#000000" border_size="0" shape="square"/> -->
+            <!-- <selected color="#555555" border="#0000FF" border_size="0" shape="square"/> -->
+            <!-- <icon dx="+0" sysicon="settings" width="17" height="17" color="#888888" colordown="white" colorover="#FFFFFF"/> -->
+            <!-- </button> -->
           </group>
           <!-- SAMPLER VUMETER -->
           <group x="+0" y="+120">
@@ -13768,14 +13771,15 @@
         <panel class="pitch_zone" x="+257" y="+2"/>
         <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT DECK: VU METER -->
-        <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/>
-        <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/>
-        <panel class="vu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/>
-        <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
-          <pos x="+65-52" y="+13"/>
-          <size width="38" height="172-24"/>
-          <fader color="faderbackgroundline" width="38" height="6"/>
-        </slider>
+        <panel class="deck_level" x="+10" y="+30"/>
+        <!-- <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/> -->
+        <!-- <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/> -->
+        <!-- <panel class="vu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/> -->
+        <!-- <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false"> -->
+        <!-- <pos x="+65-52" y="+13"/> -->
+        <!-- <size width="38" height="172-24"/> -->
+        <!-- <fader color="faderbackgroundline" width="38" height="6"/> -->
+        <!-- </slider> -->
         <!-- PRO: RIGHT: TRANSPORT BAR -->
         <group x="+7+30+10+300+15" y="+179">
           <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
