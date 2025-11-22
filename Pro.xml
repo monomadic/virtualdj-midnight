@@ -5111,18 +5111,20 @@
           </button>
         </group>
         <!-- KNOB: COLORFX -->
-        <group x="+305" y="+28">
-          <button class="dropdown_menu" action="filter_selectcolorfx" x="+35" y="+0" visibility="var_equal '@$hauntingdropmenus' 0"/>
-          <panel x="+0" y="+3">
+        <group x="+300" y="+24">
+          <!-- select fx -->
+          <button class="dropdown_menu" action="filter_selectcolorfx" x="+42" y="+0" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <!-- knob -->
+          <panel x="+0" y="+5">
             <slider action="effect_slider 'colorfx'" rightclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" orientation="round" frommiddle="true" resettomiddle="true">
-              <pos x="+0" y="+0"/>
+              <pos x="+10" y="+0"/>
               <size width="31" height="31"/>
               <fader color="needle" width="2" height="10" radius="1" anglemin="-140" anglemax="140"/>
               <fill width="31" height="31" radius="12" color="knobfillon" backcolor="#333333"/>
             </slider>
             <textzone action="filter_selectcolorfx">
-              <pos x="+0" y="+30"/>
-              <size width="31" height="15"/>
+              <pos x="+0" y="+34"/>
+              <size width="51"/>
               <text fontsize="10" weight="" color="knobtextoff" align="center" action="filter_label 'colorfx' &amp; param_cast 'text'" text="" important="true" localize="true"/>
             </textzone>
           </panel>
@@ -5223,6 +5225,7 @@
       <group visibility="loaded">
         <!-- PITCH RANGE -->
         <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/>
+        <!-- SLIDER -->
         <panel class="pitch" x="+11" y="+6+26"/>
         <!-- PITCH RESET -->
         <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#000000" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
@@ -7058,34 +7061,44 @@
       <panel name="@fxx3_[PANELNAME]" group="loops_[PANELNAME]" visible="no" available="no" displayname="FX x3">
         <square x="+0" y="+0" width="236+28" height="132" color="#44000000"/>
         <!-- FX1 -->
-        <group x="+20">
-          <textzone class="text" x="+10" y="+30" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
-          <group x="+50" y="+25">
+        <group x="+20" y="+10">
+          <textzone class="text" x="+10" y="+5" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX1"/>
+          <group x="+50">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+26" y="+3" width="82" height="20" action="effect_active" rightclick="effect_select" textaction="effect_select &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
             <button class="button_main" x="+26+82" y="+3" width="26" height="20" action="effect_select +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
           </group>
-          <button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui 1" iconsize="20" sysicon="settings" brcoloron="transparent"/>
+          <button class="button_main" x="+50+26+82+26+10" width="25" height="25" action="effect_show_gui 1" iconsize="20" sysicon="settings" brcoloron="transparent"/>
         </group>
         <!-- FX2 -->
-        <group x="+20" y="+30">
-          <textzone class="text" x="+10" y="+30" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX2"/>
-          <group x="+50" y="+25">
+        <group x="+20" y="+37">
+          <textzone class="text" x="+10" y="+5" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX2"/>
+          <group x="+50">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select 2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active 2" rightclick="effect_select 2" textaction="effect_select 2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
             <button class="button_main" x="+0+26+82" y="+3" width="26" height="20" action="effect_select 2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
           </group>
-          <button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui 2" iconsize="20" sysicon="settings" brcoloron="transparent"/>
+          <button class="button_main" x="+50+26+82+26+10" width="25" height="25" action="effect_show_gui 2" iconsize="20" sysicon="settings" brcoloron="transparent"/>
+        </group>
+        <!-- FX3 -->
+        <group x="+20" y="+64">
+          <textzone class="text" x="+10" y="+5" width="80" height="15" fontsize="14" color="textdarker" align="LEFT" weight="" text="FX3"/>
+          <group x="+50">
+            <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select 3 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active 3" rightclick="effect_select 3" textaction="effect_select 3 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
+            <button class="button_main" x="+0+26+82" y="+3" width="26" height="20" action="effect_select 3 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          </group>
+          <button class="button_main" x="+50+26+82+26+10" width="25" height="25" action="effect_show_gui 3" iconsize="20" sysicon="settings" brcoloron="transparent"/>
         </group>
         <!-- COLORFX -->
-        <group x="+20" y="+60">
-          <textzone class="text" x="+10" y="+30" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="CFX"/>
-          <group x="+50" y="+25">
+        <group x="+20" y="+93">
+          <textzone class="text" x="+10" y="+5" width="100" height="15" fontsize="12" color="textdarker" align="LEFT" weight="" text="CFX"/>
+          <group x="+50">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+0+26" y="+3" width="82" height="20" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
             <button class="button_main" x="+0+26+82" y="+3" width="26" height="20" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
           </group>
-          <button class="button_main" x="+50+26+82+26+10" y="+25" width="25" height="25" action="effect_show_gui colorfx" iconsize="20" sysicon="settings" brcoloron="transparent"/>
+          <button class="button_main" x="+50+26+82+26+10" width="25" height="25" action="effect_show_gui colorfx" iconsize="20" sysicon="settings" brcoloron="transparent"/>
         </group>
       </panel>
     </define>
@@ -13501,6 +13514,23 @@
     </define>
   </group>
   <define class="stem_control" placeholders="*stem,*label,*color">
+    <group x="+0" y="+0">
+      <panel x="+0" y="+5">
+        <!-- on state -->
+        <slider action="stem '[STEM]'" rightclick="effect_select 'colorfx'" dblclick="stem '[STEM]' 50%" orientation="round" frommiddle="true" resettomiddle="true">
+          <pos x="+10" y="+0"/>
+          <size width="31" height="31"/>
+          <fader color="needle" width="2" height="10" radius="1" anglemin="-140" anglemax="140"/>
+          <fill width="31" height="31" radius="12" color="[COLOR]" backcolor="#333333"/>
+        </slider>
+        <!-- <textzone action="filter_selectcolorfx"> -->
+        <!-- <pos x="+0" y="+34"/> -->
+        <!-- <size width="51"/> -->
+        <!-- <text fontsize="10" weight="" color="knobtextoff" align="center" action="filter_label 'colorfx' &amp; param_cast 'text'" text="" important="true" localize="true"/> -->
+        <!-- </textzone> -->
+      </panel>
+    </group>
+    <!-- KNOB: STEM -->
     <group>
       <!-- Stem Toggle Button -->
       <!-- <button class="button_main" -->
@@ -13513,7 +13543,7 @@
       <!-- Knob (muted state visible) -->
       <panel class="knob" x="+10" y="+0" textwidth="40" textsize="12" textbelow="+37" textleft="-2" knobsize="34" knobradius="7" faderradius="6" action="stem '[STEM]'" rgclick="stem_pad '[STEM]'" dblclick="stem '[STEM]' 50%" frommiddle="false" fillcolor="#333333" fillcoloroff="#000000" text="" visibility="mute_stem '[STEM]' on"/>
       <!-- Knob (unmuted state visible) -->
-      <panel class="knob" x="+10" y="+0" textwidth="40" textsize="12" textbelow="+37" textleft="-2" knobsize="34" knobradius="8" faderradius="6" action="stem '[STEM]'" rgclick="stem_pad '[STEM]'" dblclick="stem '[STEM]' 50%" frommiddle="false" fillcolor="[COLOR]" fillcoloroff="#000000" text="" visibility="mute_stem '[STEM]' off"/>
+      <!-- <panel class="knob" x="+10" y="+0" textwidth="40" textsize="12" textbelow="+37" textleft="-2" knobsize="34" knobradius="8" faderradius="6" action="stem '[STEM]'" rgclick="stem_pad '[STEM]'" dblclick="stem '[STEM]' 50%" frommiddle="false" fillcolor="[COLOR]" fillcoloroff="#000000" text="" visibility="mute_stem '[STEM]' off"/> -->
       <!-- SIMPLE VECTOR VU METER -->
       <!-- <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="23"> -->
       <!-- <pos x="+0" y="+55"/> -->
