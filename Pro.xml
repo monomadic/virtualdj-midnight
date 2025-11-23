@@ -5141,10 +5141,25 @@
           <text fontsize="12" color="#111111" colorselected="black" align="center" text="SAMPLER"/>
         </button>
         <!-- FX ACTIVE INDICATOR -->
-        <button x="+370" y="+62" width="90" height="18" action="effect_active 'all' off" border_size="1" query="effects_used">
+        <!-- <button x="+370" y="+62" width="90" height="18" action="effect_active 'all' off" border_size="1" query="effects_used 'deck'"> -->
+        <!-- <off color="#222222"/> -->
+        <!-- <selected color="magenta"/> -->
+        <!-- <text fontsize="12" color="#111111" colorselected="black" align="center" text="FX"/> -->
+        <!-- </button> -->
+        <button x="+370" y="+62" width="28" height="18" action="effect_active 1" border_size="1">
           <off color="#222222"/>
           <selected color="magenta"/>
-          <text fontsize="12" color="#111111" colorselected="black" align="center" action="get_text 'EFFECTS: `get_effects_used`'"/>
+          <text fontsize="12" color="#111111" colorselected="black" align="center" text="FX1"/>
+        </button>
+        <button x="+400" y="+62" width="28" height="18" action="effect_active 2" border_size="1">
+          <off color="#222222"/>
+          <selected color="magenta"/>
+          <text fontsize="12" color="#111111" colorselected="black" align="center" text="FX2"/>
+        </button>
+        <button x="+430" y="+62" width="30" height="18" action="effect_active 3" border_size="1">
+          <off color="#222222"/>
+          <selected color="magenta"/>
+          <text fontsize="12" color="#111111" colorselected="black" align="center" text="FX3"/>
         </button>
         <!-- <panel class="key_display_left" x="+2+4+220+4+120" y="+14"/> -->
         <!-- <panel class="bpm_display_left" x="+2+4+200+4+128+4" y="+2"/> -->
@@ -7063,6 +7078,7 @@
         <!-- FX1 -->
         <group x="+10" y="+12">
           <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="14" color="textdarker" align="right" weight="" text="FX1"/>
+          <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="14" color="white" align="right" weight="" text="FX1" visibility="effect_active 1"/>
           <group x="+40">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+26" y="+3" width="130" height="20" action="effect_active" rightclick="effect_select" textaction="effect_select &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
@@ -7073,6 +7089,7 @@
         <!-- FX2 -->
         <group x="+10" y="+39">
           <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="14" color="textdarker" align="right" weight="" text="FX2"/>
+          <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="14" color="white" align="right" weight="" text="FX2" visibility="effect_active 2"/>
           <group x="+40">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select 2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+0+26" y="+3" width="120" height="20" action="effect_active 2" rightclick="effect_select 2" textaction="effect_select 2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
