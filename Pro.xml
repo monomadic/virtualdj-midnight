@@ -5436,26 +5436,30 @@
           <off shape="circle" color="#000000" border="transparent"/>
           <on shape="circle" color="red" border="transparent"/>
         </visual>
-        <!-- COUNTDOWN -->
-        <visual type="color" source="cue_countdown 'color'">
-          <tooltip/>
-          <pos x="+0" y="+0"/>
-          <size width="50" height="15"/>
-        </visual>
-        <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
-          <pos x="+0" y="+0"/>
-          <size width="50" height="15"/>
-        </button>
-        <!-- COUNTUP -->
-        <visual type="color" source="cue_countup 'color'">
-          <tooltip/>
-          <pos x="+0" y="+0"/>
-          <size width="50" height="15"/>
-        </visual>
-        <button class="button_main" action="key_match_button" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
-          <pos x="+0" y="+0"/>
-          <size width="50" height="15"/>
-        </button>
+        <!-- HOTCUE: CURRENT -->
+        <group visibility="not param_equal `cue_countup 'name'` ''">
+          <visual type="color" source="cue_countup 'color'">
+            <tooltip/>
+            <pos x="+0" y="+0"/>
+            <size width="50" height="15"/>
+          </visual>
+          <button class="button_main" action="key_match_button" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
+            <pos x="+0" y="+0"/>
+            <size width="50" height="15"/>
+          </button>
+        </group>
+        <!-- HOTCUE: NEXT -->
+        <group visibility="cue_countdown 'name'">
+          <visual type="color" source="cue_countdown 'color'">
+            <tooltip/>
+            <pos x="+120" y="+140"/>
+            <size width="50" height="15"/>
+          </visual>
+          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
+            <pos x="+120" y="+140"/>
+            <size width="50" height="15"/>
+          </button>
+        </group>
         <!-- outer progress border -->
         <!-- <visual source="song_pos 'show warning'" type="circle" visibility="loaded"> -->
         <!-- <tooltip/> -->
@@ -6504,8 +6508,19 @@
           <button class="button_main" x="+71" y="+42" width="64" height="30" action="get_haslinein ? linein_rec : get_hasmic ? mic_rec : linein_rec" text="REC" localize="true"/>
         </group>
       </panel>
-      <!-- PRO: TIMECODE + LINE IN PANEL -->
+      <!-- PRO: PANEL: LINE -->
       <panel name="no_linein_timecode_[PANELNAME]" visibility="not get_hastimecode &amp;&amp; not get_haslinein">
+        <button action="   deck 1 play ? deck all pause :   deck 2 play ? deck all pause :   deck 3 play ? deck all pause :   deck 4 play ? deck all pause :   deck left play &amp; deck right play ">
+          <tooltip>Play/Pause All Decks</tooltip>
+          <pos x="+0" y="+0"/>
+          <size width="32" height="32"/>
+          <!-- Background states -->
+          <off color="#202020" border_size="1" border="#404040"/>
+          <on color="#303030" border_size="1" border="#FFFFFF"/>
+          <over color="#404040" border_size="1" border="#FFFFFF"/>
+          <!-- Icon switches between play and pause based on any deck playing -->
+          <icon sysicon="       deck 1 play ? 'pause' :       deck 2 play ? 'pause' :       deck 3 play ? 'pause' :       deck 4 play ? 'pause' :       'play'     " width="20" height="20" dx="+6" dy="+6"/>
+        </button>
         <!-- <textzone class="text" y="+8" width="264" height="26" fontsize="12" color="textdarker" align="center" weight="" text="NO INPUTS"/> -->
         <group name="pad_param1" visibility="pad_has_param 1">
           <button class="button_main" x="+115" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
@@ -9844,8 +9859,8 @@
                   <on color="deckcolor" shape="square"/>
                   <text width="20" height="30" size="24" weight="normal" colorselected="black" color="deckcolor" action="get_deck" align="center"/>
                 </button>
-                <!-- COVER -->
-                <group name="horizontal-waveform-cover" x="+24" y="+2">
+                <!-- TRACK INFO -->
+                <group x="+24" y="+2" visibility="leftdeck">
                   <!-- cover (when not loaded) -->
                   <panel class="cover_art_hntg" size="[HEIGHT]-4" visibility="not loaded"/>
                   <!-- cover (when loaded) -->
@@ -9863,7 +9878,7 @@
                 </group>
                 <dropzone>
                   <pos x="-2" y="+0"/>
-                  <size width="1920-8-40+4" height="[WAVEFORMHEIGHT]/2"/>
+                  <size width="1920-8-23" height="[WAVEFORMHEIGHT]/2"/>
                   <over color="transparent" border="color_dropzone" border_size="4" radius="10"/>
                 </dropzone>
               </deck>
@@ -9872,6 +9887,13 @@
             <panel class="horizontal_main_waveform" deck="1" height="[WAVEFORMHEIGHT]/2" x="+0" y="+0" visibility="deck 1 select ? true : deck 3 select ? false : deck 1 leftdeck"/>
             <panel class="horizontal_main_waveform" deck="2" height="[WAVEFORMHEIGHT]/2" x="+0" y="+[WAVEFORMHEIGHT]/2" visibility="deck 2 select ? true : deck 4 select ? false : deck 2 rightdeck"/>
             <panel class="horizontal_main_waveform" deck="4" height="[WAVEFORMHEIGHT]/2" x="+0" y="+[WAVEFORMHEIGHT]/2" visibility="deck 4 select ? true : deck 2 select ? false : deck 4 rightdeck"/>
+            <!-- NEEDLE -->
+            <visual x="+450" y="+2" width="50" height="[WAVEFORMHEIGHT]-6" visibility="select">
+              <off shape="square" color="#55000000" border_size="0" border="deckcolor" radius="6"/>
+            </visual>
+            <visual x="+476" y="+0" width="2" height="[WAVEFORMHEIGHT]" visibility="select">
+              <off shape="square" color="white" border_size="0" border="deckcolor" radius="6"/>
+            </visual>
           </group>
           <!-- <panel class="beat_counter" deck="left" x="960-2-120-40" y="+18" visibility="var_equal '@$hauntingbarcounter' 1 ? setting 'waveformCenter' 'centered'"/> -->
           <!-- <panel class="beat_counter" deck="right" x="960-2-120-40" y="+106+2+[WAVEFORMHEIGHT]/2-32-3" visibility="var_equal '@$hauntingbarcounter' 1 ? setting 'waveformCenter' 'centered'"/> -->
