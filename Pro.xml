@@ -4790,12 +4790,12 @@
                 <text fontsize="9" color="#888888" align="left" text="KEY" localize="true" important="true"/>
               </textzone>
               <button action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' &amp; set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' &amp; set 'keyDisplayToggle' 1" query="var_equal 'keyDisplayToggle' 1">
-                <pos x="+60" y="+4"/>
-                <size width="40"/>
+                <pos x="+60" y="+10"/>
+                <size width="40" height="18"/>
                 <!-- colored when key exists -->
-                <text fontsize="12" weight="bold" align="left" visibility="get_key" color="white" action="get_loaded_song 'key'"/>
+                <text fontsize="14" weight="bold" align="left" visibility="get_key" color="white" action="get_loaded_song 'key'"/>
                 <!-- fallback when no key/color -->
-                <text fontsize="12" weight="bold" align="left" visibility="not get_key" color="white" action="get_loaded_song 'key'"/>
+                <text fontsize="14" weight="bold" align="left" visibility="not get_key" color="white" action="get_loaded_song 'key'"/>
               </button>
               <!-- TIME REMAINING -->
               <textzone>
@@ -5449,7 +5449,7 @@
           </button>
         </group>
         <!-- HOTCUE: NEXT -->
-        <group visibility="cue_countdown 'name'">
+        <group visibility="not param_equal `cue_countdown 'name'` ''">
           <visual type="color" source="cue_countdown 'color'">
             <tooltip/>
             <pos x="+120" y="+140"/>
@@ -6510,28 +6510,78 @@
       </panel>
       <!-- PRO: PANEL: LINE -->
       <panel name="no_linein_timecode_[PANELNAME]" visibility="not get_hastimecode &amp;&amp; not get_haslinein">
-        <button action="   deck 1 play ? deck all pause :   deck 2 play ? deck all pause :   deck 3 play ? deck all pause :   deck 4 play ? deck all pause :   deck left play &amp; deck right play ">
-          <tooltip>Play/Pause All Decks</tooltip>
-          <pos x="+0" y="+0"/>
-          <size width="32" height="32"/>
-          <!-- Background states -->
-          <off color="#202020" border_size="1" border="#404040"/>
-          <on color="#303030" border_size="1" border="#FFFFFF"/>
-          <over color="#404040" border_size="1" border="#FFFFFF"/>
-          <!-- Icon switches between play and pause based on any deck playing -->
-          <icon sysicon="       deck 1 play ? 'pause' :       deck 2 play ? 'pause' :       deck 3 play ? 'pause' :       deck 4 play ? 'pause' :       'play'     " width="20" height="20" dx="+6" dy="+6"/>
-        </button>
+        <!-- <button action="deck 1 play ? deck all pause : deck 2 play ? deck all pause :   deck 3 play ? deck all pause :   deck 4 play ? deck all pause : deck left play &amp; deck right play "> -->
+        <!-- <tooltip>Play/Pause All Decks</tooltip> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="32" height="32"/> -->
+        <!-- Background states -->
+        <!-- <off color="#202020" border_size="1" border="#404040"/> -->
+        <!-- <on color="#303030" border_size="1" border="#FFFFFF"/> -->
+        <!-- <over color="#404040" border_size="1" border="#FFFFFF"/> -->
+        <!-- Icon switches between play and pause based on any deck playing -->
+        <!-- <icon sysicon="       deck 1 play ? 'pause' :       deck 2 play ? 'pause' :       deck 3 play ? 'pause' :       deck 4 play ? 'pause' :       'play'     " width="20" height="20" dx="+6" dy="+6"/> -->
+        <!-- </button> -->
         <!-- <textzone class="text" y="+8" width="264" height="26" fontsize="12" color="textdarker" align="center" weight="" text="NO INPUTS"/> -->
-        <group name="pad_param1" visibility="pad_has_param 1">
-          <button class="button_main" x="+115" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+115+26" y="+6" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-          <button class="button_main" x="+115+26+82" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-        </group>
-        <group name="pad_param1" visibility="pad_param_visible 2">
-          <button class="button_main" x="+115" y="+6+32" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+115+26" y="+6+32" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-          <button class="button_main" x="+115+26+82" y="+6+32" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-        </group>
+        <!-- <group name="pad_param1" visibility="pad_has_param 1"> -->
+        <!-- <button class="button_main" x="+115" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+        <!-- <button class="button_main" x="+115+26" y="+6" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+        <!-- <button class="button_main" x="+115+26+82" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+        <!-- </group> -->
+        <!-- <group name="pad_param1" visibility="pad_param_visible 2"> -->
+        <!-- <button class="button_main" x="+115" y="+6+32" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+        <!-- <button class="button_main" x="+115+26" y="+6+32" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
+        <!-- <button class="button_main" x="+115+26+82" y="+6+32" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+        <!-- </group> -->
+        <define class="HASHTAG_BUTTON" placeholders="*tag,text,width=90,height=18,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=10,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+          <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2">
+            <size width="[WIDTH]" height="[HEIGHT]"/>
+            <off color="#000000" border="#55AAAAAA" border_size="1" shape="[SHAPE]" radius="5"/>
+            <over color="#000000" border="#66AAAAAA" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+            <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+            <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
+            <text action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="+6" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="left" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/>
+            <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/>
+          </button>
+          <visual class="gfx_shape" x="+0" y="+0" width="[WIDTH]" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/>
+        </define>
+        <stack x="+8" y="+4" fadein="0ms" fadeout="0ms">
+          <!-- Size of each slot -->
+          <size width="90" height="18"/>
+          <!-- Where the slots appear on the skin -->
+          <slot x="+0" y="+0"/>
+          <slot x="+92" y="+0"/>
+          <slot x="+184" y="+0"/>
+          <!-- #BassHouse chip -->
+          <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '">
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
+          </item>
+          <!-- #House chip -->
+          <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#house '">
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#House" text="#HOUSE"/>
+          </item>
+          <!-- #Techno chip -->
+          <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#techno '">
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Techno" text="#TECHNO"/>
+          </item>
+          <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#psy'">
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Psy-Trance" text="#PSY-TRANCE"/>
+          </item>
+          <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#club '">
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Club" text="#CLUB"/>
+          </item>
+        </stack>
+        <!-- <textzone visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '"> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="260" height="14"/> -->
+        <!-- <text fontsize="10" color="white" align="left" action="deck default get_loaded_song 'Field 1' &amp; param_lowercase &amp; param_contains &quot;#House&quot; ? '#House' : 'no #House'"/> -->
+        <!-- <text fontsize="10" color="white" align="left" text="#BassHouse"/> -->
+        <!-- </textzone> -->
+        <!-- <button action="select ? sync" query="sync"> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="80" height="30"/> -->
+        <!-- <off color="red" shape="square" radius="6"/> -->
+        <!-- <text size="13" color="black" action="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse ' ? get_text '#BassHouse' : nothing"/> -->
+        <!-- </button> -->
         <!-- <button class="button_main" x="+10+150" y="+6" width="454-300" height="28" action="pad_page_select" query="on/off" rightclick="pad_bank2" scroll="pad_page" tooltip="Select a different pad page.\nRigth-click: Switch Pad bank 1 - Pad bank 2" textsize="13" textaction="pad_page & param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textoff2"/> -->
         <!-- <button class="button_main" x="+10" y="+30+8" width="115" height="30" action="pad_param" textaction="pad_param" query="off" textcolor="textdarker" /> -->
         <!-- <button class="button_main" x="+140" y="+30+8" width="115" height="30" action="pad_param2" textaction="pad_param2" query="off" textcolor="textdarker" /> -->
@@ -9582,7 +9632,7 @@
         <off shape="square" color="#000000" border_size="1" border="#222222" radius="3"/>
       </visual>
       <!-- CLASS: CUSTOM TAG BUTTON -->
-      <define class="filter_tag_button" placeholders="*tag,text,width=98,height=28,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+      <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=98,height=28,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
         <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2">
           <size width="[WIDTH]" height="[HEIGHT]"/>
           <off color="#000000" border="#55AAAAAA" border_size="1" shape="[SHAPE]" radius="5"/>
@@ -13731,22 +13781,7 @@
         <!-- JOG -->
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <panel class="deck_level" x="+800-50" y="+30"/>
-        <!-- <visual class="gfx_shape" x="+800-65" y="+2" width="62" height="170" coloroff="black"/> -->
-        <!-- <panel class="vu_meter_LEDs" x="+800-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/> -->
-        <!-- <panel class="vu_meter_LEDs" x="+800-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/> -->
-        <!-- <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false"> -->
-        <!-- <pos x="+800-52" y="+13"/> -->
-        <!-- <size width="38" height="172-24"/> -->
-        <!-- <fader color="faderbackgroundline" width="38" height="6"/> -->
-        <!-- </slider> -->
-        <!-- <button x="+50" y="+183" width="80" height="20" action="masterdeck" query="masterdeck"> -->
-        <!-- <off color="orange" bordercolor="orange" border_size="1" textcolor="white" radius="4"/> -->
-        <!-- <up color="#444444" bordercolor="#222222" border_size="1" textcolor="white" radius="4"/> -->
-        <!-- <selected color="#333333" bordercolor="orange" border_size="1" textcolor="orange" radius="4"/> -->
-        <!-- <text fontsize="15" align="center">MASTER</text> -->
-        <!-- </button> -->
         <!-- PRO: LEFT: TRANSPORT BAR -->
-        <!-- <button class="button_main" x="+7" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
         <group name="button_bar_left" y="+179">
           <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
           <group visibility="loaded">
@@ -15170,7 +15205,7 @@
         </group>
       </group>
     </define>
-    <!-- PRO: MAIN LAYOUT (WAVEFORM BELOW) -->
+    <!-- PRO: LAYOUT (WAVEFORM BELOW) -->
     <!-- BOTTOM WAVEFORM  -->
     <define class="PRO_DECKS_BOTTOM">
       <!-- DECKS -->
@@ -15192,7 +15227,7 @@
         <browser class="haunting_browser_pro4decks" height="1280-43-2-432-2-2-2-1-216-2-38" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
     </define>
-    <!-- PERF: MAIN LAYOUT -->
+    <!-- PERF: LAYOUT -->
     <define class="PERFORMANCE_DECKS_BOTTOM">
       <!-- DECKS -->
       <panel class="performance_2decks" y="+43+2" condition="var_equal '@$hauntinglayout' 0"/>
