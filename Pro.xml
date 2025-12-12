@@ -4773,24 +4773,24 @@
               </visual>
               <!-- BPM -->
               <textzone>
-                <pos x="+2" y="+2"/>
+                <pos x="+3" y="+3"/>
                 <size width="260"/>
                 <text fontsize="9" color="#888888" align="left" text="BPM" localize="true" important="true"/>
               </textzone>
               <textzone tooltip="">
-                <pos x="+2" y="+10"/>
+                <pos x="+2" y="+11"/>
                 <size width="80" height="18"/>
                 <!-- Use format with inline eval: backticks around the expression -->
                 <text fontsize="14" weight="" color="#eeeeee" align="left" scroll="no" format="`get_loaded_song 'bpm'`" localize="true" important="true"/>
               </textzone>
               <!-- KEY (toggle Musical/Harmonic) -->
               <textzone>
-                <pos x="+60" y="+2"/>
+                <pos x="+61" y="+3"/>
                 <size width="260"/>
                 <text fontsize="9" color="#888888" align="left" text="KEY" localize="true" important="true"/>
               </textzone>
               <button action="var_equal 'keyDisplayToggle' 1 ? setting 'keyDisplay' 'Musical' &amp; set 'keyDisplayToggle' 0 : setting 'keyDisplay' 'Harmonic' &amp; set 'keyDisplayToggle' 1" query="var_equal 'keyDisplayToggle' 1">
-                <pos x="+60" y="+10"/>
+                <pos x="+61" y="+11"/>
                 <size width="40" height="18"/>
                 <!-- colored when key exists -->
                 <text fontsize="14" weight="bold" align="left" visibility="get_key" color="white" action="get_loaded_song 'key'"/>
@@ -4799,12 +4799,12 @@
               </button>
               <!-- TIME REMAINING -->
               <textzone>
-                <pos x="+110" y="+2"/>
+                <pos x="+110" y="+3"/>
                 <size width="260"/>
                 <text fontsize="9" color="#888888" align="left" text="TIME" localize="true" important="true"/>
               </textzone>
-              <textzone class="text" x="+110" y="+12" width="50" fontsize="15" color="texton2" align="left" weight="" textaction="get_time" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
-              <group x="+210" y="+2">
+              <textzone class="text" x="+110" y="+13" width="50" fontsize="15" color="texton2" align="left" weight="" textaction="get_time" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
+              <group x="+211" y="+3">
                 <!-- FILETYPE pill -->
                 <square width="45" height="15" border_color="#444444" radius="5" border="1" visibility="loaded"/>
                 <textzone>
@@ -5146,7 +5146,7 @@
         <!-- KNOB: COLORFX -->
         <group x="+300" y="+24">
           <!-- select fx -->
-          <button class="dropdown_menu" action="filter_selectcolorfx" x="+42" y="+0" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <button class="dropdown_menu" action="effect_select colorfx" x="+42" y="+0" visibility="var_equal '@$hauntingdropmenus' 0"/>
           <!-- knob -->
           <panel x="+0" y="+5">
             <slider action="effect_slider 'colorfx'" rightclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" orientation="round" frommiddle="true" resettomiddle="true">
@@ -5155,7 +5155,7 @@
               <fader color="needle" width="2" height="10" radius="1" anglemin="-140" anglemax="140"/>
               <fill width="31" height="31" radius="12" color="knobfillon" backcolor="#333333"/>
             </slider>
-            <textzone action="filter_selectcolorfx">
+            <textzone action="effect_select colorfx">
               <pos x="+0" y="+34"/>
               <size width="51"/>
               <text fontsize="10" weight="" color="knobtextoff" align="center" action="filter_label 'colorfx' &amp; param_cast 'text'" text="" important="true" localize="true"/>
@@ -5165,11 +5165,11 @@
         <!-- INDICATORS -->
         <group x="+370" y="+22">
           <!-- STATUS: COLORFX -->
-          <button width="44" height="18" action="effect_active colorfx" border_size="1">
-            <off color="#222222"/>
-            <selected color="magenta" textcolor="black"/>
-            <text fontsize="12" color="#111111" colorselected="black" align="center" text="CFX"/>
-          </button>
+          <!-- <button width="44" height="18" action="effect_active colorfx" border_size="1"> -->
+          <!-- <off color="#222222"/> -->
+          <!-- <selected color="magenta" textcolor="black"/> -->
+          <!-- <text fontsize="12" color="#111111" colorselected="black" align="center" text="CFX"/> -->
+          <!-- </button> -->
           <!-- STATUS: FX -->
           <button x="+46" width="44" height="18" action="effect_active 'all'" border_size="1" query="effects_used 'deck'">
             <off color="#222222"/>
@@ -7606,27 +7606,11 @@
           <!-- </button> -->
         </group>
         <button class="button_main" x="-71" y="+10" width="50" height="16" action="effect_select 1" coloroff="#111111" brcoloroff="#111111" coloron="magenta" brcoloron="magenta" textcoloroff="magenta" textcoloron="black" text="FX1" textsize="13"/>
-        <button class="dropdown_menu" action="filter_selectcolorfx" x="-30" y="+33" visibility="var_equal '@$hauntingdropmenus' 0"/>
+        <button class="dropdown_menu" action="effect_select colorfx" x="-30" y="+33" visibility="var_equal '@$hauntingdropmenus' 0"/>
         <panel class="knob" x="-65" y="+36" textbelow="+40" knobsize="39" knobradius="9" faderradius="9" action="effect_slider 1" textaction="effect_select &amp; param_uppercase" rgclick="effect_select 1" frommiddle="false" fillcolor="magenta" fillcoloroff="#000000" text="FX1"/>
         <panel class="knob" x="-65" y="+110" textbelow="+40" knobsize="39" knobradius="9" faderradius="9" action="effect_slider 2" textaction="effect_select &amp; param_uppercase" rgclick="effect_select 2" frommiddle="false" fillcolor="#0055FF" fillcoloroff="#000000" text="FX2"/>
         <!-- BUTTON: KILLFX -->
         <button class="button_main" x="+0" y="+74+24+12+60+164+216+2" width="80" height="26" action="setting 'exclusiveAudioAccess'" tooltip="Exclusive Audio Access To Virtual DJ" textsize="11" text="KILL FX" coloron="br_focus" bordersize="0"/>
-        <!-- <panel class="knob" -->
-        <!-- x="+76" y="+50" -->
-        <!-- textbelow="+37" textleft="-7" -->
-        <!-- textwidth="48" textsize="9" -->
-        <!-- knobsize="39" knobradius="9" faderradius="9" -->
-        <!-- action="effect_slider 'colorfx'" -->
-        <!-- textaction="filter_label & param_cast 'text' 9" -->
-        <!-- actiontxt="filter_selectcolorfx" -->
-        <!-- rgclick="effect_select" -->
-        <!-- frommiddle="false" -->
-        <!-- fillcolor="magenta" fillcoloroff="#000000" -->
-        <!-- text="FX" /> -->
-        <!-- <button class="button_main" y="+24" width="118" height="28" action="effect_active" scroll="effect_select" textaction="get_effect_name & param_uppercase" coloroff="button_background3" coloron="br_focus" bordersize="0" textcolor="textoff2"/> -->
-        <!-- <button class="button_main" x="+118" y="+24" width="28" height="28" action="effect_select" sysicon="chevrondown" iconsize="20" coloron="br_focus" bordersize="0" /> -->
-        <!-- <slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" coloron="knobfilloff" novisibility="effect_active"/> -->
-        <!-- <slider class="hor_slider" x="+0" y="+64" width="118+28" height="10" action="effect_slider 1" visibility="effect_active"/> -->
       </deck>
     </define>
     <define class="micfx_panel">
@@ -7655,8 +7639,8 @@
           <panel class="knob" x="+18" y="+14+72" knobsize="41" knobradius="10" faderradius="9" action="eq_high" rgclick="eq_high 0% ? eq_high 50% : eq_high 0%" dblclick="eq_high 50%" frommiddle="true" fillcolor="knobfillon" textaction="high_label" actiontxt="eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+72+65" knobsize="41" knobradius="10" faderradius="9" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="knobfillon" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+72+65+65" knobsize="41" knobradius="10" faderradius="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="knobfillon" textaction="low_label" actiontxt="eq_mode +1"/>
-          <button class="dropdown_menu" action="filter_selectcolorfx" x="+58" y="+14+81+68+68+56" visibility="var_equal '@$hauntingdropmenus' 0"/>
-          <panel class="knob" x="+18" y="+14+81+68+68+64" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+          <button class="dropdown_menu" action="effect_select colorfx" x="+58" y="+14+81+68+68+56" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <!-- <panel class="knob" x="+18" y="+14+81+68+68+64" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label &amp; param_cast 'text' 9" actiontext="effect_select colorfx"/> -->
         </group>
         <!-- 5knobs -->
         <group visibility="setting 'eqMode' 'STEMS'" y="+30">
@@ -7698,7 +7682,7 @@
           <panel class="knob" x="+18" y="+14+76+67" knobsize="41" knobradius="10" faderradius="9" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="knobfillon" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+76+67+67" knobsize="41" knobradius="10" faderradius="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="knobfillon" textaction="low_label" actiontxt="eq_mode +1"/>
           <!-- PRO: AUDIO PANEL: COLORFX -->
-          <button class="dropdown_menu" action="filter_selectcolorfx" x="+58" y="+14+81+68+68+50+5" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <button class="dropdown_menu" action="effect_select colorfx" x="+58" y="+14+81+68+68+50+5" visibility="var_equal '@$hauntingdropmenus' 0"/>
           <panel class="knob" x="+18" y="+14+81+68+68+50+13" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
         </group>
         <!-- 5knobs -->
@@ -8701,11 +8685,11 @@
         </button>
         <button tooltip="4 Decks" class="button_main" x="+30" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" width="30" height="27" bordersize="0">
           <off color="black"/>
-          <on color="#222222"/>
-          <over color="#000000"/>
-          <down color="#222222"/>
-          <selected color="#333333"/>
-          <text overcolor="white" size="12" oncolor="white" text="4"/>
+          <!-- <on color="#222222"/> -->
+          <!-- <over color="#000000"/> -->
+          <!-- <down color="#222222"/> -->
+          <!-- <selected color="#333333"/> -->
+          <!-- <text overcolor="white" size="12" oncolor="white" text="4"/> -->
         </button>
       </group>
       <!-- BEAT KEEPER -->
@@ -8718,12 +8702,6 @@
       </group>
       <!-- GLOBAL QUANT -->
       <group x="+1168" y="+4">
-        <!-- <textzone> -->
-        <!-- <pos x="+0" y="+0"/> -->
-        <!-- <size width="65" height="16"/> -->
-        <!-- <text fontsize="9" weight="normal" color="#999999" align="center" text="QUANTIZE" important="true"/> -->
-        <!-- </textzone> -->
-        <!-- <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="setting 'globalQuantize'" textsize="12" textaction="setting 'globalQuantize'" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/> -->
         <textzone>
           <pos x="+0" y="+0"/>
           <size width="65" height="16"/>
@@ -8731,7 +8709,7 @@
         </textzone>
         <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="param_equal `setting 'globalQuantize'` 1  ? setting 'globalQuantize' 4  : param_equal `setting 'globalQuantize'` 4  ? setting 'globalQuantize' 16 : param_equal `setting 'globalQuantize'` 16 ? setting 'globalQuantize' 32 : setting 'globalQuantize' 1" textsize="12" textaction="setting 'globalQuantize'" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
       </group>
-      <!-- CUE STUTTER -->
+      <!-- CUE MODE -->
       <group x="+1240" y="+4">
         <textzone>
           <pos x="+0" y="+0"/>
@@ -13688,7 +13666,7 @@
       <!-- <button class="button_main" x="+62*4" y="+70" width="63" height="17" action="crossfader_curve 'cut' ? setting 'crossfaderDisable' : crossfader_curve 'cut'" query="crossfader_curve 'cut' ? not setting 'crossfaderDisable' ? true : false" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background" textsize="10" textcolor="textoff3" textcoloron="needle" textaction="get_text 'CUT'"/> -->
     </define>
   </group>
-  <define class="stem_control" placeholders="*stem,*label,*color">
+  <define class="STEM_CONTROL" placeholders="*stem,*label,*color">
     <panel x="+0" y="+20">
       <!-- on state -->
       <slider action="stem '[STEM]'" rightclick="stem '[STEM]' 50%" dblclick="stem '[STEM]' 50%" orientation="round" frommiddle="true" resettomiddle="true">
