@@ -2210,40 +2210,46 @@
         </slider>
       </define>
       <!-- FADER -->
-      <define class="deck_level">
-        <line color="faderlines" x="+0" y="+0" width="38" height="1"/>
-        <line color="faderlines" x="+2" y="+12" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*2" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*3" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*4" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*5" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*6" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*7" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*8" width="34" height="1"/>
-        <line color="faderlines" x="+2" y="+12*9" width="34" height="1"/>
-        <line color="faderlines" x="+0" y="+12*10" width="38" height="1"/>
-        <group x="+14" y="-1">
-          <visual width="10" height="123">
-            <off shape="square" color="black" radius="3"/>
-          </visual>
+      <define class="DECK_LEVEL">
+        <!-- FADER LINES -->
+        <group x="+0" y="+7">
+          <!-- <line color="faderlines" x="+0" y="+0" width="38" height="1"/> -->
+          <line color="faderlines" x="+3" y="+12" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*2" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*3" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*4" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*5" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*6" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*7" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*8" width="32" height="1"/>
+          <line color="faderlines" x="+3" y="+12*9" width="32" height="1"/>
+          <!-- <line color="faderlines" x="+0" y="+12*10" width="38" height="1"/> -->
+        </group>
+        <group x="+14" y="+0">
+          <!-- BLACK STRIP -->
+          <!-- <visual width="10" height="123"> -->
+          <!-- <pos x="+0" y="+0"/> -->
+          <!-- <off shape="square" color="black" radius="3"/> -->
+          <!-- </visual> -->
           <!-- LEVEL -->
           <visual source="get_level" type="linear" orientation="vertical" direction="up" granularity="23">
-            <pos x="+0" y="+0"/>
-            <size width="8" height="123"/>
+            <pos x="+0" y="+5"/>
+            <size width="10" height="123"/>
             <off shape="square" color="black" radius="2"/>
             <on shape="square" color="deckcolor" radius="2"/>
           </visual>
         </group>
         <!-- SLIDER -->
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
-          <pos x="+0" y="-7"/>
+          <pos x="+0" y="+0"/>
           <size width="38" height="135"/>
-          <off width="-27" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
-          <on width="-27" height="-8" color="transparent" border="#222222" border_size="1" radius="3" shape="square"/>
+          <off width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
+          <on width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
           <fader color="#333333" width="38" height="14" border="#555555"/>
         </slider>
+        <!-- SLIDER PIECE -->
         <slider action="level" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
-          <pos x="+0" y="-7+6"/>
+          <pos x="+0" y="+0+6"/>
           <size width="38" height="135-12"/>
           <fader color="faderbackgroundline" width="38" height="2"/>
         </slider>
@@ -6550,6 +6556,9 @@
           </button>
           <visual class="gfx_shape" x="+0" y="+0" width="[WIDTH]" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/>
         </define>
+        <visual width="90" height="18">
+          <off shape="square" color="red"/>
+        </visual>
         <stack x="+8" y="+4" fadein="0ms" fadeout="0ms">
           <!-- Size of each slot -->
           <size width="90" height="18"/>
@@ -6557,6 +6566,7 @@
           <slot x="+0" y="+0"/>
           <slot x="+92" y="+0"/>
           <slot x="+184" y="+0"/>
+          <slot x="+0" y="+50"/>
           <!-- #BassHouse chip -->
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '">
             <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
@@ -8671,19 +8681,10 @@
       </group>
       <!-- SETTINGS -->
       <group x="1063" y="+5">
-        <!-- FX KILL -->
+        <!-- FX -->
         <group>
-          <!-- <textzone> -->
-          <!-- <pos x="+0" y="+0"/> -->
-          <!-- <size width="65" height="16"/> -->
-          <!-- <text fontsize="9" weight="normal" color="#999999" align="center" text="COLOR FX" important="true"/> -->
-          <!-- </textzone> -->
           <button class="button_main" y="+3" width="65" height="13" textsize="10" textaction="get_text 'FX `effects_used deck`' &amp; param_uppercase" radius="6" coloroff="black" coloron="yellow" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
           <button class="button_main" y="+17" width="65" height="13" textsize="10" text="CFX" radius="6" coloroff="black" coloron="magenta" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
-          <!-- <button class="button_main" x="+0" y="+0+14" width="15" height="15" action="deck 1 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 1 effect_active colorfx"/> -->
-          <!-- <button class="button_main" x="+17" y="+0+14" width="15" height="15" action="deck 2 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 2 effect_active colorfx"/> -->
-          <!-- <button class="button_main" x="+34" y="+0+14" width="15" height="15" action="deck 3 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 3 effect_active colorfx"/> -->
-          <!-- <button class="button_main" x="+50" y="+0+14" width="15" height="15" action="deck 4 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 4 effect_active colorfx"/> -->
         </group>
         <!-- GLOBAL QUANT -->
         <group x="+85" y="+0">
@@ -13794,7 +13795,7 @@
         <panel class="pitch_zone" x="+804-320" y="+2"/>
         <!-- JOG -->
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-        <panel class="deck_level" x="+800-50" y="+30"/>
+        <panel class="deck_level" x="+800-50" y="+18"/>
         <!-- PRO: LEFT: TRANSPORT BAR -->
         <group name="button_bar_left" y="+179">
           <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
@@ -13974,6 +13975,12 @@
         <panel class="pitch_zone" x="+257" y="+2"/>
         <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT DECK: VU METER -->
+        <!-- LABEL -->
+        <textzone>
+          <pos x="+0" y="+5"/>
+          <size width="58" height="15"/>
+          <text fontsize="12" weight="" color="#CCCCCC" align="center" text="MASTER" important="true"/>
+        </textzone>
         <panel class="deck_level" x="+10" y="+30"/>
         <!-- <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/> -->
         <!-- <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/> -->
