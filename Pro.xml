@@ -13795,7 +13795,14 @@
         <panel class="pitch_zone" x="+804-320" y="+2"/>
         <!-- JOG -->
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-        <panel class="deck_level" x="+800-50" y="+18"/>
+        <group x="+800-50" y="+14">
+          <textzone>
+            <pos x="+0" y="+135"/>
+            <size width="40" height="15"/>
+            <text fontsize="10" weight="" color="#CCCCCC" align="center" text="MASTER" important="true"/>
+          </textzone>
+          <panel class="deck_level" x="+0" y="+0"/>
+        </group>
         <!-- PRO: LEFT: TRANSPORT BAR -->
         <group name="button_bar_left" y="+179">
           <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
@@ -13972,16 +13979,17 @@
         <!-- <panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
         <!-- <panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
         <!-- BPM SLIDER -->
-        <panel class="pitch_zone" x="+257" y="+2"/>
+        <!-- PRO: RIGHT DECK: VU SLIDER -->
+        <panel class="pitch_zone" x="+257" y="+5"/>
+        <!-- JOG -->
         <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-        <!-- PRO: RIGHT DECK: VU METER -->
-        <!-- LABEL -->
+        <!-- LEVEL -->
         <textzone>
-          <pos x="+0" y="+5"/>
+          <pos x="+0" y="+150"/>
           <size width="58" height="15"/>
-          <text fontsize="12" weight="" color="#CCCCCC" align="center" text="MASTER" important="true"/>
+          <text fontsize="10" weight="" color="#CCCCCC" align="center" text="MASTER" important="true"/>
         </textzone>
-        <panel class="deck_level" x="+10" y="+30"/>
+        <panel class="deck_level" x="+10" y="+14"/>
         <!-- <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/> -->
         <!-- <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/> -->
         <!-- <panel class="vu_meter_LEDs" x="+65-30" y="+13" ledw="10" ledh="4" gap="6" source="get_level_right" showpeaks="true"/> -->
