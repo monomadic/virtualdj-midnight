@@ -1269,7 +1269,7 @@
           <fader color="#AAAAAA" width="2" height="5"/>
         </slider>
       </define>
-      <define class="button_main" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=12,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0,radius">
+      <define class="BUTTON_MAIN" placeholders="width,height,text,textheight=height,important=true,textaction,coloroff=button_background,coloron=deckcolor,brcoloroff=button_background,brcoloron=deckcolor,bordersize=1,shape=square,icondx,sysicon,iconsize,textsize=12,textcolor=textoff,textcoloron=texton,align=center,orientation=horizontal,textscroll=no,textdx=0,textdy=0,radius">
         <size width="[WIDTH]" height="[HEIGHT]"/>
         <off color="[COLOROFF]" border="[BRCOLOROFF]" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="[RADIUS]"/>
         <down color="[COLORON]" border="[BRCOLORON]" border_size="[BORDERSIZE]" shape="[SHAPE]"/>
@@ -2123,7 +2123,7 @@
         <on color="[COLORON]" shape="square"/>
         <fader color="needle" width="8" height="[HEIGHT]+10" radius="[FADERRADIUS]" anglemin="-140" anglemax="140"/>
       </define>
-      <define class="pitch">
+      <define class="PITCH">
         <line color="faderlines" x="+0" y="+0" width="38" height="1"/>
         <line color="faderlines" x="+2" y="+13" width="34" height="1"/>
         <line color="faderlines" x="+2" y="+13*2" width="34" height="1"/>
@@ -2136,7 +2136,7 @@
         <slider action="pitch" rightclick="pitch_zero" dblclick="pitch_reset" orientation="vertical" direction="down" frommiddle="true">
           <pos x="+0" y="-7"/>
           <size width="38" height="119"/>
-          <on width="-27" height="-8" color="knobprogressoff" border="#222222" border_size="1" radius="3" shape="square"/>
+          <on width="-27" height="-8" color="knobprogressoff" border="#333333" border_size="1" radius="3" shape="square"/>
           <off width="-27" height="-8" color="deckcolor" border="#222222" border_size="1" radius="3" shape="square"/>
           <fader color="#333333" width="38" height="14" border="#555555"/>
         </slider>
@@ -4841,9 +4841,9 @@
       </group>
       <!-- PRO: COVER ART -->
       <!-- LEFT -->
-      <panel class="cover_art_hntg" size="184-6-6" x="+2+4+30" y="+0" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
+      <panel class="cover_art_hntg" size="184-6-6" x="+4+4+30" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
       <!-- RIGHT -->
-      <panel class="cover_art_hntg" size="184-6-6" x="+484-2-28-180" y="+0" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
+      <panel class="cover_art_hntg" size="184-6-6" x="+484-4-28-180" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
       <!-- PRO: RIGHT DECK: DECK BUTTON -->
       <button class="button_main" x="+484-36" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="50" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
       <!-- PRO: RIGHT DECK: DECK MENU -->
@@ -5165,11 +5165,11 @@
         <!-- INDICATORS -->
         <group x="+370" y="+22">
           <!-- STATUS: COLORFX -->
-          <!-- <button width="44" height="18" action="effect_active colorfx" border_size="1"> -->
-          <!-- <off color="#222222"/> -->
-          <!-- <selected color="magenta" textcolor="black"/> -->
-          <!-- <text fontsize="12" color="#111111" colorselected="black" align="center" text="CFX"/> -->
-          <!-- </button> -->
+          <button width="44" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
+            <off color="#222222"/>
+            <selected color="magenta" textcolor="black"/>
+            <text fontsize="12" color="#111111" colorselected="black" align="center" text="CFX"/>
+          </button>
           <!-- STATUS: FX -->
           <button x="+46" width="44" height="18" action="effect_active 'all'" border_size="1" query="effects_used 'deck'">
             <off color="#222222"/>
@@ -5273,16 +5273,21 @@
       <button class="button_main" x="+54+8+54+8" y="+0" width="54" height="30" action="play_button" sysicon="play_button" iconsize="39" textcolor="textoff2"/>
     </define>
     <!-- BPM SLIDER -->
-    <define class="pitch_zone">
+    <define class="PITCH_ZONE">
       <!-- <visual class="gfx_shape" x="+0" y="+0" width="58" height="170" coloroff="#000000" bordercolor="#333333" border_size="2"/> -->
       <group visibility="loaded">
+        <textzone>
+          <pos x="+0" y="+4"/>
+          <size width="58" height="15"/>
+          <text fontsize="12" weight="" color="#CCCCCC" align="center" text="BPM" important="true"/>
+        </textzone>
         <!-- PITCH RANGE -->
-        <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/>
+        <!-- <button class="button_main" x="+0" y="+0" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="24" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '+-%pitchrange'"/> -->
         <!-- SLIDER -->
-        <panel class="pitch" x="+11" y="+6+26"/>
+        <panel class="pitch" x="+11" y="+25"/>
         <!-- PITCH RESET -->
-        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#000000" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
-        <button class="button_main" x="+0" y="+6+30+4+30+6+62+7" width="58" height="24" action="pitch_reset 4bt" coloroff="#330000" brcoloroff="button_background3" textsize="14" textcolor="red" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
+        <button class="button_main" x="+0" y="+6+30+4+30+2+62" width="58" height="24" action="pitch_reset 4bt" coloroff="transparent" brcoloroff="transparent" textcolor="textoff2" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 400ms"/>
+        <button class="button_main" x="+0" y="+6+30+4+30+2+62" width="58" height="24" action="pitch_reset 4bt" coloroff="#330000" brcoloroff="button_background3" textsize="14" textcolor="red" textaction="get_text '%Ppitch%'" query="pitch_reset ? blink 1bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 25 ? blink 500ms : off"/>
         <!-- + and - -->
         <!-- <button class="button_main" x="+0" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend -2% 500ms" rightclick="pitch_range '8,16,32,50' -1"  tooltip="Pitch Bend.\nRigth-click: Pitch range -8,16,32,50." textsize="14" text="-" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
         <!-- <button class="button_main" x="+29" y="+6+30+4+30+6+62+12" width="29" height="18" action="pitch_bend +2% 500ms" rightclick="pitch_range '8,16,32,50' +1" tooltip="Pitch Bend.\nRigth-click: Pitch range +8,16,32,50." textsize="14" text="+" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
@@ -5341,7 +5346,7 @@
       <button class="button_main" x="+0" y="+6+30+4+30+6+62+12+50" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="18" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '&#xB1;%pitchrange'" visibility="var_equal '@$hauntingjogtype' 0"/>
     </define>
     <!-- JOGWHEEL (ALL) -->
-    <define class="jogwheel" placeholders="*jogsize=155">
+    <define class="JOGWHEEL" placeholders="*jogsize=155">
       <group name="jogwheel_a" visibility="var_equal '@$hauntingjogtype' 0">
         <visual novisibility="loaded">
           <tooltip/>
@@ -5414,6 +5419,7 @@
       </group>
       <!-- PRO: JOGWHEEL -->
       <group name="jogwheel_c" visibility="var_equal '@$hauntingjogtype' 2">
+        <button x="+0" y="+0" width="60" height="22" textaction="PLAY" action="play_pause" coloroff="red"/>
         <visual novisibility="loaded">
           <tooltip/>
           <pos x="+0" y="+0"/>
@@ -7243,7 +7249,7 @@
           <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="12" color="textdarker" align="right" weight="" text="CFX"/>
           <group x="+40">
             <button class="button_main" x="+0" y="+3" width="26" height="20" action="effect_select colorfx -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-            <button class="button_main" x="+0+26" y="+3" width="120" height="20" action="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
+            <button class="button_main" x="+0+26" y="+3" width="120" height="20" action="effect_active colorfx" query="effect_active colorfx" rightclick="effect_select colorfx" textaction="filter_label" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="knobfillon"/>
             <button class="button_main" x="+0+26+120" y="+3" width="26" height="20" action="effect_select colorfx +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
           </group>
           <button class="button_main" x="+50+26+120+20" width="25" height="25" action="effect_show_gui colorfx" iconsize="20" sysicon="settings" brcoloron="transparent"/>
@@ -7604,13 +7610,12 @@
           <!-- <icon dx="-2" sysicon="play" width="30" height="30" -->
           <!-- color="#888888" colordown="white" colorselected="#888888"/> -->
           <!-- </button> -->
+          <button class="button_main" x="-71" y="+10" width="50" height="16" action="effect_select 1" coloroff="#111111" brcoloroff="#111111" coloron="magenta" brcoloron="magenta" textcoloroff="magenta" textcoloron="black" text="FX1" textsize="13"/>
         </group>
-        <button class="button_main" x="-71" y="+10" width="50" height="16" action="effect_select 1" coloroff="#111111" brcoloroff="#111111" coloron="magenta" brcoloron="magenta" textcoloroff="magenta" textcoloron="black" text="FX1" textsize="13"/>
-        <button class="dropdown_menu" action="effect_select colorfx" x="-30" y="+33" visibility="var_equal '@$hauntingdropmenus' 0"/>
         <panel class="knob" x="-65" y="+36" textbelow="+40" knobsize="39" knobradius="9" faderradius="9" action="effect_slider 1" textaction="effect_select &amp; param_uppercase" rgclick="effect_select 1" frommiddle="false" fillcolor="magenta" fillcoloroff="#000000" text="FX1"/>
+        <!-- <button class="dropdown_menu" action="effect_select colorfx" x="-30" y="+33" visibility="var_equal '@$hauntingdropmenus' 0"/> -->
         <panel class="knob" x="-65" y="+110" textbelow="+40" knobsize="39" knobradius="9" faderradius="9" action="effect_slider 2" textaction="effect_select &amp; param_uppercase" rgclick="effect_select 2" frommiddle="false" fillcolor="#0055FF" fillcoloroff="#000000" text="FX2"/>
         <!-- BUTTON: KILLFX -->
-        <button class="button_main" x="+0" y="+74+24+12+60+164+216+2" width="80" height="26" action="setting 'exclusiveAudioAccess'" tooltip="Exclusive Audio Access To Virtual DJ" textsize="11" text="KILL FX" coloron="br_focus" bordersize="0"/>
       </deck>
     </define>
     <define class="micfx_panel">
@@ -8508,7 +8513,7 @@
           <textzone>
             <pos x="+2" y="+2"/>
             <size width="92" height="15"/>
-            <text fontsize="8" weight="" color="#888888" align="center" format="`get_text '%Ppitch%'`" important="true"/>
+            <text fontsize="9" weight="" color="#888888" align="center" format="`get_text '%Ppitch%'`" important="true"/>
           </textzone>
           <dropzone>
             <pos x="-14-2" y="+2"/>
@@ -8516,45 +8521,7 @@
             <size width="98+14+2+14+2" height="370"/>
             <over color="transparent" border_size="2" border="deckcolor"/>
           </dropzone>
-          <!-- <panel class="scratch_buttons" x="-18" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
-          <!-- <panel class="scratch_buttons" x="-18" y="+216+2" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
-          <!-- <panel class="beat_counter2" deck="[DECK]" x="-12" y="+24+50" visibility="var_equal '@$hauntingbarcountervert' 1"/> -->
         </group>
-        <!-- HIDE CROSSFADER -->
-        <!-- <group name="hide_xfader" visibility="var_equal '@$hauntinghidecrossfader' 1"> -->
-        <!-- WAVEFORM (ALL) -->
-        <!-- <scratchwave orientation="vertical" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal"> -->
-        <!-- <pos x="+4" y="+4"/> -->
-        <!-- <size width="90" height="370+250" condition="var_equal '@$hauntinglayout' 1"/> -->
-        <!-- <size width="90" height="370+57"/> -->
-        <!-- <grid pos="-14" background="no" backgroundshaded="no" height="10" size="1" mainsize="2" phrasecolor="white" maincolor="white" color="darkgray" mirrored="true"/> -->
-        <!-- <gridlines width="1" color="darkgray" transparency="0.5"/> -->
-        <!-- <cue y="-19" height="12"> -->
-        <!-- <mask x="0" y="0" width="12" height="12"/> -->
-        <!-- </cue> -->
-        <!-- <overlay> -->
-        <!-- <pos x="-18" y="+160+25+108+1+28" condition="var_equal '@$hauntinglayout' 1"/> -->
-        <!-- <pos x="-18" y="+160+25+28"/> -->
-        <!-- <size width="98+18+18" height="2"/> -->
-        <!-- <background color="needle" shape="square"/> -->
-        <!-- </overlay> -->
-        <!-- </scratchwave> -->
-        <!-- <dropzone> -->
-        <!-- <pos x="-14-2" y="+2"/> -->
-        <!-- <size width="98+14+2+14+2" height="370+216+2+57" condition="var_equal '@$hauntinglayout' 1"/> -->
-        <!-- <size width="98+14+2+14+2" height="370+57"/> -->
-        <!-- <over color="transparent" border_size="2" border="deckcolor"/> -->
-        <!-- </dropzone> -->
-        <!-- dB level in scratch -->
-        <!-- <textzone> -->
-        <!-- <pos x="+0" y="-2"/> -->
-        <!-- <size width="98" height="30"/> -->
-        <!-- <text fontsize="12" weight="bold" color="deckcolor" align="center" action="get_level 'db'" important="true"/> -->
-        <!-- </textzone> -->
-        <!-- <panel class="scratch_buttons" x="-18" y="+57" visibility="var_equal '@$hauntinglayout' 0 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
-        <!-- <panel class="scratch_buttons" x="-18" y="+216+2+57" visibility="var_equal '@$hauntinglayout' 1 ? var_equal '@$hauntingscratchbuttons' 1"/> -->
-        <!-- <panel class="beat_counter2" deck="[DECK]" x="-12" y="+24+50" visibility="var_equal '@$hauntingbarcountervert' 1"/> -->
-        <!-- </group> -->
       </deck>
     </define>
     <define class="vertical_scratchwave_prf" placeholders="deck,*width,*height">
@@ -8685,56 +8652,81 @@
         </button>
         <button tooltip="4 Decks" class="button_main" x="+30" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" width="30" height="27" bordersize="0">
           <off color="black"/>
-          <!-- <on color="#222222"/> -->
-          <!-- <over color="#000000"/> -->
-          <!-- <down color="#222222"/> -->
-          <!-- <selected color="#333333"/> -->
-          <!-- <text overcolor="white" size="12" oncolor="white" text="4"/> -->
+          <on color="#222222"/>
+          <over color="#000000"/>
+          <down color="#222222"/>
+          <selected color="#333333"/>
+          <text overcolor="white" size="12" oncolor="white" text="4"/>
         </button>
       </group>
       <!-- BEAT KEEPER -->
-      <visual x="+700" y="+8" class="gfx_shape" width="10*4" height="27" coloroff="transparent"/>
       <group x="+700" y="+8">
-        <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+0" deck="3"/>
-        <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+7" deck="1"/>
-        <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+14" deck="2"/>
-        <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+21" deck="4"/>
+        <visual class="gfx_shape" width="10*4" height="27" coloroff="transparent"/>
+        <group>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+0" deck="3"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+7" deck="1"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+14" deck="2"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+21" deck="4"/>
+        </group>
       </group>
-      <!-- GLOBAL QUANT -->
-      <group x="+1168" y="+4">
-        <textzone>
-          <pos x="+0" y="+0"/>
-          <size width="65" height="16"/>
-          <text fontsize="9" weight="normal" color="#999999" align="center" text="QUANTIZE" important="true"/>
-        </textzone>
-        <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="param_equal `setting 'globalQuantize'` 1  ? setting 'globalQuantize' 4  : param_equal `setting 'globalQuantize'` 4  ? setting 'globalQuantize' 16 : param_equal `setting 'globalQuantize'` 16 ? setting 'globalQuantize' 32 : setting 'globalQuantize' 1" textsize="12" textaction="setting 'globalQuantize'" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
-      </group>
-      <!-- CUE MODE -->
-      <group x="+1240" y="+4">
-        <textzone>
-          <pos x="+0" y="+0"/>
-          <size width="65" height="16"/>
-          <text fontsize="9" weight="normal" color="#999999" align="center" text="CUE MODE" important="true"/>
-        </textzone>
-        <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="setting 'hotcueMode'" textsize="12" textaction="setting 'hotCueMode' &amp; param_uppercase" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
+      <!-- SETTINGS -->
+      <group x="1063" y="+5">
+        <!-- FX KILL -->
+        <group>
+          <!-- <textzone> -->
+          <!-- <pos x="+0" y="+0"/> -->
+          <!-- <size width="65" height="16"/> -->
+          <!-- <text fontsize="9" weight="normal" color="#999999" align="center" text="COLOR FX" important="true"/> -->
+          <!-- </textzone> -->
+          <button class="button_main" y="+3" width="65" height="13" textsize="10" textaction="get_text 'FX `effects_used deck`' &amp; param_uppercase" radius="6" coloroff="black" coloron="yellow" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
+          <button class="button_main" y="+17" width="65" height="13" textsize="10" text="CFX" radius="6" coloroff="black" coloron="magenta" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
+          <!-- <button class="button_main" x="+0" y="+0+14" width="15" height="15" action="deck 1 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 1 effect_active colorfx"/> -->
+          <!-- <button class="button_main" x="+17" y="+0+14" width="15" height="15" action="deck 2 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 2 effect_active colorfx"/> -->
+          <!-- <button class="button_main" x="+34" y="+0+14" width="15" height="15" action="deck 3 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 3 effect_active colorfx"/> -->
+          <!-- <button class="button_main" x="+50" y="+0+14" width="15" height="15" action="deck 4 effect_active colorfx off" textsize="12" text="1" coloroff="#111111" coloron="magenta" bordersize="1" textcolor="#999999" textcoloron="black" brcoloroff="#999999" brcoloron="magenta" brcolorselected="magenta" query="deck 4 effect_active colorfx"/> -->
+        </group>
+        <!-- GLOBAL QUANT -->
+        <group x="+85" y="+0">
+          <textzone>
+            <pos x="+0" y="+0"/>
+            <size width="65" height="16"/>
+            <text fontsize="9" weight="normal" color="#999999" align="center" text="QUANTIZE" important="true"/>
+          </textzone>
+          <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="param_equal `setting 'globalQuantize'` 1  ? setting 'globalQuantize' 4  : param_equal `setting 'globalQuantize'` 4  ? setting 'globalQuantize' 16 : param_equal `setting 'globalQuantize'` 16 ? setting 'globalQuantize' 32 : setting 'globalQuantize' 1" textsize="12" textaction="setting 'globalQuantize'" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
+        </group>
+        <!-- CUE MODE -->
+        <group x="+155" y="+0">
+          <textzone>
+            <size width="65" height="16"/>
+            <text fontsize="9" weight="normal" color="#999999" align="center" text="CUE MODE" important="true"/>
+          </textzone>
+          <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="setting 'hotcueMode'" textsize="12" textaction="setting 'hotCueMode' &amp; param_uppercase" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
+        </group>
       </group>
       <!-- SYNC BUTTONS -->
-      <group x="1330" y="8">
-        <!-- MASTERTEMPO BUTTON -->
-        <button class="button_main" x="+0" y="+0" width="30" height="28" tooltip="Master Tempo" action="master_tempo" textsize="13" text="MT" coloron="#2D003D" textcoloron="#A800FF" bordersize="0" brcoloron="#FF2288"/>
-        <!-- MASTERDECK AUTO BUTTON -->
-        <button class="button_main" x="+35" y="+0" width="30" height="28" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="13" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#222200"/>
-        <!-- QUANTIZE BUTTON -->
-        <button class="button_main" x="+70" y="+0" width="30" height="28" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="13" text="Q" textcoloron="#88FF88" bordersize="0" brcoloron="#88FF88" coloron="#002200"/>
+      <group x="1300" y="0">
+        <textzone>
+          <pos x="+0" y="+0"/>
+          <text fontsize="9" weight="normal" color="#999999" align="center" text="GLOBAL SYNC" important="true"/>
+          <size width="100" height="10"/>
+        </textzone>
+        <group y="+8">
+          <!-- MASTER TEMPO BUTTON -->
+          <button class="button_main" x="+0" y="+5" width="33" height="22" tooltip="Master Tempo" action="master_tempo" textsize="14" text="MT" coloron="#2D003D" textcoloron="#A800FF" bordersize="0" brcoloron="#FF2288"/>
+          <!-- MASTERDECK AUTO BUTTON -->
+          <button class="button_main" x="+35" y="+5" width="33" height="22" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="14" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#222200"/>
+          <!-- GLOBAL QUANTIZE BUTTON -->
+          <button class="button_main" x="+70" y="+5" width="33" height="22" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="14" text="Q" textcoloron="#88FF88" bordersize="0" brcoloron="#88FF88" coloron="#002200"/>
+        </group>
       </group>
       <!-- DECK MODE BUTTONS -->
       <group x="295" y="8">
-        <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#333333" query="true" bordersize="0"/>
-        <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#333333" bordersize="0"/>
-        <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#333333" bordersize="0"/>
+        <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#222222" query="true" bordersize="0"/>
+        <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#222222" bordersize="0"/>
+        <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#222222" bordersize="0"/>
       </group>
       <group visibility="browser_zoom" x="680" y="8">
-        <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="WAVES" coloroff="panel_background" coloron="#333333" bordersize="0" query="var_equal '@$hauntingwavesviewminidecks' '1'"/>
+        <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="WAVES" coloroff="panel_background" coloron="#222222" bordersize="0" query="var_equal '@$hauntingwavesviewminidecks' '1'"/>
       </group>
       <!-- XL CUSTOM BUTTON -->
       <button class="custom_button" source="100" x="+980-100" y="+8" width="165" height="26" coloroff="black">
@@ -9119,23 +9111,27 @@
       <!-- <text fontsize="13" weight="bold" color="needle" align="center" action="get_battery" localize="true" important="true"/> -->
       <!-- </textzone> -->
       <!-- </group> -->
-      <group x="1920-40-440" y="8">
+      <group x="1920-50-440" y="8">
         <!-- REFRESH BUTTON -->
-        <button tooltip="RELOAD SKIN" action="load_skin" width="32" height="27" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
-          <icon sysicon="sampler_loop" width="22" height="22" coloroff="#AAAAAA" colorover="#CCCCCC"/>
-          <off color="#222222" border="#222222" border_size="1"/>
+        <button tooltip="RELOAD SKIN" action="load_skin">
+          <size width="42" height="27"/>
+          <off color="#000000" border="#222222" border_size="1"/>
+          <over color="#000000" border="#222222" border_size="1"/>
+          <icon sysicon="sampler_loop" width="22" height="22" coloroff="#CCCCCC" colorover="#FFFFFF"/>
         </button>
         <!-- SETTINGS BUTTON -->
-        <button action="settings" x="+36*2">
-          <size width="32" height="27"/>
-          <off color="#222222" border="#222222" border_size="1"/>
-          <icon sysicon="settings" width="25" height="25" coloroff="#AAAAAA" colorover="#CCCCCC"/>
+        <button action="settings" x="+46*2">
+          <size width="42" height="27"/>
+          <off color="#000000" border="#222222" border_size="1"/>
+          <over color="#000000" border="#222222" border_size="1"/>
+          <icon sysicon="settings" width="25" height="25" coloroff="#CCCCCC" colorover="#FFFFFF"/>
         </button>
         <!-- STEM CREATOR BUTTON -->
-        <button action="open_stem_creator" x="+36*1">
-          <size width="32" height="27"/>
-          <icon x="32*0" y="32*2" dx="+7" dy="+5" width="32" height="32" coloroff="#AAAAAA" colorover="#CCCCCC"/>
-          <off color="#222222" border="#222222" border_size="1"/>
+        <button action="open_stem_creator" x="+46*1">
+          <size width="42" height="27"/>
+          <icon x="32*0" y="32*2" dx="+7" dy="+5" width="32" height="32" coloroff="#CCCCCC" colorover="#FFFFFF"/>
+          <off color="#000000" border="#222222" border_size="1"/>
+          <over color="#000000" border="#222222" border_size="1"/>
         </button>
       </group>
       <!-- TOP BAR: SETTINGS MENU -->
@@ -9841,17 +9837,32 @@
                 </scratchwave>
                 <!-- TRACK INFO -->
                 <!-- BG -->
-                <square x="+1" y="+1" height="[HEIGHT]-2" width="[HEIGHT]+56" color="#CC000000"/>
-                <group x="+0">
+                <group x="+0" visibility="leftdeck">
+                  <square x="+0" y="+0" height="[HEIGHT]-2" width="[HEIGHT]+56" color="#CC000000"/>
                   <!-- TITLE -->
                   <textzone orientation="vertical" direction="ccw">
                     <pos x="+[HEIGHT]+20" y="+2"/>
-                    <size width="20" height="[HEIGHT]-4"/>
+                    <size width="20" height="[HEIGHT]-6"/>
                     <text fontsize="16" weight="bold" color="needle" align="right" scroll="yes" action="get_title_before_remix &amp; param_uppercase" localize="true" important="true"/>
                   </textzone>
                   <!-- REMIX -->
                   <textzone orientation="vertical">
                     <pos x="+[HEIGHT]+35" y="+4"/>
+                    <size width="20" height="[HEIGHT]-6"/>
+                    <text fontsize="12" weight="" color="#888888" align="right" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/>
+                  </textzone>
+                </group>
+                <group x="1920-[WAVEHEIGHT]-205" visibility="rightdeck">
+                  <square x="+0" y="+0" height="[HEIGHT]-2" width="[HEIGHT]+56" color="#CC000000"/>
+                  <!-- TITLE -->
+                  <textzone orientation="vertical" direction="ccw">
+                    <pos x="+[WAVEHEIGHT]" y="+2"/>
+                    <size width="20" height="[HEIGHT]-4"/>
+                    <text fontsize="16" weight="bold" color="needle" align="right" scroll="yes" action="get_title_before_remix &amp; param_uppercase" localize="true" important="true"/>
+                  </textzone>
+                  <!-- REMIX -->
+                  <textzone orientation="vertical">
+                    <pos x="+[WAVEHEIGHT]+15" y="+4"/>
                     <size width="20" height="[HEIGHT]-6"/>
                     <text fontsize="12" weight="" color="#888888" align="right" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/>
                   </textzone>
@@ -9897,6 +9908,23 @@
                   </cover>
                   <!-- border -->
                   <button action="select &amp; play_button" visibility="loaded">
+                    <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
+                    <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
+                    <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
+                    <on shape="square" color="transparent" border="#000000" border_size="1"/>
+                    <icon dx="-4" sysicon="play" width="[HEIGHT]*0.8" height="[HEIGHT]*0.8" coloroff="transparent" coloron="#55FFFFFF" colorover="#FFFFFFFF" condition="loaded &amp; playing"/>
+                  </button>
+                </group>
+                <!-- TRACK INFO -->
+                <group x="1920-[WAVEFORMHEIGHT]" y="+2" visibility="rightdeck">
+                  <!-- cover (when not loaded) -->
+                  <panel x="+[WAVEFORMHEIGHT]/2-40" class="cover_art_hntg" size="[HEIGHT]-4" visibility="not loaded"/>
+                  <!-- cover (when loaded) -->
+                  <cover x="+[WAVEFORMHEIGHT]/2-40" rotate="no" rightclick="" dblclick="">
+                    <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
+                  </cover>
+                  <!-- border -->
+                  <button x="+[HEIGHT]/2+24" action="select &amp; play_button" visibility="loaded">
                     <size width="[HEIGHT]-4" height="[HEIGHT]-4"/>
                     <off shape="square" color="transparent" border="#22FFFFFF" border_size="1"/>
                     <over shape="square" color="transparent" border="#88FFFFFF" border_size="1"/>
@@ -13335,6 +13363,14 @@
         <panel class="vertical_scratchwave" deck="4" visibility="deck 4 rightdeck" x="+320-98-10-19-19" y="+0"/>
         <!-- MIDDLE BUTTONS + VU -->
         <panel class="scratch_controls" x="960-20" y="+0"/>
+        <group x="+25" y="+90">
+          <visual width="260" height="28">
+            <off shape="square" color="#66000000" border_size="0" border="deckcolor" radius="6"/>
+          </visual>
+          <visual y="+13" width="260" height="2">
+            <off shape="square" color="white" border_size="0" border="deckcolor" radius="1"/>
+          </visual>
+        </group>
       </panel>
       <panel name="mastermixer" group="mixer" visible="no">
         <panel class="mic/headphones_controls"/>
@@ -14138,7 +14174,7 @@
             <!-- INDICATORS -->
             <group x="+570" y="+5">
               <!-- STATUS: COLORFX -->
-              <button width="90" height="18" action="effect_active colorfx" border_size="1">
+              <button width="90" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
                 <off color="#222222"/>
                 <selected color="orange" textcolor="black"/>
                 <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLORFX"/>
