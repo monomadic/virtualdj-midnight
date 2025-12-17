@@ -8679,14 +8679,14 @@
         </group>
       </group>
       <!-- SETTINGS -->
-      <group x="1063" y="+5">
+      <group x="1060" y="+5">
         <!-- FX -->
         <group>
-          <button class="button_main" y="+3" width="65" height="13" textsize="10" textaction="get_text 'FX `effects_used deck`' &amp; param_uppercase" radius="6" coloroff="black" coloron="yellow" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
-          <button class="button_main" y="+17" width="65" height="13" textsize="10" text="CFX" radius="6" coloroff="black" coloron="magenta" bordersize="0" textcolor="#444444" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
+          <button class="button_main" y="+3" width="40" height="27" textsize="14" text="FX" radius="6" coloroff="black" coloron="yellow" bordersize="0" textcolor="yellow" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
+          <button class="button_main" y="+3" x="+42" width="40" height="27" textsize="14" text="CFX" radius="6" coloroff="black" coloron="magenta" bordersize="0" textcolor="magenta" textcoloron="black" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
         </group>
         <!-- GLOBAL QUANT -->
-        <group x="+85" y="+0">
+        <group x="+90" y="+0">
           <textzone>
             <pos x="+0" y="+0"/>
             <size width="65" height="16"/>
@@ -8695,7 +8695,7 @@
           <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="param_equal `setting 'globalQuantize'` 1  ? setting 'globalQuantize' 4  : param_equal `setting 'globalQuantize'` 4  ? setting 'globalQuantize' 16 : param_equal `setting 'globalQuantize'` 16 ? setting 'globalQuantize' 32 : setting 'globalQuantize' 1" textsize="12" textaction="setting 'globalQuantize'" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
         </group>
         <!-- CUE MODE -->
-        <group x="+155" y="+0">
+        <group x="+160" y="+0">
           <textzone>
             <size width="65" height="16"/>
             <text fontsize="9" weight="normal" color="#999999" align="center" text="CUE MODE" important="true"/>
@@ -8723,7 +8723,7 @@
       <group x="295" y="8">
         <button tooltip="UTILITY BAR MODE\nToggle between utility bar and hashtag bar at the bottom of the screen." class="button_main" action="toggle '@$h_utility_barmode'" width="26" height="27" textsize="12" textcolor="needle" textaction="var_equal '@$h_utility_barmode' 1 ? get_text '#' : get_text 'U'" coloroff="panel_background" coloron="#222222" query="true" bordersize="0"/>
         <button tooltip="BORDER MODE\nShow or hide the active deck border." class="button_main" x="+30" action="toggle '@$dd_bordermode'" width="26" height="27" textsize="12" textcoloron="needle" text="B" coloroff="panel_background" coloron="#222222" bordersize="0"/>
-        <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="26" height="27" textsize="12" textcoloron="needle" text="Z" coloroff="panel_background" coloron="#222222" bordersize="0"/>
+        <button tooltip="BROWSER ZOOM\nToggle browser zoom mode." class="button_main" x="+60" action="browser_zoom" width="60" height="27" textsize="12" textcoloron="needle" text="TRACKS" coloroff="panel_background" coloron="#222222" bordersize="0"/>
       </group>
       <group visibility="browser_zoom" x="680" y="8">
         <button tooltip="SHOW WAVEFORMS\nShow or hide main waveforms in browser zoom mode." class="button_main" x="+90" action="toggle '@$hauntingwavesviewminidecks' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="WAVES" coloroff="panel_background" coloron="#222222" bordersize="0" query="var_equal '@$hauntingwavesviewminidecks' '1'"/>
@@ -13831,6 +13831,7 @@
         </group>
         <!-- PRO: LEFT: TRANSPORT BAR -->
         <group name="button_bar_left" y="+179">
+          <!-- INVERT DECK BUTTON -->
           <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
           <group visibility="loaded">
             <!-- BPM WARNING -->
@@ -13866,7 +13867,6 @@
             <!-- less than -5% -->
             <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-1" textsize="11" text="KEY" width="80" height="30" action="select &amp; match_key" textcoloron="black" coloroff="button_background4" bordersize="0" query="match_key"/>
             <button class="button_main" x="+800-80-3-30-1-80-2-80-1" textsize="11" text="PHRASE" width="80" height="30" action="select &amp; sync &amp; phrase_sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-            <!-- <button x="+800-80-3-30-1-80-2" y="+0" width="80" height="30" text="BEAT" fontsize="11" textcolor="white" textcoloron="black" coloroff="#222222" coloron="#00FFAA" colorover="#333333" border_size="2" bordercoloroff="#222222" bordercoloron="#00FFAA" action="select &amp; sync" query="is_sync"/> -->
             <button class="button_main" x="+800-80-3-30-1-80-1" textsize="11" text="BEAT" width="80" height="30" action="select &amp; sync" query="is_sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
           </group>
           <button class="button_main" x="+800-80-3-30" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
@@ -14025,7 +14025,7 @@
         <!-- <fader color="faderbackgroundline" width="38" height="6"/> -->
         <!-- </slider> -->
         <!-- PRO: RIGHT: TRANSPORT BAR -->
-        <group x="+7+30+10+300+15" y="+179">
+        <group name="button_bar_right" x="+7+30+10+300+15" y="+179">
           <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
             <size width="90" height="15"/>
             <off color="#330000" shape="square"/>
@@ -14037,18 +14037,13 @@
             <off color="#330000" shape="square"/>
             <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
           </button>
-        </group>
-        <button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+3+30+1+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+3+30+1+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+3+30+1+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
-        <button class="button_main" x="+6" textsize="11" y="+179" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"><off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>&#x240D; 
+          <button class="button_main" x="+800-80-8" textsize="11" y="+179" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+3+30+1+80+2+80+2+80+2" textsize="11" y="+179" text="PHRASE32" width="80" height="30" action="phrase_sync 32" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+3+30+1+80+2+80+2" textsize="11" y="+179" text="PHRASE16" width="80" height="30" action="phrase_sync 16" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+3+30+1+80+2" textsize="11" y="+179" text="SYNC" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="black" coloroff="button_background4" bordersize="0"/>
+          <button class="button_main" x="+6" textsize="11" y="+179" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"><off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>&#x240D; 
         <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>&#x240D;</button>
-        <!-- ACTIVE DECK BORDER: RIGHT -->
-        <!-- <visual source="deck [DECK] rightdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true" x="-2" y="-2"> -->
-        <!-- <size width="804" height="436"/> -->
-        <!-- <down color="transparent" border_size="1" border="deckcolor" shape="square" radius="5"/> -->
-        <!-- </visual> -->
+        </group>
         <!-- SELECTED DECK BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="436"/>
