@@ -5462,12 +5462,14 @@
         </visual>
         <!-- HOTCUE: CURRENT -->
         <group visibility="not param_equal `cue_countup 'name'` ''">
+          <!-- bg -->
           <visual type="color" source="cue_countup 'color'">
             <tooltip/>
             <pos x="+0" y="+0"/>
             <size width="50" height="15"/>
           </visual>
-          <button class="button_main" action="key_match_button" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
+          <!-- text -->
+          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="white" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
             <pos x="+0" y="+0"/>
             <size width="50" height="15"/>
           </button>
@@ -5479,7 +5481,7 @@
             <pos x="+120" y="+140"/>
             <size width="50" height="15"/>
           </visual>
-          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
+          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="white" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
             <pos x="+120" y="+140"/>
             <size width="50" height="15"/>
           </button>
@@ -9605,25 +9607,38 @@
       <visual width="1920-2" height="38">
         <off shape="square" color="#000000" border_size="1" border="#222222" radius="3"/>
       </visual>
-      <!-- CLASS: CUSTOM TAG BUTTON -->
-      <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=98,height=28,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
-        <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2">
+      <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=90,height=20,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+        <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
+          <pos x="+0" y="+0"/>
           <size width="[WIDTH]" height="[HEIGHT]"/>
-          <off color="#000000" border="#55AAAAAA" border_size="1" shape="[SHAPE]" radius="5"/>
-          <over color="#000000" border="#66AAAAAA" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
-          <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <off color="#000000" border="#666666" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <over color="#000000" border="#888888" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <down color="black" border="transparent" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
           <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
-          <text action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="+20" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="left" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/>
-          <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/>
+          <text weight="normal" action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="-2" dy="-1" fontsize="[TEXTSIZE]" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/>
+          <!-- <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/> -->
         </button>
-        <visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/>
-        <visual x="+7" y="+8" width="5" height="15">
-          <off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/>
-        </visual>
+        <!-- <visual class="gfx_shape" x="+0" y="+0" width="[WIDTH]" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/> -->
       </define>
+      <!-- CLASS: CUSTOM TAG BUTTON -->
+      <!-- <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=98,height=28,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal"> -->
+      <!-- <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+2"> -->
+      <!-- <size width="[WIDTH]" height="[HEIGHT]"/> -->
+      <!-- <off color="#000000" border="#55AAAAAA" border_size="1" shape="[SHAPE]" radius="5"/> -->
+      <!-- <over color="#000000" border="#66AAAAAA" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/> -->
+      <!-- <down color="black" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/> -->
+      <!-- <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/> -->
+      <!-- <text action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="+20" fontsize="[TEXTSIZE]" height="[HEIGHT]+10" weight="" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="left" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/> -->
+      <!-- <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/> -->
+      <!-- </button> -->
+      <!-- <visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/> -->
+      <!-- <visual x="+7" y="+8" width="5" height="15"> -->
+      <!-- <off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/> -->
+      <!-- </visual> -->
+      <!-- </define> -->
       <!-- PANEL: CUSTOM TAGS -->
       <group name="browser_tools" visibility="var_equal '@$h_utility_barmode' 0">
-        <group name="genre_tags" x="+35" y="+3">
+        <group name="genre_tags" x="+38" y="+10">
           <!-- BACKGROUND -->
           <!-- <visual x="+0" y="+2" width="448" height="34" visibility="1.0"> -->
           <!-- <off shape="square" color="#000000" border_size="1" border="#222222" radius="0"/> -->
@@ -9631,8 +9646,8 @@
           <!-- TEXT LABEL -->
           <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="12" color="#777777" align="right" weight="" text="GENRE"/> -->
           <!-- BUTTONS -->
-          <panel class="filter_tag_button" x="+5" accent_color="color_genre" tag="#BassHouse" text="Bass House" width="95"/>
-          <panel class="filter_tag_button" x="+102" accent_color="color_genre" tag="#TechHouse" text="Tech House" width="94"/>
+          <panel class="filter_tag_button" x="+5" accent_color="color_genre" tag="#BassHouse" text="#BASS-HOUSE" width="102"/>
+          <panel class="filter_tag_button" x="+110" accent_color="color_genre" tag="#TechHouse" text="#TECH-HOUSE" width="100"/>
           <panel class="filter_tag_button" x="+198" accent_color="color_genre" tag="#Techno" text="Techno" width="71"/>
           <panel class="filter_tag_button" x="+272" accent_color="color_genre" tag="#PsyTrance" text="Psy-Trance" width="93"/>
           <panel class="filter_tag_button" x="+368" accent_color="color_genre" tag="#Synthwave" width="94" text="Synthwave"/>
@@ -9823,9 +9838,13 @@
                 <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal">
                   <pos x="+13" y="+12+10"/>
                   <size width="1920-20-44" height="[HEIGHT]-32-12"/>
-                  <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="down"/>
+                  <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" mirrored="true" shapepos="-14" shapemirrored="`leftdeck ? down : up`"/>
                   <gridlines width="1" color="gridlines" transparency="0.3"/>
-                  <cue y="-18" height="14">
+                  <cue y="-18" height="14" visibility="leftdeck">
+                    <mask x="123" y="124" width="5" height="14"/>
+                    <text dx="+8" dy="-2" weight="" fontsize="14" important="true"/>
+                  </cue>
+                  <cue y="-18" height="14" visibility="rightdeck">
                     <mask x="123" y="124" width="5" height="14"/>
                     <text dx="+8" dy="-2" weight="" fontsize="14" important="true"/>
                   </cue>
@@ -9939,6 +9958,7 @@
                 </dropzone>
               </deck>
             </define>
+            <!-- WAVES -->
             <panel class="horizontal_main_waveform" deck="3" height="[WAVEFORMHEIGHT]/2" x="+0" y="+0" visibility="deck 3 select ? true : deck 1 select ? false : deck 3 leftdeck"/>
             <panel class="horizontal_main_waveform" deck="1" height="[WAVEFORMHEIGHT]/2" x="+0" y="+0" visibility="deck 1 select ? true : deck 3 select ? false : deck 1 leftdeck"/>
             <panel class="horizontal_main_waveform" deck="2" height="[WAVEFORMHEIGHT]/2" x="+0" y="+[WAVEFORMHEIGHT]/2" visibility="deck 2 select ? true : deck 4 select ? false : deck 2 rightdeck"/>
@@ -13853,13 +13873,13 @@
             <!-- BPM WARNING -->
             <!-- more than 20% -->
             <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
-              <pos x="+7+30+10+300" y="+0"/>
+              <pos x="+270" y="+0"/>
               <size width="90" height="15"/>
               <off color="#000033" shape="square"/>
               <text size="14" align="center" color="blue" text="SLOW"/>
             </button>
             <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
-              <pos x="+7+30+10+300" y="+15"/>
+              <pos x="+270" y="+15"/>
               <size width="90" height="15"/>
               <off color="#000033" shape="square"/>
               <text size="18" align="center" color="blue" weight="bold" action="get_text '%Ppitch%'"/>
