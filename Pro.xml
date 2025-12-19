@@ -6536,28 +6536,6 @@
       </panel>
       <!-- PRO: PANEL: LINE -->
       <panel name="no_linein_timecode_[PANELNAME]" visibility="not get_hastimecode &amp;&amp; not get_haslinein">
-        <!-- <button action="deck 1 play ? deck all pause : deck 2 play ? deck all pause :   deck 3 play ? deck all pause :   deck 4 play ? deck all pause : deck left play &amp; deck right play "> -->
-        <!-- <tooltip>Play/Pause All Decks</tooltip> -->
-        <!-- <pos x="+0" y="+0"/> -->
-        <!-- <size width="32" height="32"/> -->
-        <!-- Background states -->
-        <!-- <off color="#202020" border_size="1" border="#404040"/> -->
-        <!-- <on color="#303030" border_size="1" border="#FFFFFF"/> -->
-        <!-- <over color="#404040" border_size="1" border="#FFFFFF"/> -->
-        <!-- Icon switches between play and pause based on any deck playing -->
-        <!-- <icon sysicon="       deck 1 play ? 'pause' :       deck 2 play ? 'pause' :       deck 3 play ? 'pause' :       deck 4 play ? 'pause' :       'play'     " width="20" height="20" dx="+6" dy="+6"/> -->
-        <!-- </button> -->
-        <!-- <textzone class="text" y="+8" width="264" height="26" fontsize="12" color="textdarker" align="center" weight="" text="NO INPUTS"/> -->
-        <!-- <group name="pad_param1" visibility="pad_has_param 1"> -->
-        <!-- <button class="button_main" x="+115" y="+6" width="26" height="28" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-        <!-- <button class="button_main" x="+115+26" y="+6" width="82" height="28" action="pad_param +1" query="off" textaction="pad_param" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
-        <!-- <button class="button_main" x="+115+26+82" y="+6" width="26" height="28" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-        <!-- </group> -->
-        <!-- <group name="pad_param1" visibility="pad_param_visible 2"> -->
-        <!-- <button class="button_main" x="+115" y="+6+32" width="26" height="28" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-        <!-- <button class="button_main" x="+115+26" y="+6+32" width="82" height="28" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/> -->
-        <!-- <button class="button_main" x="+115+26+82" y="+6+32" width="26" height="28" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-        <!-- </group> -->
         <define class="HASHTAG_BUTTON" placeholders="*tag,text,width=90,height=20,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=10,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
           <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
             <pos x="+0" y="+0"/>
@@ -13849,9 +13827,13 @@
         </group>
       </deck>
     </define>
-    <!-- CLASS: 2 DECK OVERLAYS -->
+    <!-- CLASS: PRO: 2 DECK OVERLAYS -->
     <define class="PRO_2DECKS_OVERLAYS" placeholders="*deck">
       <deck deck="[DECK]">
+        <visual source="true" x="+0" y="+0">
+          <size width="804" height="433"/>
+          <down color="transparent" border_size="1" border="#333333" shape="square" radius="6"/>
+        </visual>
         <!-- BORDER -->
         <!-- if top deck in 4 deck mode -->
         <visual source="deck [DECK] select" x="+0" y="+0" visibility="var_equal '@$dd_bordermode' 1">
@@ -13863,8 +13845,8 @@
         <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/> -->
         <!-- </visual> -->
         <!-- DROP ZONE -->
-        <dropzone visibility="var_equal '@$hauntinglayout' 0" x="-2" y="-2">
-          <size width="804" height="436"/>
+        <dropzone visibility="var_equal '@$hauntinglayout' 0" x="+0" y="+0">
+          <size width="804" height="434"/>
           <over color="transparent" border_size="2" border="color_dropzone" shape="square" radius="10"/>
         </dropzone>
         <dropzone visibility="var_equal '@$hauntinglayout' 1" x="-2" y="-2">
@@ -14482,12 +14464,62 @@
         <panel class="wave_stack" x="+484+2" width="1114+316" visibility="var_equal '@$hauntingdeckstack' 0"/>
       </deck>
     </define>
+    <define class="HASHTAG_STACK" placeholders="*panelname,*deck">
+      <define class="HASHTAG_BUTTON" placeholders="*tag,text,width=90,height=20,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=10,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+        <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
+          <pos x="+0" y="+0"/>
+          <size width="[WIDTH]" height="[HEIGHT]"/>
+          <off color="#000000" border="#444444" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <over color="#000000" border="#444444" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <down color="black" border="transparent" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
+          <text action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="+6" fontsize="[TEXTSIZE]" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="left" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/>
+          <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/>
+        </button>
+      </define>
+      <visual width="290" height="215">
+        <off shape="square" color="#090909"/>
+      </visual>
+      <stack x="+8" y="+4" fadein="100ms" fadeout="100ms" visibility="loaded">
+        <!-- Size of each slot -->
+        <size width="290" height="70"/>
+        <!-- Where the slots appear on the skin -->
+        <slot x="+0" y="+0"/>
+        <slot x="+92" y="+0"/>
+        <slot x="+184" y="+0"/>
+        <slot x="+0" y="+22"/>
+        <slot x="+92" y="+22"/>
+        <slot x="+184" y="+22"/>
+        <!-- #BassHouse chip -->
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '">
+          <panel class="hashtag_button" accent_color="color_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
+        </item>
+        <!-- #House chip -->
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#house '">
+          <panel class="hashtag_button" accent_color="color_genre" tag="#House" text="#HOUSE"/>
+        </item>
+        <!-- #Techno chip -->
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#techno '">
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Techno" text="#TECHNO"/>
+        </item>
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#psy'">
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Psy-Trance" text="#PSY-TRANCE"/>
+        </item>
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#club '">
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Club" text="#CLUB"/>
+        </item>
+      </stack>
+    </define>
     <define class="PAD_PAGES_PRO" placeholders="*panelname,*deck">
       <!-- bg -->
       <visual x="+0" y="+0" width="800" height="217">
-        <off shape="square" color="#111111"/>
+        <off shape="square" color="#000000"/>
       </visual>
       <panel class="efx_rack" deck="[DECK]" x="+5" y="+3" panelname="deck[DECK]"/>
+      <!-- <panel class="efx_rack" deck="1" x="+150" y="+3" panelname="deck[DECK]" visibility="not deck 3 leftdeck"/> -->
+      <!-- <panel class="efx_rack" deck="3" x="+150" y="+3" panelname="deck[DECK]" visibility="deck 3 leftdeck"/> -->
+      <!-- <panel class="efx_rack" deck="2" x="+5" y="+3" panelname="deck[DECK]" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="efx_rack" deck="4" x="+5" y="+3" panelname="deck[DECK]" visibility="deck 4 rightdeck"/> -->
       <!-- <deck deck="left"> -->
       <!-- <panel class="editgrid_rack" y="+216+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/> -->
       <!-- <panel class="editgrid_rack" y="+216+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/> -->
@@ -15003,10 +15035,15 @@
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
       <!-- PADS -->
-      <panel class="pad_pages_pro" deck="1" x="+2" y="+176" visibility="not deck 3 leftdeck"/>
-      <panel class="pad_pages_pro" deck="3" x="+2" y="+176" visibility="deck 3 leftdeck"/>
+      <panel class="pad_pages_pro" deck="1" x="+290" y="+176" visibility="not deck 3 leftdeck"/>
+      <panel class="pad_pages_pro" deck="3" x="+290" y="+176" visibility="deck 3 leftdeck"/>
       <panel class="pad_pages_pro" deck="2" x="+1920-800-2" y="+176" visibility="not deck 4 rightdeck"/>
       <panel class="pad_pages_pro" deck="4" x="+1920-800-2" y="+176" visibility="deck 4 rightdeck"/>
+      <!-- TAGS -->
+      <panel class="hashtag_stack" deck="1" x="+2" y="+176" panelname="tags1" visibility="not deck 3 leftdeck"/>
+      <panel class="hashtag_stack" deck="3" x="+2" y="+176" panelname="tags3" visibility="deck 3 leftdeck"/>
+      <panel class="hashtag_stack" deck="2" x="+1920-290-2" y="+176" panelname="tags1" visibility="not deck 4 leftdeck"/>
+      <panel class="hashtag_stack" deck="4" x="+1920-290-2" y="+176" panelname="tags4" visibility="deck 4 leftdeck"/>
       <!-- TRANSPORT -->
       <panel class="transport_bar" deck="1" x="+2" y="+395" deckside="left" visibility="not deck 3 leftdeck"/>
       <panel class="transport_bar" deck="3" x="+2" y="+395" deckside="left" visibility="deck 3 leftdeck"/>
