@@ -5469,7 +5469,7 @@
             <size width="50" height="15"/>
           </visual>
           <!-- text -->
-          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="white" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
+          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
             <pos x="+0" y="+0"/>
             <size width="50" height="15"/>
           </button>
@@ -5481,7 +5481,7 @@
             <pos x="+120" y="+140"/>
             <size width="50" height="15"/>
           </visual>
-          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="white" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
+          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
             <pos x="+120" y="+140"/>
             <size width="50" height="15"/>
           </button>
@@ -13794,8 +13794,9 @@
       <panel class="waveform" x="+2" waveformheight="121" condition="var_equal '@$infntywavesize' 0"/>
     </define>
     <!-- PRO: LEFT DECK -->
-    <define class="area_deck_left" placeholders="*deck,*panelname">
+    <define class="AREA_DECK_LEFT" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
+        <!-- bg -->
         <visual class="gfx_shape" width="800" height="216" coloroff="panel_background"/>
         <!-- cover, title etc -->
         <panel class="infos" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
@@ -13850,71 +13851,73 @@
           <panel class="deck_level" x="+0" y="+0"/>
         </group>
         <!-- PRO: LEFT: TRANSPORT BAR -->
-        <group name="button_bar_left" y="+179">
-          <!-- INVERT DECK BUTTON -->
-          <button class="button_main" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
-          <group x="+50" y="+2">
-            <button action="stem_pad 'acapella'" border_size="1">
-              <size width="80" height="25"/>
-              <off color="#000000" border="#444444" radius="3"/>
-              <down color="#222222" border="#008866" radius="3"/>
-              <selected color="transparent" border="#008866" radius="3"/>
-              <text fontsize="12" color="#555555" colorselected="#008866" colordown="#008866" align="center" text="ACAPELLA"/>
-            </button>
-            <button x="+85" action="stem_pad 'instrumental'" border_size="1">
-              <size width="110" height="25"/>
-              <off color="#000000" border="#444444" radius="3"/>
-              <down color="#222222" border="#CC55FF" radius="3"/>
-              <selected color="transparent" border="#CC55FF" radius="3"/>
-              <text fontsize="12" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/>
-            </button>
-          </group>
-          <group visibility="loaded">
-            <!-- BPM WARNING -->
-            <!-- more than 20% -->
-            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
-              <pos x="+270" y="+0"/>
-              <size width="90" height="15"/>
-              <off color="#000033" shape="square"/>
-              <text size="14" align="center" color="blue" text="SLOW"/>
-            </button>
-            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
-              <pos x="+270" y="+15"/>
-              <size width="90" height="15"/>
-              <off color="#000033" shape="square"/>
-              <text size="18" align="center" color="blue" weight="bold" action="get_text '%Ppitch%'"/>
-            </button>
-            <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
-            <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
-            <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/> -->
-            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
-              <pos x="+7+30+10+300" y="+0"/>
-              <size width="90" height="15"/>
-              <off color="#330000" shape="square"/>
-              <text size="14" align="center" color="red" text="FAST"/>
-            </button>
-            <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
-              <pos x="+7+30+10+300" y="+15"/>
-              <size width="90" height="15"/>
-              <off color="#330000" shape="square"/>
-              <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
-            </button>
-            <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" bordersize="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_bigger `param_abs_diff `get_bpm` `get_bpm 'absolute'`` 20"/> -->
-            <!-- less than -5% -->
-            <!-- MASTER -->
-            <button class="button_main" x="+800-80-3-30-1-80-1-80-2-80-2-80-1" textsize="11" text="MASTER" width="80" height="30" action="select &amp; sync" textcoloroff="red" textcoloron="orange" coloroff="black" coloron="black" bordersize="0" query="masterdeck"/>
-            <!-- KEY -->
-            <button class="button_main" x="+800-80-3-30-1-80-2-80-2-80-1" textsize="11" text="KEY" width="80" height="30" action="select &amp; match_key" textcoloron="green" coloroff="black" coloron="black" bordersize="0" query="match_key"/>
-            <!-- PHRASE -->
-            <button class="button_main" x="+800-80-3-30-1-80-2-80-1" textsize="11" text="PHRASE" width="80" height="30" action="select &amp; sync &amp; phrase_sync" textcoloron="green" coloroff="black" coloron="black" bordersize="0" query="is_sync"/>
-            <!-- BEAT -->
-            <button class="button_main" x="+800-80-3-30-1-80-1" textsize="11" text="BEAT" width="80" height="30" action="select &amp; sync" textcoloron="green" textcoloroff="red" coloroff="black" coloron="black" bordersize="0" query="is_sync"/>
-          </group>
-          <button class="button_main" x="+800-80-3-30" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0">
-            <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
-            <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
-          </button>
-        </group>
+        <!-- <group name="button_bar_left" y="+179"> -->
+        <!-- bg -->
+        <!-- <visual class="gfx_shape" width="800" height="36" coloroff="black" bordercoloroff="#333333" bordersize="1"/> -->
+        <!-- INVERT DECK BUTTON -->
+        <!-- <button class="button_main" y="+3" x="+7" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/> -->
+        <!-- <group x="+50" y="+6"> -->
+        <!-- <button action="stem_pad 'acapella'" border_size="1"> -->
+        <!-- <size width="80" height="25"/> -->
+        <!-- <off color="#000000" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="#008866" radius="3"/> -->
+        <!-- <selected color="transparent" border="#008866" radius="3"/> -->
+        <!-- <text fontsize="12" color="#555555" colorselected="#008866" colordown="#008866" align="center" text="ACAPELLA"/> -->
+        <!-- </button> -->
+        <!-- <button x="+85" action="stem_pad 'instrumental'" border_size="1"> -->
+        <!-- <size width="110" height="25"/> -->
+        <!-- <off color="#000000" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="#CC55FF" radius="3"/> -->
+        <!-- <selected color="transparent" border="#CC55FF" radius="3"/> -->
+        <!-- <text fontsize="12" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
+        <!-- <group y="+3" visibility="loaded"> -->
+        <!-- BPM WARNING -->
+        <!-- more than 20% -->
+        <!-- <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"> -->
+        <!-- <pos x="+270" y="+0"/> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#000033" shape="square"/> -->
+        <!-- <text size="14" align="center" color="blue" text="SLOW"/> -->
+        <!-- </button> -->
+        <!-- <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"> -->
+        <!-- <pos x="+270" y="+15"/> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#000033" shape="square"/> -->
+        <!-- <text size="18" align="center" color="blue" weight="bold" action="get_text '%Ppitch%'"/> -->
+        <!-- </button> -->
+        <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
+        <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
+        <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/> -->
+        <!-- <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"> -->
+        <!-- <pos x="+7+30+10+300" y="+0"/> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#330000" shape="square"/> -->
+        <!-- <text size="14" align="center" color="red" text="FAST"/> -->
+        <!-- </button> -->
+        <!-- <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"> -->
+        <!-- <pos x="+7+30+10+300" y="+15"/> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#330000" shape="square"/> -->
+        <!-- <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/> -->
+        <!-- </button> -->
+        <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" bordersize="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_bigger `param_abs_diff `get_bpm` `get_bpm 'absolute'`` 20"/> -->
+        <!-- less than -5% -->
+        <!-- KEY -->
+        <!-- <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2-80-2-80-2" textsize="11" text="KEY" width="80" height="25" action="select &amp; match_key" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : match_key"/> -->
+        <!-- PHRASE -->
+        <!-- <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2-80-2" textsize="11" text="PHRASE" width="80" height="25" action="select &amp; sync &amp; phrase_sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" textcoloroff="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : is_sync ? true : false"/> -->
+        <!-- BEAT -->
+        <!-- <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2" textsize="11" text="BEAT" width="80" height="25" action="select &amp; sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="is_sync"/> -->
+        <!-- MASTER -->
+        <!-- <button class="button_main" x="+800-80-30-80" textsize="11" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" width="80" height="30" action="select &amp; masterdeck" textcoloroff="red" textcoloron="orange" coloroff="black" coloron="black" bordersize="1" brcoloron="orange" query="masterdeck"/> -->
+        <!-- <button class="button_main" x="+800-80-30+1" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"> -->
+        <!-- <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/> -->
+        <!-- <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
+        <!-- </group> -->
         <!-- ACTIVE DECK BORDER: LEFT (4 decks mode) -->
         <!-- <visual source="deck [DECK] leftdeck" visibility="var_equal '@$hauntinglayout' 1 ? loaded" x="-2" y="-2"> -->
         <!-- <size width="804" height="436"/> -->
@@ -13950,6 +13953,94 @@
         <!-- <visual show="" hide=""/> -->
         <!-- <up color="red" /> -->
         <!-- </button> -->
+      </deck>
+    </define>
+    <!-- CLASS: TRANSPORT BAR -->
+    <define class="TRANSPORT_BAR" placeholders="*deck">
+      <deck deck="[DECK]">
+        <!-- bg -->
+        <visual class="gfx_shape" width="800" height="36" coloroff="black" bordercoloroff="#333333" bordersize="1"/>
+        <!-- INVERT DECK BUTTON -->
+        <group visibility="leftdeck">
+          <button class="button_main" width="30" height="30" action="invert_deck" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle">
+            <pos y="+3" x="+7"/>
+          </button>
+        </group>
+        <deck deck="right">
+          <button class="button_main" width="30" height="30" action="invert_deck" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle">
+            <pos y="+3" x="+800-35"/>
+          </button>
+        </deck>
+        <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
+        <group x="+130" y="+6">
+          <button action="stem_pad 'acapella'" border_size="1">
+            <size width="80" height="25"/>
+            <off color="#000000" border="#444444" radius="3"/>
+            <down color="#222222" border="#008866" radius="3"/>
+            <selected color="transparent" border="#008866" radius="3"/>
+            <text fontsize="12" color="#555555" colorselected="#008866" colordown="#008866" align="center" text="ACAPELLA"/>
+          </button>
+          <button x="+85" action="stem_pad 'instrumental'" border_size="1">
+            <size width="110" height="25"/>
+            <off color="#000000" border="#444444" radius="3"/>
+            <down color="#222222" border="#CC55FF" radius="3"/>
+            <selected color="transparent" border="#CC55FF" radius="3"/>
+            <text fontsize="12" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/>
+          </button>
+        </group>
+        <group y="+3" visibility="loaded">
+          <!-- BPM WARNING -->
+          <!-- more than 20% -->
+          <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
+            <pos x="+270" y="+0"/>
+            <size width="90" height="15"/>
+            <off color="#000033" shape="square"/>
+            <text size="14" align="center" color="blue" text="SLOW"/>
+          </button>
+          <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
+            <pos x="+270" y="+15"/>
+            <size width="90" height="15"/>
+            <off color="#000033" shape="square"/>
+            <text size="18" align="center" color="blue" weight="bold" action="get_text '%Ppitch%'"/>
+          </button>
+          <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="violet" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off"/> -->
+          <!-- <square x="+7+30+10+300" y="+0" width="90" height="30" color="button_background4" bordersize="1" bordercoloron="#00FFAA" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"/> -->
+          <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PLAY" action="play_pause" coloroff="#222222" coloron="#00FF00" colorover="#333333" textcolor="white" textsize="13" textcoloron="black" border_size="1" bordercoloron="#00FF00"/> -->
+          <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <pos x="+7+30+10+300" y="+0"/>
+            <size width="90" height="15"/>
+            <off color="#330000" shape="square"/>
+            <text size="14" align="center" color="red" text="FAST"/>
+          </button>
+          <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
+            <pos x="+7+30+10+300" y="+15"/>
+            <size width="90" height="15"/>
+            <off color="#330000" shape="square"/>
+            <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
+          </button>
+          <!-- <button x="+7+30+10+300" y="+0" width="90" height="30" text="PITCH" action="pitch_reset" coloroff="#222222" coloron="#00FFAA" colorover="#333333" bordersize="1" bordercoloron="#00FFAA" textcolor="white" radius="3" visibility="param_bigger `param_abs_diff `get_bpm` `get_bpm 'absolute'`` 20"/> -->
+          <!-- less than -5% -->
+          <!-- KEY/PHRASE/BEAT BUTTONS -->
+          <group x="+50">
+            <!-- KEY -->
+            <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2-80-2-80-2" textsize="11" text="KEY" width="80" height="25" action="select &amp; match_key" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : match_key"/>
+            <!-- PHRASE -->
+            <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2-80-2" textsize="11" text="PHRASE" width="80" height="25" action="select &amp; sync &amp; phrase_sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" textcoloroff="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : is_sync ? true : false"/>
+            <!-- BEAT -->
+            <button class="button_main" y="+2" x="+750-80-3-30-1-80-2-80-2" textsize="11" text="BEAT" width="80" height="25" action="select &amp; sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="is_sync"/>
+          </group>
+          <!-- MASTER -->
+          <button class="button_main" x="+800-80-30-80" textsize="11" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" width="80" height="30" action="select &amp; masterdeck" textcoloroff="red" textcoloron="orange" coloroff="black" coloron="black" bordersize="1" brcoloron="orange" query="masterdeck"/>
+          <!-- PLAY/PAUSE -->
+          <button class="button_main" x="+800-80-30+1" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0" visibility="leftdeck">
+            <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
+            <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
+          </button>
+          <button class="button_main" x="+3" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0" visibility="rightdeck">
+            <off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>
+            <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>
+          </button>
+        </group>
       </deck>
     </define>
     <!-- PERFORMANCE: EXTENDED: LEFT DECK AREA -->
@@ -14030,7 +14121,7 @@
       </deck>
     </define>
     <!-- PRO: RIGHT DECK -->
-    <define class="area_deck_right" placeholders="deck,*panelname">
+    <define class="AREA_DECK_RIGHT" placeholders="deck,*panelname">
       <deck deck="[DECK]">
         <visual class="gfx_shape" width="800" height="216" coloroff="panel_background"/>
         <!-- cover, title etc -->
@@ -14066,30 +14157,49 @@
         <!-- <fader color="faderbackgroundline" width="38" height="6"/> -->
         <!-- </slider> -->
         <!-- PRO: RIGHT: TRANSPORT BAR -->
-        <group name="button_bar_right" x="+3" y="+179">
-          <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
-            <size width="90" height="15"/>
-            <off color="#330000" shape="square"/>
-            <text size="14" align="center" color="red" text="FAST"/>
-          </button>
-          <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off">
-            <pos y="+15"/>
-            <size width="90" height="15"/>
-            <off color="#330000" shape="square"/>
-            <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
-          </button>
-          <!-- <button class="button_main" x="+800-80-8" textsize="11" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
-          <button class="button_main" x="+800-40" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/>
-          <!-- KEY -->
-          <button class="button_main" x="+30+1+80+80+2+80+2" textsize="11" text="KEY" width="80" height="30" action="select &amp; match_key" textcoloron="black" coloroff="button_background4" bordersize="0" query="match_key"/>
-          <!-- PHRASE -->
-          <button class="button_main" x="+30+1+80+80+2" textsize="11" text="PHRASE" width="80" height="30" action="select &amp; sync &amp; phrase_sync" textcoloron="black" coloroff="button_background4" bordersize="0" query="is_sync"/>
-          <!-- BEAT -->
-          <button class="button_main" x="+30+1+80" textsize="11" text="BEAT" width="80" height="30" action="select &amp; sync" query="sync" textcoloron="deckcolor" coloroff="black" coloron="black" bordersize="0"/>
-          <!-- PLAY -->
-          <button class="button_main" x="+0" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"><off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/>&#x240D; 
-        <over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>&#x240D;</button>
-        </group>
+        <!-- <group name="button_bar_right" x="+3" y="+179"> -->
+        <!-- <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#330000" shape="square"/> -->
+        <!-- <text size="14" align="center" color="red" text="FAST"/> -->
+        <!-- </button> -->
+        <!-- <button action="select ? pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : off"> -->
+        <!-- <pos y="+15"/> -->
+        <!-- <size width="90" height="15"/> -->
+        <!-- <off color="#330000" shape="square"/> -->
+        <!-- <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/> -->
+        <!-- </button> -->
+        <!-- <button class="button_main" x="+800-80-8" textsize="11" text="EJECT" width="80" height="30" action="unload" textcoloron="black" coloroff="button_background4" bordersize="0"/> -->
+        <!-- <button class="button_main" x="+800-40" width="30" height="30" action="invert_deck left" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/> -->
+        <!-- BEAT -->
+        <!-- <button class="button_main" y="+2" x="+90+1+80+80+2+80+2+80+2" textsize="11" text="BEAT" width="80" height="25" action="select &amp; sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="is_sync"/> -->
+        <!-- PHRASE -->
+        <!-- <button class="button_main" y="+2" x="+90+1+80+80+2+80+2" textsize="11" text="PHRASE" width="80" height="25" action="select &amp; sync &amp; phrase_sync 32" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" textcoloroff="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : is_sync ? true : false"/> -->
+        <!-- KEY -->
+        <!-- <button class="button_main" y="+2" x="+90+1+80+80+2" textsize="11" text="KEY" width="80" height="25" action="select &amp; match_key" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : match_key"/> -->
+        <!-- MASTER -->
+        <!-- <button class="button_main" x="+30+1+80" textsize="11" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" width="80" height="30" action="select &amp; masterdeck" textcoloroff="red" textcoloron="orange" coloroff="black" coloron="black" bordersize="1" brcoloron="orange" query="masterdeck"/> -->
+        <!-- PLAY -->
+        <!-- <button class="button_main" x="+0" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0"><off color="#2A2A2A" border="#3A3A3A" border_size="1" shape="square"/><over color="#333333" border="#3F3F3F" border_size="1" shape="square"/>&#x240D; -->
+        <!-- </button> -->
+        <!-- instrumentals -->
+        <!-- <group x="+550" y="+2"> -->
+        <!-- <button action="stem_pad 'acapella'" border_size="1"> -->
+        <!-- <size width="80" height="25"/> -->
+        <!-- <off color="#000000" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="#008866" radius="3"/> -->
+        <!-- <selected color="transparent" border="#008866" radius="3"/> -->
+        <!-- <text fontsize="12" color="#555555" colorselected="#008866" colordown="#008866" align="center" text="ACAPELLA"/> -->
+        <!-- </button> -->
+        <!-- <button x="+85" action="stem_pad 'instrumental'" border_size="1"> -->
+        <!-- <size width="110" height="25"/> -->
+        <!-- <off color="#000000" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="#CC55FF" radius="3"/> -->
+        <!-- <selected color="transparent" border="#CC55FF" radius="3"/> -->
+        <!-- <text fontsize="12" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
+        <!-- </group> -->
         <!-- SELECTED DECK BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] rightdeck" x="-2" y="-2">
           <size width="804" height="436"/>
@@ -14443,27 +14553,33 @@
         <panel class="wave_stack" x="+484+2" width="1114+316" visibility="var_equal '@$hauntingdeckstack' 0"/>
       </deck>
     </define>
-    <define class="htng_racks" placeholders="*panelname">
-      <deck deck="left">
-        <panel class="editgrid_rack" y="+216+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/>
-        <panel class="editgrid_rack" y="+216+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/>
-        <panel class="loops_rack" y="+216+2+80+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/>
-        <panel class="loops_rack" y="+216+2+80+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/>
-        <panel class="pads_rack" x="+294+2" y="+216+2+80+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/>
-        <panel class="pads_rack" x="+294+2" y="+216+2+80+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/>
-        <panel class="efx_rack" x="+294+2" y="+216+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/>
-        <panel class="efx_rack" x="+294+2" y="+216+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/>
-      </deck>
-      <deck deck="right">
-        <panel class="editgrid_rack" x="1920-294-2" y="+216+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/>
-        <panel class="editgrid_rack" x="1920-294-2" y="+216+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/>
-        <panel class="loops_rack" x="1920-294-2" y="+216+2+80+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/>
-        <panel class="loops_rack" x="1920-294-2" y="+216+2+80+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/>
-        <panel class="pads_rack" x="1920-294-2-504-2" y="+216+2+80+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/>
-        <panel class="pads_rack" x="1920-294-2-504-2" y="+216+2+80+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/>
-        <panel class="efx_rack" x="1920-294-2-504-2" y="+216+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/>
-        <panel class="efx_rack" x="1920-294-2-504-2" y="+216+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/>
-      </deck>
+    <define class="PAD_PAGES_PRO" placeholders="*panelname,*deck">
+      <!-- bg -->
+      <visual x="+0" y="+0" width="800" height="217">
+        <off shape="square" color="#111111"/>
+      </visual>
+      <panel class="efx_rack" x="+5" y="+3" panelname="deck1"/>
+      <!-- <deck deck="left"> -->
+      <!-- <panel class="editgrid_rack" y="+216+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/> -->
+      <!-- <panel class="editgrid_rack" y="+216+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/> -->
+      <!-- <panel class="loops_rack" y="+216+2+80+2" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/> -->
+      <!-- <panel class="loops_rack" y="+216+2+80+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/> -->
+      <!-- <panel class="pads_rack" x="+294+2" y="+216+2+80+2" deck="1" panelname="deck1" visibility="deck 1 leftdeck"/> -->
+      <!-- <panel class="pads_rack" x="+294+2" y="+216+2+80+2" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/> -->
+      <!-- PADS RACK -->
+      <!-- <panel class="efx_rack" deck="1" panelname="deck1" visibility="not deck 3 leftdeck"/> -->
+      <!-- <panel class="efx_rack" deck="3" panelname="deck3" visibility="deck 3 leftdeck"/> -->
+      <!-- </deck> -->
+      <!-- <deck deck="right"> -->
+      <!-- <panel class="editgrid_rack" x="1920-294-2" y="+216+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="editgrid_rack" x="1920-294-2" y="+216+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/> -->
+      <!-- <panel class="loops_rack" x="1920-294-2" y="+216+2+80+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="loops_rack" x="1920-294-2" y="+216+2+80+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/> -->
+      <!-- <panel class="pads_rack" x="1920-294-2-504-2" y="+216+2+80+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="pads_rack" x="1920-294-2-504-2" y="+216+2+80+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/> -->
+      <!-- <panel class="efx_rack" x="1920-294-2-504-2" y="+216+2" deck="2" panelname="deck2" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="efx_rack" x="1920-294-2-504-2" y="+216+2" deck="4" panelname="deck4" visibility="deck 4 rightdeck"/> -->
+      <!-- </deck> -->
     </define>
     <define class="htng_racks_ex" placeholders="*panelname">
       <pos x="+2" y="+381+3+264+2" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 1 ? var_equal '@$hauntinglayout' 1 ? var_equal '@$infntywavesize' 13"/>
@@ -14955,19 +15071,27 @@
       <pos y="+43+2+121+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 0"/>
       <panel class="area_deck_left" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
       <panel class="area_deck_left" x="+2" panelname="deck3" deck="3" visibility="deck 3 leftdeck"/>
-      <panel class="htng_racks" x="2" y="-2"/>
-      <!-- MIXER PANEL / MIDDLE PANEL -->
-      <!-- TABS -->
-      <group x="+802" y="+0">
-        <button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-        <button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-        <button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-        <button class="button_main" x="+2+78+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-      </group>
-      <!-- PANEL -->
-      <panel class="mixer" x="+2+800+2" y="+24"/>
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
+      <!-- PADS -->
+      <panel class="pad_pages_pro" deck="leftdeck" x="+2" y="+176"/>
+      <panel class="pad_pages_pro" deck="rightdeck" x="+1920-800-2" y="+176"/>
+      <!-- TRANSPORT -->
+      <panel class="transport_bar" deck="1" x="+2" y="+399" visibility="deck 1 leftdeck"/>
+      <panel class="transport_bar" deck="3" x="+2" y="+399" visibility="deck 3 leftdeck"/>
+      <panel class="transport_bar" deck="2" x="+1920-2-800" y="+399" visibility="deck 2 rightdeck"/>
+      <panel class="transport_bar" deck="4" x="+1920-2-800" y="+399" visibility="deck 4 rightdeck"/>
+      <!-- MIXER PANEL / MIDDLE PANEL -->
+      <group x="+802">
+        <group name="tabs">
+          <button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+          <button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+          <button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+          <button class="button_main" x="+2+78+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+        </group>
+        <!-- panel -->
+        <panel name="content" class="mixer" x="+2" y="+24"/>
+      </group>
     </define>
     <!-- PERF: LAYOUT: 2 DECKS -->
     <define class="PERFORMANCE_2DECKS" placeholders="*panelname">
