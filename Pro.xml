@@ -4819,15 +4819,15 @@
                 <size width="50" height="30"/>
                 <off shape="square" color="transparent" border="#555555" border_size="1"/>
               </visual>
-              <group x="+175" y="-17">
-                <button action="stem_pad 'acapella'" border_size="0" visibility="stem_pad 'acapella'">
+              <group x="+174" y="-16">
+                <button action="stem_pad 'acapella'" border_size="1" visibility="stem_pad 'acapella'">
                   <size width="85" height="14"/>
                   <off color="#222222" border="#444444" radius="3"/>
-                  <down color="#222222" border="pink" radius="3"/>
-                  <selected color="black" border="pink" radius="3"/>
-                  <text fontsize="10" color="#555555" colorselected="pink" colordown="pink" align="center" text="ACAPELLA"/>
+                  <down color="#222222" border="#3592F9" radius="3"/>
+                  <selected color="black" border="#3592F9" radius="3"/>
+                  <text fontsize="10" color="#555555" colorselected="#3592F9" colordown="#3592F9" align="center" text="ACAPELLA"/>
                 </button>
-                <button action="stem_pad 'instrumental'" border_size="0" visibility="stem_pad 'instrumental'">
+                <button action="stem_pad 'instrumental'" border_size="1" visibility="stem_pad 'instrumental'">
                   <size width="85" height="14"/>
                   <off color="#222222" border="#444444" radius="3"/>
                   <down color="#222222" border="#CC55FF" radius="3"/>
@@ -9585,7 +9585,7 @@
       <visual width="1920-2" height="38">
         <off shape="square" color="#000000" border_size="1" border="#222222" radius="3"/>
       </visual>
-      <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=90,height=20,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=12,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
+      <define class="FILTER_TAG_BUTTON" placeholders="*tag,text,width=90,height=20,textheight=height,important=true,textaction,accent_color=green,coloroff=transparent,coloron=deckcolor,brcoloroff=#222222,brcoloron=deckcolor,bordersize=1,shape=square,sysicon,iconsize,textsize=11,textcolor=br_textoff,textcoloron=needle,orientation=horizontal">
         <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
           <pos x="+0" y="+0"/>
           <size width="[WIDTH]" height="[HEIGHT]"/>
@@ -9625,10 +9625,10 @@
           <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="12" color="#777777" align="right" weight="" text="GENRE"/> -->
           <!-- BUTTONS -->
           <panel class="filter_tag_button" x="+5" accent_color="color_genre" tag="#BassHouse" text="#BASS-HOUSE" width="102"/>
-          <panel class="filter_tag_button" x="+110" accent_color="color_genre" tag="#Tech-House" text="#TECH-HOUSE" width="100"/>
-          <panel class="filter_tag_button" x="+198" accent_color="color_genre" tag="#Techno" text="Techno" width="71"/>
-          <panel class="filter_tag_button" x="+272" accent_color="color_genre" tag="#Psy-Trance" text="Psy-Trance" width="93"/>
-          <panel class="filter_tag_button" x="+368" accent_color="color_genre" tag="#Synthwave" width="94" text="Synthwave"/>
+          <panel class="filter_tag_button" x="+108" accent_color="color_genre" tag="#Tech-House" text="#TECH-HOUSE" width="100"/>
+          <panel class="filter_tag_button" x="+210" accent_color="color_genre" tag="#Techno" text="#TECHNO" width="70"/>
+          <panel class="filter_tag_button" x="+282" accent_color="color_genre" tag="#Psy-Trance" text="#PSYTRANCE" width="92"/>
+          <panel class="filter_tag_button" x="+376" accent_color="color_genre" tag="#Synthwave" width="94" text="#SYNTHWAVE"/>
           <!-- COLOR STRIP -->
           <!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_genre" visibility="0.8"/> -->
         </group>
