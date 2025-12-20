@@ -5470,12 +5470,11 @@
         <group visibility="not param_equal `cue_countup 'name'` ''">
           <!-- bg -->
           <visual type="color" source="cue_countup 'color'">
-            <tooltip/>
             <pos x="+0" y="+0"/>
             <size width="50" height="15"/>
           </visual>
           <!-- text -->
-          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
+          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="1" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
             <pos x="+0" y="+0"/>
             <size width="50" height="15"/>
           </button>
@@ -14529,8 +14528,10 @@
       </stack>
     </define>
     <define class="PAD_PAGES_PRO" placeholders="*panelname,*deck">
-      <panel class="pad_page_panel" y="+2" panelname="[PANELNAME]" visibility="leftdeck"/>
-      <panel class="pad_page_panel" y="+2" panelname="[PANELNAME]" visibility="rightdeck"/>
+      <panel class="pad_page_panel" y="+2" deck="1" panelname="[PANELNAME]" visibility="not deck 3 leftdeck"/>
+      <panel class="pad_page_panel" y="+2" deck="2" panelname="[PANELNAME]" visibility="deck 3 leftdeck"/>
+      <panel class="pad_page_panel" y="+2" deck="3" panelname="[PANELNAME]" visibility="not deck 4 rightdeck"/>
+      <panel class="pad_page_panel" y="+2" deck="4" panelname="[PANELNAME]" visibility="deck 4 rightdeck"/>
       <!-- <panel class="efx_rack" deck="1" x="+150" y="+3" panelname="deck[DECK]" visibility="not deck 3 leftdeck"/> -->
       <!-- <panel class="efx_rack" deck="3" x="+150" y="+3" panelname="deck[DECK]" visibility="deck 3 leftdeck"/> -->
       <!-- <panel class="efx_rack" deck="2" x="+5" y="+3" panelname="deck[DECK]" visibility="not deck 4 rightdeck"/> -->
@@ -15050,10 +15051,16 @@
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_right" x="+1920-2-800" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
       <!-- PADS -->
-      <panel class="pad_pages_pro" deck="1" x="+290" y="+176" visibility="not deck 3 leftdeck"/>
-      <panel class="pad_pages_pro" deck="3" x="+290" y="+176" visibility="deck 3 leftdeck"/>
-      <panel class="pad_pages_pro" deck="2" x="+1920-800" y="+176" visibility="not deck 4 rightdeck"/>
-      <panel class="pad_pages_pro" deck="4" x="+1920-800" y="+176" visibility="deck 4 rightdeck"/>
+      <!-- <panel class="pad_pages_pro" deck="1" x="+290" y="+176" visibility="not deck 3 leftdeck"/> -->
+      <!-- <panel class="pad_pages_pro" deck="3" x="+290" y="+176" visibility="deck 3 leftdeck"/> -->
+      <!-- <panel class="pad_pages_pro" deck="2" x="+1920-800" y="+176" visibility="not deck 4 rightdeck"/> -->
+      <!-- <panel class="pad_pages_pro" deck="4" x="+1920-800" y="+176" visibility="deck 4 rightdeck"/> -->
+      <group x="+290" y="+176">
+        <panel class="pad_page_panel" y="+2" deck="1" panelname="[PANELNAME]" visibility="not deck 3 leftdeck"/>
+        <panel class="pad_page_panel" y="+2" deck="2" panelname="[PANELNAME]" visibility="deck 3 leftdeck"/>
+        <panel class="pad_page_panel" y="+2" deck="3" panelname="[PANELNAME]" visibility="not deck 4 rightdeck"/>
+        <panel class="pad_page_panel" y="+2" deck="4" panelname="[PANELNAME]" visibility="deck 4 rightdeck"/>
+      </group>
       <!-- TAGS -->
       <panel class="hashtag_stack" deck="1" x="+2" y="+176" panelname="tags1" visibility="not deck 3 leftdeck"/>
       <panel class="hashtag_stack" deck="3" x="+2" y="+176" panelname="tags3" visibility="deck 3 leftdeck"/>
