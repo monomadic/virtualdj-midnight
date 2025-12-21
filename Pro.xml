@@ -5047,7 +5047,7 @@
       </textzone>
     </define>
     <!-- ?: INFO PANEL -->
-    <define class="infos2">
+    <define class="INFOS2">
       <button class="button_main" action="select" rightclick="file_info" tooltip="" width="404" height="72" coloroff="infos_background" coloron="infos_background" brcoloroff="panel_background" brcoloron="panel_background" bordersize="2"/>
       <!-- <button class="button_main" x="+2+4" y="+6" width="28" height="72-6-6" action="select" coloroff="button_background" textheight="45" textsize="16" textaction="get_deck" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
       <menu class="menu_maindecks" query="select" x="+2+4" y="+72-8-22" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
@@ -5074,13 +5074,13 @@
       <!-- <pos x="+0" y="+2" /> -->
       <!-- <size width="481" height="20"/> -->
       <!-- </visual> -->
-      <visual class="gfx_shape" x="+2" width="480" height="22" coloroff="black" bordercoloroff="red" bordersize="0"/>
+      <visual class="gfx_shape" x="+2" y="-2" width="480" height="22" coloroff="black" bordercoloroff="red" bordersize="0"/>
       <!-- <visual class="gfx_shape" width="482" height="22" coloroff="black" bordercoloroff="transparent" bordersize="0"/> -->
-      <textzone tooltip="">
-        <pos x="+10" y="+2"/>
-        <size width="404-2-4-28-6-2-4" height="20"/>
-        <text fontsize="12" weight="" color="white" align="left" scroll="yes" action="get_loaded_song 'comment'" localize="true" important="true"/>
-      </textzone>
+      <!-- <textzone tooltip=""> -->
+      <!-- <pos x="+10" y="+2"/> -->
+      <!-- <size width="404-2-4-28-6-2-4" height="20"/> -->
+      <!-- <text fontsize="12" weight="" color="white" align="left" scroll="yes" action="get_loaded_song 'comment'" localize="true" important="true"/> -->
+      <!-- </textzone> -->
       <!-- HR -->
       <visual class="gfx_shape" coloroff="panel_background">
         <pos x="+0" y="+20"/>
@@ -9109,28 +9109,28 @@
       <!-- <text fontsize="13" weight="bold" color="needle" align="center" action="get_battery" localize="true" important="true"/> -->
       <!-- </textzone> -->
       <!-- </group> -->
-      <group x="1920-50-440" y="8">
+      <group x="780" y="8">
         <!-- REFRESH BUTTON -->
         <button tooltip="RELOAD SKIN" action="load_skin">
           <size width="42" height="27"/>
-          <off color="#000000" border="#222222" border_size="1"/>
-          <over color="#000000" border="#222222" border_size="1"/>
+          <off color="#111111"/>
+          <over color="#222222"/>
           <icon sysicon="sampler_loop" width="22" height="22" coloroff="#CCCCCC" colorover="#FFFFFF"/>
         </button>
         <!-- SETTINGS BUTTON -->
-        <button action="settings" x="+46*2">
+        <button action="settings" x="+46*1">
           <size width="42" height="27"/>
-          <off color="#000000" border="#222222" border_size="1"/>
-          <over color="#000000" border="#222222" border_size="1"/>
+          <off color="#111111"/>
+          <over color="#222222"/>
           <icon sysicon="settings" width="25" height="25" coloroff="#CCCCCC" colorover="#FFFFFF"/>
         </button>
         <!-- STEM CREATOR BUTTON -->
-        <button action="open_stem_creator" x="+46*1">
-          <size width="42" height="27"/>
-          <icon x="32*0" y="32*2" dx="+7" dy="+5" width="32" height="32" coloroff="#CCCCCC" colorover="#FFFFFF"/>
-          <off color="#000000" border="#222222" border_size="1"/>
-          <over color="#000000" border="#222222" border_size="1"/>
-        </button>
+        <!-- <button action="open_stem_creator" x="+46*1"> -->
+        <!-- <size width="42" height="27"/> -->
+        <!-- <icon x="32*0" y="32*2" dx="+7" dy="+5" width="32" height="32" coloroff="#CCCCCC" colorover="#FFFFFF"/> -->
+        <!-- <off color="#111111"/> -->
+        <!-- <over color="#222222"/> -->
+        <!-- </button> -->
       </group>
       <!-- TOP BAR: SETTINGS MENU -->
       <group name="applicationbuttons_logo" condition="is_mac">
@@ -13804,17 +13804,21 @@
         <!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
         <!-- PRO: SONGPOS LEFT -->
         <!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
-        <songpos class="songpos" x="+5" y="+74" width="475" height="44-4-20" colorPlayed="blue"/>
+        <songpos class="songpos" x="+5" y="+76" width="470" height="12" colorPlayed="blue"/>
         <songpos deck="left" orientation="horizontal" waveform="yes" colorPlayed="black">
-          <pos x="+5" y="+107"/>
-          <size width="475" height="5"/>
+          <pos x="+5" y="+92"/>
+          <size width="473" height="3"/>
+          <wave>
+            <size height="0"/>
+            <pos y="+5"/>
+          </wave>
           <!-- cue marker sprite styling -->
           <cues dy="0" shade="0">
             <!-- widen this to make the cue markers look like bars -->
             <!-- <size width="190" height="20"/> -->
             <!-- <clipmask x="30" y="150"/> -->
-            <size width="210" height="10"/>
-            <clipmask x="30" y="140"/>
+            <size width="200" height="10"/>
+            <clipmask x="27" y="140"/>
             <!-- optionally define up/down/over sprites too -->
           </cues>
         </songpos>
@@ -13947,28 +13951,28 @@
           </button>
         </group>
         <group visibility="loaded">
-          <!-- KEY -->
-          <button class="button_main" action="select &amp; match_key" bordersize="1" query="masterdeck ? true : match_key">
+          <!-- PHRASE -->
+          <button class="button_main" x="+0" action="sync &amp; phrase_sync 32" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0">
             <pos x="+300" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+404" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
-            <off color="#330000" border="#FF0000" radius="3"/>
+            <off color="#111111" border="#333333" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
+            <text fontsize="12" color="#333333" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
           </button>
-          <!-- PHRASE -->
-          <button class="button_main" x="+0" action="sync &amp; phrase_sync 'auto'" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0">
+          <!-- KEY -->
+          <button class="button_main" action="select &amp; match_key" bordersize="1" query="masterdeck ? true : match_key">
             <pos x="+382" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+322" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
+            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
           </button>
           <!-- BEAT-->
-          <button class="button_main" action="select &amp; match_key" bordersize="1" query="is_sync">
+          <button class="button_main" action="select &amp; sync" bordersize="1" query="is_sync">
             <pos x="+464" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+240" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
@@ -14082,17 +14086,35 @@
     <!-- PRO: RIGHT DECK -->
     <define class="AREA_DECK_RIGHT" placeholders="deck,*panelname">
       <deck deck="[DECK]">
-        <visual class="gfx_shape" width="800" height="216" coloroff="panel_background"/>
+        <visual width="800" height="395">
+          <off shape="square" color="panel_background" radius="6"/>
+        </visual>
         <!-- cover, title etc -->
         <panel class="infos" x="+800-484" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <panel class="infos2" x="+800-404" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
         <panel class="track_info_action_zone" x="+800-484" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- <panel class="times_bpm_key2" x="+800-404" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
-        <visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
         <!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
-        <!-- PRO: RIGHT DECK: SONGPOS -->
+        <!-- PRO: SONGPOS RIGHT -->
         <!-- <songpos class="songpos" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8" colorPlayed="blue"/> -->
-        <songpos class="songpos" x="+800-482" y="+75" width="480" height="44-4-24" colorPlayed="blue"/>
+        <songpos class="songpos" x="+800-470" y="+76" width="470" height="12" colorPlayed="blue"/>
+        <songpos deck="right" orientation="horizontal" colorHigh="black" colorMed="black" colorBass="black" colorVocal="red" colorInstru="red" colorBeat="#000000" colorNoBeat="#000000">
+          <pos x="+800-470" y="+96"/>
+          <size width="473" height="3"/>
+          <wave>
+            <size height="0"/>
+            <pos y="+5"/>
+          </wave>
+          <!-- cue marker sprite styling -->
+          <cues dy="0" shade="0">
+            <!-- widen this to make the cue markers look like bars -->
+            <!-- <size width="190" height="20"/> -->
+            <!-- <clipmask x="30" y="150"/> -->
+            <size width="200" height="10"/>
+            <clipmask x="27" y="140"/>
+            <!-- optionally define up/down/over sprites too -->
+          </cues>
+        </songpos>
         <!-- <panel class="transport" x="+800-484-60-7" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/> -->
         <!-- <panel class="transport" x="+800-484-60-7+80" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
         <!-- BPM SLIDER -->
