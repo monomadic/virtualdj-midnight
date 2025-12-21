@@ -1328,8 +1328,8 @@
         <text fontsize="[TEXTSIZE]" height="[TEXTHEIGHT]" weight="bold" color="[TEXTCOLOR]" colorselected="[TEXTCOLORON]" colordown="[TEXTCOLORON]" align="center" orientation="[ORIENTATION]" action="custom_button_name [SOURCE]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
         <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/>
       </define>
-      <!-- PRO: PANEL: HOTCUES -->
-      <define class="hcue_button" placeholders="*source">
+      <!-- CLASS: HOTCUE BUTTON -->
+      <define class="HCUE_BUTTON" placeholders="*source">
         <button class="button_main" x="+4" width="115" height="22" action="hot_cue [SOURCE]" rightclick="cue_name [SOURCE]" query="on/off" align="left" textdx="10" textaction="cue_display [SOURCE] &amp; param_uppercase" coloroff="button_background3" coloron="button_background3" brcoloroff="button_background3" brcoloron="button_background3" textcolor="textoff2" textcoloron="needle"/>
         <visual type="color" source="cue_color [SOURCE]" visibility="cue_color [SOURCE]">
           <tooltip/>
@@ -1337,7 +1337,7 @@
           <size width="3" height="22"/>
         </visual>
       </define>
-      <define class="hcue_button_compact" placeholders="*source">
+      <define class="HCUE_BUTTON_COMPACT" placeholders="*source">
         <button class="button_main" width="24" height="24" action="hot_cue [SOURCE]" rightclick="cue_name [SOURCE]" coloron="button_background" brcoloron="button_background"/>
         <visual type="color" source="cue_color [SOURCE]" visibility="cue_color [SOURCE] ? constant 0.28">
           <tooltip/>
@@ -1642,7 +1642,7 @@
           <off color="needle" shape="square"/>
         </visual>
       </define>
-      <!-- PRO: PAD BUTTON TYPE 2 (thin) -->
+      <!-- PRO: PAD BUTTON -->
       <define class="PADBUTTON2" placeholders="*source" condition="var_not_equal '@$hauntingcolorscheme' 4">
         <visual>
           <size width="124" height="38"/>
@@ -1652,39 +1652,39 @@
         <visual type="color" source="#FFFFFF" visibility="pad [SOURCE] ? constant 1.0 : constant 0.0">
           <size width="124" height="38"/>
         </visual>
-        <!-- button -->
-        <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-          <size width="124" height="38"/>
-          <up color="#000000" border="#111111" border_size="1" shape="square"/>
-          <selected color="#000000" border="#333333" border_size="1" shape="square"/>
-        </button>
         <!-- PUSHED -->
-        <button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="pad_pushed [SOURCE]">
-          <size width="124" height="38"/>
+        <!-- <visual type="color" source="pad_button_color [SOURCE]" visibility="pad_pushed [SOURCE]"> -->
+        <!-- <size width="124" height="38"/> -->
+        <!-- </visual> -->
+        <button x="-1" y="-1" action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="pad_pushed [SOURCE]">
+          <size width="126" height="40"/>
           <up color="button_background2" border="button_background2" border_size="1" shape="square"/>
-          <selected color="button_background2" border="needle" border_size="1" shape="square"/>
+          <selected color="button_background2" border="#999999" border_size="1" shape="square" radius="3"/>
         </button>
-        <!-- TEXT -->
+        <!-- main button-->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
           <size width="124" height="38"/>
+          <!-- <over color="button_background2" border="#444444" border_size="1" shape="square"/> -->
           <text dx="+24" width="115-10-10" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="left"/>
         </button>
+        <!-- pushed color chip -->
+        <visual type="color" source="pad_button_color [SOURCE]" visibility="pad_pushed [SOURCE]">
+          <tooltip/>
+          <pos x="+10" y="+12"/>
+          <size width="10" height="38-12-12"/>
+          <off color="pad_button_color [SOURCE]" shape="square"/>
+        </visual>
+        <!-- color chip -->
         <visual type="color" source="pad_button_color [SOURCE]">
           <tooltip/>
           <pos x="+12" y="+12"/>
-          <size width="3" height="38-12-12"/>
+          <size width="5" height="38-12-12"/>
         </visual>
         <visual novisibility="pad_button_color [SOURCE]">
           <tooltip/>
           <pos x="+10" y="+10"/>
           <size width="4" height="38-10-10"/>
           <off color="panel_background" shape="square"/>
-        </visual>
-        <visual visibility="pad_pushed [SOURCE]">
-          <tooltip/>
-          <pos x="+12" y="+12"/>
-          <size width="3" height="38-12-12"/>
-          <off color="needle" shape="square"/>
         </visual>
       </define>
       <define class="padbutton2" placeholders="*source" condition="var_equal '@$hauntingcolorscheme' 4">
@@ -5558,7 +5558,7 @@
           <!-- SYNC TEXT BEAT DESYNC WARNING -->
           <button class="button_main" action="phrase_sync 32" width="50" height="15" x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="BEAT" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
           <!-- MASTER BUTTON -->
-          <button class="button_main" action="key_match_button" width="110" height="18" x="+16+6" y="+69" coloroff="black" coloron="black" bordersize="1" brcoloroff="orange" brcoloron="orange" radius="1" textsize="12" textcolor="orange" textcoloron="orange" textaction="get_text 'MASTER'" visibility="loaded ? masterdeck"/>
+          <button class="button_main" action="key_match_button" width="110" height="18" x="+16+6" y="+69" coloroff="black" coloron="black" bordersize="1" brcoloroff="orange" brcoloron="orange" radius="1" textsize="12" textcolor="orange" textcoloron="orange" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" visibility="loaded ? masterdeck"/>
           <!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/> -->
           <!-- JOGWHEEL: PITCH RANGE -->
           <!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/> -->
@@ -5588,11 +5588,11 @@
           <!-- <visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23"> -->
           <!-- <off shape="circle" color="#111111" border="transparent" border_size="0"/> -->
           <!-- </visual> -->
-          <button action="masterdeck" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22">
+          <button action="unload" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22">
             <off color="transparent" border_size="0"/>
             <down color="transparent" border_size="0"/>
             <on color="#333333" border_size="0"/>
-            <text fontsize="10" weight="bold" color="`masterdeck ? color 'orange' : color '#444444'`" align="center" text="M"/>
+            <text fontsize="10" weight="bold" textcoloroff="#AAAAAA" textcolorover="white" align="center" text="E"/>
           </button>
         </group>
       </group>
@@ -9662,7 +9662,7 @@
           <textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
           <!-- BUTTONS -->
           <group x="+40" y="+3">
-            <panel class="filter_tag_button" x="+0" accent_color="color_mix" tag="#Acapella" text="Acapella" width="78"/>
+            <panel class="filter_tag_button" x="+0" accent_color="color_mix" tag="#Acapella" text="#ACAPELLA" width="78"/>
             <panel class="filter_tag_button" x="+80" accent_color="color_mix" tag="#BackingTrack" text="Backing Track" width="106"/>
             <panel class="filter_tag_button" x="+188" accent_color="color_mix" tag="#DJMix" text="DJ Mix" width="68"/>
             <panel class="filter_tag_button" x="+258" accent_color="color_mix" tag="#Mixed" text="Mixed" width="65"/>
@@ -13813,8 +13813,8 @@
             <!-- widen this to make the cue markers look like bars -->
             <!-- <size width="190" height="20"/> -->
             <!-- <clipmask x="30" y="150"/> -->
-            <size width="50" height="10"/>
-            <clipmask x="100" y="140"/>
+            <size width="210" height="10"/>
+            <clipmask x="30" y="140"/>
             <!-- optionally define up/down/over sprites too -->
           </cues>
         </songpos>
@@ -13834,7 +13834,7 @@
         <!-- EXPERIMENT -->
         <panel class="pitch_zone" x="+804-320" y="+10"/>
         <!-- JOG -->
-        <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2-30" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <group x="+800-50" y="+14">
           <textzone>
             <pos x="+0" y="+135"/>
@@ -13948,34 +13948,34 @@
         </group>
         <group visibility="loaded">
           <!-- KEY -->
-          <button class="button_main" x="+0" textsize="11" text="KEY" action="select &amp; match_key" textcoloron="deckcolor" coloroff="#330000" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : match_key">
+          <button class="button_main" action="select &amp; match_key" bordersize="1" query="masterdeck ? true : match_key">
             <pos x="+300" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+404" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
-            <off color="#000000" border="#444444" radius="3"/>
+            <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#555555" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
+            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
           </button>
           <!-- PHRASE -->
-          <button class="button_main" x="+0" textsize="11" text="KEY" action="sync &amp; phrase_sync 'auto'" textcoloron="deckcolor" coloroff="#330000" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0">
+          <button class="button_main" x="+0" action="sync &amp; phrase_sync 'auto'" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0">
             <pos x="+382" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+322" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="red" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
+            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
           </button>
           <!-- BEAT-->
-          <button class="button_main" x="+0" textsize="11" text="KEY" action="select &amp; match_key" textcoloron="deckcolor" coloroff="#330000" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="is_sync">
+          <button class="button_main" action="select &amp; match_key" bordersize="1" query="is_sync">
             <pos x="+464" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+240" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
-            <off color="#000000" border="#444444" radius="3"/>
+            <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#555555" colorselected="deckcolor" colordown="deckcolor" align="center" text="BEAT"/>
+            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="BEAT"/>
           </button>
         </group>
         <!-- <group visibility="loaded"> -->
@@ -14099,7 +14099,7 @@
         <!-- PRO: RIGHT DECK: VU SLIDER -->
         <panel class="pitch_zone" x="+257" y="+10"/>
         <!-- JOG -->
-        <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2-30" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <panel class="jogwheel" x="+2+8+58+14" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- LEVEL -->
         <textzone>
           <pos x="+0" y="+150"/>
