@@ -41,6 +41,7 @@
     <define color="color_dropzone" value="white"/>
     <define color="color_masterdeck" value="orange"/>
     <define color="color_fx" value="yellow"/>
+    <define color="color_fx" value="yellow"/>
     <!-- Common colors for all decks -->
     <define color="color_genre" value="#60FF8E"/>
     <define color="color_mood" value="#CE42FF"/>
@@ -2793,15 +2794,15 @@
     </group>
     <group name="others">
       <!-- .songpos -->
-      <define class="songpos" colorPlayed="colorplayed" colorBass="colorbass" colorMed="colormed" colorHigh="colorhigh" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" placeholders="width,height" condition="NOT var_equal '@$hauntingcolorshapescolors' 0">
+      <define class="SONGPOS" colorPlayed="colorplayed" colorBass="colorbass" colorMed="colormed" colorHigh="colorhigh" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" placeholders="width,height" condition="NOT var_equal '@$hauntingcolorshapescolors' 0">
         <size width="[WIDTH]" height="[HEIGHT]"/>
         <cues shade="0.0">
-          <size width="2" height="26"/>
+          <size width="3" height="26"/>
           <clipmask x="21" y="-1"/>
         </cues>
         <loops dy="0" shade="0.0">
-          <size width="11" height="26"/>
-          <clipmask x="0" y="0"/>
+          <size width="5" height="26"/>
+          <clipmask x="21" y="-1"/>
         </loops>
       </define>
       <define class="haunting_browser_basic" showzoom="yes">
@@ -5476,7 +5477,7 @@
             <size width="50" height="15"/>
           </button>
         </group>
-        <!-- outer progress border -->
+        <!-- OUTER PROGRESS BORDER -->
         <!-- <visual source="song_pos 'show warning'" type="circle" visibility="loaded"> -->
         <!-- <tooltip/> -->
         <!-- <pos x="+0" y="+0"/> -->
@@ -5496,7 +5497,6 @@
           <size width="[JOGSIZE]-20" height="[JOGSIZE]-20"/>
           <off shape="circle" color="jogwheelbackground2"/>
         </visual>
-        <!-- SONG ENDING WARNING -->
         <!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
         <!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
         <!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
@@ -9594,9 +9594,9 @@
         <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
           <pos x="+0" y="+0"/>
           <size width="[WIDTH]" height="[HEIGHT]"/>
-          <off color="#000000" border="#666666" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
-          <over color="#000000" border="#888888" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
-          <down color="black" border="transparent" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <off color="#111111" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <over color="transparent" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <down color="transparent" border="#333333" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
           <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
           <text weight="normal" action="param_equal '[TEXT]' '' ? get_text '[TAG]' : get_text '[TEXT]'" dx="-2" dy="-1" fontsize="[TEXTSIZE]" color="#AAAAAA" colorover="#FFFFFF" colorselected="[ACCENT_COLOR]" colordown="[TEXTCOLOR]" align="center" orientation="[ORIENTATION]" localize="true" important="[IMPORTANT]"/>
           <!-- <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/> -->
@@ -9615,9 +9615,9 @@
       <!-- <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/> -->
       <!-- </button> -->
       <!-- <visual class="gfx_shape" x="+3" y="+2" width="[WIDTH]-6" height="1" coloroff="#88444444" visibility="quick_filter 'User 1 contains [TAG]'"/> -->
-      <!-- <visual x="+7" y="+8" width="5" height="15"> -->
-      <!-- <off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/> -->
-      <!-- </visual> -->
+      <visual x="+7" y="+8" width="5" height="15">
+        <off shape="square" color="[ACCENT_COLOR]" border_size="1" border="#222222"/>
+      </visual>
       <!-- </define> -->
       <!-- PANEL: CUSTOM TAGS -->
       <group name="browser_tools" visibility="var_equal '@$h_utility_barmode' 0">
@@ -9630,68 +9630,78 @@
           <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="12" color="#777777" align="right" weight="" text="GENRE"/> -->
           <!-- BUTTONS -->
           <panel class="filter_tag_button" x="+5" accent_color="color_genre" tag="#BassHouse" text="#BASS-HOUSE" width="92"/>
-          <panel class="filter_tag_button" x="+100" accent_color="color_genre" tag="#Tech-House" text="#TECH-HOUSE" width="100"/>
-          <panel class="filter_tag_button" x="+210" accent_color="color_genre" tag="#Techno" text="#TECHNO" width="70"/>
-          <panel class="filter_tag_button" x="+282" accent_color="color_genre" tag="#Psy-Trance" text="#PSYTRANCE" width="92"/>
-          <panel class="filter_tag_button" x="+376" accent_color="color_genre" tag="#Synthwave" width="94" text="#SYNTHWAVE"/>
+          <panel class="filter_tag_button" x="+100" accent_color="color_genre" tag="#Tech-House" text="#TECH-HOUSE" width="90"/>
+          <panel class="filter_tag_button" x="+192" accent_color="color_genre" tag="#Techno" text="#TECHNO" width="64"/>
+          <panel class="filter_tag_button" x="+258" accent_color="color_genre" tag="#Psy-Trance" text="#PSYTRANCE" width="84"/>
+          <panel class="filter_tag_button" x="+432" accent_color="color_genre" tag="#Rap" width="40" text="#RAP"/>
+          <panel class="filter_tag_button" x="+344" accent_color="color_genre" tag="#Synthwave" width="86" text="#SYNTHWAVE"/>
+          <panel class="filter_tag_button" x="+474" accent_color="color_genre" tag="#Melodic" width="70" text="#MELODIC"/>
           <!-- COLOR STRIP -->
           <!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_genre" visibility="0.8"/> -->
         </group>
-        <group name="mix_tags" x="+500">
-          <!-- COLOR STRIP -->
-          <!-- <visual class="gfx_shape" x="+70" y="+34" width="349-70+100-6" height="5" coloroff="color_mix" visibility="1.0"/> -->
-          <!-- <visual class="gfx_shape" x="+0" y="+10" width="60" height="20" coloroff="#000000" radius="6" visibility="0.5" /> -->
-          <!-- BACKGROUND -->
-          <!-- <visual x="+0" y="+3" width="410" height="32" visibility="1.0"> -->
-          <!-- <off shape="square" color="#000000" border_size="1" border="#222222" radius="6"/> -->
+        <!-- MIX -->
+        <group name="mix_tags" x="+600">
+          <!-- bg -->
+          <!-- <visual x="+0" y="+0" width="335" height="38" visibility="0.2"> -->
+          <!-- <off shape="square" color="color_mix" border_size="1" border="color_mix" radius="0"/> -->
           <!-- </visual> -->
-          <!-- LABEL -->
-          <textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="10" color="color_mix" align="center" weight="" text="MIX"/>
-          <!-- BUTTONS -->
-          <group x="+40" y="+10">
-            <panel class="filter_tag_button" x="+0" accent_color="color_mix" tag="#Acapella" text="#ACAPELLA" width="78"/>
-            <panel class="filter_tag_button" x="+80" accent_color="color_mix" tag="#BackingTrack" text="#BACKING-TRACK" width="106"/>
-            <panel class="filter_tag_button" x="+188" accent_color="color_mix" tag="#DJMix" text="#DJ-MIX" width="68"/>
-            <panel class="filter_tag_button" x="+258" accent_color="color_mix" tag="#Mixed" text="#MIXED" width="65"/>
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="335" height="2" coloroff="color_mix" visibility="0.5"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+34" width="335" height="2" coloroff="color_mix" visibility="0.5"/> -->
+          <!-- label -->
+          <!-- <visual x="+0" y="+0" width="335" height="38" visibility="0.2"> -->
+          <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="12" color="color_mix" align="center" weight="bold" text="MIX"/>
+          <!-- buttons -->
+          <group x="+30" y="+9">
+            <panel class="filter_tag_button" x="+0" accent_color="color_mix" tag="#Acapella" text="#ACAPELLA" width="76"/>
+            <panel class="filter_tag_button" x="+78" accent_color="color_mix" tag="#BackingTrack" text="#BACKING-TRACK" width="108"/>
+            <panel class="filter_tag_button" x="+188" accent_color="color_mix" tag="#DJMix" text="#DJ-MIX" width="58"/>
+            <panel class="filter_tag_button" x="+248" accent_color="color_mix" tag="#Mixed" text="#MIXED" width="56"/>
           </group>
-          <!-- HIGHLIGHT -->
-          <!-- <visual class="gfx_shape" x="+70" y="+36" width="349-70+100-6" height="1" coloroff="#333333" visibility="0.8"/> -->
         </group>
-        <group name="mix_timing" x="+865">
-          <visual class="gfx_shape" x="+67" y="+0" width="129" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
-          <!-- LABEL -->
-          <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_timing" align="center" weight="" text="TIMING"/> -->
-          <textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="40" fontsize="8" color="color_timing" align="center" weight="" text="TIME"/>
+        <!-- TIMING -->
+        <group name="mix_timing" x="+950">
+          <!-- bg -->
+          <!-- <visual x="+0" y="+0" width="+26+66+15+2+50+2+58" height="38" visibility="0.2"> -->
+          <!-- <off shape="square" color="color_timing" border_size="1" border="color_timing" radius="0"/> -->
+          <!-- </visual> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_timing" visibility="0.5"/> -->
+          <!-- label -->
+          <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="9" color="color_timing" align="center" weight="bold" text="TIME"/>
           <!-- BUTTONS -->
-          <group x="+40" y="+10">
-            <panel class="filter_tag_button" x="+0" accent_color="color_timing" tag="#OPENER" width="70" text="Opener"/>
-            <panel class="filter_tag_button" x="+0+70+2" accent_color="color_timing" tag="#PEAK" text="Peak" width="58"/>
+          <group x="+30" y="+9">
+            <panel class="filter_tag_button" x="+0" accent_color="color_timing" tag="#Opener" text="#OPENER" width="66"/>
+            <panel class="filter_tag_button" x="+0+66+2" accent_color="color_timing" tag="#Peak" text="#PEAK" width="50"/>
+            <panel class="filter_tag_button" x="+0+66+2+50+2" accent_color="color_timing" tag="#Closer" text="#CLOSER" width="58"/>
           </group>
-          <!-- COLOR STRIP -->
-          <!-- <visual class="gfx_shape" x="+70" y="+35" width="123" height="2" coloroff="color_timing" visibility="0.8"/> -->
         </group>
-        <group name="mix_mood" x="+1030">
-          <visual class="gfx_shape" x="+67" y="+0" width="152" height="40" coloroff="#080808" radius="6" visibility="0.0"/>
-          <!-- LABEL -->
-          <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="10" color="color_mood" align="right" weight="" text="MOOD"/> -->
-          <textzone class="text" x="+0" y="+0" orientation="vertical" width="60" height="38" fontsize="8" color="color_mood" align="center" weight="" text="MOOD"/>
-          <!-- BUTTONS -->
-          <group x="+40" y="+10">
-            <panel class="filter_tag_button" x="+0" accent_color="color_mood" tag="#Club" width="56" text="#CLUB"/>
-            <panel class="filter_tag_button" x="+0+56+3" accent_color="color_mood" tag="#FredAgain" width="90" text="#FRED-AGAIN"/>
+        <!-- MOOD -->
+        <group name="mix_mood" x="+1180">
+          <!-- <visual x="+0" y="+0" width="+26+66+15+2+50+2+58" height="38" visibility="0.2"> -->
+          <!-- <off shape="square" color="color_mood" border_size="1" border="color_mood" radius="0"/> -->
+          <!-- </visual> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_mood" visibility="0.5"/> -->
+          <!-- label -->
+          <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="8" color="color_mood" align="center" weight="bold" text="MOOD"/>
+          <!-- buttons -->
+          <group x="+30" y="+9">
+            <panel class="filter_tag_button" x="+0" accent_color="color_mood" tag="#Club" width="50" text="#CLUB"/>
+            <panel class="filter_tag_button" x="+0+50+2" accent_color="color_mood" tag="#FredAgain" width="84" text="#FRED-AGAIN"/>
           </group>
-          <!-- COLOR STRIP -->
-          <!-- <visual class="gfx_shape" x="+70" y="+35" width="144" height="2" coloroff="color_mood" visibility="0.8"/> -->
         </group>
-        <group name="color/rating/relayplay/automix" x="+1000" y="+9">
+        <group name="color/rating/relayplay/automix" x="+1000" y="+2">
           <!-- <button class="button_main" x="+494-32+122" y="-2" width="105" height="24" action="automix" textsize="10" textcolor="br_textoff" text="AUTOMIX" coloroff="br_background" coloron="br_automix2" bordersize="0" query="automix ? blink 1200ms"/> -->
           <!-- <button class="button_main" x="+494-32+122+105+2" y="-2" width="55" height="24" action="automix_skip" textsize="10" textcolor="br_textoff" text="NEXT" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
           <!-- <button class="button_main" x="+494-32+122+105+2+55+2" y="-2" width="65" height="24" action="switch_sidelist_playlist" textsize="10" textcolor="br_textoff" text="SIDELIST" coloroff="br_background" coloron="br_focus" bordersize="0"/> -->
-          <button class="button_main" x="+494-32+122+105+2+55+2+85" y="-2" width="80" height="24" action="show_splitpanel 'sideview' toggle &amp; sideview 'remixes'" textsize="10" textcolor="br_textoff" text="SIDEPANEL" coloroff="#111111" coloron="#660099" bordersize="0"/>
           <!-- <visual class="gfx_shape" x="+494-32+122" y="-2+24-2" width="105" height="2" coloroff="br_automix2"/> -->
           <!-- <visual class="gfx_shape" x="+494-32+122+105+2" y="-2+24-2" width="55" height="2" coloroff="br_focus"/> -->
           <!-- <visual class="gfx_shape" x="+494-32+122+105+2+55+2" y="-2+24-2" width="65" height="2" coloroff="br_focus"/> -->
-          <visual class="gfx_shape" x="+494-32+122+105+2+55+2+85" y="-2-2" width="80" height="2" coloroff="#660099"/>
+          <group y="+2">
+            <visual class="gfx_shape" x="+494-32+122+105+2+55+2+84" y="+0" width="83" height="30" coloroff="#660099" radius="3"/>
+            <button class="button_main" x="+494-32+122+105+2+55+2+85" y="+1" width="81" height="28" action="show_splitpanel 'sideview' toggle &amp; sideview 'remixes'" textsize="10" textcolor="br_textoff" text="SIDEPANEL" brcoloroff="#222222" coloroff="#111111" coloron="#660099" colorover="#222222" bordersize="1" radius="3"/>
+          </group>
         </group>
       </group>
       <group name="custom_buttons" visibility="var_equal '@$h_utility_barmode' 1">
@@ -9814,24 +9824,38 @@
             <define class="HORIZONTAL_MAIN_WAVEFORM" placeholders="*deck,*height">
               <deck deck="[DECK]">
                 <group>
-                  <!-- <pos y="+40" condition="var_equal [DECK] 1"/> -->
-                  <!-- grid border -->
-                  <visual x="+[HEIGHT]" y="+20" width="1920-170" height="[HEIGHT]-40" visibility="leftdeck">
+                  <!-- grid border: left -->
+                  <visual x="+[HEIGHT]" y="+26" width="1920-170" height="[HEIGHT]-40" visibility="leftdeck">
                     <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
                   </visual>
-                  <visual x="+[HEIGHT]" y="+13" width="1920-170" height="[HEIGHT]-40" visibility="rightdeck">
+                  <!-- grid border: right -->
+                  <visual x="+[HEIGHT]" y="+16" width="1920-170" height="[HEIGHT]-40" visibility="rightdeck">
                     <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
                   </visual>
                   <!-- WAVE -->
                   <!-- LEFT: cue markers above -->
+                  <group visibility="leftdeck">
+                    <scratchwave orientation="horizontal" color="black" color2="black" colorVocal="black" colorInstru="black" colorBeat="black" colornoBeat="transparent" colornoInstru="transparent" colornovocal="colorNoVocal" visibility="1.0">
+                      <pos x="+7" y="+28"/>
+                      <size width="1920-20-44" height="[HEIGHT]-32-12"/>
+                      <grid height="0" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" shapepos="-14"/>
+                      <gridlines width="0" color="gridlines" transparency="0.3"/>
+                      <cue y="-20" height="44">
+                        <mask x="0" y="100" width="240" height="16"/>
+                      </cue>
+                    </scratchwave>
+                    <visual x="+7" y="+8" width="1920" height="20">
+                      <off shape="square" color="#DD000000"/>
+                    </visual>
+                  </group>
                   <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" visibility="leftdeck">
                     <pos x="+13" y="+28"/>
                     <size width="1920-20-44" height="[HEIGHT]-32-12"/>
                     <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" shapepos="-14"/>
                     <gridlines width="1" color="gridlines" transparency="0.3"/>
-                    <cue y="-18" height="14">
-                      <mask x="123" y="124" width="5" height="14"/>
-                      <text dx="+8" dy="-2" fontsize="14" important="true"/>
+                    <cue y="-18" height="44">
+                      <mask x="123" y="100" width="5" height="13"/>
+                      <text dx="+8" dy="-1" fontsize="12" important="true"/>
                     </cue>
                     <overlay>
                       <pos x="941" y="+0"/>
@@ -9841,13 +9865,13 @@
                   </scratchwave>
                   <!-- RIGHT: cue markers below -->
                   <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" visibility="rightdeck">
-                    <pos x="+13" y="+14"/>
+                    <pos x="+13" y="+18"/>
                     <size width="1920-20-44" height="[HEIGHT]-32-12"/>
                     <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" shapepos="-14"/>
                     <gridlines width="1" color="gridlines" transparency="0.3"/>
                     <!-- y = below waveform: [HEIGHT] here is the scratchwave's own height in this context -->
                     <cue y="[HEIGHT]*2+24" height="14">
-                      <mask x="123" y="124" width="5" height="14"/>
+                      <mask x="123" y="104" width="5" height="14"/>
                       <text dx="+8" dy="-2" fontsize="14" important="true"/>
                     </cue>
                     <overlay>
@@ -9902,7 +9926,7 @@
                 <!-- <visual x="+1920-50-20" y="+2" width="24" height="[HEIGHT]-4" visibility="masterdeck"> -->
                 <!-- <off shape="square" color="color_masterdeck" border_size="0" border="color_masterdeck" radius="10"/> -->
                 <!-- </visual> -->
-                <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/>
+                <!-- <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/> -->
                 <!-- PRO: WAVEFORM: BORDER -->
                 <visual source="select" x="-2" y="+0" visibility="var_equal '@$dd_bordermode' 1">
                   <size width="1920-31" height="[HEIGHT]"/>
@@ -9936,6 +9960,7 @@
                     <on shape="square" color="transparent" border="#000000" border_size="1"/>
                     <icon dx="-4" sysicon="play" width="[HEIGHT]*0.8" height="[HEIGHT]*0.8" coloroff="transparent" coloron="#55FFFFFF" colorover="#FFFFFFFF" condition="loaded &amp; playing"/>
                   </button>
+                  <button orientation="vertical" class="button_main" x="+0" y="+0" width="25" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" bordersize="2" textsize="13" text="MASTER" visibility="masterdeck"/>
                 </group>
                 <!-- TRACK INFO -->
                 <!-- <group x="1920-[WAVEFORMHEIGHT]" y="+2" visibility="rightdeck"> -->
@@ -11099,7 +11124,7 @@
           <panel class="beat_counter" deck="4" x="1436-338-40" y="+106+2+[WAVEFORMHEIGHT]/2-39-2" visibility="var_equal '@$hauntingbarcounter' 1 ? setting 'waveformCenter' 'left'"/>
         </panel>
       </group>
-      <!-- WAVEFORM OPTIONS / WAVEFORM CONTROLS -->
+      <!-- WAVEFORM SETTINGS / WAVEFORM CONTROLS -->
       <panel name="wave_options">
         <!-- ZOOM SLIDER -->
         <!-- <slider action="zoom & zoom_scratch" dblclick="zoom 28% & zoom_scratch 28%" orientation="vertical" frommiddle="false" visibility="0.8"> -->
@@ -11111,11 +11136,11 @@
         <!-- </slider> -->
         <!-- WAVEFORM SIZE UP DOWN -->
         <!-- bg -->
-        <visual x="+1920-34" y="+0" width="32" height="258">
-          <off shape="square" color="#000000" border_size="1" border="transparent" radius="0"/>
+        <visual x="+1920-34" y="+1" width="32" height="[WAVEFORMHEIGHT]">
+          <off shape="square" color="#000000" border_size="0" border="#333333" radius="6"/>
         </visual>
-        <button class="button_main" x="+1920-26-5" y="+10" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloroff="#000000" textcoloron="needle" sysicon="minus" iconsize="20"/>
-        <button class="button_main" x="+1920-26-5" y="+10+29" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloroff="#000000" textcoloron="needle" sysicon="plus" iconsize="20"/>
+        <button class="button_main" x="+1920-26-5" y="+10" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' -14 &amp; load_skin" coloroff="#111111" colorover="#222222" textcoloron="needle" sysicon="minus" iconsize="20"/>
+        <button class="button_main" x="+1920-26-5" y="+10+29" width="26" height="26" query="on/off" action="cycle '@$infntywavesize' +14 &amp; load_skin" coloroff="#111111" colorover="#222222" textcoloron="needle" sysicon="plus" iconsize="20"/>
         <menu tooltip="WAVEFORM OPTIONS">
           <pos x="+1920-26-5" y="+[WAVEFORMHEIGHT]-37"/>
           <size width="26" height="26"/>
@@ -13796,6 +13821,21 @@
       <panel class="waveform" x="+2" waveformheight="141" condition="var_equal '@$infntywavesize' 1"/>
       <panel class="waveform" x="+2" waveformheight="121" condition="var_equal '@$infntywavesize' 0"/>
     </define>
+    <!-- CLASS: CUEMAP -->
+    <define class="CUEMAP" placeholders="*deck,width=470,height=2" orientation="horizontal" waveform="yes" colorPlayed="black">
+      <size width="[WIDTH]" height="[HEIGHT]"/>
+      <wave>
+        <size height="0"/>
+        <pos y="+5"/>
+      </wave>
+      <!-- cue marker sprite styling -->
+      <cues dy="0" shade="0">
+        <!-- widen this to make the cue markers look like bars -->
+        <size width="253" height="10"/>
+        <clipmask x="0" y="100"/>
+        <!-- optionally define up/down/over sprites too -->
+      </cues>
+    </define>
     <!-- PRO: LEFT DECK -->
     <define class="AREA_DECK_LEFT" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
@@ -13808,42 +13848,11 @@
         <panel class="track_info_action_zone" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <panel class="times_bpm_key2" y="+72-2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
         <group>
-          <visual class="gfx_shape" x="+5" y="+76" width="470" height="12" coloroff="panel_background"/>
-          <!-- <visual class="gfx_shape" y="+216-44" width="800" height="44" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/> -->
+          <visual class="gfx_shape" x="+0" y="+76" width="480" height="21" coloroff="black"/>
           <!-- PRO: SONGPOS LEFT -->
-          <songpos class="songpos" x="+5" y="+76" width="470" height="12" colorPlayed="blue"/>
-          <songpos deck="left" orientation="horizontal" waveform="yes" colorPlayed="black">
-            <pos x="+5" y="+92"/>
-            <size width="473" height="3"/>
-            <wave>
-              <size height="0"/>
-              <pos y="+5"/>
-            </wave>
-            <!-- cue marker sprite styling -->
-            <cues dy="0" shade="0">
-              <!-- widen this to make the cue markers look like bars -->
-              <!-- <size width="190" height="20"/> -->
-              <!-- <clipmask x="30" y="150"/> -->
-              <size width="200" height="10"/>
-              <clipmask x="27" y="140"/>
-              <!-- optionally define up/down/over sprites too -->
-            </cues>
-          </songpos>
+          <songpos class="songpos" x="+5" y="+78" width="470" height="12" colorPlayed="white"/>
+          <songpos class="cuemap" x="+5" y="+92"/>
         </group>
-        <!-- EXPERIMENT -->
-        <!-- <visual source="cue_pos 1" type="linear" orientation="horizontal" direction="up" granularity="23"> -->
-        <!-- <pos x="+5" y="+110"/> -->
-        <!-- <size width="30" height="5"/> -->
-        <!-- <off shape="square" color="`has_cue 1 ? cue_color 1 : color '#333333'`" radius="1"/> -->
-        <!-- <on shape="square" border="orange" color="green" radius="1"/> -->
-        <!-- </visual> -->
-        <!-- <visual source="cue_pos 2" type="linear" orientation="horizontal" direction="up" granularity="23"> -->
-        <!-- <pos x="+5" y="+120"/> -->
-        <!-- <size width="30" height="5"/> -->
-        <!-- <off shape="square" color="red" radius="1"/> -->
-        <!-- <on shape="square" border="green" color="green" radius="1"/> -->
-        <!-- </visual> -->
-        <!-- EXPERIMENT -->
         <panel class="pitch_zone" x="+804-320" y="+10"/>
         <!-- JOG -->
         <panel class="jogwheel" x="+800-[JOGSIZE]-85" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
@@ -13892,7 +13901,7 @@
     <define class="TRANSPORT_BAR" placeholders="*deck,*deckside">
       <deck deck="[DECK]">
         <!-- bg -->
-        <visual class="gfx_shape" width="800" height="36" coloroff="black" bordercoloroff="#191919" bordersize="1"/>
+        <visual class="gfx_shape" width="800" height="36" coloroff="#111111" bordercoloroff="#222222" bordersize="1"/>
         <!-- INVERT DECK BUTTON -->
         <button class="button_main" width="30" height="30" action="invert_deck" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle">
           <pos y="+3" x="+7" condition="param_equal [DECKSIDE] 'left'"/>
@@ -13941,8 +13950,11 @@
         </group>
         <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
         <group visibility="loaded">
+          <!-- left -->
           <pos x="+50" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <!-- right -->
           <pos x="+800-245" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <!-- acapella -->
           <button action="stem_pad 'acapella'" border_size="1">
             <size width="80" height="25"/>
             <off color="#000000" border="#444444" radius="3"/>
@@ -13950,6 +13962,7 @@
             <selected color="transparent" border="#008866" radius="3"/>
             <text fontsize="12" color="#555555" colorselected="#008866" colordown="#008866" align="center" text="ACAPELLA"/>
           </button>
+          <!-- instrumental -->
           <button x="+85" action="stem_pad 'instrumental'" border_size="1">
             <size width="110" height="25"/>
             <off color="#000000" border="#444444" radius="3"/>
@@ -13959,6 +13972,16 @@
           </button>
         </group>
         <group visibility="loaded">
+          <!-- MASTER/SLAVE -->
+          <button class="button_main" action="select &amp; masterdeck" textcoloron="orange" bordersize="2" query="masterdeck" visibility="loaded">
+            <pos x="+546" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+            <pos x="+158" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+            <size width="80" height="25"/>
+            <off color="#000000" border="#888888" border_size="1" shape="square" radius="3"/>
+            <down color="#000000" border="orange" border_size="1" shape="square" radius="3"/>
+            <selected color="#000000" border="orange" border_size="1" shape="square" radius="3"/>
+            <text size="11" dx="+0" action="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" color="#999999" align="center"/>
+          </button>
           <!-- PHRASE -->
           <button class="button_main" x="+0" action="sync &amp; phrase_sync 32" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0">
             <pos x="+300" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
@@ -13980,7 +14003,7 @@
             <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
           </button>
           <!-- BEAT-->
-          <button class="button_main" action="select &amp; sync" bordersize="1" query="is_sync">
+          <button class="button_main" action="select &amp; sync" bordersize="1" query="not play ? true : not is_sync ? blink 500ms : true">
             <pos x="+464" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+240" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
@@ -13990,27 +14013,18 @@
             <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="BEAT"/>
           </button>
         </group>
-        <!-- <group visibility="loaded"> -->
-        <!-- <pos x="+362" y="+5" condition="param_equal [DECKSIDE] 'left'"/> -->
-        <!-- <pos x="+195" y="+5" condition="param_equal [DECKSIDE] 'right'"/> -->
-        <!-- PHRASE -->
-        <!-- <button class="button_main" x="+82" textsize="11" text="PHRASE" width="80" height="25" action="select &amp; sync &amp; phrase_sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" textcoloroff="red" brcoloroff="red" bordersize="1" query="masterdeck ? true : is_sync ? true : false"/> -->
-        <!-- BEAT -->
-        <!-- <button class="button_main" x="+164" textsize="11" text="BEAT" width="80" height="25" action="select &amp; sync" textcoloron="deckcolor" coloroff="button_background" coloron="button_background" textcolor="red" brcoloroff="red" bordersize="1" query="is_sync"/> -->
-        <!-- </group> -->
-        <!-- MASTER -->
-        <button class="button_main" textsize="11" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" width="80" height="30" action="select &amp; masterdeck" textcoloroff="red" textcoloron="orange" coloroff="black" coloron="black" bordersize="2" brcoloroff="#333333" brcoloron="orange" query="masterdeck" visibility="loaded">
-          <pos x="+609" y="+3" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+112" y="+3" condition="param_equal [DECKSIDE] 'right'"/>
-        </button>
         <!-- PLAY/PAUSE -->
-        <button class="button_main" x="+800-80-30+1" y="+3" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0" visibility="leftdeck">
-          <off color="#000000" border="#333333" border_size="1" shape="square"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square"/>
+        <button class="button_main" x="+800-80-30+1" y="+4" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="leftdeck">
+          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="deckcolor"/>
+          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
+          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
+          <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/>
         </button>
-        <button class="button_main" x="+3" y="+3" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" iconcolor="black" textcoloron="black" colorselected="red" bordersize="0" visibility="rightdeck">
-          <off color="#000000" border="#333333" border_size="1" shape="square"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square"/>
+        <button class="button_main" x="+3" y="+3" textsize="11" width="106" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="rightdeck">
+          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4"/>
+          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/>
+          <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/>
         </button>
       </deck>
     </define>
@@ -14580,9 +14594,19 @@
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#techno '">
           <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Techno" text="#TECHNO"/>
         </item>
+        <!-- #Psy -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#psy'">
           <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Psy-Trance" text="#PSY-TRANCE"/>
         </item>
+        <!-- #Synthwave -->
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#synthwave '">
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Synthwave" text="#SYNTHWAVE"/>
+        </item>
+        <!-- #Rap -->
+        <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#rap '">
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Rap" text="#RAP"/>
+        </item>
+        <!-- #Club -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#club '">
           <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Club" text="#CLUB"/>
         </item>
