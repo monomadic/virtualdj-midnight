@@ -2383,12 +2383,7 @@
       </define>
     </group>
     <group name="texts">
-      <!-- SYNC OPTIONS -->
       <define class="syncoptions_display">
-        <!-- <button class="button_main" x="+0" y="+0" width="110" height="15" action="select &amp; show_splitpanel sideview on &amp; wait 200ms &amp; sideview 'geniusdj:\linked'" query="has_linked_tracks" text="LINKED TRACKS" textcolor="textoff3" textcoloron="green" textsize="10" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background"/> -->
-        <!-- <button class="button_main" x="+114+8" y="+0" width="110" height="17" action="auto_match_key" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="AUTO MATCH KEY"/> -->
-        <!-- <button class="button_main" x="+114+114+16" y="+0" width="90" height="17" action="auto_sync" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="SYNC ON PLAY"/> -->
-        <!-- <button class="button_main" x="+114+94+114+24" y="+0" width="120" height="17" action="auto_pitch_lock" coloroff="infos_background" coloron="infos_background" brcoloroff="infos_background" brcoloron="infos_background" textsize="10" textcolor="textoff3" textcoloron="needle" text="LINK BPM"/> -->
         <group x="+0" y="-30" visibility="has_stems">
           <panel class="stem_button" x="+0" y="+0" stem="vocal" label="VOCAL" color="colorvocal"/>
           <panel class="stem_button" x="+70" y="+0" stem="instru" label="INSTR" color="colorinstru"/>
@@ -2458,38 +2453,38 @@
         <!-- <textzone class="text" x="+154" y="+8" action="pitch_reset" width="80" height="24" fontsize="20" color="textoff2" align="center" weight="" textaction="get_text '%Ppitch%'" visibility="not var_equal '@$hauntingdeckstack' 1"/> -->
       </define>
       <!-- PRO: BPM -->
-      <define class="bpm_display_left">
-        <visual class="gfx_shape" width="136" height="80" coloroff="transparent"/>
-        <group name="bpm_not_video" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'">
-          <!-- <button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
-          <!-- <textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/> -->
-          <!-- <textzone class="text" x="+0" y="+0" width="136" height="50" fontsize="30" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
-          <!-- BPM WARNING -->
-          <!-- <square -->
-          <!-- x="+10" -->
-          <!-- y="+30" -->
-          <!-- width="55" -->
-          <!-- height="15" -->
-          <!-- radius="5" -->
-          <!-- color="#FF0000" -->
-          <!-- visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off" -->
-          <!-- /> -->
-          <!-- BPM CHANGE -->
-          <textzone visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : on">
-            <pos x="+26" y="+40"/>
-            <size width="100" height="20"/>
-            <text fontsize="15" weight="normal" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/>
-          </textzone>
-          <!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/> -->
-          <textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM" visibility="var_equal '@$hauntingjogtype' 0"/>
-        </group>
-        <group name="bpm_has_video" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'">
-          <button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
-          <textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/>
-          <!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
-          <textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM"/>
-        </group>
-      </define>
+      <!-- <define class="bpm_display_left"> -->
+      <!-- <visual class="gfx_shape" width="136" height="80" coloroff="transparent"/> -->
+      <!-- <group name="bpm_not_video" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"> -->
+      <!-- <button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+      <!-- <textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/> -->
+      <!-- <textzone class="text" x="+0" y="+0" width="136" height="50" fontsize="30" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="var_not_equal '@$hauntingjogtype' 0"/> -->
+      <!-- BPM WARNING -->
+      <!-- <square -->
+      <!-- x="+10" -->
+      <!-- y="+30" -->
+      <!-- width="55" -->
+      <!-- height="15" -->
+      <!-- radius="5" -->
+      <!-- color="#FF0000" -->
+      <!-- visibility="param_add `get_bpm` `get_bpm 'absolute' & param_multiply -1` & param_bigger 20 ? blink 500ms : off" -->
+      <!-- /> -->
+      <!-- BPM CHANGE -->
+      <!-- <textzone visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_bigger 20 ? blink 500ms : on"> -->
+      <!-- <pos x="+26" y="+40"/> -->
+      <!-- <size width="100" height="20"/> -->
+      <!-- <text fontsize="15" weight="normal" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/> -->
+      <!-- </textzone> -->
+      <!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER" visibility="var_equal '@$hauntingjogtype' 0"/> -->
+      <!-- <textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM" visibility="var_equal '@$hauntingjogtype' 0"/> -->
+      <!-- </group> -->
+      <!-- <group name="bpm_has_video" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"> -->
+      <!-- <button class="button_main" x="+0" y="+0" width="136" height="48" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="24" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+      <!-- <textzone class="text" x="+0" y="+0" width="136" height="48" fontsize="36" color="needle" align="center" weight="" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
+      <!-- <button class="button_main" x="+0" y="+50" width="80" height="20" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
+      <!-- <textzone class="text2" x="+80" y="+50" width="56" height="20" fontsize="13" color="textdarker" align="center" weight="" text="BPM"/> -->
+      <!-- </group> -->
+      <!-- </define> -->
       <define class="bpm_display_right">
         <visual class="gfx_shape" width="136" height="80" coloroff="transparent"/>
         <group name="bpm_not_video" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'">
@@ -5111,8 +5106,15 @@
         <group visibility="not has_stems" y="+30">
           <textzone class="text" width="300" height="48" fontsize="10" color="textdarker" align="center" weight="" text="STEMS NOT FOUND"/>
         </group>
+        <!-- TAGS -->
+        <group x="+0" y="+20">
+          <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/>
+          <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/>
+          <panel class="hashtag_stack" deck="2" x="+1920-280" panelname="tags2" visibility="not deck 4 leftdeck"/>
+          <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/>
+        </group>
         <!-- STEM BUTTONS -->
-        <group x="+15" y="+39" visibility="has_stems">
+        <group x="+0" y="+50" visibility="has_stems">
           <panel class="stem_button" x="+0" y="+0" stem="vocal" label="VOCAL" color="colorvocal"/>
           <panel class="stem_button" x="+70" y="+0" stem="INSTRU" label="INSTR" color="colorinstru"/>
           <panel class="stem_button" x="+140" y="+0" stem="bass" label="BASS" color="colorbass"/>
@@ -7429,7 +7431,7 @@
       <button class="button_main" x="+60+4+30+30-10" y="+54" width="30" height="28" action="record_config" iconsize="22" sysicon="settings" coloron="br_focus" bordersize="0"/>
     </define>
     <!-- PRO: MASTER PANEL: MASTER FX -->
-    <define class="masterfx_panel">
+    <define class="MASTERFX_PANEL">
       <deck deck="master">
         <group name="sampler_panel" x="+0" y="+0">
           <textzone class="text" x="+0" y="+0" width="144" height="20" fontsize="10" color="textoff" align="center" weight="" text="SAMPLER"/>
@@ -8662,12 +8664,7 @@
         </group>
       </group>
       <!-- SETTINGS -->
-      <group x="1060" y="+5">
-        <!-- FX -->
-        <group>
-          <button class="button_main" y="+3" width="40" height="27" textsize="12" text="FX" radius="6" coloroff="black" coloron="yellow" bordersize="0" textcolor="#888888" textcoloron="yellow" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
-          <button class="button_main" y="+3" x="+38" width="40" height="27" textsize="12" text="CFX" radius="6" coloroff="black" coloron="black" bordersize="0" textcolor="#888888" textcoloron="magenta" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
-        </group>
+      <group x="1090" y="+5">
         <!-- GLOBAL QUANT -->
         <group x="+90" y="+0">
           <textzone>
@@ -8685,21 +8682,20 @@
           </textzone>
           <button class="button_main" x="+0" y="+0+14" width="65" height="15" action="setting 'hotcueMode'" textsize="12" textaction="setting 'hotCueMode' &amp; param_uppercase" coloroff="#111111" coloron="#111111" bordersize="1" textcolor="#999999" textcoloron="white" brcoloroff="#999999" brcoloron="#999999" query="slip_mode ? blink 800ms : off"/>
         </group>
-      </group>
-      <!-- SYNC BUTTONS -->
-      <group x="1300" y="0">
-        <textzone>
-          <pos x="+0" y="+0"/>
-          <text fontsize="9" weight="normal" color="#999999" align="center" text="GLOBAL SYNC" important="true"/>
-          <size width="100" height="10"/>
-        </textzone>
-        <group y="+8">
-          <!-- MASTER TEMPO BUTTON -->
-          <button class="button_main" x="+0" y="+5" width="33" height="22" tooltip="Master Tempo" action="master_tempo" textsize="14" text="MT" coloron="#2D003D" textcoloron="#A800FF" bordersize="0" brcoloron="#FF2288"/>
-          <!-- MASTERDECK AUTO BUTTON -->
-          <button class="button_main" x="+35" y="+5" width="33" height="22" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="14" text="M" textcoloron="orange" bordersize="0" brcoloron="orange" coloron="#222200"/>
-          <!-- GLOBAL QUANTIZE BUTTON -->
-          <button class="button_main" x="+70" y="+5" width="33" height="22" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="14" text="Q" textcoloron="#88FF88" bordersize="0" brcoloron="#88FF88" coloron="#002200"/>
+        <!-- SYNC BUTTONS -->
+        <group x="+250" y="+0">
+          <textzone>
+            <size width="26+26+26" height="16"/>
+            <text fontsize="9" weight="normal" color="#999999" align="center" text="GLOBAL SYNC" important="true"/>
+          </textzone>
+          <group y="+14">
+            <!-- MASTER TEMPO BUTTON -->
+            <button class="button_main" x="+0" y="+0" width="25" height="15" tooltip="Master Tempo" action="master_tempo" textsize="10" text="MT" coloron="#2D003D" textcoloron="#A800FF" bordersize="1" brcoloron="#A800FF"/>
+            <!-- MASTERDECK AUTO BUTTON -->
+            <button class="button_main" x="+26" y="+0" width="25" height="15" tooltip="Masterdeck Auto" action="masterdeck_auto" textsize="10" text="M" textcoloron="orange" bordersize="1" brcoloron="orange" coloron="#222200"/>
+            <!-- GLOBAL QUANTIZE BUTTON -->
+            <button class="button_main" x="+52" y="+0" width="25" height="15" tooltip="Quantize All" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="10" text="Q" textcoloron="#88FF88" bordersize="1" brcoloron="#88FF88" coloron="#002200"/>
+          </group>
         </group>
       </group>
       <!-- DECK MODE BUTTONS -->
@@ -8903,6 +8899,26 @@
         <!-- <panel class="phrase_circle" x="+890+234+40" y="+6" deck="4" visibility="var_equal '@$phrasecircle' 1"/> -->
         <!-- </panel> -->
         <!-- </group> -->
+      </group>
+      <!-- FX -->
+      <group x="+802+160+100+2+400" y="+8">
+        <group x="+0">
+          <visual type="transparent" source="effects_used ? blink 500ms">
+            <pos x="+0" y="+8" width="12" height="12"/>
+            <off color="tab_menu" border="tab_menu" shape="circle"/>
+            <on color="green" border="green" shape="circle"/>
+          </visual>
+          <button class="button_main" x="+4" width="40" height="27" textsize="12" text="FX" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
+        </group>
+        <!-- COLORFX -->
+        <group x="+50">
+          <visual type="transparent" source="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx">
+            <pos x="+0" y="+8" width="12" height="12"/>
+            <off color="tab_menu" border="tab_menu" shape="circle"/>
+            <on color="green" border="green" shape="circle"/>
+          </visual>
+          <button class="button_main" x="+8" width="40" height="27" textsize="12" text="CFX" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
+        </group>
       </group>
       <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
       <group name="master_options" x="+802+160+160+2+440" y="8">
@@ -9960,7 +9976,7 @@
                     <on shape="square" color="transparent" border="#000000" border_size="1"/>
                     <icon dx="-4" sysicon="play" width="[HEIGHT]*0.8" height="[HEIGHT]*0.8" coloroff="transparent" coloron="#55FFFFFF" colorover="#FFFFFFFF" condition="loaded &amp; playing"/>
                   </button>
-                  <button orientation="vertical" class="button_main" x="+0" y="+0" width="25" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" bordersize="2" textsize="13" text="MASTER" visibility="masterdeck"/>
+                  <button orientation="vertical" class="button_main" x="+[HEIGHT]+30" y="+0" width="20" height="[HEIGHT]" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" bordersize="2" textsize="13" text="MASTER" visibility="masterdeck" radius="6"/>
                 </group>
                 <!-- TRACK INFO -->
                 <!-- <group x="1920-[WAVEFORMHEIGHT]" y="+2" visibility="rightdeck"> -->
@@ -13318,6 +13334,298 @@
           </submenu>
         </menu>
       </panel>
+      <!-- MIXER PANEL: SAMPLER -->
+      <panel name="samplermixer" group="mixer" visible="no">
+        <!-- bg -->
+        <visual class="gfx_shape" width="310" height="432-56-1" coloroff="wave_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 0"/>
+        <visual class="gfx_shape" width="310" height="432-56-1+57" coloroff="wave_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 1"/>
+        <!-- <visual y="+0" class="gfx_shape" width="310" height="50" border_size="1" borderoff="panel_background"/> -->
+        <!-- <visual y="+50" class="gfx_shape" width="100" height="432-56-1" coloroff="panel_background"/> -->
+        <group name="sampler_panel" x="+0" y="+0">
+          <!-- SAMPLER GROUP SELECT -->
+          <group>
+            <visual x="+0" y="+0" width="310" height="44">
+              <off shape="square" color="transparent" border_size="2" border="panel_background" radius="6"/>
+            </visual>
+            <group x="+60" y="+2">
+              <textzone class="text" x="+0" y="+0" width="26+150+26" height="20" fontsize="10" color="textoff" align="center" weight="" text="BANK"/>
+              <group x="+0" y="+15">
+                <!-- label -->
+                <button class="button_main" x="+0" width="26" height="22" action="sampler_bank -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+                <button class="button_main" x="+0+26" width="150" height="22" action="sampler_bank" rightclick="sampler_options" textaction="get_sampler_bank" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="13" textcolor="white"/>
+                <button class="button_main" x="+0+26+150" width="26" height="22" action="sampler_bank +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+              </group>
+            </group>
+            <!-- sidebar toggle -->
+            <button x="+310-22-2" y="+0" width="22" height="22" visibility="true" action="sampler_edit 1">
+              <off color="transparent" border="#000000" border_size="0" shape="square"/>
+              <on color="#444444" border="#111111" border_size="0" shape="square"/>
+              <over color="transparent" border="#000000" border_size="0" shape="square"/>
+              <selected color="#555555" border="#0000FF" border_size="0" shape="square"/>
+              <icon dx="+0" sysicon="settings" width="17" height="17" color="#888888" colordown="white" colorover="#FFFFFF"/>
+            </button>
+          </group>
+          <group x="+10" y="+50">
+            <visual x="+0" y="+0" width="310-20" height="280">
+              <off shape="square" color="transparent" border_size="3" border="panel_background" radius="6"/>
+            </visual>
+            <group x="+2" y="+2">
+              <!-- SAMPLE PLAYER -->
+              <define class="SAMPLER_ROW" placeholders="*deck,*index">
+                <deck deck="[DECK]">
+                  <visual x="+0" y="+0" width="310-10-10-5" height="25">
+                    <off shape="square" color="black" border_size="1" border="panel_background" radius="0"/>
+                  </visual>
+                  <!-- play button -->
+                  <button action="sampler_pad [INDEX]" query="sampler_play_stop [INDEX]">
+                    <pos x="+240" y="+2"/>
+                    <size width="22" height="22"/>
+                    <off color="#000000" border="#000000" border_size="0" shape="square"/>
+                    <on color="#4444FF" border="#111111" border_size="0" shape="square"/>
+                    <over color="#000000" border="#000000" border_size="0" shape="square"/>
+                    <selected color="sampler_color $1" border="transparent" border_size="0" shape="square"/>
+                    <icon dx="-1" sysicon="play" width="24" height="24" color="#888888" colordown="white" colorover="white" colorselected="#FFFFFF"/>
+                  </button>
+                  <!-- button -->
+                  <button action="sampler_pad [INDEX]" query="sampler_play_stop [INDEX]">
+                    <pos x="+2" y="+2"/>
+                    <size width="240" height="20"/>
+                    <off color="#000000" border="#000000" border_size="1" shape="square"/>
+                    <on color="#4444FF" border="#111111" border_size="1" shape="square"/>
+                    <over color="transparent" border="#000000" border_size="1" shape="square"/>
+                    <selected color="sampler_color $1" border="transparent" border_size="1" shape="square"/>
+                  </button>
+                  <!-- edit -->
+                  <button action="sampler_edit [INDEX]">
+                    <pos x="+260" y="+2"/>
+                    <size width="22" height="22"/>
+                    <off color="transparent" border="#000000" border_size="0" shape="square"/>
+                    <on color="#444444" border="#111111" border_size="0" shape="square"/>
+                    <over color="transparent" border="#000000" border_size="0" shape="square"/>
+                    <selected color="#555555" border="#0000FF" border_size="0" shape="square"/>
+                    <icon dx="0" sysicon="settings" width="17" height="17" color="#888888" colordown="white" colorover="#FFFFFF"/>
+                  </button>
+                  <!-- color chip -->
+                  <visual type="color" source="sampler_loaded 1 ? sampler_color 1 : constant '#333333'">
+                    <pos x="+6" y="+5"/>
+                    <size width="4" height="15"/>
+                  </visual>
+                  <!-- label -->
+                  <textzone>
+                    <pos x="+15" y="+0"/>
+                    <size width="220" height="22"/>
+                    <text fontsize="12" color="#AAAAAA" align="left" action="sampler_pad [INDEX]"/>
+                  </textzone>
+                </deck>
+              </define>
+              <!-- usage -->
+              <panel class="sampler_row" index="1" deck="1"/>
+              <panel class="sampler_row" index="2" deck="1" y="+24"/>
+              <!-- <group> -->
+              <!-- <group class="sampler_row" x="0" y="24" $1="2"></group> etc -->
+              <!-- <group> -->
+              <!-- <textzone class="text" x="+15" y="+0" width="100" height="22" fontsize="12" color="#AAAAAA" align="left" weight="" textaction="sampler_pad 1 &amp; param_uppercase"/> -->
+              <!-- play button -->
+              <!-- <button x="+240" y="+2" width="22" height="22" visibility="true" action="sampler_pad 1" query="sampler_play_stop 1"> -->
+              <!-- <off color="#000000" border="#000000" border_size="0" shape="square"/> -->
+              <!-- <on color="#4444FF" border="#111111" border_size="0" shape="square"/> -->
+              <!-- <over color="#000000" border="#000000" border_size="0" shape="square"/> -->
+              <!-- <selected color="sampler_color 1" border="transparent" border_size="0" shape="square"/> -->
+              <!-- <icon dx="-1" sysicon="play" width="24" height="24" color="#888888" colordown="white" colorover="white" colorselected="#FFFFFF"/> -->
+              <!-- </button> -->
+              <!-- label -->
+              <!-- <button x="+2" y="+2" width="240" height="20" visibility="true" action="sampler_pad 1" query="sampler_play_stop 1"> -->
+              <!-- <off color="#000000" border="#000000" border_size="1" shape="square"/> -->
+              <!-- <on color="#4444FF" border="#111111" border_size="0" shape="square"/> -->
+              <!-- <over color="#444444" border="#000000" border_size="0" shape="square"/> -->
+              <!-- <selected color="sampler_color 1" border="transparent" border_size="0" shape="square"/> -->
+              <!-- <text dx="+15" dy="-1" action="sampler_pad 1 &amp; param_uppercase">sampler_pad 1</text> -->
+              <!-- <icon dx="-1" sysicon="play" width="24" height="24" color="#888888" colordown="white" colorselected="#FFFFFF"/> -->
+              <!-- </button> -->
+              <!-- edit -->
+              <!-- <button x="+260" y="+2" width="22" height="22" visibility="true" action="sampler_edit 1"> -->
+              <!-- <off color="transparent" border="#000000" border_size="0" shape="square"/> -->
+              <!-- <on color="#444444" border="#111111" border_size="0" shape="square"/> -->
+              <!-- <over color="transparent" border="#000000" border_size="0" shape="square"/> -->
+              <!-- <selected color="#555555" border="#0000FF" border_size="0" shape="square"/> -->
+              <!-- <icon dx="+0" sysicon="settings" width="17" height="17" color="#888888" colordown="white" colorover="#FFFFFF"/> -->
+              <!-- </button> -->
+              <!-- color chip -->
+              <!-- <visual type="color" source="sampler_loaded 1 ? sampler_color 1 : constant '#333333'"> -->
+              <!-- <pos x="+6" y="+5"/> -->
+              <!-- <size width="4" height="15"/> -->
+              <!-- </visual> -->
+              <!-- </group> -->
+            </group>
+          </group>
+          <!-- SAMPLER VUMETER -->
+          <group x="+10" y="+337">
+            <!-- BACKGROUND -->
+            <!-- <visual class="gfx_shape" width="144" height="43-8-8" coloroff="xf_background"/> -->
+            <visual x="+0" y="+0" width="144" height="43-8-8">
+              <off shape="square" color="transparent" border_size="1" border="panel_background" radius="6"/>
+            </visual>
+            <!-- LABEL -->
+            <textzone class="text" x="+0" y="+0" width="56" height="27" fontsize="10" color="textdarker" align="right" weight="" text="MASTER"/>
+            <!-- L -->
+            <visual type="vumeter" source="get_level_left 'sampler'" x="+58+8" y="+6" width="70" height="6" smooth="no">
+              <led x="+0" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*2" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*3" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*4" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*5" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*6" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*7" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*8" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*9" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*10" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*11" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="orange_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+            </visual>
+            <!-- R -->
+            <visual type="vumeter" source="get_level_right 'sampler'" x="+58+8" y="+6+7+2" width="70" height="6" smooth="no">
+              <led x="+0" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*2" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*3" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*4" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*5" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*6" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*7" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*8" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*9" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*10" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="green_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+              <led x="+6*11" y="+0" width="4" height="6">
+                <off color="vu_background" radius="0" border="contrast" border_size="0"/>
+                <on color="orange_vu" radius="0" border="contrast" border_size="0"/>
+              </led>
+            </visual>
+            <!-- Sampler Master Volume (horizontal slider) -->
+            <slider action="sampler_volume_master" dblclick="sampler_volume_master 80%" orientation="horizontal" direction="up" frommiddle="false">
+              <pos x="+58+8" y="+4"/>
+              <size width="70" height="20"/>
+              <fader color="#999999" width="3" height="20"/>
+            </slider>
+            <!-- <fader x="+58+8" y="+6" width="70" height="6" action="sampler_volume_master"> -->
+            <!-- <back  color="vu_background" radius="3" border="contrast" border_size="1"/> -->
+            <!-- <cursor width="8" height="6" color="deckcolor" radius="3" border="contrast" border_size="0"/> -->
+            <!-- </fader> -->
+            <!-- SAMPLER PLAY/STOP BUTTON -->
+            <button x="+3" y="+3" width="58" height="21" visibility="true" shape="square" action="sampler_play_stop" border_size="2" query="get_level 'sampler' &amp; param_bigger 0.01">
+              <off color="#333333" border="#000000"/>
+              <on color="#444444" border="#111111"/>
+              <over color="#444444" border="#000000"/>
+              <selected color="#555555" border="#0000FF"/>
+              <icon dx="-1" sysicon="play" width="28" height="28" color="#888888" colordown="white" colorselected="#888888"/>
+            </button>
+          </group>
+          <!-- <button x="+0" y="+110" width="40" height="40" -->
+          <!-- visibility="true" -->
+          <!-- action="sampler_play_stop" -->
+          <!-- query="sampler_play_stop"> -->
+          <!-- <off color="#333333" border="#000000" border_size="4" shape="circle"/> -->
+          <!-- <on  color="#444444" border="#111111" border_size="4" shape="circle"/> -->
+          <!-- <over color="#444444" border="#000000" border_size="4" shape="circle"/> -->
+          <!-- <selected color="#555555" border="#0000FF" border_size="4" shape="circle"/> -->
+          <!-- <icon dx="-2" sysicon="play" width="30" height="30" -->
+          <!-- color="#888888" colordown="white" colorselected="#888888"/> -->
+          <!-- </button> -->
+          <!-- <button class="button_main" x="-71" y="+10" width="50" height="16" action="effect_select 1" coloroff="#111111" brcoloroff="#111111" coloron="magenta" brcoloron="magenta" textcoloroff="magenta" textcoloron="black" text="FX1" textsize="13"/> -->
+          <group name="sampler_mode" y="+2" x="+10">
+            <!-- label -->
+            <textzone class="text" x="+0" y="+0" width="45" height="20" fontsize="8" color="textoff" align="left" weight="" text="MODE"/>
+            <!-- SAMPLER ROUTING TOGGLE HEADPHONES/MASTER -->
+            <button x="+0" y="+16" class="button_main" bordersize="1" width="60" height="26" action="sampler_mode" textsize="10" textcolor="white">
+              <size height="15"/>
+              <off color="#111111" border="#555555"/>
+              <down color="#111111" border="#555555"/>
+              <selected color="#111111" border="#555555"/>
+              <text align="center" action="sampler_mode &amp; param_uppercase"/>
+            </button>
+          </group>
+        </group>
+        <group name="sampler_output" y="+330" x="+200">
+          <!-- label -->
+          <textzone class="text" x="+0" y="+0" width="45" height="20" fontsize="8" color="textoff" align="left" weight="" text="OUTPUT"/>
+          <!-- SAMPLER ROUTING TOGGLE HEADPHONES/MASTER -->
+          <button x="+0" y="+16" class="button_main" bordersize="1" width="90" height="26" textsize="11" action="sampler_output 'headphones' ? sampler_output 'master' : sampler_output 'headphones'" textaction="sampler_output 'headphones' ? get_text 'HEADPHONES' : get_text 'MASTER'" rightclick="sampler_output 'popup'" color="`sampler_output 'headphones' ? '#00D5FF' : 'transparent'`">
+            <size height="15"/>
+            <off color="#111111" border="#555555"/>
+            <down color="#111111" border="#555555"/>
+            <text align="left" dx="+4"/>
+          </button>
+        </group>
+      </panel>
+      <!-- MIXER PANEL: VIDEO -->
       <panel name="videomixer" group="mixer" visible="no">
         <visual class="gfx_shape" width="312" height="432-56-1" coloroff="panel_background"/>
         <button class="button_main" action="video" rightclick="video_output" width="312-4" height="174-4" x="+2" y="+2" coloroff="infos_background" coloron="infos_background" bordersize="0" textcolor="textdarker" text="MASTER VIDEO"/>
@@ -13399,7 +13707,7 @@
         </menu>
         <panel class="video_crossfader" x="+26" y="+432-56+6+4-52"/>
       </panel>
-      <!-- PRO: SCRATCH MIXER -->
+      <!-- PRO: WAVE PANEL -->
       <panel name="scratchmixer" group="mixer" visible="no">
         <visual class="gfx_shape" width="312" height="432-56-1" coloroff="wave_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 0"/>
         <visual class="gfx_shape" width="312" height="432-56-1+57" coloroff="wave_background" bordercoloroff="panel_background" bordersize="2" visibility="var_equal '@$hauntinghidecrossfader' 1"/>
@@ -13643,7 +13951,7 @@
       </group>
     </define>
     <!-- TRANSPORT PANEL -->
-    <define class="xfader_panel">
+    <define class="XFADER_PANEL">
       <!-- PLAY SELECT -->
       <define class="deck_playselect" placeholders="deck,side,width=60,textsize=14,textcolor=#888888,offcolor=#111111,overcolor=#111111">
         <!-- Deck Select Button -->
@@ -13851,7 +14159,7 @@
           <visual class="gfx_shape" x="+0" y="+76" width="480" height="21" coloroff="black"/>
           <!-- PRO: SONGPOS LEFT -->
           <songpos class="songpos" x="+5" y="+78" width="470" height="12" colorPlayed="white"/>
-          <songpos class="cuemap" x="+5" y="+92"/>
+          <songpos class="cuemap" x="+5" y="+92" height="3"/>
         </group>
         <panel class="pitch_zone" x="+804-320" y="+10"/>
         <!-- JOG -->
@@ -14569,10 +14877,10 @@
           <icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colordown="[TEXTCOLORON]" colorselected="[TEXTCOLORON]" width="[ICONSIZE]" height="[ICONSIZE]"/>
         </button>
       </define>
-      <visual width="280" height="215">
-        <off shape="square" color="#090909"/>
-      </visual>
-      <stack x="+8" y="+4" fadein="100ms" fadeout="100ms" visibility="loaded">
+      <!-- <visual width="280" height="215"> -->
+      <!-- <off shape="square" color="#090909"/> -->
+      <!-- </visual> -->
+      <stack x="+0" y="+0" fadein="100ms" fadeout="100ms" visibility="loaded">
         <!-- Size of each slot -->
         <size width="290" height="70"/>
         <!-- Where the slots appear on the skin -->
@@ -15140,79 +15448,81 @@
       <!-- <panel class="pad_pages_pro" deck="3" x="+290" y="+176" visibility="deck 3 leftdeck"/> -->
       <!-- <panel class="pad_pages_pro" deck="2" x="+1920-800" y="+176" visibility="not deck 4 rightdeck"/> -->
       <!-- <panel class="pad_pages_pro" deck="4" x="+1920-800" y="+176" visibility="deck 4 rightdeck"/> -->
-      <!-- CLASS: STEM BUTTONS -->
-      <define class="STEM_VU" placeholders="*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
-        <!-- TOGGLE -->
-        <button x="+0" y="+135" action="stem_pad '[STEM]'" border_size="1">
-          <size width="[WIDTH]" height="[HEIGHT]"/>
-          <off color="transparent" border="transparent" radius="3"/>
-          <down color="transparent" border="transparent" radius="3"/>
-          <selected color="transparent" border="transparent" radius="3"/>
-          <text fontsize="[FONTSIZE]" color="#555555" colorselected="[COLOR]" colordown="[COLOR]" align="center" text="[LABEL]"/>
-        </button>
-        <!-- VU METER -->
-        <!-- <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]"> -->
-        <!-- <pos x="+0" y="+[HEIGHT]+2"/> -->
-        <!-- <size width="[WIDTH]" height="7"/> -->
-        <!-- <off shape="square" border="#2A2A2A" color="black" radius="2"/> -->
-        <!-- <down shape="square" border="[COLOR]" color="[COLOR]" radius="2"/> -->
-        <!-- </visual> -->
-        <!-- GAIN SLIDER -->
-        <!-- <slider action="param_multiply 50% &amp; stem '[STEM]'" dblclick="stem '[STEM]' 50%" orientation="horizontal" direction="up" frommiddle="false"> -->
-        <!-- <pos x="+0" y="+[HEIGHT]+2"/> -->
-        <!-- <size width="[WIDTH]" height="7"/> -->
-        <!-- <fader color="#AAAAAA" width="2" height="5"/> -->
-        <!-- </slider> -->
-        <!-- <visual source="get_level '[STEM]'" type="linear" orientation="vertical" direction="up" granularity="23"> -->
-        <!-- <pos x="+0" y="+55"/> -->
-        <!-- <size width="40" height="4"/> -->
-        <!-- <off shape="square" color="#333333" radius="0"/> -->
-        <!-- <on shape="square" color="[COLOR]" radius="0"/> -->
-        <!-- </visual> -->
-        <group x="+12">
-          <!-- FADER LINES -->
-          <group x="+0" y="+7">
-            <!-- <line color="faderlines" x="+0" y="+0" width="38" height="1"/> -->
-            <line color="faderlines" x="+3" y="+12" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*2" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*3" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*4" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*5" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*6" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*7" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*8" width="32" height="1"/>
-            <line color="faderlines" x="+3" y="+12*9" width="32" height="1"/>
-            <!-- <line color="faderlines" x="+0" y="+12*10" width="38" height="1"/> -->
+      <!-- CLASS: STEM FADER -->
+      <define class="STEM_VU" placeholders="*deck,*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
+        <deck deck="[DECK]">
+          <!-- TOGGLE -->
+          <button x="+0" y="+135" action="stem_pad '[STEM]'" border_size="1">
+            <size width="[WIDTH]" height="[HEIGHT]"/>
+            <off color="transparent" border="transparent" radius="3"/>
+            <down color="transparent" border="transparent" radius="3"/>
+            <selected color="transparent" border="transparent" radius="3"/>
+            <text fontsize="[FONTSIZE]" color="#555555" colorselected="[COLOR]" colordown="[COLOR]" align="center" text="[LABEL]"/>
+          </button>
+          <!-- VU METER -->
+          <!-- <visual source="get_level '[STEM]'" type="linear" orientation="horizontal" direction="up" granularity="[GRANULARITY]"> -->
+          <!-- <pos x="+0" y="+[HEIGHT]+2"/> -->
+          <!-- <size width="[WIDTH]" height="7"/> -->
+          <!-- <off shape="square" border="#2A2A2A" color="black" radius="2"/> -->
+          <!-- <down shape="square" border="[COLOR]" color="[COLOR]" radius="2"/> -->
+          <!-- </visual> -->
+          <!-- GAIN SLIDER -->
+          <!-- <slider action="param_multiply 50% &amp; stem '[STEM]'" dblclick="stem '[STEM]' 50%" orientation="horizontal" direction="up" frommiddle="false"> -->
+          <!-- <pos x="+0" y="+[HEIGHT]+2"/> -->
+          <!-- <size width="[WIDTH]" height="7"/> -->
+          <!-- <fader color="#AAAAAA" width="2" height="5"/> -->
+          <!-- </slider> -->
+          <!-- <visual source="get_level '[STEM]'" type="linear" orientation="vertical" direction="up" granularity="23"> -->
+          <!-- <pos x="+0" y="+55"/> -->
+          <!-- <size width="40" height="4"/> -->
+          <!-- <off shape="square" color="#333333" radius="0"/> -->
+          <!-- <on shape="square" color="[COLOR]" radius="0"/> -->
+          <!-- </visual> -->
+          <group x="+12">
+            <!-- FADER LINES -->
+            <group x="+0" y="+7">
+              <!-- <line color="faderlines" x="+0" y="+0" width="38" height="1"/> -->
+              <line color="faderlines" x="+3" y="+12" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*2" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*3" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*4" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*5" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*6" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*7" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*8" width="32" height="1"/>
+              <line color="faderlines" x="+3" y="+12*9" width="32" height="1"/>
+              <!-- <line color="faderlines" x="+0" y="+12*10" width="38" height="1"/> -->
+            </group>
+            <group x="+14" y="+0">
+              <!-- BLACK STRIP -->
+              <!-- <visual width="10" height="123"> -->
+              <!-- <pos x="+0" y="+0"/> -->
+              <!-- <off shape="square" color="black" radius="3"/> -->
+              <!-- </visual> -->
+              <!-- LEVEL -->
+              <visual source="get_level '[STEM]'" type="linear" orientation="vertical" direction="up" granularity="23">
+                <pos x="+0" y="+5"/>
+                <size width="10" height="123"/>
+                <off shape="square" color="black" radius="2"/>
+                <on shape="square" color="[COLOR]" radius="2"/>
+              </visual>
+            </group>
+            <!-- SLIDER -->
+            <slider action="level '[STEM]'" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
+              <pos x="+0" y="+0"/>
+              <size width="38" height="135"/>
+              <off width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
+              <on width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
+              <fader color="#333333" width="38" height="14" border="#555555"/>
+            </slider>
+            <!-- SLIDER PIECE -->
+            <slider action="level '[STEM]'" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
+              <pos x="+0" y="+0+6"/>
+              <size width="38" height="135-12"/>
+              <fader color="faderbackgroundline" width="38" height="2"/>
+            </slider>
           </group>
-          <group x="+14" y="+0">
-            <!-- BLACK STRIP -->
-            <!-- <visual width="10" height="123"> -->
-            <!-- <pos x="+0" y="+0"/> -->
-            <!-- <off shape="square" color="black" radius="3"/> -->
-            <!-- </visual> -->
-            <!-- LEVEL -->
-            <visual source="get_level '[STEM]'" type="linear" orientation="vertical" direction="up" granularity="23">
-              <pos x="+0" y="+5"/>
-              <size width="10" height="123"/>
-              <off shape="square" color="black" radius="2"/>
-              <on shape="square" color="[COLOR]" radius="2"/>
-            </visual>
-          </group>
-          <!-- SLIDER -->
-          <slider action="level '[STEM]'" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
-            <pos x="+0" y="+0"/>
-            <size width="38" height="135"/>
-            <off width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
-            <on width="-27" height="-8" color="transparent" border="#333333" border_size="1" radius="3" shape="square"/>
-            <fader color="#333333" width="38" height="14" border="#555555"/>
-          </slider>
-          <!-- SLIDER PIECE -->
-          <slider action="level '[STEM]'" dblclick="level 80%" orientation="vertical" direction="up" frommiddle="false">
-            <pos x="+0" y="+0+6"/>
-            <size width="38" height="135-12"/>
-            <fader color="faderbackgroundline" width="38" height="2"/>
-          </slider>
-        </group>
+        </deck>
       </define>
       <!-- DECK BOTTOM SECTION -->
       <group y="+174" x="+2">
@@ -15230,14 +15540,14 @@
           <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+1920-800+3" visibility="not deck 4 rightdeck"/>
           <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+1920-800+3" visibility="deck 4 rightdeck"/>
           <!-- TAGS -->
-          <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/>
-          <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/>
-          <panel class="hashtag_stack" deck="2" x="+1920-280" panelname="tags2" visibility="not deck 4 leftdeck"/>
-          <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/>
+          <!-- <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/> -->
+          <!-- <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/> -->
+          <!-- <panel class="hashtag_stack" deck="2" x="+1920-280" panelname="tags2" visibility="not deck 4 leftdeck"/> -->
+          <!-- <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/> -->
           <!-- slider -->
-          <panel class="stem_vu" stem="vocal" label="VOCAL" color="colorvocal" x="+80" y="+35"/>
-          <panel class="stem_vu" stem="melody" label="INSTRU" color="colorinstru" x="+140" y="+35"/>
-          <panel class="stem_vu" stem="rhythm" label="DRUM" color="colorbeat" x="+200" y="+35"/>
+          <panel class="stem_vu" deck="1" stem="vocal" label="VOCAL" color="colorvocal" x="+80" y="+35"/>
+          <panel class="stem_vu" deck="1" stem="melody" label="INSTRU" color="colorinstru" x="+140" y="+35"/>
+          <panel class="stem_vu" deck="1" stem="rhythm" label="DRUM" color="colorbeat" x="+200" y="+35"/>
           <panel class="pitch_zone" x="+20" y="+30"/>
           <group y="+221">
             <!-- TRANSPORT -->
@@ -15248,11 +15558,12 @@
           </group>
         </group>
       </group>
-      <!-- MIXER PANEL / MIDDLE PANEL -->
+      <!-- PRO: 2 DECK: MIXER PANEL / MIDDLE PANEL -->
       <group x="+800">
         <group name="tabs">
           <button class="button_main" x="+2" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-          <button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+          <!-- <button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/> -->
+          <button class="button_main" x="+2+78" width="78" height="23" action="skin_panel 'samplermixer' on" tooltip="SAMPLER\nShow the sampler controls" textcolor="textdarker" textcoloron="needle" text="SAMPLER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
           <button class="button_main" x="+2+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
           <button class="button_main" x="+2+78+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
         </group>
@@ -15328,11 +15639,12 @@
       <!-- LEFT: BOTTOM -->
       <panel class="area_deck_left" x="+2" y="+432+2" panelname="deck1" deck="1" visibility="deck 3 leftdeck"/>
       <panel class="area_deck_left" x="+2" y="+432+2" panelname="deck3" deck="3" visibility="deck 1 leftdeck"/>
-      <!-- MIXER PANEL / MIDDLE PANEL -->
-      <!-- TABS -->
+      <!-- PRO: 4 DECKS: MIXER PANEL / MIDDLE PANEL -->
       <group x="+802" y="+0">
+        <!-- tabs -->
         <button class="button_main" x="+12" width="78" height="23" action="skin_panel 'audiomixer' on" tooltip="AUDIO\nShow the audio (mixer) controls, like equalizers, gain, level, pfl, etc" textcolor="textdarker" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
-        <button class="button_main" x="+7+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
+        <!-- <button class="button_main" x="+7+78" width="78" height="23" action="skin_panel 'videomixer' on" tooltip="VIDEO\nShow the video controls, like video previews, source, effects, etc" textcolor="textdarker" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/> -->
+        <button class="button_main" x="+7+78" width="78" height="23" action="skin_panel 'samplermixer' on" tooltip="SAMPLER\nShow the sampler" textcolor="textdarker" textcoloron="needle" text="SAMPLER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
         <button class="button_main" x="+0+78+78" width="78" height="23" action="skin_panel 'scratchmixer' on" tooltip="SCRATCH\nShow a scratch-optimized view with vertical waveforms and scratch options" textcolor="textdarker" textcoloron="needle" text="WAVE" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
         <button class="button_main" x="+0+76+78+78" width="78" height="23" action="skin_panel 'mastermixer' on" textcolor="textdarker" tooltip="MASTER\nShow some general controls, like record/broadcast, microphone, or master effects" textcoloron="needle" text="MASTER" coloroff="xf_background" coloron="xf_background" brcoloroff="xf_background" brcoloron="xf_background"/>
       </group>
