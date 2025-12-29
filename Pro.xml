@@ -1503,6 +1503,7 @@
           <size width="3" height="24"/>
         </visual>
       </define>
+      <!-- CLASS: PAD BUTTON -->
       <define class="PADBUTTON" placeholders="width=109,height=39,*source" condition="var_not_equal '@$hauntingcolorscheme' 4">
         <visual>
           <tooltip/>
@@ -1671,7 +1672,7 @@
           <off color="needle" shape="square"/>
         </visual>
       </define>
-      <!-- PRO: PAD BUTTON -->
+      <!-- PRO: CLASS: PAD BUTTON -->
       <define class="PADBUTTON2" placeholders="*source" condition="var_not_equal '@$hauntingcolorscheme' 4">
         <visual>
           <size width="124" height="38"/>
@@ -1851,54 +1852,44 @@
         <!-- <off color="needle" shape="square"/> -->
         <!-- </visual> -->
       </define>
-      <!-- PAD BUTTON (Extra Small - Used On Stack) -->
-      <define class="padbutton-16-small" placeholders="*source">
+      <!-- STACK: CLASS: PAD BUTTON -->
+      <define class="PADBUTTON-16-SMALL" placeholders="*source">
         <!-- background -->
         <!-- <visual> -->
-        <!-- <tooltip></tooltip> -->
-        <!-- <size width="71" height="55"/> -->
-        <!-- <up color="button_background2" shape="square"/> -->
+        <!-- <tooltip/> -->
+        <!-- <size width="80" height="32"/> -->
+        <!-- <up color="#333333" shape="square"/> -->
         <!-- </visual> -->
-        <!-- border -->
-        <visual type="color" source="pad_button_color [SOURCE]" visibility="pad [SOURCE] ? constant 1 : constant 0.5">
-          <tooltip/>
-          <size width="78" height="30"/>
-        </visual>
+        <!-- color background -->
+        <!-- <visual type="color" source="pad_button_color [SOURCE]" visibility="pad [SOURCE] ? constant 1 : constant 0.5"> -->
+        <!-- <tooltip/> -->
+        <!-- <size width="78" height="30"/> -->
+        <!-- </visual> -->
         <!-- black background -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="not pad_pushed [SOURCE]">
-          <size width="78" height="30"/>
-          <up color="button_background2" border="button_background2" border_size="1" shape="square"/>
+          <size width="80" height="33"/>
+          <up color="button_background2" border="transparent" border_size="1" shape="square"/>
+          <over color="#111111" border="#333333" border_size="2" shape="square"/>
           <selected color="#CC000000" border="transparent" border_size="1" shape="square"/>
         </button>
         <!-- black background (pushed) -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]" visibility="pad_pushed [SOURCE]">
-          <size width="78" height="30"/>
-          <up color="button_background2" border="transparent" border_size="1" shape="square"/>
+          <size width="80" height="33"/>
+          <!-- <up color="button_background2" border="black" border_size="1" shape="square"/> -->
           <selected color="#CC000000" border="pad_button_color [SOURCE]" border_size="1" shape="square"/>
         </button>
         <!-- text -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
-          <size width="78" height="28"/>
-          <text dy="-1" width="78" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="center"/>
+          <pos x="+0" y="+0"/>
+          <size width="80" height="33"/>
+          <over color="#000000"/>
+          <text dx="+15" dy="-1" width="78" size="12" weight="" color="textoff" colorselected="needle" colorover="#999999" action="pad [SOURCE]" align="left"/>
         </button>
         <!-- color bar -->
         <visual type="color" source="pad_button_color [SOURCE]">
-          <tooltip/>
-          <pos x="+0" y="+27"/>
-          <size width="78" height="3"/>
+          <pos x="+6" y="+10"/>
+          <size width="3" height="12"/>
         </visual>
-        <!-- <visual novisibility="pad_button_color [SOURCE]"> -->
-        <!-- <tooltip></tooltip> -->
-        <!-- <pos x="+6" y="+40-11"/> -->
-        <!-- <size width="71-12" height="4"/> -->
-        <!-- <off color="panel_background" shape="square"/> -->
-        <!-- </visual> -->
-        <!-- <visual visibility="pad_pushed [SOURCE]"> -->
-        <!-- <tooltip></tooltip> -->
-        <!-- <pos x="+6" y="+55-12"/> -->
-        <!-- <size width="71-12" height="4"/> -->
-        <!-- <off color="needle" shape="square"/> -->
-        <!-- </visual> -->
       </define>
       <define class="hotcue_button_ex" placeholders="*source,width=59,height=22">
         <button class="button_main" width="[WIDTH]" height="[HEIGHT]" action="hot_cue [SOURCE]" rightclick="delete_cue [SOURCE]" coloroff="button_background" coloron="button_background" bordersize="0" textaction="cue_display [SOURCE]" textheight="18" textcoloron="needle"/>
@@ -4878,20 +4869,36 @@
       <!-- PRO: RIGHT DECK: DECK MENU -->
       <menu class="menu_maindecks" query="select" x="+484-28-3" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
     </define>
-    <define class="infos_ex">
+    <!-- CLASS: PERFORMANCE: TRACK INFO -->
+    <define class="INFOS_EX">
       <visual class="gfx_shape" width="478*2" height="70" coloroff="black"/>
+      <!-- LEFT DECK -->
       <group visibility="get_deck 1 ? true : get_deck 3 ? true : false">
         <button class="button_main" x="+2+4" y="+6" width="30" height="62-6-6" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck" coloroff="black" textheight="30" textsize="16" textaction="get_deck"/>
         <menu class="menu_maindecks" query="select" x="+2+4" y="+64-8-22" width="28" height="20"/>
         <!-- TITLE (No Cover) -->
-        <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
-          <panel class="textzone_title_artist_combo" x="+2+4+28+8" y="+4" width="478" align="left" scroll="no" titlefontsize="20" titleweight="bold" artistfontsize="17" visibility="var_equal '@hntnhtxtscroll' 0"/>
-          <panel class="textzone_title_artist_combo" x="+2+4+28+8" y="+4" width="478" align="left" scroll="yes" titlefontsize="20" titleweight="bold" artistfontsize="17" visibility="var_equal '@hntnhtxtscroll' 1"/>
-        </group>
+        <!-- <group x="+0" y="-2" visibility="var_equal '@$haunting_showcover_title' 0"> -->
+        <!-- <panel class="textzone_title_artist_combo" x="+2+4+28+8" y="+4" width="478" align="left" scroll="no" titlefontsize="20" titleweight="bold" artistfontsize="17" visibility="var_equal '@hntnhtxtscroll' 0"/> -->
+        <!-- <panel class="textzone_title_artist_combo" x="+2+4+28+8" y="+4" width="478" align="left" scroll="yes" titlefontsize="20" titleweight="bold" artistfontsize="17" visibility="var_equal '@hntnhtxtscroll' 1"/> -->
+        <!-- </group> -->
         <!-- PRO: TITLE: with cover -->
-        <group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1">
-          <panel class="textzone_title_artist_combo" x="+2+4+28+8+50+8" y="+4" width="478-50-8" align="left" scroll="no" titlefontsize="18" artistfontsize="14" artistcolor="#888888" visibility="var_equal '@hntnhtxtscroll' 0"/>
-          <panel class="textzone_title_artist_combo" x="+2+4+28+8+50+8" y="+4" width="478-50-8" align="left" scroll="yes" titlefontsize="18" artistfontsize="14" artistcolor="#888888" visibility="var_equal '@hntnhtxtscroll' 1"/>
+        <!-- <group x="+5-6" y="-2" visibility="var_equal '@$haunting_showcover_title' 1"> -->
+        <!-- <panel class="textzone_title_artist_combo" x="+2+4+28+8+50+8" y="+4" width="478-50-8" align="left" scroll="no" titlefontsize="18" artistfontsize="14" artistcolor="#888888" visibility="var_equal '@hntnhtxtscroll' 0"/> -->
+        <!-- <panel class="textzone_title_artist_combo" x="+2+4+28+8+50+8" y="+4" width="478-50-8" align="left" scroll="yes" titlefontsize="18" artistfontsize="14" artistcolor="#888888" visibility="var_equal '@hntnhtxtscroll' 1"/> -->
+        <!-- </group> -->
+        <group x="+95">
+          <!-- TITLE -->
+          <textzone tooltip="">
+            <size width="260" height="70-6-6-26"/>
+            <text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_title_before_remix &amp; param_uppercase" localize="true" important="true"/>
+          </textzone>
+          <button class="button_main" action="search `get_title_before_remix`" rightclick="file_info" x="+2+4+28+6+170+8" y="+1" tooltip="" width="484-2-4-28-6-2-4-210" height="70-6-6-26" coloroff="transparent" coloron="transparent" brcoloroff="transparent" brcoloron="transparent" bordersize="2"/>
+          <!-- LINE 2 (Remix) -->
+          <textzone>
+            <pos y="+16"/>
+            <size width="260" height="70-6-6-26"/>
+            <text fontsize="12" color="#888888" align="left" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/>
+          </textzone>
         </group>
         <panel class="cover_art_hntg" size="62-6-6" x="+2+4+28+6" y="+6" visibility="var_equal '@$haunting_showcover_title' 1"/>
         <!-- PERFORMANCE: EXTENDED: LEFT DECK: ACTIONS -->
@@ -4908,6 +4915,7 @@
         <textzone class="text" x="+878-10-90-10-80-10-48-10-80+20+77+2" y="+36" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
         <textzone class="text" x="+878-10-90-10-80-10-48+50+65" y="+38" width="128-26-26" height="20" fontsize="12" align="center" weight="" color="#999999" textaction="get_key_modifier_text"/>
       </group>
+      <!-- RIGHT DECK -->
       <group visibility="get_deck 2 ? true : get_deck 4 ? true : false">
         <!-- not cover -->
         <group x="+77+2" y="-2" visibility="var_equal '@$haunting_showcover_title' 0">
@@ -5062,7 +5070,7 @@
         <size width="300" height="38-6-6"/>
         <!-- <text fontsize="15" weight="" color="needle" align="left" action="deck loaded ? get_text ' `get_title_before_remix` '" localize="true" important="true"/> -->
         <text fontsize="16" weight="bold" color="color_header" align="left" scroll="yes" action="deck loaded ? get_text '`get_title_before_remix &amp; param_uppercase`  '" localize="true" important="true"/>
-        <text fontsize="15" weight="" color="color_subheader" align="left" action="get_loaded_song 'remix'" localize="true" important="true"/>
+        <text fontsize="12" weight="" color="color_subheader" align="left" action="get_loaded_song 'remix' &amp; param_uppercase" localize="true" important="true"/>
       </textzone>
       <textzone>
         <pos x="+2+6+145" y="+20"/>
@@ -6997,10 +7005,10 @@
           <!-- background -->
           <!-- <visual class="gfx_shape" x="+0" y="+6" width="299" height="24" coloroff="xf_background"/> -->
           <!-- buttons -->
-          <button class="button_main" x="+0" y="+6" width="78" height="25" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+80" y="+6" width="78" height="25" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+80*2" y="+6" width="78" height="25" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-          <button class="button_main" x="+80*3" y="+6" width="78" height="25" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="" textcoloron="needle" textsize="13" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+0" y="+6" width="80" height="25" action="pad_page btn1" rightclick="pad_page_select 1" scroll="pad_page_select 1" tooltip="" textcoloron="needle" textsize="9" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+80" y="+6" width="80" height="25" action="pad_page btn2" rightclick="pad_page_select 2" scroll="pad_page_select 2" tooltip="" textcoloron="needle" textsize="9" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+80*2" y="+6" width="80" height="25" action="pad_page btn3" rightclick="pad_page_select 3" scroll="pad_page_select 3" tooltip="" textcoloron="needle" textsize="9" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+          <button class="button_main" x="+80*3" y="+6" width="80" height="25" action="pad_page btn4" rightclick="pad_page_select 4" scroll="pad_page_select 4" tooltip="" textcoloron="needle" textsize="9" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
         </panel>
         <!-- PAD PAGE PARAM 1 -->
         <!-- <group name="pad_param1" x="+105" visibility="pad_has_param 1"> -->
@@ -8865,8 +8873,8 @@
       </group>
       <!-- PERFORMANCE: TOP BAR -->
       <group name="performance_skin_utility" visibility="var_equal '@$hauntingproskinmode' 1">
-        <button class="button_main" x="+1150" y="+8" width="60" height="12" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/>
-        <button class="button_main" x="+1150" y="+8+12+2" width="60" height="12" action="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/>
+        <!-- <button class="button_main" x="+1150" y="+8" width="60" height="12" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/> -->
+        <!-- <button class="button_main" x="+1150" y="+8+12+2" width="60" height="12" action="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
         <button class="button_main" x="119+80+294" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinfxrack' &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinfxrack' &amp; load_skin" width="40" height="27" textsize="12" textcoloron="needle" text="FX" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
         <button class="button_main" x="119+80+294+30" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
         <button class="button_main" x="119+80+294+30+50" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinvideorack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinvideorack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
@@ -8874,7 +8882,7 @@
         <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0 : constant 0.75">
           <visual class="gfx_shape" x="+490" width="150" height="43" coloroff="panel_background" visibility="var '@$hauntingbrowserzoom' 1 ? browser_zoom ? true : browser_isactive ? true : false : browser_zoom ? true : false"/>
         </group>
-        <button class="button_main" x="115+80+300+90+643" y="8" width="75" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms"/>
+        <!-- <button class="button_main" x="115+80+300+90+643" y="8" width="75" height="27" action="sandbox" textsize="10" textcoloron="texton" text="SANDBOX" coloron="orange" bordersize="0" query="sandbox ? blink 300ms"/> -->
         <group visibility="0.75">
           <visual class="gfx_shape" x="115+80+300+90+643" y="8" width="75" height="27" coloroff="panel_background" visibility="not can_sandbox"/>
         </group>
@@ -13296,7 +13304,7 @@
     <!-- </deck> -->
     <!-- </define> -->
     <!-- PERFORMANCE: EXTENDED: PADS RACK -->
-    <define class="pads_rack_ex" placeholders="deck,*panelname">
+    <define class="PADS_RACK_EX" placeholders="deck,*panelname">
       <!-- PAD SELECT (4 decks) -->
       <deck deck="[DECK]">
         <!-- left -->
@@ -13307,7 +13315,8 @@
         <!-- options button -->
         <button class="menu_button" action="cues_options" query="on/off" x="+6" y="+12" width="18" height="18" visibility="get_deck 1 ? skin_panel '@hotcuesx8_[PANELNAME]' : get_deck 3 ? skin_panel '@hotcuesx8_[PANELNAME]'"/>
         <!-- pads -->
-        <panel class="pads_ex" x="+32-2" panelname="[PANELNAME]" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
+        <!-- <panel class="pads_ex" x="+32-2" panelname="[PANELNAME]" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+        <panel class="pad_page_panel" x="+32-2" panelname="[PANELNAME]" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/>
         <!-- right -->
         <!-- select -->
         <panel class="tab_button" action="skin_panelgroup 'pads16++_[PANELNAME]' +1" action2="pad_menu" action3="skin_panelgroup_available 'pads16++_[PANELNAME]'" query="on/off" x="+549-30" width="30" height="132-9-10" y="+6" orientation="vertical-cw" textaction="not skin_panel '@hotcuesx8_[PANELNAME]' ? get_text 'PADS' : get_text 'HOTCUE'" menuvisible="pad_has_menu" visibility="get_deck 2 ? true : get_deck 4 ? true"/>
@@ -13351,6 +13360,9 @@
     <!-- STACK: PADS RACK -->
     <define class="pads_rack_stack" placeholders="deck,*panelname">
       <deck deck="[DECK]">
+        <visual width="310" height="161">
+          <off shape="square" color="#222222"/>
+        </visual>
         <panel class="pads_stack" x="+0" panelname="[PANELNAME]"/>
       </deck>
     </define>
@@ -13431,13 +13443,13 @@
             <visual x="+0" y="+0" width="310" height="44">
               <off shape="square" color="transparent" border_size="2" border="panel_background" radius="6"/>
             </visual>
-            <group x="+60" y="+2">
-              <textzone class="text" x="+0" y="+0" width="26+150+26" height="20" fontsize="10" color="textoff" align="center" weight="" text="BANK"/>
+            <group x="+80" y="+2">
+              <textzone class="text" x="+0" y="+0" width="26+120+26" height="20" fontsize="10" color="textoff" align="center" weight="" text="BANK"/>
               <group x="+0" y="+15">
                 <!-- label -->
                 <button class="button_main" x="+0" width="26" height="22" action="sampler_bank -1" iconsize="20" sysicon="arrowleft" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-                <button class="button_main" x="+0+26" width="150" height="22" action="sampler_bank" rightclick="sampler_options" textaction="get_sampler_bank" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="13" textcolor="white"/>
-                <button class="button_main" x="+0+26+150" width="26" height="22" action="sampler_bank +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+                <button class="button_main" x="+0+26" width="120" height="22" action="sampler_bank" rightclick="sampler_options" textaction="get_sampler_bank" coloroff="xf_background" coloron="knobfillon" bordersize="0" textsize="13" textcolor="white"/>
+                <button class="button_main" x="+0+26+120" width="26" height="22" action="sampler_bank +1" iconsize="20" sysicon="arrowright" coloroff="xf_background" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
               </group>
             </group>
             <!-- sidebar toggle -->
@@ -14421,21 +14433,28 @@
       </deck>
     </define>
     <!-- PERFORMANCE: EXTENDED: LEFT DECK AREA -->
-    <define class="area_deck_left_extended" placeholders="*deck,*panelname">
+    <define class="AREA_DECK_LEFT_EXTENDED" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- BG -->
-        <visual class="gfx_shape" width="878+77+2" height="264" coloroff="#111111" bordersize="1" bordercoloroff="#222222"/>
+        <visual class="gfx_shape" width="878+77+2" height="324" coloroff="panel_background" bordersize="1" bordercoloroff="#222222"/>
+        <visual class="gfx_shape" x="+40" y="+103" width="580" height="220" coloroff="#050505" bordersize="1" bordercoloroff="#333333" radius="10"/>
         <panel class="infos_ex"/>
         <visual class="gfx_shape" y="+68-2-6" width="878+77+2" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
-        <panel class="beat_divider_area" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
-        <songpos class="songpos" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
-        <panel class="transport_ex" x="+484+7+77+2+77+2-8" y="+103-6"/>
-        <panel class="pitch_zone_ex" x="+484+7+77+2" y="+103-6"/>
-        <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+4" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
+        <!-- <panel class="beat_divider_area" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/> -->
+        <songpos class="songpos" x="+2+4" y="+69" width="878-4-8+77+2" height="34-4-8"/>
+        <!-- <panel class="transport_ex" x="+484+7+77+2+77+2-8" y="+103-6"/> -->
         <line name="divider" color="button_background" width="3" height="172-12" x="+558" y="+103+2-5"/>
-        <panel class="loops_ex" x="+0" y="+103-6" panelname="[PANELNAME]"/>
-        <panel class="pads_rack_ex" x="+10" y="+103+39-4" panelname="[PANELNAME]"/>
-        <panel class="channel_levels_ex" deck="[DECK]" x="+878+77+2-61-10-81+77+4" y="+103-6"/>
+        <line color="#444444" x="+0" y="+0" width="957" height="1"/>
+        <line color="#444444" x="+0" y="+98" width="957" height="1"/>
+        <line color="#333333" x="+0" y="+324" width="957" height="1"/>
+        <line color="#333333" x="+956" y="+0" width="1" height="324"/>
+        <!-- <panel class="loops_ex" x="+0" y="+103-6" panelname="[PANELNAME]"/> -->
+        <panel class="pads_rack_ex" x="+10" y="+105" panelname="[PANELNAME]"/>
+        <group y="+10" x="-20">
+          <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+4-60" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
+          <panel class="pitch_zone_ex" x="+484+7+77+2+260" y="+103-6"/>
+          <panel class="channel_levels_ex" deck="[DECK]" x="+878+77+2-61-10-81+77+4+8" y="+103-6"/>
+        </group>
         <!-- BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] leftdeck ? var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
           <size width="878+77+2" height="264"/>
@@ -15679,8 +15698,10 @@
       <pos y="+43+2+121+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 0"/>
       <panel class="area_deck_left_extended" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
       <panel class="area_deck_left_extended" x="+2" panelname="deck3" deck="3" visibility="deck 3 leftdeck"/>
-      <panel class="htng_racks_ex" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 0"/>
-      <panel class="htng_racks_ex_single" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 1"/>
+      <group y="+60">
+        <panel class="htng_racks_ex" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 0"/>
+        <panel class="htng_racks_ex_single" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 1"/>
+      </group>
       <panel class="area_deck_right_extended" x="+1920-2-878-77-2" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_right_extended" x="+1920-2-878-77-2" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
     </define>
@@ -15932,12 +15953,12 @@
       <panel class="performance_4decks" condition="var_equal '@$hauntinglayout' 1"/>
       <!-- browsers -->
       <group name="no_utility_bar" condition="var_equal '@$hauntingutilitybar' 0">
-        <browser class="haunting_browser_performance" height="1280-43-2-264-2-2-2-1" condition="var_equal '@$hauntinglayout' 0"/>
-        <browser class="haunting_browser_performance4decks" height="1280-43-2-264-2-2-2-1-264-2" condition="var_equal '@$hauntinglayout' 1"/>
+        <browser class="haunting_browser_performance" height="1280-43-2-204-2-2-2-1" condition="var_equal '@$hauntinglayout' 0"/>
+        <browser class="haunting_browser_performance4decks" height="1280-43-2-204-2-2-2-1-264-2" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
       <group name="utility_bar" condition="var_equal '@$hauntingutilitybar' 1">
-        <browser class="haunting_browser_performance" height="1280-43-2-264-2-2-2-1-38" condition="var_equal '@$hauntinglayout' 0"/>
-        <browser class="haunting_browser_performance4decks" height="1280-43-2-264-2-2-2-1-264-2-38" condition="var_equal '@$hauntinglayout' 1"/>
+        <browser class="haunting_browser_performance" height="1280-43-2-205-2-2-2-1-38" condition="var_equal '@$hauntinglayout' 0"/>
+        <browser class="haunting_browser_performance4decks" height="1280-43-2-218-2-2-2-1-264-2-38" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
     </define>
     <define class="PROMINI_DECKS_ABOVE">
