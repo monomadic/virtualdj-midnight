@@ -5498,30 +5498,30 @@
           <on shape="circle" color="red" border="transparent"/>
         </visual>
         <!-- HOTCUE: CURRENT -->
-        <group visibility="not param_equal `cue_countup 'name'` ''">
-          <!-- bg -->
-          <visual type="color" source="cue_countup 'color'">
-            <pos x="+0" y="+0"/>
-            <size width="50" height="15"/>
-          </visual>
-          <!-- text -->
-          <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="1" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'">
-            <pos x="+0" y="+0"/>
-            <size width="50" height="15"/>
-          </button>
-        </group>
+        <!-- <group visibility="not param_equal `cue_countup 'name'` ''"> -->
+        <!-- bg -->
+        <!-- <visual type="color" source="cue_countup 'color'"> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="50" height="15"/> -->
+        <!-- </visual> -->
+        <!-- text -->
+        <!-- <button class="button_main" action="" coloroff="`cue_countup 'color'`" coloron="`cue_countup 'color'`" bordersize="1" textsize="12" textcolor="black" textcoloron="cue_countup 'color'" textaction="cue_countup 'name'"> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="50" height="15"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
         <!-- HOTCUE: NEXT -->
-        <group visibility="not param_equal `cue_countdown 'name'` ''">
-          <visual type="color" source="cue_countdown 'color'">
-            <tooltip/>
-            <pos x="+120" y="+140"/>
-            <size width="50" height="15"/>
-          </visual>
-          <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'">
-            <pos x="+120" y="+140"/>
-            <size width="50" height="15"/>
-          </button>
-        </group>
+        <!-- <group visibility="not param_equal `cue_countdown 'name'` ''"> -->
+        <!-- <visual type="color" source="cue_countdown 'color'"> -->
+        <!-- <tooltip/> -->
+        <!-- <pos x="+120" y="+140"/> -->
+        <!-- <size width="50" height="15"/> -->
+        <!-- </visual> -->
+        <!-- <button class="button_main" action="key_match_button" coloroff="`cue_countdown 'color'`" coloron="`cue_countdown 'color'`" bordersize="0" textsize="12" textcolor="black" textcoloron="cue_countdown 'color'" textaction="cue_countdown 'name'"> -->
+        <!-- <pos x="+120" y="+140"/> -->
+        <!-- <size width="50" height="15"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
         <!-- OUTER PROGRESS BORDER -->
         <!-- <visual source="song_pos 'show warning'" type="circle" visibility="loaded"> -->
         <!-- <tooltip/> -->
@@ -5604,17 +5604,17 @@
         <!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
         <!-- visibility="loaded" /> -->
         <!-- MASTER BUTTON -->
-        <group>
-          <!-- <visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23"> -->
-          <!-- <off shape="circle" color="#111111" border="transparent" border_size="0"/> -->
-          <!-- </visual> -->
-          <button action="unload" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22">
-            <off color="transparent" border_size="0"/>
-            <down color="transparent" border_size="0"/>
-            <on color="#333333" border_size="0"/>
-            <text fontsize="10" weight="bold" textcoloroff="#AAAAAA" textcolorover="white" align="center" text="E"/>
-          </button>
-        </group>
+        <!-- <group> -->
+        <!-- <visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23"> -->
+        <!-- <off shape="circle" color="#111111" border="transparent" border_size="0"/> -->
+        <!-- </visual> -->
+        <!-- <button action="unload" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22"> -->
+        <!-- <off color="transparent" border_size="0"/> -->
+        <!-- <down color="transparent" border_size="0"/> -->
+        <!-- <on color="#333333" border_size="0"/> -->
+        <!-- <text fontsize="10" weight="bold" textcoloroff="#AAAAAA" textcolorover="white" align="center" text="E"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
       </group>
       <!-- PRO: JOGWHEEL -->
       <group name="jogwheel_d" visibility="var_equal '@$hauntingjogtype' 3">
@@ -11314,7 +11314,7 @@
               </button>
             </group>
           </group>
-          <group y="+150">
+          <group y="+150" visibility="var_greater '@$infntywavesize' 5">
             <button tooltip="" class="button_main" action="setting 'showLyrics'" width="60" height="27" textsize="12" textcoloron="needle" text="LYRICS" coloroff="#101010" coloron="#222222" bordersize="0"/>
           </group>
           <menu tooltip="WAVEFORM OPTIONS">
@@ -14278,7 +14278,7 @@
     </group>
   </define>
   <group name="COMPOSITIONS">
-    <define class="area_waves">
+    <define class="AREA_WAVES">
       <panel class="waveform" x="+2" waveformheight="381" condition="var_equal '@$infntywavesize' 13"/>
       <panel class="waveform" x="+2" waveformheight="361" condition="var_equal '@$infntywavesize' 12"/>
       <panel class="waveform" x="+2" waveformheight="341" condition="var_equal '@$infntywavesize' 11"/>
@@ -14516,9 +14516,18 @@
         <visual class="gfx_shape" x="+0" y="+0" width="957" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
         <panel class="pads_rack_ex" x="+0" y="+105" panelname="[PANELNAME]"/>
         <group y="+10" x="-20">
-          <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+4-60" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
-          <panel class="pitch_zone_ex" x="+484+7+77+2+260" y="+103-6"/>
-          <panel class="channel_levels_ex" deck="[DECK]" x="+878+77+2-61-10-81+77+4+8" y="+103-6"/>
+          <panel class="pitch_zone" x="+484+7+77+2+105" y="+103-6"/>
+          <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+40" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
+          <panel class="deck_level" deck="[DECK]" x="+878+77+2-61-10+4+8+20" y="+110"/>
+        </group>
+        <group x="+845" y="+290">
+          <!-- PLAY/PAUSE -->
+          <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0">
+            <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="deckcolor"/>
+            <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
+            <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
+            <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/>
+          </button>
         </group>
         <!-- BORDER -->
         <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? deck [DECK] select ? var_equal '@$hauntinglayout' 1 ? loaded ? blink_play on : true">
@@ -15745,7 +15754,7 @@
       <panel class="pro_2decks_overlays" x="+1920-800-4" y="+0" deck="4"/>
       <!-- <panel class="pro_2decks_overlays" deck="rightdeck"/> -->
     </define>
-    <!-- PERF: LAYOUT: 2 DECKS -->
+    <!-- PERFORMANCE: LAYOUT: 2 DECKS (EXT) -->
     <define class="PERFORMANCE_2DECKS" placeholders="*panelname">
       <pos y="+43+2+381+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 13"/>
       <pos y="+43+2+361+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 12"/>
@@ -15770,6 +15779,7 @@
       <panel class="area_deck_left_extended" x="+1920-2-878-77-2" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_left_extended" x="+1920-2-878-77-2" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
     </define>
+    <!-- PERFORMANCE: LAYOUT: 2 DECKS (VERTICAL) -->
     <define class="PERFORMANCE_2DECKS_VERTICAL" placeholders="*panelname">
       <pos y="+43+2"/>
       <panel class="area_deck_left_vertical" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
@@ -15779,6 +15789,7 @@
       <panel class="area_deck_right_vertical" x="+1920-2-800" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_right_vertical" x="+1920-2-800" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
     </define>
+    <!-- PERFORMANCE: LAYOUT: 2 DECKS (HORIZONTAL) -->
     <define class="PERFORMANCE_2DECKS_CENTER" placeholders="*panelname">
       <pos y="+43+2"/>
       <panel class="area_deck_left_center" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
@@ -16088,22 +16099,24 @@
         <browser class="haunting_browser_pro4decks" height="1280-43-2-432-2-2-2-1-216-2-38" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
     </define>
-    <!-- PERF: LAYOUT -->
+    <!-- PERFORMANCE: LAYOUT (WAVES BELOW) -->
     <define class="PERFORMANCE_DECKS_BOTTOM">
       <!-- DECKS -->
       <panel class="performance_2decks" y="+43+2" condition="var_equal '@$hauntinglayout' 0"/>
       <panel class="performance_4decks" y="+43+2" condition="var_equal '@$hauntinglayout' 1"/>
       <!-- WAVES -->
-      <panel class="area_waves" y="+43+2+264+3" condition="var_equal '@$hauntinglayout' 0"/>
-      <panel class="area_waves" y="+43+2+264+3+264+2" condition="var_equal '@$hauntinglayout' 1"/>
+      <!-- 2 deck -->
+      <panel class="area_waves" y="+43+2+324+3" condition="var_equal '@$hauntinglayout' 0"/>
+      <!-- 4 deck -->
+      <panel class="area_waves" y="+43+2+324+3+264+2" condition="var_equal '@$hauntinglayout' 1"/>
       <!-- BROWSER -->
       <group name="no_utility_bar" condition="var_equal '@$hauntingutilitybar' 0">
-        <browser class="haunting_browser_performance" height="1280-43-2-264-2-2-2-1" condition="var_equal '@$hauntinglayout' 0"/>
-        <browser class="haunting_browser_performance4decks" height="1280-43-2-264-2-2-2-1-264-2" condition="var_equal '@$hauntinglayout' 1"/>
+        <browser class="haunting_browser_performance" height="1280-43-2-214-2-2-2-1" condition="var_equal '@$hauntinglayout' 0"/>
+        <browser class="haunting_browser_performance4decks" height="1280-43-2-214-2-2-2-1-264-2" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
       <group name="utility_bar" condition="var_equal '@$hauntingutilitybar' 1">
-        <browser class="haunting_browser_performance" height="1280-43-2-264-2-2-2-1-38" condition="var_equal '@$hauntinglayout' 0"/>
-        <browser class="haunting_browser_performance4decks" height="1280-43-2-264-2-2-2-1-264-2-38" condition="var_equal '@$hauntinglayout' 1"/>
+        <browser class="haunting_browser_performance" height="1280-43-2-212-2-2-2-1-38" condition="var_equal '@$hauntinglayout' 0"/>
+        <browser class="haunting_browser_performance4decks" height="1280-43-2-212-2-2-2-1-264-2-38" condition="var_equal '@$hauntinglayout' 1"/>
       </group>
     </define>
     <define class="PROMINI_DECKS_BOTTOM">
