@@ -8880,7 +8880,7 @@
       <group name="performance_skin_utility" visibility="var_equal '@$hauntingproskinmode' 1">
         <!-- <button class="button_main" x="+1150" y="+8" width="60" height="12" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/> -->
         <!-- <button class="button_main" x="+1150" y="+8+12+2" width="60" height="12" action="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
-        <group x="415" y="0">
+        <group x="430" y="0">
           <!-- border -->
           <visual x="+0" y="+8" width="6+40+53+50+6" height="28">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
@@ -8910,10 +8910,31 @@
             <line x="+100" y="-2" width="1" height="26" highlight="#666666" shadow="000000"/>
           </group>
         </group>
-        <group>
-          <button class="button_main" x="119+70+440" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinfxrack' &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinfxrack' &amp; load_skin" width="60" height="27" textsize="12" textcoloron="needle" text="FX" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-          <button class="button_main" x="129+80+440+30" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="MIXER" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
-          <button class="button_main" x="149+80+440+30+50" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinvideorack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinvideorack' &amp; load_skin" width="80" height="27" textsize="12" textcoloron="needle" text="VIDEO" coloroff="xf_background" coloron="xf_background" bordersize="0"/>
+        <group x="620">
+          <button class="button_main" x="+0" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="55" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="MIXER"/>
+          </button>
+          <button class="button_main" x="+60" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinvideorack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinvideorack' &amp; load_skin" width="55" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="VIDEO"/>
+          </button>
+          <button class="button_main" x="+60+60" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinfxrack' &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinmixerrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinfxrack' &amp; load_skin" width="65" height="27" bordersize="0">
+            <off color="black"/>
+            <on color="#222222"/>
+            <over color="#000000"/>
+            <down color="#222222"/>
+            <selected color="#333333"/>
+            <text overcolor="white" size="12" oncolor="white" text="EFFECTS"/>
+          </button>
         </group>
         <!-- <button class="button_main" x="115+80+300+75+75" y="8" width="32" height="27" tooltip="Quantize all" action="deck 1 quantize_all &amp; deck 2 quantize_all &amp; deck 3 quantize_all &amp; deck 4 quantize_all" textsize="10" text="QT" coloron="br_focus" bordersize="0"/> -->
         <group visibility="var_equal '@$hntnh_racksview_mini' 1 ? constant 0 : constant 0.75">
