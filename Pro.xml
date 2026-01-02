@@ -46,12 +46,13 @@
     <define color="color_fx" value="yellow"/>
     <define color="color_header" value="white"/>
     <define color="color_subheader" value="#888888"/>
+    <define color="color_knob_bg" value="#555555"/>
     <!-- Common colors for all decks -->
-    <define color="color_genre" value="#60FF8E"/>
-    <define color="color_mood" value="#CE42FF"/>
-    <define color="color_elements" value="#49FFFF"/>
-    <define color="color_mix" value="#FF026B"/>
-    <define color="color_timing" value="#FFF138"/>
+    <define color="color_tag_genre" value="#60FF8E"/>
+    <define color="color_tag_mood" value="#CE42FF"/>
+    <define color="color_tag_elements" value="#49FFFF"/>
+    <define color="color_tag_mix" value="#FF026B"/>
+    <define color="color_tag_timing" value="#FFF138"/>
     <!-- Deck 1 -->
     <define color="waveform_active1" value="#219cbf"/>
     <define color="waveform_passive1" value="#113845"/>
@@ -4874,14 +4875,18 @@
       <visual class="gfx_shape" width="478*2" height="70" coloroff="black"/>
       <!-- LEFT DECK -->
       <group visibility="get_deck 1 ? true : get_deck 3 ? true : false">
-        <visual x="+0" y="+1" width="15" height="60" visibility="1.0">
+        <visual x="+0" y="+1" width="34" height="320" visibility="select">
+          <off shape="square" color="black" radius="6"/>
+        </visual>
+        <visual x="+0" y="+1" width="15" height="60" visibility="select">
           <off shape="square" color="deckcolor" radius="6"/>
         </visual>
-        <button class="button_main" x="+6" y="+1" width="35" height="60" action="select" rightclick="cycle '@infospannelmode' 5" coloroff="black" textheight="54" textsize="30" textcoloron="black">
-          <text align="center" action="get_deck" width="28"/>
+        <!-- DECK BUTTON -->
+        <button class="button_main" x="+6" y="+1" width="28" height="60" action="select" rightclick="cycle '@infospannelmode' 5" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor">
+          <text align="center" action="get_deck" width="20"/>
         </button>
-        <menu class="menu_maindecks" query="select" x="+2+4+100" y="+64-8-22" width="28" height="20"/>
-        <group x="+110">
+        <menu class="menu_maindecks" query="select" x="+5" y="+295" width="28" height="20"/>
+        <group x="+105">
           <!-- LINE 1 (Title) -->
           <textzone>
             <size width="260" height="70-6-6-26"/>
@@ -4896,7 +4901,7 @@
           </textzone>
         </group>
         <!-- cover -->
-        <group x="+8+28+5" y="+0">
+        <group x="+8+26" y="+0">
           <panel class="cover_art_hntg" size="62" y="-1"/>
           <visual width="58" height="58" x="+3" y="+2">
             <off shape="square" color="transparent" border_size="1" border="#44FFFFFF" radius="0"/>
@@ -6588,21 +6593,21 @@
           <slot x="+184" y="+22"/>
           <!-- #BassHouse -->
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '">
-            <panel class="hashtag_button" accent_color="color_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
+            <panel class="hashtag_button" accent_color="color_tag_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
           </item>
           <!-- #House -->
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#house '">
-            <panel class="hashtag_button" accent_color="color_genre" tag="#House" text="#HOUSE"/>
+            <panel class="hashtag_button" accent_color="color_tag_genre" tag="#House" text="#HOUSE"/>
           </item>
           <!-- #Techno -->
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#techno '">
-            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Techno" text="#TECHNO"/>
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_genre" tag="#Techno" text="#TECHNO"/>
           </item>
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#psy'">
-            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#PsyTrance" text="#PSYTRANCE"/>
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_genre" tag="#PsyTrance" text="#PSYTRANCE"/>
           </item>
           <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#club '">
-            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Club" text="#CLUB"/>
+            <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_mood" tag="#Club" text="#CLUB"/>
           </item>
         </stack>
       </panel>
@@ -8881,35 +8886,41 @@
       <group name="performance_skin_utility" visibility="var_equal '@$hauntingproskinmode' 1">
         <!-- <button class="button_main" x="+1150" y="+8" width="60" height="12" action="setting 'hotcueMode' 'play'" query="setting 'hotcueMode' 'play'" textsize="11" text="CUE PLAY" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle"/> -->
         <!-- <button class="button_main" x="+1150" y="+8+12+2" width="60" height="12" action="setting 'hotcueMode' 'stutter'" textsize="11" text="STUTTER" coloroff="button_background3" coloron="button_background3" bordersize="0" textcolor="textoff3" textcoloron="needle" query="slip_mode ? blink 800ms : off"/> -->
-        <group x="430" y="0">
+        <group x="410" y="0">
           <!-- border -->
-          <visual x="+0" y="+8" width="6+40+53+50+6" height="28">
+          <visual x="+0" y="+8" width="80" height="28">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
           </visual>
           <!-- blackout -->
-          <visual x="+62" y="+0">
+          <visual x="+20" y="+0">
             <size width="28" height="16"/>
             <off shape="square" color="black"/>
           </visual>
           <!-- label -->
           <textzone x="+0">
-            <size width="6+40+53+58+6" height="16"/>
+            <size width="80" height="16"/>
             <text fontsize="9" weight="normal" color="#999999" align="center" text="LAYOUT" important="true"/>
           </textzone>
-          <!-- buttons -->
+          <!-- layout buttons (cycle) -->
           <group x="+8" y="+11">
-            <button class="button_main" action="set '@$hauntingperformancelayout' 1 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="10">
-              <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="VERT"/>
+            <button class="button_main" width="62" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="10" action="cycle '@$hauntingperformancelayout' 2 &amp; load_skin">
+              <text overcolor="#999999" weight="normal" align="center" size="14" oncolor="white" action="var_equal '@$hauntingperformancelayout' 2 ? get_text 'HORIZONTAL' : var_equal '@$hauntingperformancelayout' 0 ? get_text 'EXTENDED' : get_text 'VERTICAL'"/>
             </button>
-            <button class="button_main" x="+53" action="set '@$hauntingperformancelayout' 2 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="6">
-              <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="HORIZ"/>
-            </button>
-            <button class="button_main" x="+53+50" action="set '@$hauntingperformancelayout' 0 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="6">
-              <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="EXT"/>
-            </button>
-            <line x="+45" y="-2" width="1" height="26" highlight="#666666" shadow="000000"/>
-            <line x="+100" y="-2" width="1" height="26" highlight="#666666" shadow="000000"/>
           </group>
+          <!-- layout buttons (separate) -->
+          <!-- <group x="+8" y="+11"> -->
+          <!-- <button class="button_main" action="set '@$hauntingperformancelayout' 1 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="10"> -->
+          <!-- <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="VERT"/> -->
+          <!-- </button> -->
+          <!-- <button class="button_main" x="+53" action="set '@$hauntingperformancelayout' 2 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="6"> -->
+          <!-- <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="HORIZ"/> -->
+          <!-- </button> -->
+          <!-- <button class="button_main" x="+53+50" action="set '@$hauntingperformancelayout' 0 &amp; load_skin" width="40" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="6"> -->
+          <!-- <text overcolor="#999999" weight="normal" size="14" oncolor="white" text="EXT"/> -->
+          <!-- </button> -->
+          <!-- <line x="+45" y="-2" width="1" height="26" highlight="#666666" shadow="000000"/> -->
+          <!-- <line x="+100" y="-2" width="1" height="26" highlight="#666666" shadow="000000"/> -->
+          <!-- </group> -->
         </group>
         <group x="620">
           <button class="button_main" x="+0" y="8" action="var_equal '@$hauntingrackmode' 1 ? toggle '@$hauntingskinmixerrack' &amp; set '@$hauntingskinfxrack' 0 &amp; set '@$hauntingskinpadsrack' 0 &amp; set '@$hauntingskinvideorack' 0 &amp;&amp; load_skin : toggle '@$hauntingskinmixerrack' &amp; load_skin" width="55" height="27" bordersize="0">
@@ -9752,66 +9763,66 @@
           <!-- TEXT LABEL -->
           <!-- <textzone class="text" x="+0" y="+0" width="60" height="38" fontsize="12" color="#777777" align="right" weight="" text="GENRE"/> -->
           <!-- BUTTONS -->
-          <panel class="filter_tag_button" x="+5" accent_color="color_genre" tag="#BassHouse" text="#BASS-HOUSE" width="92"/>
-          <panel class="filter_tag_button" x="+100" accent_color="color_genre" tag="#Tech-House" text="#TECH-HOUSE" width="90"/>
-          <panel class="filter_tag_button" x="+192" accent_color="color_genre" tag="#Techno" text="#TECHNO" width="64"/>
-          <panel class="filter_tag_button" x="+258" accent_color="color_genre" tag="#Psy-Trance" text="#PSYTRANCE" width="84"/>
-          <panel class="filter_tag_button" x="+432" accent_color="color_genre" tag="#Rap" width="40" text="#RAP"/>
-          <panel class="filter_tag_button" x="+344" accent_color="color_genre" tag="#Synthwave" width="86" text="#SYNTHWAVE"/>
-          <panel class="filter_tag_button" x="+474" accent_color="color_genre" tag="#Melodic" width="70" text="#MELODIC"/>
+          <panel class="filter_tag_button" x="+5" accent_color="color_tag_genre" tag="#BassHouse" text="#BASS-HOUSE" width="92"/>
+          <panel class="filter_tag_button" x="+100" accent_color="color_tag_genre" tag="#Tech-House" text="#TECH-HOUSE" width="90"/>
+          <panel class="filter_tag_button" x="+192" accent_color="color_tag_genre" tag="#Techno" text="#TECHNO" width="64"/>
+          <panel class="filter_tag_button" x="+258" accent_color="color_tag_genre" tag="#Psy-Trance" text="#PSYTRANCE" width="84"/>
+          <panel class="filter_tag_button" x="+432" accent_color="color_tag_genre" tag="#Rap" width="40" text="#RAP"/>
+          <panel class="filter_tag_button" x="+344" accent_color="color_tag_genre" tag="#Synthwave" width="86" text="#SYNTHWAVE"/>
+          <panel class="filter_tag_button" x="+474" accent_color="color_tag_genre" tag="#Melodic" width="70" text="#MELODIC"/>
           <!-- COLOR STRIP -->
-          <!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_genre" visibility="0.8"/> -->
+          <!-- <visual class="gfx_shape" x="+70" y="+35" width="349-70+100-2" height="2" coloroff="color_tag_genre" visibility="0.8"/> -->
         </group>
         <!-- MIX -->
         <group name="mix_tags" x="+600">
           <!-- bg -->
           <!-- <visual x="+0" y="+0" width="335" height="38" visibility="0.2"> -->
-          <!-- <off shape="square" color="color_mix" border_size="1" border="color_mix" radius="0"/> -->
+          <!-- <off shape="square" color="color_tag_mix" border_size="1" border="color_tag_mix" radius="0"/> -->
           <!-- </visual> -->
-          <!-- <visual class="gfx_shape" x="+0" y="+0" width="335" height="2" coloroff="color_mix" visibility="0.5"/> -->
-          <!-- <visual class="gfx_shape" x="+0" y="+34" width="335" height="2" coloroff="color_mix" visibility="0.5"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="335" height="2" coloroff="color_tag_mix" visibility="0.5"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+34" width="335" height="2" coloroff="color_tag_mix" visibility="0.5"/> -->
           <!-- label -->
           <!-- <visual x="+0" y="+0" width="335" height="38" visibility="0.2"> -->
           <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
-          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="12" color="color_mix" align="center" weight="bold" text="MIX"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="12" color="color_tag_mix" align="center" weight="bold" text="MIX"/>
           <!-- buttons -->
           <group x="+30" y="+9">
-            <panel class="filter_tag_button" x="+0" accent_color="color_mix" tag="#Acapella" text="#ACAPELLA" width="76"/>
-            <panel class="filter_tag_button" x="+78" accent_color="color_mix" tag="#BackingTrack" text="#BACKING-TRACK" width="108"/>
-            <panel class="filter_tag_button" x="+188" accent_color="color_mix" tag="#DJMix" text="#DJ-MIX" width="58"/>
-            <panel class="filter_tag_button" x="+248" accent_color="color_mix" tag="#Mixed" text="#MIXED" width="56"/>
+            <panel class="filter_tag_button" x="+0" accent_color="color_tag_mix" tag="#Acapella" text="#ACAPELLA" width="76"/>
+            <panel class="filter_tag_button" x="+78" accent_color="color_tag_mix" tag="#BackingTrack" text="#BACKING-TRACK" width="108"/>
+            <panel class="filter_tag_button" x="+188" accent_color="color_tag_mix" tag="#DJMix" text="#DJ-MIX" width="58"/>
+            <panel class="filter_tag_button" x="+248" accent_color="color_tag_mix" tag="#Mixed" text="#MIXED" width="56"/>
           </group>
         </group>
         <!-- TIMING -->
         <group name="mix_timing" x="+950">
           <!-- bg -->
           <!-- <visual x="+0" y="+0" width="+26+66+15+2+50+2+58" height="38" visibility="0.2"> -->
-          <!-- <off shape="square" color="color_timing" border_size="1" border="color_timing" radius="0"/> -->
+          <!-- <off shape="square" color="color_tag_timing" border_size="1" border="color_tag_timing" radius="0"/> -->
           <!-- </visual> -->
-          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_timing" visibility="0.5"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_tag_timing" visibility="0.5"/> -->
           <!-- label -->
           <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
-          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="9" color="color_timing" align="center" weight="bold" text="TIME"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="9" color="color_tag_timing" align="center" weight="bold" text="TIME"/>
           <!-- BUTTONS -->
           <group x="+30" y="+9">
-            <panel class="filter_tag_button" x="+0" accent_color="color_timing" tag="#Opener" text="#OPENER" width="66"/>
-            <panel class="filter_tag_button" x="+0+66+2" accent_color="color_timing" tag="#Peak" text="#PEAK" width="50"/>
-            <panel class="filter_tag_button" x="+0+66+2+50+2" accent_color="color_timing" tag="#Closer" text="#CLOSER" width="58"/>
+            <panel class="filter_tag_button" x="+0" accent_color="color_tag_timing" tag="#Opener" text="#OPENER" width="66"/>
+            <panel class="filter_tag_button" x="+0+66+2" accent_color="color_tag_timing" tag="#Peak" text="#PEAK" width="50"/>
+            <panel class="filter_tag_button" x="+0+66+2+50+2" accent_color="color_tag_timing" tag="#Closer" text="#CLOSER" width="58"/>
           </group>
         </group>
         <!-- MOOD -->
         <group name="mix_mood" x="+1180">
           <!-- <visual x="+0" y="+0" width="+26+66+15+2+50+2+58" height="38" visibility="0.2"> -->
-          <!-- <off shape="square" color="color_mood" border_size="1" border="color_mood" radius="0"/> -->
+          <!-- <off shape="square" color="color_tag_mood" border_size="1" border="color_tag_mood" radius="0"/> -->
           <!-- </visual> -->
-          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_mood" visibility="0.5"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="+26+66+15+2+50+2+58" height="2" coloroff="color_tag_mood" visibility="0.5"/> -->
           <!-- label -->
           <line x="+0" y="+0" width="1" height="40" highlight="#101010" shadow="#707070"/>
-          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="8" color="color_mood" align="center" weight="bold" text="MOOD"/>
+          <textzone class="text" x="+5" y="+0" orientation="vertical" width="15" height="38" fontsize="8" color="color_tag_mood" align="center" weight="bold" text="MOOD"/>
           <!-- buttons -->
           <group x="+30" y="+9">
-            <panel class="filter_tag_button" x="+0" accent_color="color_mood" tag="#Club" width="50" text="#CLUB"/>
-            <panel class="filter_tag_button" x="+0+50+2" accent_color="color_mood" tag="#FredAgain" width="84" text="#FRED-AGAIN"/>
+            <panel class="filter_tag_button" x="+0" accent_color="color_tag_mood" tag="#Club" width="50" text="#CLUB"/>
+            <panel class="filter_tag_button" x="+0+50+2" accent_color="color_tag_mood" tag="#FredAgain" width="84" text="#FRED-AGAIN"/>
           </group>
         </group>
         <group name="color/rating/relayplay/automix" x="+1000" y="+2">
@@ -9830,22 +9841,22 @@
       <group name="custom_buttons" visibility="var_equal '@$h_utility_barmode' 1">
         <group x="+20">
           <button class="tag_button" source="24" x="+20" color="white" y="+6" width="80"/>
-          <button class="tag_button" source="25" x="+105" y="+6" color="color_genre"/>
-          <button class="tag_button" source="26" x="+105*2" y="+6" color="color_genre"/>
-          <button class="tag_button" source="27" x="+105*3" y="+6" color="color_genre"/>
-          <button class="tag_button" source="28" x="+105*4" y="+6" color="color_genre"/>
-          <button class="tag_button" source="29" x="+105*5" y="+6" color="color_mix"/>
-          <button class="tag_button" source="30" x="+105*6" y="+6" color="color_mix"/>
-          <button class="tag_button" source="31" x="+105*7" y="+6" color="color_mix"/>
-          <button class="tag_button" source="32" x="+105*8" y="+6" color="color_mix"/>
-          <button class="tag_button" source="33" x="+105*9" y="+6" color="color_mix"/>
-          <button class="tag_button" source="34" x="+105*10" y="+6" color="color_timing"/>
-          <button class="tag_button" source="35" x="+105*11" y="+6" color="color_timing"/>
-          <button class="tag_button" source="36" x="+105*12" y="+6" color="color_timing"/>
-          <button class="tag_button" source="37" x="+105*13" y="+6" color="color_timing"/>
-          <button class="tag_button" source="38" x="+105*14" y="+6" color="color_mood"/>
-          <button class="tag_button" source="39" x="+105*15" y="+6" color="color_mood"/>
-          <button class="tag_button" source="40" x="+105*16" y="+6" color="color_mood"/>
+          <button class="tag_button" source="25" x="+105" y="+6" color="color_tag_genre"/>
+          <button class="tag_button" source="26" x="+105*2" y="+6" color="color_tag_genre"/>
+          <button class="tag_button" source="27" x="+105*3" y="+6" color="color_tag_genre"/>
+          <button class="tag_button" source="28" x="+105*4" y="+6" color="color_tag_genre"/>
+          <button class="tag_button" source="29" x="+105*5" y="+6" color="color_tag_mix"/>
+          <button class="tag_button" source="30" x="+105*6" y="+6" color="color_tag_mix"/>
+          <button class="tag_button" source="31" x="+105*7" y="+6" color="color_tag_mix"/>
+          <button class="tag_button" source="32" x="+105*8" y="+6" color="color_tag_mix"/>
+          <button class="tag_button" source="33" x="+105*9" y="+6" color="color_tag_mix"/>
+          <button class="tag_button" source="34" x="+105*10" y="+6" color="color_tag_timing"/>
+          <button class="tag_button" source="35" x="+105*11" y="+6" color="color_tag_timing"/>
+          <button class="tag_button" source="36" x="+105*12" y="+6" color="color_tag_timing"/>
+          <button class="tag_button" source="37" x="+105*13" y="+6" color="color_tag_timing"/>
+          <button class="tag_button" source="38" x="+105*14" y="+6" color="color_tag_mood"/>
+          <button class="tag_button" source="39" x="+105*15" y="+6" color="color_tag_mood"/>
+          <button class="tag_button" source="40" x="+105*16" y="+6" color="color_tag_mood"/>
           <button class="tag_button" source="41" x="+105*17" y="+6" color="white"/>
         </group>
       </group>
@@ -14504,31 +14515,34 @@
     <define class="AREA_DECK_LEFT_EXTENDED" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- BG -->
-        <visual class="gfx_shape" width="878+77" height="324" coloroff="panel_background" bordersize="1" bordercoloroff="#111111"/>
-        <line x="+0" y="+285" width="960" height="1" color="#000000"/>
+        <!-- panel background -->
+        <visual class="gfx_shape" width="922" height="324" x="+35" coloroff="panel_background" bordersize="1" bordercoloroff="#111111"/>
+        <!-- <line x="+0" y="+285" width="960" height="1" color="#000000"/> -->
         <panel class="infos_ex"/>
-        <visual class="gfx_shape" x="+0" y="+62" width="957" height="33" coloroff="#111111" bordercoloroff="#444444" bordersize="1"/>
-        <!-- <visual class="gfx_shape" x="+0" width="630" bordercoloroff="#333333" bordersize="0" y="+90" height="233" coloroff="#05FFFFFF"/> -->
-        <songpos class="songpos" x="+1" y="+64" width="955" height="30"/>
-        <songpos class="cuemap" x="+1" y="+90" height="4" width="956"/>
+        <!-- songpos border -->
+        <visual class="gfx_shape" x="+35" y="+62" width="922" height="33" coloroff="#111111" bordercoloroff="#444444" bordersize="1"/>
+        <songpos class="songpos" x="+37" y="+64" width="918" height="30"/>
+        <songpos class="cuemap" x="+37" y="+90" width="918" height="4"/>
         <!-- panel border -->
-        <visual class="gfx_shape" x="+0" y="+0" width="957" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
+        <visual class="gfx_shape" x="+35" y="+0" width="922" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
         <!-- dark panel bg -->
-        <visual class="gfx_shape" x="+35" y="+98" width="530" height="220" coloroff="#050505" bordersize="2" bordercoloroff="#2F2F22" radius="10"/>
+        <visual class="gfx_shape" x="+44" y="+98" width="530" height="220" coloroff="#050505" bordersize="2" bordercoloroff="#222222" radius="10"/>
         <!-- pads rack -->
-        <panel class="pads_rack_ex" x="+25" y="+100" panelname="[PANELNAME]"/>
-        <group x="+560" y="+100">
+        <panel class="pads_rack_ex" x="+34" y="+100" panelname="[PANELNAME]"/>
+        <!-- EQ KNOBS -->
+        <group x="+580" y="+100">
           <!-- <visual class="gfx_shape" x="+53" width="15" y="-5" height="228" coloroff="#33000000"/> -->
           <!-- 3knobs -->
           <group novisibility="setting 'eqMode' 'STEMS'" y="+4">
-            <button class="dropdown_menu" action="eq_mode" x="+50" y="+0" visibility="var_equal '@$hauntingdropmenus' 0"/>
-            <panel class="knob" x="+19" knobsize="25" knobradius="11" faderradius="0" textwidth="30" textcolor="white" textleft="-2" textbelow="+21" textsize="8" action="gain" rgclick="match_gain" dblclick="gain 50%" frommiddle="true" fillcolor="blue" fillcoloroff="#CCCCCC" textaction="gain_label" actiontxt="var_equal '@$hauntingdropmenus' 1 ? eq_mode : eq_mode +1"/>
-            <panel class="knob" x="+19" y="+44" knobsize="25" knobradius="11" faderradius="0" textwidth="30" textcolor="white" textleft="-2" textbelow="+21" textsize="8" action="eq_high" rgclick="eq_high 0% ? eq_high 50% : eq_high 0%" dblclick="eq_high 50%" frommiddle="true" fillcolor="colorvocal" fillcoloroff="#CCCCCC" textaction="high_label" actiontxt="eq_mode +1"/>
-            <panel class="knob" x="+19" y="+44+44" knobsize="25" knobradius="11" faderradius="0" textwidth="30" textcolor="white" textleft="-2" textbelow="+21" textsize="8" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="colorinstru" fillcoloroff="#CCCCCC" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
-            <panel class="knob" x="+19" y="+44+44+44" knobsize="25" knobradius="11" faderradius="0" textwidth="30" textcolor="white" textleft="-2" textbelow="+21" textsize="8" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="colorbeat" fillcoloroff="#CCCCCC" textaction="low_label" actiontxt="eq_mode +1"/>
+            <button class="dropdown_menu" action="eq_mode" x="+46" y="-4" visibility="var_equal '@$hauntingdropmenus' 0"/>
+            <panel class="knob" x="+21" knobsize="21" knobradius="5" faderradius="0" textwidth="30" textcolor="white" textleft="-5" textbelow="+18" textsize="9" action="gain" rgclick="match_gain" dblclick="gain 50%" frommiddle="true" fillcolor="red" fillcoloroff="color_knob_bg" textaction="gain_label" actiontxt="var_equal '@$hauntingdropmenus' 1 ? eq_mode : eq_mode +1"/>
+            <panel class="knob" x="+21" y="+50" knobsize="21" knobradius="5" faderradius="0" textwidth="30" textcolor="white" textleft="-5" textbelow="+18" textsize="9" action="eq_high" rgclick="eq_high 0% ? eq_high 50% : eq_high 0%" dblclick="eq_high 50%" frommiddle="true" fillcolor="colorvocal" fillcoloroff="colorvocal" textaction="high_label" actiontxt="eq_mode +1"/>
+            <panel class="knob" x="+21" y="+50+40" knobsize="21" knobradius="5" faderradius="0" textwidth="30" textcolor="white" textleft="-5" textbelow="+18" textsize="9" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="colorinstru" fillcoloroff="colorinstru" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
+            <panel class="knob" x="+21" y="+50+40+40" knobsize="21" knobradius="5" faderradius="0" textwidth="30" textcolor="white" textleft="-5" textbelow="+18" textsize="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="colorbeat" fillcoloroff="colorbeat" textaction="low_label" actiontxt="eq_mode +1"/>
             <!-- PRO: AUDIO PANEL: COLORFX -->
-            <button class="dropdown_menu" action="effect_select colorfx" x="+50" y="+10+44+44+44+32" visibility="var_equal '@$hauntingdropmenus' 0"/>
-            <panel class="knob" x="+19" y="+44+44+44+44" knobsize="25" knobradius="11" faderradius="0" textwidth="30" textcolor="white" textleft="-2" textbelow="+21" textsize="8" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="magenta" fillcoloroff="#CCCCCC" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+            <!-- <visual x="+10" y="+50+40+40+45" class="gfx_shape" width="54" height="42" coloroff="transparent" bordersize="2" bordercoloroff="magenta" radius="6"/> -->
+            <button class="dropdown_menu" action="effect_select colorfx" x="+46" y="+50+40+40+50" visibility="var_equal '@$hauntingdropmenus' 0"/>
+            <panel class="knob" x="+19" y="+50+40+40+50" knobsize="25" knobradius="6" faderradius="0" textwidth="30" textcolor="white" textleft="-3" textbelow="+21" textsize="10" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="magenta" fillcoloroff="#884488" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
           </group>
           <!-- 5knobs -->
           <group visibility="setting 'eqMode' 'STEMS'">
@@ -14546,9 +14560,9 @@
           <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+40" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
           <panel class="deck_level" deck="[DECK]" x="+878+77+2-61-10+4+8+20" y="+110"/>
         </group>
-        <group x="+845" y="+290">
+        <group x="+840" y="+290">
           <!-- PLAY/PAUSE -->
-          <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0">
+          <button class="button_main" textsize="11" width="110" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0">
             <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="deckcolor"/>
             <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
             <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
@@ -15095,31 +15109,31 @@
         <slot x="+184" y="+22"/>
         <!-- #BassHouse chip -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#basshouse '">
-          <panel class="hashtag_button" accent_color="color_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
+          <panel class="hashtag_button" accent_color="color_tag_genre" tag="#BassHouse" text="#BASS_HOUSE"/>
         </item>
         <!-- #House chip -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#house '">
-          <panel class="hashtag_button" accent_color="color_genre" tag="#House" text="#HOUSE"/>
+          <panel class="hashtag_button" accent_color="color_tag_genre" tag="#House" text="#HOUSE"/>
         </item>
         <!-- #Techno chip -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#techno '">
-          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Techno" text="#TECHNO"/>
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_genre" tag="#Techno" text="#TECHNO"/>
         </item>
         <!-- #Psy -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#psy'">
-          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_genre" tag="#Psy-Trance" text="#PSY-TRANCE"/>
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_genre" tag="#Psy-Trance" text="#PSY-TRANCE"/>
         </item>
         <!-- #Synthwave -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#synthwave '">
-          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Synthwave" text="#SYNTHWAVE"/>
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_mood" tag="#Synthwave" text="#SYNTHWAVE"/>
         </item>
         <!-- #Rap -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#rap '">
-          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Rap" text="#RAP"/>
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_mood" tag="#Rap" text="#RAP"/>
         </item>
         <!-- #Club -->
         <item visibility="get_loaded_song 'User 1' &amp; param_lowercase &amp; param_contains '#club '">
-          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_mood" tag="#Club" text="#CLUB"/>
+          <panel class="hashtag_button" x="+0" y="+0" accent_color="color_tag_mood" tag="#Club" text="#CLUB"/>
         </item>
       </stack>
     </define>
