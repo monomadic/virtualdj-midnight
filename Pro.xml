@@ -4871,25 +4871,26 @@
       <menu class="menu_maindecks" query="select" x="+484-28-3" y="+45" width="28" height="20" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
     </define>
     <!-- CLASS: PERFORMANCE: TRACK INFO -->
-    <define class="INFOS_EX" placeholders="*deck">
-      <!-- LEFT DECK -->
+    <!-- LEFT DECK -->
+    <define class="INFOS_EX" placeholders="*deck,*deckside">
       <!-- <group visibility="get_deck 1 ? true : get_deck 3 ? true : false"> -->
       <deck deck="[DECK]">
         <visual class="gfx_shape" width="478*2" height="70" coloroff="black"/>
-        <visual x="+0" y="+1" width="34" height="320" visibility="select">
-          <off shape="square" color="black" radius="6"/>
-        </visual>
-        <visual x="+0" y="+1" width="15" height="60" visibility="select">
-          <off shape="square" color="deckcolor" radius="6"/>
-        </visual>
+        <!-- black bg spine -->
+        <!-- <visual x="+0" y="+1" width="34" height="320"> -->
+        <!-- <off shape="square" color="black" radius="6"/> -->
+        <!-- </visual> -->
         <!-- DECK BUTTON -->
-        <button class="button_main" width="28" height="60" action="select" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor">
-          <pos x="+6" y="+1" deck="left"/>
-          <pos x="+6" y="+10" deck="right"/>
-          <text align="center" action="get_deck" width="20"/>
-        </button>
-        <menu class="menu_maindecks" query="select" x="+5" y="+295" width="28" height="20"/>
-        <group x="+105">
+        <!-- <visual y="+1" width="15" height="60" visibility="select"> -->
+        <!-- <off shape="square" color="deckcolor" radius="6"/> -->
+        <!-- </visual> -->
+        <!-- <button class="button_main" width="28" height="60" action="select" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor"> -->
+        <!-- <pos x="+6" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
+        <!-- <pos x="+6" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
+        <!-- <text align="center" action="get_deck" width="20"/> -->
+        <!-- </button> -->
+        <!-- <menu class="menu_maindecks" query="select" x="+5" y="+295" width="28" height="20"/> -->
+        <group x="+70">
           <!-- LINE 1 (Title) -->
           <textzone>
             <size width="260" height="70-6-6-26"/>
@@ -4904,25 +4905,31 @@
           </textzone>
         </group>
         <!-- cover -->
-        <group x="+8+26" y="+0">
+        <group x="+0" y="+0" visibility="loaded">
           <panel class="cover_art_hntg" size="62" y="-1"/>
+          <!-- highlight -->
           <visual width="58" height="58" x="+3" y="+2">
             <off shape="square" color="transparent" border_size="1" border="#44FFFFFF" radius="0"/>
           </visual>
         </group>
         <!-- PERFORMANCE: EXTENDED: LEFT DECK: ACTIONS -->
-        <button class="button_main" x="+878-10-90+77+2" y="+4" width="90" height="34" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/>
-        <textzone class="text" x="+878-10-90+77+2" y="+7" width="90" height="34" fontsize="25" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/>
-        <textzone class="text" x="+878-10-90+77+2" y="+7" width="90" height="34" fontsize="25" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="not var_equal '@$hauntingjogtype' 0"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48-10-80+320+2" y="+36" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" text="BPM"/>
-        <!-- <button class="button_main" x="+878-10-90+77+2" y="+38-2" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
-        <button class="button_main" x="+878-10-90-10-80-10-48+50-28+77+2" y="+15" width="20" height="22" action="key_move -1" coloroff="button_background" textcolor="textoff4" iconsize="16" sysicon="arrowleft"/>
-        <button class="button_main" x="+878-10-90-10-80-10-48+50+60+77+2" y="+15" width="20" height="22" action="key_move +1" coloroff="button_background" textcolor="textoff4" iconsize="16" sysicon="arrowright"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48+50+77+2" y="+6" width="54" height="34" action="key_match_menu" fontsize="25" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/>
-        <!-- <button class="button_main" x="+878-10-90-10-80-10-48+50+77+2" y="+38-2" width="54" height="18" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
-        <textzone class="text" x="+878-10-90-10-80-10-48-10-80+20+77+2" y="+7" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="34" fontsize="25" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48-10-80+20+77+2" y="+36" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TOTAL'"/>
-        <textzone class="text" x="+878-10-90-10-80-10-48+50+65" y="+38" width="128-26-26" height="20" fontsize="12" align="center" weight="" color="#999999" textaction="get_key_modifier_text"/>
+        <group x="+900/2">
+          <!-- <button class="button_main" x="+0" y="+4" width="90" height="34" action="beat_tap" dblclick="reanalyze" rightclick="edit_bpm" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="textdarker" textsize="18" textaction="not loaded ? get_text 'TAP'" tooltip="Beat Tap \nRigth-click: Edit BPM \nDouble-click: Reanalyze"/> -->
+          <textzone class="text" x="+160" y="+7" width="90" height="34" fontsize="25" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'" visibility="var_equal '@$hauntingjogtype' 0"/>
+          <textzone class="text" x="+160" y="+7" width="90" height="34" fontsize="25" color="white" align="center" weight="bold" textaction="var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%bpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%bpmex'" visibility="not var_equal '@$hauntingjogtype' 0"/>
+          <textzone class="text" x="+160" y="+36" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" text="BPM"/>
+          <!-- <button class="button_main" x="+878-10-90+77+2" y="+38-2" width="90" height="18" action="masterdeck" coloroff="button_background" textcolor="textoff4" text="MASTER"/> -->
+          <!-- <button class="button_main" x="+878-10-90-10-80-10-48+50-28+77+2" y="+15" width="20" height="22" action="key_move -1" coloroff="button_background" textcolor="textoff4" iconsize="16" sysicon="arrowleft"/> -->
+          <!-- <button class="button_main" x="+878-10-90-10-80-10-48+50+60+77+2" y="+15" width="20" height="22" action="key_move +1" coloroff="button_background" textcolor="textoff4" iconsize="16" sysicon="arrowright"/> -->
+          <textzone class="text" x="+280" y="+6" width="60" height="34" action="key_match_menu" fontsize="25" color="`get_key_color`" align="center" weight="bold" textaction="get_key"/>
+          <!-- key modifier -->
+          <textzone class="text" x="+280" y="+38" width="60" height="20" fontsize="12" align="center" weight="" color="#999999" textaction="get_key_modifier_text"/>
+          <!-- <button class="button_main" x="+878-10-90-10-80-10-48+50+77+2" y="+38-2" width="54" height="18" action="master_tempo" coloroff="button_background" textcolor="textoff4" text="MT"/> -->
+          <!-- time -->
+          <textzone class="text" x="+380" y="+7" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="34" fontsize="25" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_time 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_time 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_time 'TOTAL'"/>
+          <!-- label -->
+          <textzone class="text" x="+380" y="+36" action="cycle '@$hauntinstimesdisplay' 3" tooltip="" width="80" height="24" fontsize="12" color="textdarker" align="center" weight="" textaction="var_equal '@$hauntinstimesdisplay' 0 ? get_text 'ELAPSED' : var_equal '@$hauntinstimesdisplay' 1 ? get_text 'REMAIN' : var_equal '@$hauntinstimesdisplay' 2 ? get_text 'TIME'"/>
+        </group>
       </deck>
       <!-- RIGHT DECK -->
       <!-- <group visibility="get_deck 2 ? true : get_deck 4 ? true : false"> -->
@@ -8704,7 +8711,7 @@
       <!-- NUMBER OF DECKS -->
       <group x="340" y="+1">
         <!-- border -->
-        <visual x="+0" y="+6" width="65" height="30">
+        <visual x="+0" y="+6" width="65" height="29">
           <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
         </visual>
         <!-- blackout -->
@@ -8712,11 +8719,11 @@
           <off shape="square" color="black"/>
         </visual>
         <!-- 2 DECK BUTTON -->
-        <button x="+6" y="+8" width="26" height="27" tooltip="2 Decks (4 Swap)" class="button_main" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
+        <button x="+6" y="+8" width="26" height="26" tooltip="2 Decks (4 Swap)" class="button_main" action="set '@$hauntinglayout' 0 &amp; set '@$4decks' 1 &amp; load_skin" bordersize="0" query="var_equal '@$hauntinglayout' 0 ? var_equal '@$4decks' 1">
           <text overcolor="#999999" weight="" size="14" oncolor="white" text="2"/>
         </button>
         <!-- 4 DECK BUTTON -->
-        <button x="+33" y="+8" width="26" height="27" tooltip="4 Decks" class="button_main" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" bordersize="0">
+        <button x="+33" y="+8" width="26" height="26" tooltip="4 Decks" class="button_main" action="set '@$hauntinglayout' 1 &amp; set '@$4decks' 1 &amp; load_skin" bordersize="0">
           <text overcolor="#999999" weight="" size="14" oncolor="white" text="4"/>
         </button>
         <!-- label -->
@@ -8897,7 +8904,7 @@
           <!-- layout buttons (cycle) -->
           <group x="+0" y="+11">
             <button class="button_main" width="90" height="22" color="transparent" coloroff="transparent" bordersize="0" align="center" radius="10" action="cycle '@$hauntingperformancelayout' 3 &amp; load_skin">
-              <text overcolor="#999999" weight="normal" align="center" size="14" oncolor="white" action="(get_var '@$hauntingperformancelayout' &amp; param_equal 2) ? get_text 'HORIZONTAL'              : (get_var '@$hauntingperformancelayout' &amp; param_equal 0) ? get_text 'EXTENDED'              : get_text 'VERTICAL'"/>
+              <text overcolor="#FFFFFF" color="#999999" weight="normal" align="center" size="14" oncolor="white" action="(get_var '@$hauntingperformancelayout' &amp; param_equal 2) ? get_text 'HORIZONTAL'              : (get_var '@$hauntingperformancelayout' &amp; param_equal 0) ? get_text 'EXTENDED'              : get_text 'VERTICAL'"/>
             </button>
           </group>
           <!-- layout buttons (separate) -->
@@ -9951,7 +9958,7 @@
               
               LEFT WAVE -->
               <!-- grid border: left -->
-              <visual x="+[HEIGHT]" y="+19" width="1920-170" height="[HEIGHT]-34" visibility="leftdeck">
+              <visual x="+[HEIGHT]" y="+20" width="1920-170" height="[HEIGHT]-40" visibility="leftdeck">
                 <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
               </visual>
               <!-- cue markers below -->
@@ -9972,8 +9979,8 @@
               <!-- main wave -->
               <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" visibility="leftdeck">
                 <pos x="+13" y="+20"/>
-                <size width="1920-20-44" height="[HEIGHT]-36"/>
-                <grid height="12" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="transparent" shapepos="-14"/>
+                <size width="1920-20-44" height="[HEIGHT]-40"/>
+                <grid height="10" pos="-18" maincolor="#888888" size="1" mainsize="1" phrasecolor="white" phrasesize="1" color="transparent" shapepos="-14"/>
                 <gridlines width="1" color="gridlines" transparency="0.3"/>
                 <cue y="-18">
                   <mask x="123" y="100" width="6" height="13"/>
@@ -9989,17 +9996,17 @@
               
               RIGHT WAVE -->
               <!-- grid border: right -->
-              <visual x="+[HEIGHT]" y="+16" width="1920-170" height="[HEIGHT]-40" visibility="rightdeck">
+              <visual x="+[HEIGHT]" y="+20" width="1920-170" height="[HEIGHT]-40" visibility="rightdeck">
                 <off shape="square" color="transparent" border_size="1" border="#202020" radius="0"/>
               </visual>
               <!-- RIGHT: cue markers below -->
               <scratchwave orientation="horizontal" color="scratch1" color2="scratch2" colorVocal="colorVocal" colorInstru="colorInstru" colorBeat="colorBeat" colornoBeat="colorNoBeat" colornoInstru="colorNoInstru" colornovocal="colorNoVocal" visibility="rightdeck">
-                <pos x="+13" y="+18"/>
-                <size width="1920-20-44" height="[HEIGHT]-32-12"/>
-                <grid height="10" pos="-18" maincolor="#555555" size="1" mainsize="1" phrasecolor="white" phrasesize="2" color="black" shapepos="-14"/>
+                <pos x="+13" y="+20"/>
+                <size width="1920-20-44" height="[HEIGHT]-40"/>
+                <grid height="10" pos="-18" maincolor="#888888" size="1" mainsize="1" phrasecolor="white" phrasesize="1" color="transparent" shapepos="-14"/>
                 <gridlines width="1" color="gridlines" transparency="0.3"/>
                 <!-- y = below waveform: [HEIGHT] here is the scratchwave's own height in this context -->
-                <cue y="+[HEIGHT]-40">
+                <cue y="+[HEIGHT]-35">
                   <mask x="123" y="100" width="6" height="13"/>
                   <text dx="+8" dy="-1" fontsize="12" important="true"/>
                 </cue>
@@ -14118,7 +14125,7 @@
         <panel class="crossfader" x="+20" y="+432-56+6+4+216+2"/>
       </group>
     </define>
-    <!-- TRANSPORT PANEL -->
+    <!-- CLASS: TRANSPORT PANEL -->
     <define class="XFADER_PANEL">
       <!-- PLAY SELECT -->
       <define class="deck_playselect" placeholders="deck,side,width=60,textsize=14,textcolor=#888888,offcolor=#111111,overcolor=#111111">
@@ -14184,20 +14191,18 @@
       <!-- PLAY ALL BUTTON -->
       <group name="playpause_global">
         <!-- PLAY state (no decks playing) -->
-        <button x="+123" y="+0" width="66" height="34" visibility="true" action="deck left play &amp; deck right play &amp; deck all sync &amp; phrase_sync">
-          <off color="#333333" border="#333333" border_size="1" shape="square"/>
-          <on color="#444444" border="#111111" border_size="1" shape="square"/>
-          <over color="#444444" border="#555555" border_size="1" shape="square"/>
-          <selected color="#555555" border="green" border_size="1" shape="square"/>
-          <icon dx="-3" sysicon="play" width="50" height="50" color="#666666" colorover="#FFFFFF" colordown="white" colorselected="#000000"/>
+        <button x="+123" y="+0" width="66" height="34" action="deck left play &amp; deck right play &amp; deck all sync &amp; phrase_sync" sysicon="play_button" iconsize="39">
+          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="white"/>
+          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+          <selected color="white" border="white" radius="4" iconcolor="white"/>
         </button>
         <!-- STOP state (any deck playing) -->
-        <button x="+123" y="+0" width="66" height="34" visibility="deck 1 play or deck 2 play or deck 3 play or deck 4 play" action="deck all pause &amp; sampler stop all" query="on">
-          <off color="#333333" border="#000000" border_size="0" shape="square"/>
-          <on color="#222222" border="#111111" border_size="0" shape="square"/>
-          <over color="#444444" border="#000000" border_size="0" shape="square"/>
-          <selected color="green" border="green" border_size="1" shape="square"/>
-          <icon dx="+0" sysicon="stop" width="50" height="50" color="#FFFFFF" colordown="white" colorselected="#000000"/>
+        <button x="+123" y="+0" textsize="11" width="66" height="34" visibility="deck 1 play or deck 2 play or deck 3 play or deck 4 play" action="deck all pause &amp; sampler stop all" sysicon="play_button" iconsize="39">
+          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/>
+          <selected color="white" border="white" radius="4" iconcolor="white"/>
         </button>
       </group>
       <!-- <button class="button_main" x="+30" y="+20" width="40" height="40" border="deck 1 deckcolor" border_size="3" action="invert_deck left" coloroff="deckcolor" text="" textcolor="white" iconsize="40" sysicon="play" border="0" shape="circle"/> -->
@@ -14374,6 +14379,7 @@
     <define class="BUTTON_INVERT_DECK" placeholders="*deck">
       </define>
     <!-- CLASS: TRANSPORT BAR -->
+    <!-- (PRO) -->
     <define class="TRANSPORT_BAR" placeholders="*deck,*deckside">
       <deck deck="[DECK]">
         <!-- bg -->
@@ -14504,26 +14510,88 @@
         </button>
       </deck>
     </define>
+    <!-- CONTROL: COLORFX -->
+    <define class="KNOB_SMALL_THIN" placeholders="*label,knob_color=white">
+      <!-- LABEL: COLORFX -->
+      <!-- <button x="+1" y="+0" width="58" height="12" action="effect_active colorfx" query="effect_active colorfx" border_size="1"> -->
+      <!-- <off color="#444444"/> -->
+      <!-- <selected color="magenta" textcolor="black"/> -->
+      <!-- <text fontsize="10" color="#111111" colorselected="black" align="center" text="COLOR FX"/> -->
+      <!-- </button> -->
+      <!-- EFFECT SELECT GUI BUTTON -->
+      <!-- <button x="+44" y="+13" class="dropdown_menu" action="effect_select colorfx" visibility="var_equal '@$hauntingdropmenus' 0"/> -->
+      <!-- KNOB: COLORFX -->
+      <panel x="+0" y="+16">
+        <!-- <slider action="effect_slider 'colorfx'" rightclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" orientation="round" frommiddle="true" resettomiddle="true"> -->
+        <!-- <pos x="+15" y="+0"/> -->
+        <!-- <size width="30" height="30"/> -->
+        <!-- <fader color="[KNOB_COLOR]" width="3" height="12" radius="1" anglemin="-130" anglemax="130"/> -->
+        <!-- <fill width="30" height="30" radius="11" color="knobfillon" backcolor="[KNOB_COLOR]"/> -->
+        <!-- </slider> -->
+        <slider action="effect_slider 'colorfx'" rightclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" orientation="round" frommiddle="true" resettomiddle="true">
+          <pos x="+15" y="+0"/>
+          <size width="30" height="30"/>
+          <!-- FLAT knob face (replaces the default beveled one) -->
+          <!-- <off shape="circle" width="30" height="30" color="[KNOB_COLOR]" border_size="0"/> -->
+          <!-- value ring (optional) -->
+          <fill width="30" height="30" radius="11" color="knobfillon" backcolor="#22FFFFFF"/>
+          <!-- pointer -->
+          <fader color="[KNOB_COLOR]" width="3" height="12" radius="1" anglemin="-130" anglemax="130"/>
+        </slider>
+        <textzone action="effect_select colorfx">
+          <pos x="+0" y="+29"/>
+          <size width="59"/>
+          <text fontsize="9" weight="" color="knobtextoff" align="center" action="[LABEL]" important="true" localize="true"/>
+        </textzone>
+      </panel>
+    </define>
+    <define class="AREA_DECK_EXTENDED" placeholders="*deck,*panelname,*deckside">
+      <panel class="area_deck_spine_extended" deck="[DECK]" panelname="[PANELNAME]" deckside="[DECKSIDE]"/>
+      <panel class="area_deck_left_extended" x="+35" deck="[DECK]" panelname="[PANELNAME]" deckside="[DECKSIDE]"/>
+    </define>
+    <!-- PERFORMANCE: EXTENDED: LEFT DECK AREA -->
+    <define class="AREA_DECK_SPINE_EXTENDED" placeholders="*deck,*panelname,*deckside">
+      <deck deck="[DECK]">
+        <!-- black bg spine -->
+        <visual x="+0" y="+1" width="34" height="320">
+          <off shape="square" color="black" radius="6"/>
+        </visual>
+        <!-- DECK BUTTON -->
+        <visual y="+1" width="15" height="60" visibility="select">
+          <off shape="square" color="deckcolor" radius="6"/>
+        </visual>
+        <button class="button_main" width="28" height="60" action="select" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor">
+          <pos x="+6" y="+1" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+6" y="+1" condition="param_equal [DECKSIDE] 'right'"/>
+          <text align="center" action="get_deck" width="20"/>
+        </button>
+        <menu class="menu_maindecks" query="select" x="+5" y="+295" width="28" height="20"/>
+      </deck>
+    </define>
     <!-- PERFORMANCE: EXTENDED: LEFT DECK AREA -->
     <define class="AREA_DECK_LEFT_EXTENDED" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- BG -->
         <!-- panel background -->
-        <visual class="gfx_shape" width="922" height="324" x="+35" coloroff="panel_background" bordersize="1" bordercoloroff="#111111"/>
+        <visual class="gfx_shape" width="922" height="324" coloroff="panel_background" bordersize="1" bordercoloroff="#111111"/>
         <!-- <line x="+0" y="+285" width="960" height="1" color="#000000"/> -->
-        <panel class="infos_ex" deck="[DECK]"/>
+        <panel class="infos_ex" deckside="left" visibility="leftdeck"/>
+        <panel class="infos_ex" deckside="right" visibility="rightdeck"/>
         <!-- songpos border -->
-        <visual class="gfx_shape" x="+35" y="+62" width="922" height="33" coloroff="#111111" bordercoloroff="#444444" bordersize="1"/>
-        <songpos class="songpos" x="+37" y="+64" width="918" height="30"/>
-        <songpos class="cuemap" x="+37" y="+91" width="918" height="2"/>
+        <visual class="gfx_shape" y="+62" width="922" height="33" coloroff="#111111" bordercoloroff="#222222" bordersize="1"/>
+        <songpos class="songpos" x="+2" y="+64" width="918" height="30"/>
+        <songpos class="cuemap" x="+2" y="+91" width="918" height="2"/>
         <!-- panel border -->
-        <visual class="gfx_shape" x="+35" y="+0" width="922" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
+        <visual class="gfx_shape" x="+0" y="+0" width="922" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
         <!-- dark panel bg -->
-        <visual class="gfx_shape" x="+44" y="+98" width="530" height="220" coloroff="#050505" bordersize="2" bordercoloroff="#222222" radius="10"/>
+        <visual class="gfx_shape" x="+9" y="+98" width="530" height="220" coloroff="#050505" bordersize="2" bordercoloroff="#222222" radius="10"/>
         <!-- pads rack -->
-        <panel class="pad_page_panel" x="+54" y="+100" panelname="[PANELNAME]"/>
+        <panel class="pad_page_panel" x="+19" y="+100" panelname="[PANELNAME]"/>
+        <group x="+620" y="+260">
+          <panel class="knob_small_thin" label="get_text 'KNOB'"/>
+        </group>
         <!-- EQ KNOBS -->
-        <group x="+580" y="+100">
+        <group x="+535" y="+100">
           <!-- <visual class="gfx_shape" x="+53" width="15" y="-5" height="228" coloroff="#33000000"/> -->
           <!-- 3knobs -->
           <group novisibility="setting 'eqMode' 'STEMS'" y="+4">
@@ -14534,8 +14602,15 @@
             <panel class="knob" x="+21" y="+50+40+40" knobsize="21" knobradius="5" faderradius="0" textwidth="30" textcolor="white" textleft="-5" textbelow="+18" textsize="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="colorbeat" fillcoloroff="colorbeat" textaction="low_label" actiontxt="eq_mode +1"/>
             <!-- PRO: AUDIO PANEL: COLORFX -->
             <!-- <visual x="+10" y="+50+40+40+45" class="gfx_shape" width="54" height="42" coloroff="transparent" bordersize="2" bordercoloroff="magenta" radius="6"/> -->
-            <button class="dropdown_menu" action="effect_select colorfx" x="+46" y="+50+40+40+50" visibility="var_equal '@$hauntingdropmenus' 0"/>
-            <panel class="knob" x="+19" y="+50+40+40+50" knobsize="25" knobradius="6" faderradius="0" textwidth="30" textcolor="white" textleft="-3" textbelow="+21" textsize="10" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="magenta" fillcoloroff="#884488" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+            <group x="+10" y="+50+40+40+50">
+              <!-- <button x="+34" class="dropdown_menu" action="effect_select colorfx" visibility="var_equal '@$hauntingdropmenus' 0"/> -->
+              <panel x="+9" class="knob" knobsize="25" knobradius="6" faderradius="0" textwidth="30" textcolor="white" textleft="-3" textbelow="+21" textsize="10" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="magenta" fillcoloroff="#884488" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
+              <visual type="transparent" source="effect_active colorfx ? blink 500ms">
+                <pos x="+34" width="8" height="8"/>
+                <off color="tab_menu" border="tab_menu" shape="circle"/>
+                <on color="green" border="green" shape="circle"/>
+              </visual>
+            </group>
           </group>
           <!-- 5knobs -->
           <group visibility="setting 'eqMode' 'STEMS'">
@@ -14549,11 +14624,11 @@
         </group>
         <!-- jog -->
         <group y="+10" x="-20">
-          <panel class="pitch_zone" x="+484+7+77+2+105" y="+103-6"/>
-          <panel class="jogwheel" x="+878-[JOGSIZE]-2-8-58-14+77+2-8-2+40" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
-          <panel class="deck_level" deck="[DECK]" x="+878+77+2-61-10+4+8+20" y="+110"/>
+          <panel class="pitch_zone" x="+922-300" y="+103-6"/>
+          <panel class="jogwheel" x="+922-210" y="+2+6+4+103-6-4" name="jogwheel_spinner"/>
+          <panel class="deck_level" deck="[DECK]" x="+922-30" y="+110"/>
         </group>
-        <group x="+840" y="+290">
+        <group x="+805" y="+290">
           <!-- PLAY/PAUSE -->
           <button class="button_main" textsize="11" width="110" height="30" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0">
             <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="deckcolor"/>
@@ -14749,7 +14824,7 @@
     <define class="area_deck_right_extended" placeholders="deck,*panelname">
       <deck deck="[DECK]">
         <visual class="gfx_shape" width="878+77+2" height="264" coloroff="#111111" bordersize="1" bordercoloroff="#222222"/>
-        <panel class="infos_ex" x="+0" deck="[DECK]"/>
+        <panel class="infos_ex" x="+0" deck="[DECK]" deckside="right"/>
         <visual class="gfx_shape" y="+68-2-6" width="878+77+2" height="38" coloroff="infos_background" bordercoloroff="panel_background" bordersize="2"/>
         <panel class="beat_divider_area" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
         <songpos class="songpos" x="+2+4" y="+68+4-6" width="878-4-8+77+2" height="38-4-8"/>
@@ -15827,12 +15902,14 @@
       <pos y="+43+2+161+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 2"/>
       <pos y="+43+2+141+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 1"/>
       <pos y="+43+2+121+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 0"/>
-      <panel class="area_deck_left_extended" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/>
+      <panel class="area_deck_extended" x="+2" panelname="deck1" deck="1" deckside="left" visibility="not deck 3 leftdeck"/>
+      <!-- <panel class="area_deck_left_extended" x="+2" panelname="deck1" deck="1" visibility="not deck 3 leftdeck"/> -->
       <panel class="area_deck_left_extended" x="+2" panelname="deck3" deck="3" visibility="deck 3 leftdeck"/>
       <group y="+60">
         <panel class="htng_racks_ex" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 0"/>
         <panel class="htng_racks_ex_single" x="+2" condition="var_equal '@$hauntingwavesviewmaindecks' 1"/>
       </group>
+      <panel class="area_deck_extended" x="+1920-2-878-77-2" panelname="deck2" deckside="right" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_left_extended" x="+1920-2-878-77-2" panelname="deck2" deck="2" visibility="not deck 4 rightdeck"/>
       <panel class="area_deck_left_extended" x="+1920-2-878-77-2" panelname="deck4" deck="4" visibility="deck 4 rightdeck"/>
     </define>
