@@ -5223,13 +5223,13 @@
           <button width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
             <off color="#222222"/>
             <selected color="magenta" textcolor="black"/>
-            <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLOR FX"/>
+            <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLORFX"/>
           </button>
-          <!-- STATUS: FX -->
-          <button y="+20" width="80" height="18" action="effect_active 'padfx'" border_size="1" query="effects_used 'padfx'">
+          <!-- STATUS: PADFX -->
+          <button y="+20" width="80" height="18" action="effect_disable_all 'padfx' &amp; filter 50%" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
             <off color="#222222"/>
             <selected color="color_fx"/>
-            <text fontsize="12" color="#111111" colorselected="black" align="center" text="PAD FX"/>
+            <text fontsize="12" color="#111111" colorselected="black" align="center" text="PADFX"/>
           </button>
           <!-- STATUS: SAMPLER -->
           <button y="+40" y="+20" width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
