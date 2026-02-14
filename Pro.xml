@@ -43,7 +43,9 @@
     <define color="color_dropzone" value="white"/>
     <define color="color_masterdeck" value="orange"/>
     <define color="color_fx" value="yellow"/>
-    <define color="color_fx" value="yellow"/>
+    <define color="color_padfx" value="yellow"/>
+    <define color="color_colorfx" value="magenta"/>
+    <define color="color_sampler" value="#00AAEE"/>
     <define color="color_header" value="white"/>
     <define color="color_subheader" value="#888888"/>
     <define color="color_knob_bg" value="#555555"/>
@@ -5222,19 +5224,19 @@
           <!-- STATUS: COLORFX -->
           <button width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
             <off color="#222222"/>
-            <selected color="magenta" textcolor="black"/>
-            <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLORFX"/>
+            <selected color="color_colorfx" textcolor="black"/>
+            <text fontsize="12" color="#111111" colorselected="black" align="center" text="COLOR FX"/>
           </button>
           <!-- STATUS: PADFX -->
           <button y="+20" width="80" height="18" action="effect_disable_all 'padfx' &amp; filter 50%" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
             <off color="#222222"/>
-            <selected color="color_fx"/>
-            <text fontsize="12" color="#111111" colorselected="black" align="center" text="PADFX"/>
+            <selected color="color_padfx"/>
+            <text fontsize="12" color="#111111" colorselected="black" align="center" text="PAD FX"/>
           </button>
           <!-- STATUS: SAMPLER -->
-          <button y="+40" y="+20" width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
+          <button y="+40" width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
             <off color="#222222"/>
-            <selected color="#00AAEE" textcolor="white"/>
+            <selected color="color_sampler" textcolor="white"/>
             <text fontsize="12" color="#111111" colorselected="black" align="center" text="SAMPLER"/>
           </button>
           <!-- STATUS: FX1/2/3 -->
@@ -9023,24 +9025,44 @@
         <!-- </panel> -->
         <!-- </group> -->
       </group>
-      <!-- FX -->
+      <!-- AUDIO MODIFIERS STATUS LIGHTS -->
       <group x="+802+160+100+2+400" y="+8">
-        <group x="+0">
-          <visual type="transparent" source="effects_used ? blink 500ms">
-            <pos x="+0" y="+8" width="12" height="12"/>
-            <off color="tab_menu" border="tab_menu" shape="circle"/>
-            <on color="green" border="green" shape="circle"/>
-          </visual>
-          <button class="button_main" x="+4" width="40" height="27" textsize="12" text="FX" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/>
-        </group>
+        <!-- FX: IS_USING '' -->
+        <!-- <group x="+0"> -->
+        <!-- <visual type="transparent" source="is_using 'padfx' ? blink 500ms"> -->
+        <!-- <pos x="+0" y="+8" width="12" height="12"/> -->
+        <!-- <off color="tab_menu" border="tab_menu" shape="circle"/> -->
+        <!-- <on color="green" border="green" shape="circle"/> -->
+        <!-- </visual> -->
+        <!-- <button class="button_main" x="+4" width="40" height="27" textsize="12" text="FX" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active 'Echo' off &amp; effect_active 'Reverb' off &amp; effect_active 'Delay' off &amp; effect_active 'Cut' off &amp; effect_active 'Echo Out' off &amp; effect_active 'Loop Roll' off &amp;    effect_active 'Backspin' off &amp;    effect_active 'Brake' off &amp;    effect_active 'Spiral' off &amp;    effect_active 'Phaser' off &amp;    effect_active 'Beatgrid' off &amp;    effect_active 'Gate' off" query="effects_used ? blink 500ms"/> -->
+        <!-- </group> -->
+        <!-- PADFX: EFFECTS_USED -->
+        <!-- <group x="+0"> -->
+        <!-- <visual type="transparent" source="effects_used 'padfx' ? blink 500ms : false"> -->
+        <!-- <pos x="+0" y="+8" width="12" height="12"/> -->
+        <!-- <off color="tab_menu" border="tab_menu" shape="circle"/> -->
+        <!-- <on color="green" border="green" shape="circle"/> -->
+        <!-- </visual> -->
+        <!-- <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/> -->
+        <!-- </group> -->
         <!-- COLORFX -->
-        <group x="+50">
-          <visual type="transparent" source="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx">
+        <!-- <group x="+60"> -->
+        <!-- <visual type="transparent" source="deck all effect_active colorfx ? blink 500ms : false"> -->
+        <!-- <pos x="+0" y="+8" width="12" height="12"/> -->
+        <!-- <off color="tab_menu" border="tab_menu" shape="circle"/> -->
+        <!-- <on color="green" border="green" shape="circle"/> -->
+        <!-- </visual> -->
+        <!-- <button class="button_main" x="+18" width="40" height="27" textsize="12" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/> -->
+        <!-- </group> -->
+        <!-- -->
+        <!-- MASTER FX -->
+        <group x="+0">
+          <visual type="transparent" source="is_using 'effect' ? blink 500ms : false">
             <pos x="+0" y="+8" width="12" height="12"/>
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+8" width="40" height="27" textsize="12" text="CFX" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/>
+          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
       </group>
       <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
