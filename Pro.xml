@@ -13528,7 +13528,7 @@
             <visual x="+0" y="+0" width="310" height="44">
               <off shape="square" color="transparent" border_size="2" border="panel_background" radius="6"/>
             </visual>
-            <group x="+80" y="+2">
+            <group x="+80" y="+5">
               <textzone class="text" x="+0" y="+0" width="26+120+26" height="20" fontsize="10" color="textoff" align="center" weight="" textaction="get_text '`get_sampler_count` SAMPLES'"/>
               <group x="+0" y="+15">
                 <!-- label -->
@@ -13538,7 +13538,7 @@
               </group>
             </group>
             <!-- sidebar toggle -->
-            <button x="+310-22-2" y="+0" width="22" height="22" visibility="true" action="sampler_edit 1">
+            <button x="+310-22-2" y="+0" width="22" height="22" visibility="true" action="show_splitpanel 'sideview' toggle &amp; sideview sampler'">
               <off color="transparent" border="#000000" border_size="0" shape="square"/>
               <on color="#444444" border="#111111" border_size="0" shape="square"/>
               <over color="transparent" border="#000000" border_size="0" shape="square"/>
@@ -13551,88 +13551,78 @@
               <off shape="square" color="transparent" border_size="3" border="#222222" radius="6"/>
             </visual>
             <group x="+2" y="+2">
-              <!-- SAMPLER PLAY/STOP BUTTON -->
-              <button x="+3" y="+3" width="58" height="21" visibility="true" shape="square" action="sampler_play_stop" border_size="2" query="get_level 'sampler' &amp; param_bigger 0.01">
-                <off color="#333333" border="#000000"/>
-                <on color="#444444" border="#111111"/>
-                <over color="#444444" border="#000000"/>
-                <selected color="#555555" border="#0000FF"/>
-                <icon dx="-1" sysicon="play" width="28" height="28" color="#888888" colordown="white" colorselected="#888888"/>
-              </button>
-              <!-- SAMPLE PLAYER -->
-              <define class="SAMPLER_ROW" placeholders="*deck,*index">
-                <deck deck="[DECK]">
-                  <visual x="+0" y="+0" width="310-10-10-5" height="30">
-                    <off shape="square" color="black" border_size="1" border="panel_background" radius="0"/>
-                  </visual>
-                  <!-- progress -->
-                  <visual source="sampler_position [INDEX]" type="linear" orientation="horizontal" direction="up" granularity="23">
-                    <pos x="+0" y="+0"/>
-                    <size width="285" height="30"/>
-                    <off shape="square" color="#111111" radius="0"/>
-                    <on shape="square" color="#0000DD" radius="0"/>
-                  </visual>
-                  <!-- click area -->
-                  <button action="sampler_pad [INDEX]" query="sampler_play_stop [INDEX]" rightclick="sampler_edit [INDEX]">
-                    <pos x="+1" y="+0"/>
-                    <size width="285" height="30"/>
-                    <off color="transparent" border="#222222" border_size="1" shape="square"/>
-                    <on color="transparent" border="#111111" border_size="1" shape="square"/>
-                    <over color="transparent" border="#444444" border_size="1" shape="square"/>
-                    <selected color="sampler_color $1" border="transparent" border_size="1" shape="square"/>
-                  </button>
-                  <!-- color chip -->
-                  <visual type="color" source="sampler_loaded [INDEX] ? sampler_color [INDEX] : constant '#333333'">
-                    <pos x="+7" y="+6"/>
-                    <size width="6" height="30-12"/>
-                  </visual>
-                  <!-- label -->
-                  <textzone visibility="not param_equal `get_sampler_slot` [INDEX]">
-                    <pos x="+16" y="+0"/>
-                    <size width="230" height="20"/>
-                    <text fontsize="11" color="#AAAAAA" align="left" action="sampler_pad [INDEX]"/>
-                  </textzone>
-                  <textzone visibility="param_equal `get_sampler_slot` [INDEX]">
-                    <pos x="+16" y="+0"/>
-                    <size width="230" height="20"/>
-                    <text fontsize="11" color="#FFFFFF" align="left" action="sampler_pad [INDEX]"/>
-                  </textzone>
-                  <!-- bpm -->
-                  <textzone>
-                    <pos x="+16" y="+12"/>
-                    <size width="200" height="17"/>
-                    <text fontsize="12" color="#FFFFFF" align="left" action="get_text '`get_sample_info [INDEX] bpm`bpm'"/>
-                  </textzone>
-                  <!-- key -->
-                  <textzone>
-                    <pos x="+80" y="+12"/>
-                    <size width="50" height="17"/>
-                    <text fontsize="12" weight="bold" color="#FFFFFF" align="center" action="get_text '`get_sample_info [INDEX] key`'"/>
-                  </textzone>
-                  <!-- <button action="sampler_pad [INDEX]" query="param_equal `get_sampler_slot` [INDEX]"> -->
-                  <!-- <pos x="+15" y="+0"/> -->
-                  <!-- <size width="200" height="22"/> -->
-                  <!-- default (not playing) -->
-                  <!-- <text fontsize="12" color="#AAAAAA" align="left" action="get_text `get_sample_name [INDEX]`"/> -->
-                  <!-- while playing -->
-                  <!-- <on> -->
-                  <!-- <text fontsize="12" color="#FFFFFF" align="left" action="get_sample_name [INDEX]" border_size="1" border="red"/> -->
-                  <!-- </on> -->
-                  <!-- </button> -->
-                  <!-- label: bpm -->
-                  <!-- <textzone> -->
-                  <!-- <pos x="+200" y="+0"/> -->
-                  <!-- <size width="40" height="22"/> -->
-                  <!-- <text fontsize="12" color="#AAAAAA" align="right" action="get_text '`get_sample_info [INDEX] bpm`' bpm"/> -->
-                  <!-- </textzone> -->
-                  <!-- outline overlay (only when this slot is the focused/selected slot) -->
-                  <button action="sampler_pad [INDEX]" query="param_equal `get_sampler_slot` [INDEX]">
-                    <pos x="+1" y="+1"/>
-                    <size width="285" height="29"/>
-                    <off color="transparent" border_size="0"/>
-                    <on color="transparent" border="green" border_size="2" radius="5"/>
-                  </button>
-                </deck>
+              <!-- CLASS: SAMPLE PLAYER -->
+              <define class="SAMPLER_ROW" placeholders="*index">
+                <visual x="+0" y="+0" width="310-10-10-5" height="30">
+                  <off shape="square" color="black" border_size="1" border="panel_background" radius="0"/>
+                </visual>
+                <!-- progress -->
+                <visual source="sampler_position [INDEX]" type="linear" orientation="horizontal" direction="up" granularity="23">
+                  <pos x="+0" y="+0"/>
+                  <size width="285" height="30"/>
+                  <off shape="square" color="#111111" radius="0"/>
+                  <on shape="square" color="#0000DD" radius="0"/>
+                </visual>
+                <!-- click area -->
+                <button action="sampler_pad [INDEX]" query="sampler_play_stop [INDEX]" rightclick="sampler_edit [INDEX]">
+                  <pos x="+1" y="+0"/>
+                  <size width="285" height="30"/>
+                  <off color="transparent" border="#222222" border_size="1" shape="square"/>
+                  <on color="transparent" border="#111111" border_size="1" shape="square"/>
+                  <over color="transparent" border="#444444" border_size="1" shape="square"/>
+                  <selected color="sampler_color $1" border="transparent" border_size="1" shape="square"/>
+                </button>
+                <!-- color chip -->
+                <visual type="color" source="sampler_loaded [INDEX] ? sampler_color [INDEX] : constant '#333333'">
+                  <pos x="+7" y="+6"/>
+                  <size width="6" height="30-12"/>
+                </visual>
+                <!-- label -->
+                <textzone visibility="not param_equal `get_sampler_slot` [INDEX]">
+                  <pos x="+16" y="+0"/>
+                  <size width="230" height="20"/>
+                  <text fontsize="11" color="#AAAAAA" align="left" action="sampler_pad [INDEX]"/>
+                </textzone>
+                <textzone visibility="param_equal `get_sampler_slot` [INDEX]">
+                  <pos x="+16" y="+0"/>
+                  <size width="230" height="20"/>
+                  <text fontsize="11" color="#FFFFFF" align="left" action="sampler_pad [INDEX]"/>
+                </textzone>
+                <!-- bpm -->
+                <textzone>
+                  <pos x="+16" y="+12"/>
+                  <size width="200" height="17"/>
+                  <text fontsize="12" color="#FFFFFF" align="left" action="get_text '`get_sample_info [INDEX] bpm`bpm'"/>
+                </textzone>
+                <!-- key -->
+                <textzone>
+                  <pos x="+80" y="+12"/>
+                  <size width="50" height="17"/>
+                  <text fontsize="12" weight="bold" color="#FFFFFF" align="center" action="get_text '`get_sample_info [INDEX] key`'"/>
+                </textzone>
+                <!-- <button action="sampler_pad [INDEX]" query="param_equal `get_sampler_slot` [INDEX]"> -->
+                <!-- <pos x="+15" y="+0"/> -->
+                <!-- <size width="200" height="22"/> -->
+                <!-- default (not playing) -->
+                <!-- <text fontsize="12" color="#AAAAAA" align="left" action="get_text `get_sample_name [INDEX]`"/> -->
+                <!-- while playing -->
+                <!-- <on> -->
+                <!-- <text fontsize="12" color="#FFFFFF" align="left" action="get_sample_name [INDEX]" border_size="1" border="red"/> -->
+                <!-- </on> -->
+                <!-- </button> -->
+                <!-- label: bpm -->
+                <!-- <textzone> -->
+                <!-- <pos x="+200" y="+0"/> -->
+                <!-- <size width="40" height="22"/> -->
+                <!-- <text fontsize="12" color="#AAAAAA" align="right" action="get_text '`get_sample_info [INDEX] bpm`' bpm"/> -->
+                <!-- </textzone> -->
+                <!-- outline overlay (only when this slot is the focused/selected slot) -->
+                <button action="sampler_pad [INDEX]" query="param_equal `get_sampler_slot` [INDEX]" deck="master">
+                  <pos x="+1" y="+1"/>
+                  <size width="285" height="29"/>
+                  <off color="transparent" border_size="0"/>
+                  <on color="transparent" border="green" border_size="2" radius="5"/>
+                </button>
                 <!-- edit -->
                 <button action="sampler_edit [INDEX]">
                   <pos x="+240" y="+2"/>
@@ -13705,7 +13695,7 @@
             </visual>
           </group>
           <!-- SAMPLER VUMETER -->
-          <group x="+10" y="+337">
+          <group x="+10" y="+335">
             <!-- BACKGROUND -->
             <!-- <visual class="gfx_shape" width="144" height="43-8-8" coloroff="xf_background"/> -->
             <visual x="+0" y="+0" width="144" height="43-8-8">
@@ -13825,6 +13815,14 @@
             <!-- <back  color="vu_background" radius="3" border="contrast" border_size="1"/> -->
             <!-- <cursor width="8" height="6" color="deckcolor" radius="3" border="contrast" border_size="0"/> -->
             <!-- </fader> -->
+            <!-- SAMPLER PLAY/STOP BUTTON -->
+            <button x="+3" y="+3" width="58" height="21" visibility="true" shape="square" action="sampler_play_stop" border_size="2" query="get_level 'sampler' &amp; param_bigger 0.01">
+              <off color="#333333" border="#000000"/>
+              <on color="#444444" border="#111111"/>
+              <over color="#444444" border="#000000"/>
+              <selected color="#555555" border="#0000FF"/>
+              <icon dx="-1" sysicon="play" width="28" height="28" color="#888888" colordown="white" colorselected="#888888"/>
+            </button>
           </group>
           <!-- <button x="+0" y="+110" width="40" height="40" -->
           <!-- visibility="true" -->
@@ -13839,7 +13837,7 @@
           <!-- </button> -->
           <!-- <button class="button_main" x="-71" y="+10" width="50" height="16" action="effect_select 1" coloroff="#111111" brcoloroff="#111111" coloron="magenta" brcoloron="magenta" textcoloroff="magenta" textcoloron="black" text="FX1" textsize="13"/> -->
         </group>
-        <group name="sampler_mode" y="+330" x="+10">
+        <group name="sampler_mode" y="+330" x="+150">
           <!-- label -->
           <textzone class="text" x="+0" y="+0" width="45" height="20" fontsize="8" color="textoff" align="left" weight="" text="MODE"/>
           <button x="+0" y="+16" class="button_main" bordersize="1" width="60" height="26" action="sampler_mode" textsize="10" textcolor="white">
