@@ -4435,8 +4435,9 @@
         </group>
       </deck>
     </define>
-    <define class="beat_keeper_ex" placeholders="deck,bgcolor=transparent">
+    <define class="BEAT_KEEPER_EX" placeholders="deck,bgcolor=transparent,width=10">
       <deck deck="[DECK]">
+        <visual class="gfx_shape" width="[WIDTH]*4" height="27" coloroff="red"/>
         <!-- <group name="phrase_bars"> -->
         <!-- <button class="button_main" x="+0" y="+0" width="34" height="7" shape="square" query="get_phrase_num 1" coloroff="#222222" brcoloron="infos_background" brcoloroff="infos_background" bordersize="3"/> -->
         <!-- <button class="button_main" x="+38" y="+0" width="34" height="7" shape="square" query="get_phrase_num 2" coloroff="#222222" brcoloron="infos_background" brcoloroff="infos_background" bordersize="3"/> -->
@@ -4457,10 +4458,10 @@
         <!-- <panel class="phrase_circle" x="+126+41" y="-16-2" visibility="rightdeck"/> -->
         <!-- </group> -->
         <group name="phrase_bars">
-          <button class="button_main" x="+0" y="+0" width="10" height="6" shape="square" query="get_phrase_num 1" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
-          <button class="button_main" x="+10" y="+0" width="10" height="6" shape="square" query="get_phrase_num 2" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
-          <button class="button_main" x="+20" y="+0" width="10" height="6" shape="square" query="get_phrase_num 3" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
-          <button class="button_main" x="+30" y="+0" width="10" height="6" shape="square" query="get_phrase_num 4" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
+          <button class="button_main" x="+0" y="+0" width="[WIDTH]" height="6" shape="square" query="get_phrase_num 1" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
+          <button class="button_main" x="+15" y="+0" width="[WIDTH]" height="6" shape="square" query="get_phrase_num 2" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
+          <button class="button_main" x="+30" y="+0" width="[WIDTH]" height="6" shape="square" query="get_phrase_num 3" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
+          <button class="button_main" x="+45" y="+0" width="[WIDTH]" height="6" shape="square" query="get_phrase_num 4" coloroff="[BGCOLOR]" brcoloron="infos_background" brcoloroff="infos_background" bordersize="0"/>
         </group>
       </deck>
     </define>
@@ -8826,6 +8827,16 @@
           </deck>
         </group>
         <group name="barsright" x="+660+530" y="+10" visibility="var_equal '@$phrasecircle' 1 ? var_equal '@$4decks' 0 ? deck 4 rightdeck">
+          <!-- BEAT KEEPER -->
+          <group x="+1090" y="+8">
+            <visual class="gfx_shape" width="10*4" height="27" coloroff="transparent"/>
+            <group>
+              <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+0" deck="3"/>
+              <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+7" deck="1"/>
+              <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+14" deck="2"/>
+              <panel class="beat_keeper_ex" bgcolor="#222222" width="10" y="+21" deck="4"/>
+            </group>
+          </group>
           <deck deck="4">
             <button class="button_main" x="+0" y="+0" width="30" height="10" shape="square" query="goto_bar 1" coloroff="infos_background" brcoloroff="infos_background"/>
             <button class="button_main" x="+34" y="+0" width="30" height="10" shape="square" query="goto_bar 2" coloroff="infos_background" brcoloroff="infos_background"/>
@@ -9048,8 +9059,17 @@
         <!-- </visual> -->
         <!-- <button class="button_main" x="+18" width="40" height="27" textsize="12" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/> -->
         <!-- </group> -->
+        <!-- FILTER INDICATOR -->
+        <group x="-60">
+          <visual type="transparent" source="deck 1 effect_active colorfx ? true : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx ? true : false">
+            <pos x="+0" y="+8" width="12" height="12"/>
+            <off color="tab_menu" border="tab_menu" shape="circle"/>
+            <on color="green" border="green" shape="circle"/>
+          </visual>
+          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FILTER" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
+        </group>
         <!-- -->
-        <!-- MASTER FX -->
+        <!-- MASTER FX INDICATOR -->
         <group x="+0">
           <visual type="transparent" source="is_using 'effect' ? blink 500ms : false">
             <pos x="+0" y="+8" width="12" height="12"/>
@@ -9058,14 +9078,14 @@
           </visual>
           <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
-        <!-- MASTER SAMPLER -->
+        <!-- MASTER SAMPLER INDICATOR -->
         <group x="+45">
           <visual type="transparent" source="is_using 'sample' ? blink 500ms : false">
             <pos x="+0" y="+8" width="12" height="12"/>
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="50" height="27" textsize="12" text="SAMP" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
+          <button class="button_main" x="+18" width="50" height="27" textsize="12" text="SAMPLER" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
         </group>
       </group>
       <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
@@ -14266,21 +14286,31 @@
       <panel class="deck_select" deck="2" side="rightdeck" x="+191" y="+1"/>
       <panel class="deck_select" deck="4" side="rightdeck" x="+252" y="+1"/>
       <!-- PLAY ALL BUTTON -->
-      <group name="playpause_global">
+      <group name="playpause_global" x="+123" y="+0">
         <!-- PLAY state (no decks playing) -->
-        <button x="+123" y="+0" width="66" height="34" action="deck left play &amp; deck right play &amp; deck all sync &amp; phrase_sync" sysicon="play_button" iconsize="39">
-          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="white"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
-          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
-          <selected color="white" border="white" radius="4" iconcolor="white"/>
-        </button>
+        <!-- <button width="66" height="34" action="deck left play &amp; deck right play &amp; deck all sync &amp; phrase_sync" sysicon="play_button" iconsize="39"> -->
+        <!-- <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="white"/> -->
+        <!-- <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/> -->
+        <!-- <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#999999"/> -->
+        <!-- <selected color="white" border="white" radius="4" iconcolor="white"/> -->
+        <!-- </button> -->
         <!-- STOP state (any deck playing) -->
-        <button x="+123" y="+0" textsize="11" width="66" height="34" visibility="deck 1 play or deck 2 play or deck 3 play or deck 4 play" action="deck all pause &amp; sampler stop all" sysicon="play_button" iconsize="39">
-          <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
-          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/>
-          <selected color="white" border="white" radius="4" iconcolor="white"/>
-        </button>
+        <!-- <button textsize="11" width="66" height="34" visibility="deck 1 play or deck 2 play or deck 3 play or deck 4 play" action="deck all pause &amp; sampler stop all" sysicon="play_button" iconsize="39"> -->
+        <!-- <off color="#000000" border="#333333" border_size="1" shape="square" radius="4" iconcolor="#999999"/> -->
+        <!-- <over color="#111111" border="#666666" border_size="1" shape="square" radius="4" iconcolor="#999999"/> -->
+        <!-- <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/> -->
+        <!-- <selected color="white" border="white" radius="4" iconcolor="white"/> -->
+        <!-- </button> -->
+        <visual class="gfx_shape" width="66" height="34" coloroff="red">
+          <off color="#000000" border="#555555" border_size="1" shape="square" radius="4" iconcolor="#999999"/>
+        </visual>
+        <!-- BEAT KEEPER -->
+        <group x="+4" y="+3">
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="14" y="+0" deck="3"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="14" y="+7" deck="1"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="14" y="+14" deck="2"/>
+          <panel class="beat_keeper_ex" bgcolor="#222222" width="14" y="+21" deck="4"/>
+        </group>
       </group>
       <!-- <button class="button_main" x="+30" y="+20" width="40" height="40" border="deck 1 deckcolor" border_size="3" action="invert_deck left" coloroff="deckcolor" text="" textcolor="white" iconsize="40" sysicon="play" border="0" shape="circle"/> -->
       <!-- <button class="button_main" x="+5" y="+55" width="30" height="30" action="invert_deck left" coloroff="#222222" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"/> -->
