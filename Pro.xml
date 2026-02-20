@@ -13901,17 +13901,6 @@
               </button>
             </group>
             <!-- SAMPLER OUTPUT -->
-            <!-- <group name="sampler_output" y="+330" x="+200"> -->
-            <!-- label -->
-            <!-- <textzone class="text" x="+0" y="+0" width="45" height="20" fontsize="8" color="textoff" align="left" weight="" text="OUTPUT"/> -->
-            <!-- <button x="+0" y="+16" class="button_main" width="90" height="26" action="sampler_output 'master' ? sampler_output 'headphones' : sampler_output 'headphones' ? sampler_output 'trigger' : sampler_output 'master'" rightclick="sampler_output 'popup'" textaction="sampler_output 'master' ? get_text 'MASTER' : sampler_output 'headphones' ? get_text 'HEADPHONES' : sampler_output 'trigger' ? get_text 'TRIGGER' : sampler_output 1 ? get_text 'DECK 1' : sampler_output 2 ? get_text 'DECK 2' : sampler_output 3 ? get_text 'DECK 3' : sampler_output 4 ? get_text 'DECK 4' : get_text 'MASTER'"> -->
-            <!-- <size height="15"/> -->
-            <!-- <off color="#111111" border="#555555"/> -->
-            <!-- <down color="#111111" border="#555555"/> -->
-            <!-- <text align="center"/> -->
-            <!-- </button> -->
-            <!-- </group> -->
-            <!-- SAMPLER OUTPUT -->
             <group name="sampler_output" x="+204">
               <!-- label -->
               <textzone class="text" x="+0" y="+0" width="50" height="20" fontsize="8" color="textoff" align="left" weight="" text="OUTPUT"/>
@@ -13924,15 +13913,6 @@
               </button>
             </group>
           </group>
-          <!-- edbug -->
-          <!-- <visual width="320" height="20"> -->
-          <!-- <off shape="square" color="#AA000000" radius="0"/> -->
-          <!-- </visual> -->
-          <!-- <textzone> -->
-          <!-- <size width="320" height="18"/> -->
-          <!-- <text align="center" size="12" color="white" action="get_text 'DECK=`get_deck`([DECK]) SELECTED=`get_deck` GETLEFTDECK=`get_leftdeck` LEFTDECK=`leftdeck` LEFT=`deck [DECK] leftdeck`'"/> -->
-          <!-- </textzone> -->
-          <!-- <visual class="gfx_shape" width="312" height="376" coloroff="black" bordercoloroff="blue" bordersize="1"/> -->
         </deck>
       </panel>
       <!-- MIXER PANEL: VIDEO -->
