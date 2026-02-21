@@ -49,6 +49,8 @@
     <define color="color_header" value="white"/>
     <define color="color_subheader" value="#888888"/>
     <define color="color_knob_bg" value="#555555"/>
+    <define color="color_acapella" value="#3592F9"/>
+    <define color="color_instrumental" value="#CC55FF"/>
     <!-- Common colors for all decks -->
     <define color="color_tag_genre" value="#60FF8E"/>
     <define color="color_tag_mood" value="#CE42FF"/>
@@ -4338,6 +4340,7 @@
     </group>
   </group>
   <group name="ELEMENTS">
+    <!-- CLASS: COVER ART -->
     <define class="COVER_ART_HNTG" placeholders="deck,*size">
       <deck deck="[DECK]">
         <!-- bg -->
@@ -4360,6 +4363,27 @@
           <pos x="+3" y="+3"/>
           <size width="[SIZE]-4" height="[SIZE]-4"/>
         </cover>
+        <!-- INSTRUMENTAL LABEL -->
+        <!-- <group visibility="stem_pad 'instrumental'"> -->
+        <!-- <pos x="+0" y="+36"/> -->
+        <!-- <visual visibility="0.8"> -->
+        <!-- <size width="175" height="30"/> -->
+        <!-- <off shape="square" color="black"/> -->
+        <!-- </visual> -->
+        <!-- <visual visibility="0.2"> -->
+        <!-- <pos x="+8" y="+6"/> -->
+        <!-- <size width="155" height="20"/> -->
+        <!-- <off shape="square" color="color_instrumental"/> -->
+        <!-- </visual> -->
+        <!-- <button action="stem_pad 'instrumental'" border_size="1"> -->
+        <!-- <pos x="+8" y="+6"/> -->
+        <!-- <size width="155" height="20"/> -->
+        <!-- <off color="#222222" border="#444444" radius="3"/> -->
+        <!-- <down color="#222222" border="color_instrumental" radius="3"/> -->
+        <!-- <selected color="transparent" border="color_instrumental" radius="3"/> -->
+        <!-- <text fontsize="12" color="#555555" colorselected="color_instrumental" colordown="color_instrumental" align="center" text="INSTRUMENTAL"/> -->
+        <!-- </button> -->
+        <!-- </group> -->
         <button action="select" visibility="loaded">
           <pos x="+3" y="+3"/>
           <size width="[SIZE]-4" height="[SIZE]-4"/>
@@ -4826,21 +4850,36 @@
                 <size width="50" height="30"/>
                 <off shape="square" color="transparent" border="#555555" border_size="1"/>
               </visual>
-              <group x="+174" y="-16">
-                <button action="stem_pad 'acapella'" border_size="1" visibility="stem_pad 'acapella'">
-                  <size width="85" height="14"/>
-                  <off color="#222222" border="#444444" radius="3"/>
-                  <down color="#222222" border="#3592F9" radius="3"/>
-                  <selected color="black" border="#3592F9" radius="3"/>
-                  <text fontsize="10" color="#555555" colorselected="#3592F9" colordown="#3592F9" align="center" text="ACAPELLA"/>
-                </button>
-                <button action="stem_pad 'instrumental'" border_size="1" visibility="stem_pad 'instrumental'">
-                  <size width="85" height="14"/>
-                  <off color="#222222" border="#444444" radius="3"/>
-                  <down color="#222222" border="#CC55FF" radius="3"/>
-                  <selected color="transparent" border="#CC55FF" radius="3"/>
-                  <text fontsize="10" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/>
-                </button>
+              <group x="+174" y="-19">
+                <group visibility="stem_pad 'acapella'">
+                  <visual>
+                    <size width="85" height="14"/>
+                    <off shape="square" color="black"/>
+                  </visual>
+                  <button action="stem_pad 'acapella'" border_size="1" visibility="stem_pad 'acapella'">
+                    <pos x="+2" y="+2"/>
+                    <size width="85" height="14"/>
+                    <off color="#222222" border="#444444" radius="3"/>
+                    <down color="#222222" border="color_acapella" radius="3"/>
+                    <selected color="black" border="#3592F9" radius="3"/>
+                    <text fontsize="10" color="#555555" colorselected="#3592F9" colordown="#3592F9" align="center" text="ACAPELLA"/>
+                  </button>
+                </group>
+                <!-- INSTRUMENTAL TAG -->
+                <group visibility="stem_pad 'instrumental'">
+                  <visual>
+                    <size width="85" height="14"/>
+                    <off shape="square" color="black"/>
+                  </visual>
+                  <button action="stem_pad 'instrumental'" border_size="1">
+                    <pos x="+2" y="+2"/>
+                    <size width="85" height="14"/>
+                    <off color="#222222" border="#444444" radius="3"/>
+                    <down color="#222222" border="color_instrumental" radius="3"/>
+                    <selected color="transparent" border="color_instrumental" radius="3"/>
+                    <text fontsize="10" color="#555555" colorselected="color_instrumental" colordown="color_instrumental" align="center" text="INSTRUMENTAL"/>
+                  </button>
+                </group>
               </group>
             </group>
           </group>
