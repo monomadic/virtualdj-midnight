@@ -1687,23 +1687,27 @@
           <selected color="button_background2" border="#999999" border_size="1" shape="square" radius="3"/>
         </button>
         <!-- main button-->
+        <!-- <visual y="+0" width="124" height="38"> -->
+        <!-- <off shape="square" color="red"/> -->
+        <!-- </visual> -->
         <button action="pad [SOURCE]" rightclick="padshift [SOURCE]">
+          <pos y="+0"/>
           <size width="124" height="38"/>
           <!-- <over color="button_background2" border="#444444" border_size="1" shape="square"/> -->
-          <text dx="+24" width="115-10-10" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="left"/>
+          <text dx="+24" width="115-10-10" size="15" weight="" color="textoff" colorselected="needle" action="pad [SOURCE]" align="left" multiline="true"/>
         </button>
         <!-- pushed color chip -->
         <visual type="color" source="pad_button_color [SOURCE]" visibility="pad_pushed [SOURCE]">
           <tooltip/>
           <pos x="+10" y="+12"/>
-          <size width="10" height="38-12-12"/>
+          <size width="8" height="38-12-12"/>
           <off color="pad_button_color [SOURCE]" shape="square"/>
         </visual>
         <!-- color chip -->
         <visual type="color" source="pad_button_color [SOURCE]">
           <tooltip/>
           <pos x="+12" y="+12"/>
-          <size width="5" height="38-12-12"/>
+          <size width="4" height="38-12-12"/>
         </visual>
         <visual novisibility="pad_button_color [SOURCE]">
           <tooltip/>
@@ -4851,6 +4855,7 @@
                 <off shape="square" color="transparent" border="#555555" border_size="1"/>
               </visual>
               <group x="+174" y="-19">
+                <!-- ACAPELLA TAG -->
                 <group visibility="stem_pad 'acapella'">
                   <visual>
                     <size width="85" height="14"/>
@@ -14650,9 +14655,9 @@
             <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
-            <down color="#222222" border="deckcolor" radius="3"/>
-            <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="KEY"/>
+            <down color="#222222" border="`masterdeck ? color_masterdeck : deckcolor`" radius="3"/>
+            <selected color="transparent" border="`masterdeck ? color_masterdeck : deckcolor`" radius="3"/>
+            <text fontsize="12" color="#FF0000" colorselected="`masterdeck ? color_masterdeck : deckcolor`" colordown="`masterdeck ? color_masterdeck : deckcolor`" align="center" text="KEY"/>
           </button>
           <!-- BEAT BUTTON -->
           <button class="button_main" action="select &amp; sync" bordersize="1" query="not play ? true : not is_sync ? blink 500ms : true">
