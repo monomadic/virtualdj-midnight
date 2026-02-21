@@ -14686,7 +14686,7 @@
           <!-- KEY BUTTON -->
           <button class="button_main" action="select &amp; match_key" bordersize="1" query="match_key" visibility="not masterdeck">
             <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*3" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
@@ -14705,8 +14705,8 @@
           </button>
           <!-- BEAT BUTTON -->
           <button class="button_main" action="select &amp; sync" bordersize="1" query="not play ? true : not is_sync ? blink 500ms : true" visibility="not masterdeck">
-            <pos x="+82" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+82" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*1" condition="param_equal [DECKSIDE] 'left'"/>
+            <pos x="+82*2" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
@@ -14714,8 +14714,8 @@
             <text fontsize="12" color="#FF0000" colorselected="deckcolor" colordown="deckcolor" align="center" text="BEAT"/>
           </button>
           <button class="button_main" action="select &amp; sync" bordersize="1" query="not play ? true : not is_sync ? blink 500ms : true" visibility="masterdeck">
-            <pos x="+82" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+82" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*1" condition="param_equal [DECKSIDE] 'left'"/>
+            <pos x="+82*2" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#330000" border="#FF0000" radius="3"/>
             <down color="#222222" border="color_masterdeck" radius="3"/>
@@ -14725,16 +14725,16 @@
           <!-- PHRASE BUTTON -->
           <button class="button_main" x="+0" action="sync &amp; phrase_sync 32" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0" visibility="not masterdeck">
             <pos x="+82*2" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+82*2" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*1" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
-            <off color="#111111" border="#333333" radius="3"/>
+            <off color="#330000" border="#FF3333" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
-            <text fontsize="12" color="#333333" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
+            <text fontsize="12" color="#FF3333" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
           </button>
           <button class="button_main" x="+0" action="sync &amp; phrase_sync 32" bordersize="1" query="masterdeck ? true : param_add `deck left get_beat_counter` `deck right get_beat_counter &amp; param_multiply -1` &amp; param_equal 0" visibility="masterdeck">
             <pos x="+82*2" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+82*2" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*1" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#111111" border="#333333" radius="3"/>
             <down color="#222222" border="color_masterdeck" radius="3"/>
@@ -14744,7 +14744,7 @@
           <!-- MASTER/SLAVE BUTTON -->
           <button class="button_main" action="select &amp; masterdeck" textcoloron="orange" bordersize="2" query="masterdeck" visibility="loaded">
             <pos x="+82*3" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+82*3" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#000000" border="#888888" border_size="1" shape="square" radius="3"/>
             <down color="#000000" border="orange" border_size="1" shape="square" radius="3"/>
