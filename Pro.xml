@@ -5262,12 +5262,12 @@
         <group x="+300" y="+24">
           <!-- STATUS: COLORFX -->
           <group>
-            <button width="80" height="18" action="filter_activate" query="filter_activate" border_size="1">
+            <button width="80" height="18" action="effect_active 'colorfx' &amp; pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active 'colorfx'" border_size="1">
               <off color="#444444"/>
               <selected color="color_colorfx"/>
               <text fontsize="12" color="#000000" colorselected="black" align="center" text="COLOR FX"/>
             </button>
-            <button x="+80" width="80" height="18" action="filter_activate" query="filter_activate" border_size="1">
+            <button x="+80" width="80" height="18" action="pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active colorfx" border_size="1">
               <off color="#222222"/>
               <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
               <text dx="+0" fontsize="12" color="#555555" colorselected="color_colorfx" align="center" action="filter_label"/>
@@ -5275,22 +5275,29 @@
             <!-- <visual class="gfx_shape" source="effect_active colorfx" width="80" height="18" coloroff="#222222" bordercoloroff="transparent" bordersize="1"/> -->
           </group>
           <!-- STATUS: PADFX -->
-          <button y="+20" width="80" height="19" action="effect_disable_all 'padfx' &amp; filter 50%" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
-            <off color="#444444"/>
-            <selected color="color_padfx"/>
-            <text fontsize="12" color="#000000" colorselected="black" align="center" text="PAD FX"/>
-          </button>
+          <group y="+20">
+            <button width="80" height="19" action="effect_disable_all 'padfx' &amp; pad_page 3 'PAD FX'" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
+              <off color="#444444"/>
+              <selected color="color_padfx"/>
+              <text fontsize="12" color="#000000" colorselected="black" align="center" text="PAD FX"/>
+            </button>
+            <button x="+80" width="80" height="18" action="pad_page 3 'PAD FX'" query="effects_used 'padfx'" border_size="1">
+              <off color="#222222"/>
+              <selected color="#222222" textcolor="color_padfx" border="color_padfx"/>
+              <text dx="+0" fontsize="12" color="#555555" colorselected="color_padfx" align="center" action="get_text '`get_effects_used` USED'"/>
+            </button>
+          </group>
           <!-- STATUS: SAMPLER -->
           <group y="+41">
-            <button width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
+            <button width="80" height="18" action="sampler_play_stop &amp; pad_page 4 'SAMPLER'" border_size="1" query="sampler_play_stop">
               <off color="#444444"/>
               <selected color="color_sampler" textcolor="white"/>
               <text fontsize="12" color="#000000" colorselected="black" align="center" text="SAMPLER"/>
             </button>
-            <button x="+80" width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
+            <button x="+80" width="80" height="18" action="sampler_play_stop" query="sampler_play_stop" border_size="1">
               <off color="#222222"/>
-              <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
-              <text dx="+0" fontsize="12" color="#555555" colorselected="color_colorfx" align="center" action="get_sampler_slot"/>
+              <selected color="#222222" textcolor="color_sampler" border="color_sampler"/>
+              <text dx="+10" fontsize="12" color="#555555" colorselected="color_sampler" align="center" action="get_sample_name"/>
             </button>
           </group>
           <!-- STATUS: FX1/2/3 -->
@@ -9152,7 +9159,7 @@
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FILTER" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
+          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
         <!-- -->
         <!-- MASTER FX INDICATOR -->
@@ -9162,7 +9169,7 @@
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="FX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
+          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="PFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
         <!-- MASTER SAMPLER INDICATOR -->
         <group x="+45">
@@ -9171,7 +9178,7 @@
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="50" height="27" textsize="12" text="SAMPLER" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
+          <button class="button_main" x="+18" width="50" height="27" textsize="12" text="SAMP" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
         </group>
       </group>
       <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
