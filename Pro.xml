@@ -5262,30 +5262,37 @@
         <group x="+300" y="+24">
           <!-- STATUS: COLORFX -->
           <group>
-            <button width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
-              <off color="#222222" textcolor="blue"/>
-              <selected color="color_colorfx" textcolor="red"/>
-              <text fontsize="12" color="#555555" colorselected="black" align="center" text="COLOR FX"/>
+            <button width="80" height="18" action="filter_activate" query="filter_activate" border_size="1">
+              <off color="#444444"/>
+              <selected color="color_colorfx"/>
+              <text fontsize="12" color="#000000" colorselected="black" align="center" text="COLOR FX"/>
             </button>
-            <button x="+80" width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
+            <button x="+80" width="80" height="18" action="filter_activate" query="filter_activate" border_size="1">
               <off color="#222222"/>
               <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
-              <text dx="+8" fontsize="12" color="#111111" colorselected="color_colorfx" align="left" action="filter_label 'colorfx'"/>
+              <text dx="+0" fontsize="12" color="#555555" colorselected="color_colorfx" align="center" action="filter_label"/>
             </button>
             <!-- <visual class="gfx_shape" source="effect_active colorfx" width="80" height="18" coloroff="#222222" bordercoloroff="transparent" bordersize="1"/> -->
           </group>
           <!-- STATUS: PADFX -->
           <button y="+20" width="80" height="19" action="effect_disable_all 'padfx' &amp; filter 50%" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
-            <off color="#222222"/>
+            <off color="#444444"/>
             <selected color="color_padfx"/>
-            <text fontsize="12" color="#555555" colorselected="black" align="center" text="PAD FX"/>
+            <text fontsize="12" color="#000000" colorselected="black" align="center" text="PAD FX"/>
           </button>
           <!-- STATUS: SAMPLER -->
-          <button y="+41" width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
-            <off color="#222222"/>
-            <selected color="color_sampler" textcolor="white"/>
-            <text fontsize="12" color="#555555" colorselected="black" align="center" text="SAMPLER"/>
-          </button>
+          <group y="+41">
+            <button width="80" height="18" action="sampler_play_stop" border_size="1" query="sampler_used">
+              <off color="#444444"/>
+              <selected color="color_sampler" textcolor="white"/>
+              <text fontsize="12" color="#000000" colorselected="black" align="center" text="SAMPLER"/>
+            </button>
+            <button x="+80" width="80" height="18" action="effect_active colorfx" query="effect_active colorfx" border_size="1">
+              <off color="#222222"/>
+              <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
+              <text dx="+0" fontsize="12" color="#555555" colorselected="color_colorfx" align="center" action="get_sampler_slot"/>
+            </button>
+          </group>
           <!-- STATUS: FX1/2/3 -->
           <!-- <button x="+0" y="+40" width="28" height="18" action="effect_active 1" border_size="1"> -->
           <!-- <off color="#222222"/> -->
@@ -5654,11 +5661,20 @@
         </group>
         <!-- CORNER BUTTONS -->
         <!-- EJECT BUTTON -->
-        <!-- <visual x="+0" y="+0" shape="circle" color="black" width="20" height="20" /> -->
-        <!-- <button class="button_main" action="load ''" width="20" height="20" -->
-        <!-- x="+0" y="+0" color="transparent" bordersize="0" -->
-        <!-- textsize="12" textcolor="white" textcoloron="white" textaction="get_text 'E'" -->
-        <!-- visibility="loaded" /> -->
+        <group x="+5" y="+5">
+          <visual>
+            <size width="16" height="16"/>
+            <off shape="circle" color="#AA000000" border="#222222" border_size="1"/>
+          </visual>
+          <button action="auto_sync_options" visibility="loaded" shape="circle">
+            <size width="8" height="8"/>
+            <pos x="+4" y="+4"/>
+            <off shape="circle" color="#555555" border="#222222" border_size="1"/>
+            <over shape="circle" color="#DD44FF44"/>
+            <on shape="circle" color="transparent"/>
+            <!-- <icon dx="+0" sysicon="settings" width="18" height="18" coloroff="transparent" coloron="#55FFFFFF" colorover="white" condition="loaded &amp; playing"/> -->
+          </button>
+        </group>
         <!-- MASTER BUTTON -->
         <!-- <group> -->
         <!-- <visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23"> -->
