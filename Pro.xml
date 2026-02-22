@@ -6545,15 +6545,15 @@
           <group x="+40" y="+2">
             <!-- <visual class="gfx_shape" x="+0" y="+0" width="470" height="217" coloroff="black"/> -->
             <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-              <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100" y="+0" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100+10+100" y="+0" width="100" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100+10+100+100+10+3" y="+0" width="100" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
+              <button class="button_main" x="+0" y="+4" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
+              <button class="button_main" x="+10+100" y="+4" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
+              <button class="button_main" x="+10+100+10+100" y="+4" width="100" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
+              <button class="button_main" x="+10+100+10+100+100+10+3" y="+4" width="100" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
             </panel>
           </group>
           <!-- PAD AREA BORDER -->
-          <visual x="+2" y="+22" width="507" height="164">
-            <off shape="square" color="#222222" border="#222222" border_size="1" radius="5"/>
+          <visual x="+1" y="+21" width="509" height="166">
+            <off shape="square" color="#222222" border="#222222" border_size="3" radius="6"/>
           </visual>
           <!-- PAD BUTTONS -->
           <group x="+3">
@@ -16037,25 +16037,11 @@
           <button class="custom_button_1" source="405" deck="2" y="+24*5"/>
           <button class="custom_button_1" source="406" deck="2" y="+24*6"/>
         </group>
-        <group y="+12" x="+0">
-          <!-- TAGS -->
-          <!-- <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/> -->
-          <!-- <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/> -->
-          <!-- <panel class="hashtag_stack" deck="2" x="+1920-280" panelname="tags2" visibility="not deck 4 leftdeck"/> -->
-          <!-- <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/> -->
-          <!-- slider -->
-          <!-- <group x="+90" y="+25"> -->
-          <!-- <panel class="stem_vu" deck="1" stem="vocal" label="VOCAL" color="colorvocal" x="+0"/> -->
-          <!-- <panel class="stem_vu" deck="1" stem="melody" label="INSTRU" color="colorinstru" x="+50"/> -->
-          <!-- <panel class="stem_vu" deck="1" stem="rhythm" label="DRUM" color="colorbeat" x="+100"/> -->
-          <!-- <panel class="pitch_zone" x="+20" y="+30"/> -->
-          <!-- </group> -->
-          <group x="+230">
-            <panel class="pad_page_panel" deck="1" panelname="[PANELNAME]_1" x="+0" visibility="not deck 3 leftdeck"/>
-            <panel class="pad_page_panel" deck="3" panelname="[PANELNAME]_3" x="+0" visibility="deck 3 leftdeck"/>
-            <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+865" visibility="not deck 4 rightdeck"/>
-            <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+865" visibility="deck 4 rightdeck"/>
-          </group>
+        <group x="+230" y="+3">
+          <panel class="pad_page_panel" deck="1" panelname="[PANELNAME]_1" x="+0" visibility="not deck 3 leftdeck"/>
+          <panel class="pad_page_panel" deck="3" panelname="[PANELNAME]_3" x="+0" visibility="deck 3 leftdeck"/>
+          <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+865" visibility="not deck 4 rightdeck"/>
+          <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+865" visibility="deck 4 rightdeck"/>
         </group>
       </group>
       <group y="+395">
