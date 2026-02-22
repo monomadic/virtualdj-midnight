@@ -14629,8 +14629,8 @@
         </group>
         <!-- PLAY/PAUSE BUTTON -->
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="not masterdeck">
-          <pos x="+800-80-30+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+3" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+800-80-60+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+35" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
           <off color="#222222" border="#888888" border_size="1" shape="square" radius="4"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
@@ -14638,8 +14638,8 @@
           <icon coloroff="white" colorover="white" colordown="#888888" colorselected="black"/>
         </button>
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="masterdeck">
-          <pos x="+800-80-30+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+3" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+800-80-60+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+35" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
           <off color="black" border="color_masterdeck" border_size="1" shape="square" radius="4" iconcolor="blue"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
