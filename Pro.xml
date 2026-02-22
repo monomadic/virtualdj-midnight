@@ -2830,6 +2830,7 @@
           <clipmask x="21" y="-1"/>
         </loops>
       </define>
+      <!-- BROWSER -->
       <define class="haunting_browser_basic" showzoom="yes">
         <background color="br_background" bordercolortop="br_background" bordercolor="br_background" bordersize="3"/>
         <colors>
@@ -4376,8 +4377,8 @@
           <off shape="circle" color="button_background" border="infos_background" border_size="+12"/>
         </visual>
         <cover visibility="loaded" action="" rightclick="" dblclick="">
-          <pos x="+3" y="+3"/>
-          <size width="[SIZE]-4" height="[SIZE]-4"/>
+          <pos x="+0" y="+0"/>
+          <size width="[SIZE]" height="[SIZE]"/>
         </cover>
         <!-- INSTRUMENTAL LABEL -->
         <!-- <group visibility="stem_pad 'instrumental'"> -->
@@ -4608,11 +4609,7 @@
     <define class="INFOS">
       <!-- PRO: TRACK INFO: LEFT DECK -->
       <!-- BLACK GLASS BACKGROUND (behind cover) -->
-      <button class="button_main" action="select" width="530" height="72" coloroff="#000000" coloron="black" brcoloroff="#333333" brcoloron="#444444" bordersize="1"/>
-      <!-- PRO: LEFT DECK: DECK BUTTON -->
-      <!-- <button class="button_main" x="+0" y="+0" width="36" height="70" action="select" rightclick="cycle '@infospannelmode' 5" tooltip="Select Deck \n Rigth-click: Next Panel" coloroff="transparent" textcoloron="black" textcolor="deckcolor" textsize="33" textaction="get_deck" textheight="55" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
-      <!-- PRO: LEFT DECK: DECK MENU -->
-      <!-- <menu class="menu_maindecks" query="select" x="+5" y="+45" width="28" height="20" visibility="get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+      <button class="button_main" action="select" width="532" height="95" coloroff="#000000" coloron="black" brcoloroff="#333333" brcoloron="#444444" bordersize="1"/>
       <!-- COVER ART: HIDE -->
       <group visibility="var_equal '@$haunting_showcover_title' 0 &amp; loaded">
         <!-- LEFT -->
@@ -5007,8 +5004,8 @@
       <!-- bg (covers coverart) -->
       <visual class="gfx_shape" y="+20" width="484" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
       <!-- bottom panel -->
-      <visual class="gfx_shape" y="+20" width="484" height="104" coloroff="#44000000" bordercoloroff="panel_background" bordersize="1"/>
-      <group visibility="loaded" x="+10" y="+10">
+      <visual class="gfx_shape" x="+7" y="+26" width="527" height="78" coloroff="#44000000" bordercoloroff="#FFFFFFF" bordersize="1" radius="8"/>
+      <group visibility="loaded" x="+15" y="+12">
         <!-- CLASS: STEM BUTTONS -->
         <define class="STEM_BUTTON" placeholders="*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
           <!-- TOGGLE -->
@@ -5045,84 +5042,30 @@
           <textzone class="text" width="300" height="48" fontsize="10" color="textdarker" align="center" weight="" text="STEMS NOT FOUND"/>
         </group>
         <!-- TAGS -->
-        <group x="+0" y="+20">
+        <group x="+235" y="+64">
           <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/>
           <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/>
           <panel class="hashtag_stack" deck="2" x="+1920-280" panelname="tags2" visibility="not deck 4 leftdeck"/>
           <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/>
         </group>
         <!-- STEM BUTTONS -->
-        <group x="+0" y="+50" visibility="has_stems">
+        <group x="+235" y="+24" visibility="has_stems">
           <panel class="stem_button" x="+0" y="+0" stem="vocal" label="VOCAL" color="colorvocal"/>
           <panel class="stem_button" x="+70" y="+0" stem="INSTRU" label="INSTR" color="colorinstru"/>
           <panel class="stem_button" x="+140" y="+0" stem="bass" label="BASS" color="colorbass"/>
           <panel class="stem_button" x="+210" y="+0" stem="rhythm" label="DRUM" color="colorbeat"/>
         </group>
-        <!-- STEM GROUPS -->
-        <!-- <group x="+3" y="+62" visibility="has_stems"> -->
-        <!-- <button x="+0" action="stem_pad 'acapella'" border_size="1"> -->
-        <!-- <size width="90" height="18"/> -->
-        <!-- <off color="#222222" border="#444444" radius="3"/> -->
-        <!-- <down color="#222222" border="pink" radius="3"/> -->
-        <!-- <selected color="transparent" border="pink" radius="3"/> -->
-        <!-- <text fontsize="10" color="#555555" colorselected="pink" colordown="pink" align="center" text="ACAPELLA"/> -->
-        <!-- </button> -->
-        <!-- <button x="+94" action="stem_pad 'instrumental'" border_size="1"> -->
-        <!-- <size width="90" height="18"/> -->
-        <!-- <off color="#222222" border="#444444" radius="3"/> -->
-        <!-- <down color="#222222" border="#CC55FF" radius="3"/> -->
-        <!-- <selected color="transparent" border="#CC55FF" radius="3"/> -->
-        <!-- <text fontsize="10" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/> -->
-        <!-- </button> -->
-        <!-- <button x="+188" action="effect_stems +1" border_size="1"> -->
-        <!-- <size width="90" height="18"/> -->
-        <!-- <off color="#222222" border="#444444" radius="3"/> -->
-        <!-- <down color="#222222" border="yellow" radius="3"/> -->
-        <!-- <selected color="transparent" border="yellow" radius="3"/> -->
-        <!-- <text fontsize="10" color="#555555" colorselected="yellow" colordown="yellow" align="center" action="effect_stems &amp; param_uppercase"/> -->
-        <!-- </button> -->
-        <!-- </group> -->
-        <!-- CONTROL: COLORFX -->
-        <!-- <group x="+400" y="+24"> -->
-        <!-- BORDER -->
-        <!-- <visual source="effect_active colorfx" width="60" height="60"> -->
-        <!-- <off shape="square" color="transparent" border_size="1" border="#444444" radius="4"/> -->
-        <!-- <on shape="square" color="transparent" border_size="1" border="magenta" radius="4"/> -->
-        <!-- </visual> -->
-        <!-- LABEL: COLORFX -->
-        <!-- <button x="+1" y="+1" width="58" height="12" action="effect_active colorfx" query="effect_active colorfx" border_size="1"> -->
-        <!-- <off color="#444444"/> -->
-        <!-- <selected color="magenta" textcolor="black"/> -->
-        <!-- <text fontsize="10" color="#111111" colorselected="black" align="center" text="COLOR FX"/> -->
-        <!-- </button> -->
-        <!-- EFFECT SELECT GUI BUTTON -->
-        <!-- <button x="+44" y="+13" class="dropdown_menu" action="effect_select colorfx" visibility="var_equal '@$hauntingdropmenus' 0"/> -->
-        <!-- KNOB: COLORFX -->
-        <!-- <panel x="+0" y="+16"> -->
-        <!-- <slider action="effect_slider 'colorfx'" rightclick="effect_select 'colorfx'" dblclick="effect_slider 'colorfx' 50%" orientation="round" frommiddle="true" resettomiddle="true"> -->
-        <!-- <pos x="+15" y="+0"/> -->
-        <!-- <size width="30" height="30"/> -->
-        <!-- <fader color="needle" width="2" height="10" radius="1" anglemin="-140" anglemax="140"/> -->
-        <!-- <fill width="30" height="30" radius="12" color="knobfillon" backcolor="#333333"/> -->
-        <!-- </slider> -->
-        <!-- <textzone action="effect_select colorfx"> -->
-        <!-- <pos x="+0" y="+30"/> -->
-        <!-- <size width="60"/> -->
-        <!-- <text fontsize="9" weight="" color="knobtextoff" align="center" action="filter_label 'colorfx' &amp; param_cast 'text'" text="" important="true" localize="true"/> -->
-        <!-- </textzone> -->
-        <!-- </panel> -->
-        <!-- </group> -->
         <!-- INDICATORS -->
-        <group x="+300" y="+24">
+        <group x="+0" y="+24">
           <!-- STATUS: COLORFX -->
           <group>
-            <button width="80" height="18" action="effect_active 'colorfx' &amp; pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active 'colorfx'" border_size="1">
+            <button width="80" height="19" action="effect_active 'colorfx' &amp; pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active 'colorfx'" border_size="1">
               <off color="#444444"/>
               <selected color="color_colorfx"/>
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="COLOR FX"/>
             </button>
-            <button x="+80" width="80" height="18" action="pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active colorfx" border_size="1">
-              <off color="#222222"/>
+            <button x="+80" width="145" height="19" action="pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active colorfx" border_size="1">
+              <off color="#000000" border="#444444" border_size="1"/>
               <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_colorfx" align="left" action="filter_label"/>
             </button>
@@ -5135,20 +5078,20 @@
               <selected color="color_padfx"/>
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="PAD FX"/>
             </button>
-            <button x="+80" width="80" height="18" action="pad_page 3 'PAD FX'" query="effects_used 'padfx'" border_size="1">
+            <button x="+80" width="145" height="19" action="pad_page 3 'PAD FX'" query="effects_used 'padfx'" border_size="1">
               <off color="#222222"/>
               <selected color="#222222" textcolor="color_padfx" border="color_padfx"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_padfx" align="left" action="get_text '`get_effects_used` ACTIVE'"/>
             </button>
           </group>
           <!-- STATUS: SAMPLER -->
-          <group y="+41">
-            <button width="80" height="18" action="sampler_play_stop &amp; pad_page 4 'SAMPLER'" border_size="1" query="sampler_play_stop">
+          <group y="+40">
+            <button width="80" height="19" action="sampler_play_stop &amp; pad_page 4 'SAMPLER'" border_size="1" query="sampler_play_stop">
               <off color="#444444"/>
               <selected color="color_sampler" textcolor="white"/>
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="SAMPLER"/>
             </button>
-            <button x="+80" width="80" height="18" action="sampler_play_stop" query="sampler_play_stop" border_size="1">
+            <button x="+80" width="145" height="19" action="sampler_play_stop" query="sampler_play_stop" border_size="1">
               <off color="#222222"/>
               <selected color="#222222" textcolor="color_sampler" border="color_sampler"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_sampler" align="left" action="get_sample_name"/>
@@ -6632,6 +6575,9 @@
             <panel class="padbutton2" x="+125*3+4" y="+40*3+25" source="16"/>
           </group>
           <group x="+2" y="+40*4+29">
+            <visual width="500" height="40">
+              <off shape="square" color="black"/>
+            </visual>
             <!-- MENU BUTTON -->
             <button class="button_main" x="+0" width="66" height="26" action="pad_menu" query="off" text="MENU" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
             <!-- SELECT BUTTON -->
@@ -14427,11 +14373,11 @@
           <off shape="square" color="black"/>
         </visual>
         <!-- PRO: LEFT DECK: PANEL BG -->
-        <visual x="+37" class="gfx_shape" width="758" height="390" coloroff="panel_background" radius="6"/>
+        <visual x="+37" class="gfx_shape" width="763" height="390" coloroff="panel_background" radius="6"/>
         <!-- DECK BUTTON -->
-        <group>
+        <group y="+3">
           <visual visibility="deck [DECK] select">
-            <size width="40" height="60"/>
+            <size width="40" height="66"/>
             <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/> -->
             <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/> -->
             <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/>
@@ -14439,7 +14385,7 @@
             <off shape="square" color="deckcolor" radius="6"/>
           </visual>
           <!-- deck number -->
-          <button class="button_main" width="25" height="55" action="select" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor">
+          <button class="button_main" width="25" height="65" action="select" coloroff="black" textheight="55" textsize="30" textcoloron="black" textcolor="deckcolor">
             <pos x="+5" y="+1"/>
             <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
             <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
@@ -14460,8 +14406,8 @@
           <group>
             <!-- <visual class="gfx_shape" x="+5" y="+70" width="475" height="21" coloroff="black" bordersize="1" bordercoloroff="red"/> -->
             <!-- PRO: SONGPOS LEFT -->
-            <songpos class="songpos" x="+8" y="+80" width="470" height="12" colorPlayed="white"/>
-            <songpos class="cuemap" x="+5" y="+92" height="3"/>
+            <songpos class="cuemap" x="+8" y="+81" width="520" height="10"/>
+            <songpos class="songpos" x="+8" y="+80" width="520" height="12" colorPlayed="white"/>
           </group>
           <!-- <panel class="pitch_zone" x="+804-320" y="+10"/> -->
           <!-- GROUP: JOG AREA -->
@@ -14497,7 +14443,7 @@
             <panel class="deck_level" x="+0" y="+22"/>
           </group>
           <!-- PRO: DECK BORDER -->
-          <visual width="760" height="390" y="+0">
+          <visual width="765" height="390" y="+0">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
           </visual>
         </group>
@@ -14540,7 +14486,7 @@
     <define class="TRANSPORT_BAR" placeholders="*deck,*deckside">
       <deck deck="[DECK]">
         <!-- bg -->
-        <visual class="gfx_shape" width="800" height="36" coloroff="#111111" bordercoloroff="#333333" bordersize="1"/>
+        <visual class="gfx_shape" width="800" height="36" coloroff="#000000" bordercoloroff="#000000" bordersize="1" radius="6"/>
         <!-- INVERT DECK BUTTON -->
         <!-- <button class="button_main" width="30" height="30" action="invert_deck" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"> -->
         <!-- <pos y="+3" x="+7" condition="param_equal [DECKSIDE] 'left'"/> -->
@@ -14559,7 +14505,7 @@
         <!-- WARNING INDICATORS TODO: MOVE THESE -->
         <group visibility="false">
           <pos y="+2" x="+7" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos y="+2" x="+700" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos y="+2" x="+700" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- BPM WARNING -->
           <!-- more than 20% -->
           <button action="pitch_reset 4bt" visibility="param_add `get_bpm` `get_bpm 'absolute' &amp; param_multiply -1` &amp; param_smaller -4 ? blink 500ms : off">
@@ -14589,30 +14535,28 @@
         </group>
         <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
         <group visibility="loaded">
-          <!-- left -->
-          <pos x="+46" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
-          <!-- right -->
-          <pos x="+766-245" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+40" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+766-230" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- acapella -->
           <button action="stem_pad 'acapella'" border_size="1">
-            <size width="80" height="25"/>
-            <off color="#000000" border="#444444" radius="3"/>
+            <size width="120" height="25"/>
+            <off color="#000000" border="#555555" radius="3"/>
             <down color="#222222" border="color_acapella" radius="3"/>
             <selected color="transparent" border="color_acapella" radius="3"/>
-            <text fontsize="12" color="#555555" colorselected="color_acapella" colordown="color_acapella" align="center" text="ACAPELLA"/>
+            <text fontsize="12" color="#888888" colorselected="color_acapella" colordown="color_acapella" align="center" text="ACAPELLA"/>
           </button>
           <!-- instrumental -->
-          <button x="+82" action="stem_pad 'instrumental'" border_size="1">
-            <size width="110" height="25"/>
-            <off color="#000000" border="#444444" radius="3"/>
-            <down color="#222222" border="#CC55FF" radius="3"/>
-            <selected color="transparent" border="#CC55FF" radius="3"/>
-            <text fontsize="12" color="#555555" colorselected="#CC55FF" colordown="#CC55FF" align="center" text="INSTRUMENTAL"/>
+          <button x="+122" action="stem_pad 'instrumental'" border_size="1">
+            <size width="120" height="25"/>
+            <off color="#111111" border="#555555" radius="3"/>
+            <down color="#222222" border="color_instrumental" radius="3"/>
+            <selected color="transparent" border="color_instrumental" radius="3"/>
+            <text fontsize="12" color="#888888" colorselected="color_instrumental" colordown="color_instrumental" align="center" text="INSTRUMENTAL"/>
           </button>
         </group>
         <!-- TRANSPORT BAR: SYNC BUTTONS -->
         <group visibility="loaded">
-          <pos x="+300" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+320" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
           <pos x="+158" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- KEY BUTTON -->
           <button class="button_main" action="select &amp; match_key" bordersize="1" query="match_key" visibility="not masterdeck">
@@ -14627,7 +14571,7 @@
           <!-- KEY BUTTON: masterdeck -->
           <button class="button_main" action="select &amp; match_key" bordersize="1" query="match_key" visibility="masterdeck">
             <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/>
-            <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
+            <pos x="+82*3" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#000000" border="color_masterdeck" radius="3"/>
             <down color="#222222" border="color_masterdeck" radius="3"/>
@@ -14678,25 +14622,25 @@
             <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
             <off color="#000000" border="#888888" border_size="1" shape="square" radius="3"/>
-            <down color="#000000" border="orange" border_size="1" shape="square" radius="3"/>
-            <selected color="#000000" border="orange" border_size="1" shape="square" radius="3"/>
-            <text size="11" dx="+0" action="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" color="#999999" align="center"/>
+            <down color="#000000" border="color_masterdeck" border_size="1" shape="square" radius="3"/>
+            <selected color="color_masterdeck" border="color_masterdeck" border_size="1" shape="square" radius="3"/>
+            <text size="11" dx="+0" action="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" color="#999999" colorselected="black" align="center"/>
           </button>
         </group>
         <!-- PLAY/PAUSE BUTTON -->
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="not masterdeck">
           <pos x="+800-80-30+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
           <pos x="+3" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
-          <off color="#222222" border="deckcolor" border_size="1" shape="square" radius="4" iconcolor="deckcolor"/>
+          <off color="#222222" border="#888888" border_size="1" shape="square" radius="4"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
-          <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/>
-          <icon coloroff="deckcolor" colorover="white" colordown="#888888" colorselected="black"/>
+          <selected color="deckcolor" border="deckcolor" radius="4"/>
+          <icon coloroff="white" colorover="white" colordown="#888888" colorselected="black"/>
         </button>
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="masterdeck">
           <pos x="+800-80-30+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
           <pos x="+3" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
-          <off color="#523222" border="color_masterdeck" border_size="1" shape="square" radius="4" iconcolor="blue"/>
+          <off color="black" border="color_masterdeck" border_size="1" shape="square" radius="4" iconcolor="blue"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
           <selected color="color_masterdeck" border="color_masterdeck" radius="4" iconcolor="black"/>
@@ -14801,7 +14745,7 @@
           <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/>
           <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/>
           <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="-6" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+0" condition="param_equal [DECKSIDE] 'right'"/>
           <off shape="square" color="deckcolor" radius="6"/>
         </visual>
         <button class="button_main" width="25" height="55" action="select" coloroff="black" textheight="54" textsize="30" textcoloron="black" textcolor="deckcolor">
@@ -15399,7 +15343,7 @@
         <button action="quick_filter 'User 1 contains [TAG]'" rightclick="quick_filter ''" x="+0" y="+0">
           <pos x="+0" y="+0"/>
           <size width="[WIDTH]" height="[HEIGHT]"/>
-          <off color="#000000" border="#444444" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
+          <off color="transparent" border="transparent" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
           <over color="#000000" border="#444444" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
           <down color="black" border="transparent" border_size="[BORDERSIZE]" shape="[SHAPE]" radius="5"/>
           <selected color="#000000" border="[ACCENT_COLOR]" border_size="1" shape="[SHAPE]" radius="5"/>
@@ -16056,14 +16000,14 @@
         </deck>
       </define>
       <!-- DECK BOTTOM SECTION -->
-      <group y="+174" x="+38">
-        <!-- bg left -->
-        <visual width="756" height="200">
-          <off shape="square" color="black" radius="6"/>
+      <group y="+174" x="+40">
+        <!-- bg left (black behind pads) -->
+        <visual x="+5" y="+5" width="745" height="200">
+          <off shape="square" color="black" radius="10"/>
         </visual>
         <!-- bg right -->
-        <visual x="1920-800-2" width="800" height="252">
-          <off shape="square" color="black" radius="6"/>
+        <visual x="1920-793" y="+5" width="745" height="200">
+          <off shape="square" color="black" radius="10"/>
         </visual>
         <define class="CUSTOM_BUTTON_1" action="custom_button [SOURCE]" deck="[DECK]" border_size="1" rightclick="custom_button_edit [SOURCE]" placeholders="*source,*deck,width=70,height=20">
           <size width="[WIDTH]" height="[HEIGHT]"/>
@@ -16083,7 +16027,7 @@
           <button class="custom_button_1" source="406" deck="1" y="+24*6"/>
         </group>
         <!-- CUSTOM BUTTONS RIGHT -->
-        <group x="+1790" y="+20">
+        <group x="+1750" y="+20">
           <button class="custom_button_1" source="400" deck="2" y="+0"/>
           <button class="custom_button_1" source="401" deck="2" y="+24"/>
           <button class="custom_button_1" source="402" deck="2" y="+24*2"/>
@@ -16092,7 +16036,7 @@
           <button class="custom_button_1" source="405" deck="2" y="+24*5"/>
           <button class="custom_button_1" source="406" deck="2" y="+24*6"/>
         </group>
-        <group y="+2" x="+0">
+        <group y="+12" x="+0">
           <!-- TAGS -->
           <!-- <panel class="hashtag_stack" deck="1" x="+0" panelname="tags1" visibility="not deck 3 leftdeck"/> -->
           <!-- <panel class="hashtag_stack" deck="3" x="+0" panelname="tags3" visibility="deck 3 leftdeck"/> -->
@@ -16105,11 +16049,11 @@
           <!-- <panel class="stem_vu" deck="1" stem="rhythm" label="DRUM" color="colorbeat" x="+100"/> -->
           <!-- <panel class="pitch_zone" x="+20" y="+30"/> -->
           <!-- </group> -->
-          <group x="+240">
+          <group x="+230">
             <panel class="pad_page_panel" deck="1" panelname="[PANELNAME]_1" x="+0" visibility="not deck 3 leftdeck"/>
             <panel class="pad_page_panel" deck="3" panelname="[PANELNAME]_3" x="+0" visibility="deck 3 leftdeck"/>
-            <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+850" visibility="not deck 4 rightdeck"/>
-            <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+850" visibility="deck 4 rightdeck"/>
+            <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+865" visibility="not deck 4 rightdeck"/>
+            <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+865" visibility="deck 4 rightdeck"/>
           </group>
         </group>
       </group>
