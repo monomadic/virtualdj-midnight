@@ -14652,6 +14652,7 @@
         <!-- <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/> -->
         <!-- <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/> -->
         <!-- </button> -->
+        <line x="+0" y="+36" width="1980" height="1" highlight="#555555" shadow="transparent"/>
       </deck>
     </define>
     <!-- CONTROL: COLORFX -->
