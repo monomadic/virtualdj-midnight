@@ -4671,7 +4671,7 @@
               <!-- border, outer -->
               <visual>
                 <pos y="+0"/>
-                <size width="340" height="30"/>
+                <size width="343" height="30"/>
                 <off shape="square" color="transparent" border="#555555" border_size="1"/>
               </visual>
               <!-- border, vertical internal -->
@@ -4713,7 +4713,7 @@
                 <text fontsize="9" color="#888888" align="left" text="TIME" localize="true" important="true"/>
               </textzone>
               <textzone class="text" x="+110" y="+13" width="50" fontsize="15" color="texton2" align="left" weight="" textaction="get_time" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
-              <group x="+215" y="+0">
+              <group x="+285" y="+0">
                 <!-- FILETYPE -->
                 <square width="45" border="1" border_color="#555555" height="15" visibility="loaded" color="#111111"/>
                 <textzone>
@@ -4721,16 +4721,16 @@
                   <text fontsize="11" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' &amp; param_uppercase" localize="true" important="true"/>
                 </textzone>
               </group>
-              <group x="+174" y="-19">
+              <group x="+256" y="-42">
                 <!-- ACAPELLA TAG -->
                 <group visibility="stem_pad 'acapella'">
                   <visual>
-                    <size width="85" height="14"/>
+                    <size width="85" height="20"/>
                     <off shape="square" color="black"/>
                   </visual>
                   <button action="stem_pad 'acapella'" border_size="1" visibility="stem_pad 'acapella'">
                     <pos x="+2" y="+2"/>
-                    <size width="85" height="14"/>
+                    <size width="85" height="20"/>
                     <off color="#222222" border="#444444" radius="3"/>
                     <down color="#222222" border="color_acapella" radius="3"/>
                     <selected color="black" border="#3592F9" radius="3"/>
@@ -4740,12 +4740,12 @@
                 <!-- INSTRUMENTAL TAG -->
                 <group visibility="stem_pad 'instrumental'">
                   <visual>
-                    <size width="85" height="14"/>
+                    <size width="85" height="20"/>
                     <off shape="square" color="black"/>
                   </visual>
                   <button action="stem_pad 'instrumental'" border_size="1">
                     <pos x="+2" y="+2"/>
-                    <size width="85" height="14"/>
+                    <size width="85" height="20"/>
                     <off color="#222222" border="#444444" radius="3"/>
                     <down color="#222222" border="color_instrumental" radius="3"/>
                     <selected color="transparent" border="color_instrumental" radius="3"/>
