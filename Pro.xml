@@ -4607,8 +4607,8 @@
     </define>
     <!-- PRO: TRACK INFO -->
     <define class="INFOS">
-      <!-- PRO: TRACK INFO: LEFT DECK -->
-      <!-- BLACK GLASS BACKGROUND (behind cover) -->
+      <!-- LEFT DECK -->
+      <!-- background: black glass (behind cover) -->
       <button class="button_main" action="select" width="532" height="95" coloroff="#000000" coloron="black" brcoloroff="#333333" brcoloron="#444444" bordersize="1"/>
       <!-- COVER ART: HIDE -->
       <group visibility="var_equal '@$haunting_showcover_title' 0 &amp; loaded">
@@ -4639,20 +4639,47 @@
       <define class="TRACK_INFO" placeholders="DECK">
         <panel>
           <group visibility="loaded">
-            <!-- TITLE -->
-            <textzone tooltip="">
-              <size width="260" height="70-6-6-26"/>
-              <text fontsize="16" weight="bold" color="needle" align="left" scroll="yes" action="deck loaded ? get_title_before_remix &amp; param_uppercase" localize="true" important="true"/>
-            </textzone>
-            <button class="button_main" action="search `get_title_before_remix`" rightclick="file_info" x="+2+4+28+6+170+8" y="+1" tooltip="" width="484-2-4-28-6-2-4-210" height="70-6-6-26" coloroff="transparent" coloron="transparent" brcoloroff="transparent" brcoloron="transparent" bordersize="2"/>
-            <!-- LINE 2 (Remix) -->
-            <textzone>
-              <pos y="+16"/>
-              <size width="260" height="70-6-6-26"/>
-              <text fontsize="12" color="#888888" align="left" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/>
-            </textzone>
-            <!-- TRACK INFO -->
+            <!-- LINE 1: TITLE -->
+            <!-- <textzone tooltip=""> -->
+            <!-- <size width="320" height="20"/> -->
+            <!-- <text fontsize="16" weight="bold" color="white" colorover="black" align="left" scroll="yes" action="deck loaded ? get_title_before_remix &amp; param_uppercase" localize="true" important="true"/> -->
+            <!-- </textzone> -->
+            <button y="+5" class="button_main" action="search `get_title_before_remix`" rightclick="file_info" tooltip="" bordersize="0">
+              <size width="320" height="18"/>
+              <off color="black"/>
+              <down color="black"/>
+              <selected color="black"/>
+              <text action="get_title_before_remix &amp; param_uppercase" color="white" align="left" fontsize="16" weight="bold"/>
+              <textover action="get_text 'Search: &quot;`get_title_before_remix &amp; param_uppercase`&quot;'" fontsize="16" weight="bold"/>
+            </button>
+            <!-- LINE 2: ARTIST -->
+            <button y="+22" class="button_main" action="search `get_loaded_song 'artist'`" rightclick="file_info" tooltip="" bordersize="0">
+              <size width="320" height="16"/>
+              <off color="black"/>
+              <down color="black"/>
+              <selected color="black"/>
+              <text action="get_loaded_song 'artist' &amp; param_uppercase" color="white" align="left" fontsize="12" weight="normal"/>
+              <textover action="get_text 'Search: &quot;`get_loaded_song artist &amp; param_uppercase`&quot;'" fontsize="12" weight="normal"/>
+            </button>
+            <!-- <textzone> -->
+            <!-- <pos y="+16"/> -->
+            <!-- <size width="260" height="70-6-6-26"/> -->
+            <!-- <text fontsize="12" color="#888888" align="left" scroll="yes" action="get_loaded_song 'artist' &amp; param_uppercase" localize="true" important="true"/> -->
+            <!-- </textzone> -->
+            <!-- SONG FILE INFO -->
             <group y="+40">
+              <!-- border, outer -->
+              <visual>
+                <pos y="+0"/>
+                <size width="340" height="30"/>
+                <off shape="square" color="transparent" border="#555555" border_size="1"/>
+              </visual>
+              <!-- border, vertical internal -->
+              <visual>
+                <pos x="+58"/>
+                <size width="50" height="30"/>
+                <off shape="square" color="transparent" border="#555555" border_size="1"/>
+              </visual>
               <!-- BPM -->
               <textzone>
                 <pos x="+3" y="+3"/>
@@ -4687,24 +4714,13 @@
               </textzone>
               <textzone class="text" x="+110" y="+13" width="50" fontsize="15" color="texton2" align="left" weight="" textaction="get_time" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
               <group x="+215" y="+0">
-                <!-- FILETYPE pill -->
+                <!-- FILETYPE -->
                 <square width="45" border="1" border_color="#555555" height="15" visibility="loaded" color="#111111"/>
                 <textzone>
                   <size width="45" height="16"/>
                   <text fontsize="11" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' &amp; param_uppercase" localize="true" important="true"/>
                 </textzone>
               </group>
-              <!-- BORDER -->
-              <visual>
-                <pos y="+0"/>
-                <size width="260" height="30"/>
-                <off shape="square" color="transparent" border="#555555" border_size="1"/>
-              </visual>
-              <visual>
-                <pos x="+58"/>
-                <size width="50" height="30"/>
-                <off shape="square" color="transparent" border="#555555" border_size="1"/>
-              </visual>
               <group x="+174" y="-19">
                 <!-- ACAPELLA TAG -->
                 <group visibility="stem_pad 'acapella'">
@@ -5409,12 +5425,6 @@
           <size width="[JOGSIZE]-20" height="[JOGSIZE]-20"/>
           <off shape="circle" color="jogwheelbackground2"/>
         </visual>
-        <!-- <size width="[JOGSIZE]" height="[JOGSIZE]"/> -->
-        <!-- <visual name="outerborder" x="+0" y="+0" source="songpos_warning blink" tooltip=""> -->
-        <!-- <off border_size="2" border="transparent" color="mixerbackground" shape="circle"/> -->
-        <!-- <on border_size="5" border="deckcolor" color="mixerbackground" shape="circle"/> -->
-        <!-- </visual> -->
-        <!-- <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="jog_slider" widthfader="14" heightfader="32" radius="42"/> -->
         <group name="jogwheel_content" visibility="loaded">
           <!-- BPM % DIFF -->
           <textzone>
@@ -5466,10 +5476,6 @@
         <!-- CORNER BUTTONS -->
         <!-- SYNC OPTIONS BUTTON -->
         <group x="+0" y="+0">
-          <!-- <button action="auto_sync_options" query="false" visibility="loaded" shape="square"> -->
-          <!-- <size width="20" height="20"/> -->
-          <!-- <off shape="circle" color="#888888" border="#555555" border_size="1"/> -->
-          <!-- </button> -->
           <visual>
             <size width="24" height="24"/>
             <pos x="-2" y="-2"/>
@@ -5479,25 +5485,13 @@
             <size width="20" height="20"/>
             <off shape="circle" color="#000000" border="#222222" border_size="1"/>
           </visual>
-          <!-- <button action="auto_sync_options" query="auto_match_bpm ? auto_match_key" visibility="loaded" shape="circle"> -->
-          <!-- <size width="20" height="20"/> -->
-          <!-- <off shape="circle" color="#888888" border="#555555" border_size="1"/> -->
-          <!-- <over shape="circle" color="#555555" border="#222222" border_size="1"/> -->
-          <!-- <down shape="circle" color="#009900" border="transparent" border_size="0"/> -->
-          <!-- <selected shape="circle" color="#DD44FF44" border="green" border_size="1"/> -->
-          <!-- <on shape="circle" color="transparent"/> -->
-          <!-- <icon dx="+0" sysicon="settings" width="18" height="18" coloroff="transparent" coloron="#55FFFFFF" colorover="white" condition="loaded &amp; playing"/> -->
-          <!-- </button> -->
           <button action="auto_sync_options" query="auto_match_bpm ? auto_match_key" visibility="loaded" shape="circle">
             <size width="10" height="10"/>
             <pos x="+5" y="+5"/>
             <off shape="circle" color="#777777" border="#555555" border_size="3"/>
-            <selected shape="circle" color="#00FF00" border="#222222" border_size="2"/>
+            <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
             <over shape="circle" color="#00FF00" border="transparent" border_size="0"/>
-            <!-- <on shape="circle" color="#00FF00" border="transparent" border_size="0"/> -->
             <down shape="circle" color="#AA44FF44" border="#8800FF00" border_size="1"/>
-            <!-- <on shape="circle" color="transparent"/> -->
-            <!-- <icon dx="+0" sysicon="settings" width="18" height="18" coloroff="transparent" coloron="#55FFFFFF" colorover="white" condition="loaded &amp; playing"/> -->
           </button>
         </group>
         <!-- MASTER BUTTON -->
@@ -6532,32 +6526,39 @@
         <!-- PRO: PADS (16) -->
         <panel name="@pads16_[PANELNAME]" group="efx_[PANELNAME]" visible="yes" available="yes" displayname="Pads x16" forceshow="16pads">
           <!-- BACKGROUND -->
-          <!-- <visual class="gfx_shape" x="+0" y="+0" width="512" height="217" coloroff="red"/> -->
-          <!-- BANK SELECT -->
-          <!-- <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads"> -->
-          <!-- <pos x="+3" y="+2"/> -->
-          <!-- <button class="button_main" x="+0" y="+0" width="124" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-          <!-- <button class="button_main" x="+2+125" y="+0" width="124" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-          <!-- <button class="button_main" x="+2+125+125" y="+0" width="124" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-          <!-- <button class="button_main" x="+2+125+125+125+3" y="+0" width="124" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-          <!-- </panel> -->
-          <!-- BANK SELECT -->
-          <group x="+40" y="+2">
-            <!-- <visual class="gfx_shape" x="+0" y="+0" width="470" height="217" coloroff="black"/> -->
+          <!-- <visual class="gfx_shape" x="+0" y="+0" width="512" height="217" coloroff="#222222"/> -->
+          <group x="+20" y="+3">
+            <!-- BANK SELECT -->
             <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-              <button class="button_main" x="+0" y="+4" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100" y="+4" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100+10+100" y="+4" width="100" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
-              <button class="button_main" x="+10+100+10+100+100+10+3" y="+4" width="100" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/>
+              <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
+              <button class="button_main" x="+2+100" y="+0" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
+              <button class="button_main" x="+2+100+125" y="+0" width="104" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
+              <button class="button_main" x="+2+100+125+125+3" y="+0" width="104" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
             </panel>
+            <visual>
+              <size width="470" height="26"/>
+              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+            </visual>
           </group>
+          <!-- BANK SELECT -->
+          <!-- <group x="+40" y="+0"> -->
+          <!-- <visual x="-3" y="-3" width="+0+100+10+100+10+100+10+100+6" height="166"> -->
+          <!-- <off shape="square" color="#222222" border="#222222" border_size="3" radius="6"/> -->
+          <!-- </visual> -->
+          <!-- <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads"> -->
+          <!-- <button class="button_main" x="+0" y="+0" width="110" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/> -->
+          <!-- <button class="button_main" x="+0+100" y="+0" width="110" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/> -->
+          <!-- <button class="button_main" x="+0+100+10+100" y="+0" width="110" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/> -->
+          <!-- <button class="button_main" x="+0+100+10+100+100+10" y="+0" width="110" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#222222" bordersize="0" brcoloron="#222222" brcoloroff="#222222" textcolor="textdarker"/> -->
+          <!-- </panel> -->
+          <!-- </group> -->
           <!-- PAD AREA BORDER -->
-          <visual x="+1" y="+21" width="509" height="166">
+          <visual x="+0" y="+21" width="508" height="168">
             <off shape="square" color="#222222" border="#222222" border_size="3" radius="6"/>
           </visual>
           <!-- PAD BUTTONS -->
-          <group x="+3">
-            <panel class="padbutton2" x="+2" y="+25" source="1"/>
+          <group x="+2">
+            <panel class="padbutton2" x="+125*0+2" y="+25" source="1"/>
             <panel class="padbutton2" x="+125*1+2" y="+25" source="2"/>
             <panel class="padbutton2" x="+125*2+3" y="+25" source="3"/>
             <panel class="padbutton2" x="+125*3+4" y="+25" source="4"/>
@@ -6574,29 +6575,35 @@
             <panel class="padbutton2" x="+125*2+3" y="+40*3+25" source="15"/>
             <panel class="padbutton2" x="+125*3+4" y="+40*3+25" source="16"/>
           </group>
-          <group x="+2" y="+40*4+29">
-            <visual width="500" height="40">
-              <off shape="square" color="black"/>
-            </visual>
-            <!-- MENU BUTTON -->
-            <button class="button_main" x="+0" width="66" height="26" action="pad_menu" query="off" text="MENU" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-            <!-- SELECT BUTTON -->
-            <button class="button_main" x="+65" width="66" height="26" action="pad_page_select" query="off" text="SELECT" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-            <!-- EDIT BUTTON -->
-            <button class="button_main" x="+65+65" width="66" height="26" action="pad_edit" query="off" text="EDIT" coloroff="xf_background" coloron="xf_background" bordersize="0" textsize="10" textcolor="textdarker"/>
-            <group x="+222">
-              <!-- PARAM 1 -->
-              <group name="pad_param1" visibility="pad_param_visible 1">
-                <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-                <button class="button_main" x="+26" width="82" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
-                <button class="button_main" x="+26+82" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-              </group>
-              <!-- PARAM 2 -->
-              <group x="+140" name="pad_param1" visibility="pad_param_visible 2">
-                <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-                <button class="button_main" x="+26" width="82" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
-                <button class="button_main" x="+26+82" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
-              </group>
+          <!-- menu -->
+          <button action="pad_menu 1" query="auto_match_bpm ? auto_match_key" visibility="pad_has_menu 1" shape="circle">
+            <size width="10" height="10"/>
+            <pos x="+500" y="+5"/>
+            <off shape="circle" color="#777777" border="#555555" border_size="1"/>
+            <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
+            <over shape="circle" color="#00FF00" border="transparent" border_size="1"/>
+            <down shape="circle" color="#AA44FF44" border="#8800FF00" border_size="1"/>
+          </button>
+          <group x="-130" y="+5">
+            <!-- PARAM 1 -->
+            <group name="pad_param1" visibility="pad_param_visible 1">
+              <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+              <button class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+              <button class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+              <visual>
+                <size width="124" height="24"/>
+                <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+              </visual>
+            </group>
+            <!-- PARAM 2 -->
+            <group y="+26" name="pad_param1" visibility="pad_param_visible 2">
+              <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+              <button class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+              <button class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+              <visual>
+                <size width="124" height="24"/>
+                <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+              </visual>
             </group>
           </group>
         </panel>
@@ -16037,11 +16044,11 @@
           <button class="custom_button_1" source="405" deck="2" y="+24*5"/>
           <button class="custom_button_1" source="406" deck="2" y="+24*6"/>
         </group>
-        <group x="+230" y="+3">
+        <group x="+235" y="+13">
           <panel class="pad_page_panel" deck="1" panelname="[PANELNAME]_1" x="+0" visibility="not deck 3 leftdeck"/>
           <panel class="pad_page_panel" deck="3" panelname="[PANELNAME]_3" x="+0" visibility="deck 3 leftdeck"/>
-          <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+865" visibility="not deck 4 rightdeck"/>
-          <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+865" visibility="deck 4 rightdeck"/>
+          <panel class="pad_page_panel" deck="2" panelname="[PANELNAME]_2" x="+855" visibility="not deck 4 rightdeck"/>
+          <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+855" visibility="deck 4 rightdeck"/>
         </group>
       </group>
       <group y="+395">
