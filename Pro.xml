@@ -16096,6 +16096,26 @@
           <button class="custom_button_1" source="404" deck="1" y="+24*4"/>
           <button class="custom_button_1" source="405" deck="1" y="+24*5"/>
           <button class="custom_button_1" source="406" deck="1" y="+24*6"/>
+          <!-- PARAM 1 -->
+          <!-- <group deck="1" x="+83" name="pad_param1" visibility="pad_param_visible 1"> -->
+          <!-- <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+          <!-- <button class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/> -->
+          <!-- <button class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+          <!-- <visual> -->
+          <!-- <size width="124" height="24"/> -->
+          <!-- <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/> -->
+          <!-- </visual> -->
+          <!-- </group> -->
+          <!-- PARAM 2 -->
+          <!-- <group deck="1" x="+83" y="+26" name="pad_param1" visibility="pad_param_visible 2"> -->
+          <!-- <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+          <!-- <button class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/> -->
+          <!-- <button class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
+          <!-- <visual> -->
+          <!-- <size width="124" height="24"/> -->
+          <!-- <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/> -->
+          <!-- </visual> -->
+          <!-- </group> -->
         </group>
         <!-- CUSTOM BUTTONS RIGHT -->
         <group x="+1750" y="+20">
@@ -16106,6 +16126,26 @@
           <button class="custom_button_1" source="404" deck="2" y="+24*4"/>
           <button class="custom_button_1" source="405" deck="2" y="+24*5"/>
           <button class="custom_button_1" source="406" deck="2" y="+24*6"/>
+          <!-- PARAM 1 -->
+          <group deck="2" x="-140" name="pad_param1" visibility="pad_param_visible 1">
+            <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <button class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+            <button class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <visual>
+              <size width="124" height="24"/>
+              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+            </visual>
+          </group>
+          <!-- PARAM 2 -->
+          <group deck="2" x="-140" y="+26" name="pad_param1" visibility="pad_param_visible 2">
+            <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <button class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+            <button class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <visual>
+              <size width="124" height="24"/>
+              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+            </visual>
+          </group>
         </group>
         <group x="+235" y="+13">
           <panel class="pad_page_panel" deck="1" panelname="[PANELNAME]_1" x="+0" visibility="not deck 3 leftdeck"/>
