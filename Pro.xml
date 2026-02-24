@@ -49,7 +49,7 @@
     <define color="color_header" value="white"/>
     <define color="color_subheader" value="#888888"/>
     <define color="color_knob_bg" value="#555555"/>
-    <define color="color_acapella" value="#3592F9"/>
+    <define color="color_acapella" value="#00FFAA"/>
     <define color="color_instrumental" value="#CC55FF"/>
     <!-- Common colors for all decks -->
     <define color="color_tag_genre" value="#60FF8E"/>
@@ -4733,8 +4733,8 @@
                     <size width="85" height="20"/>
                     <off color="#222222" border="#444444" radius="3"/>
                     <down color="#222222" border="color_acapella" radius="3"/>
-                    <selected color="black" border="#3592F9" radius="3"/>
-                    <text fontsize="10" color="#555555" colorselected="#3592F9" colordown="#3592F9" align="center" text="ACAPELLA"/>
+                    <selected color="black" border="color_acapella" radius="3"/>
+                    <text fontsize="10" color="#555555" colorselected="color_acapella" colordown="color_acapella" align="center" text="ACAPELLA"/>
                   </button>
                 </group>
                 <!-- INSTRUMENTAL TAG -->
@@ -6606,7 +6606,7 @@
           <!-- menu -->
           <button action="pad_menu 1" query="auto_match_bpm ? auto_match_key" visibility="pad_has_menu 1" shape="circle">
             <size width="10" height="10"/>
-            <pos x="+500" y="+5"/>
+            <pos x="+490" y="+5"/>
             <off shape="circle" color="#777777" border="#555555" border_size="1"/>
             <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
             <over shape="circle" color="#00FF00" border="transparent" border_size="1"/>
@@ -14493,6 +14493,14 @@
         <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/> -->
         <!-- </visual> -->
         <!-- DROP ZONE -->
+        <group visibility="stem_pad 'acapella'">
+          <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
+          <line color="color_acapella" x="+1" y="+1" width="764" height="2"/>
+        </group>
+        <group visibility="stem_pad 'instrumental'">
+          <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
+          <line color="color_instrumental" x="+1" y="+1" width="764" height="2"/>
+        </group>
         <dropzone visibility="var_equal '@$hauntinglayout' 0" x="+0" y="+0">
           <size width="770" height="434"/>
           <over color="transparent" border_size="2" border="color_dropzone" shape="square" radius="10"/>
@@ -15051,6 +15059,14 @@
         <!-- <size width="804" height="218"/> -->
         <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="5"/> -->
         <!-- </visual> -->
+        <group visibility="stem_pad 'acapella'">
+          <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
+          <line color="color_acapella" x="+1" y="+1" width="764" height="2"/>
+        </group>
+        <group visibility="stem_pad 'instrumental'">
+          <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
+          <line color="color_instrumental" x="+1" y="+1" width="764" height="2"/>
+        </group>
         <dropzone visibility="var_equal '@$hauntinglayout' 0">
           <size width="800" height="216"/>
           <over color="transparent" border_size="2" border="deckcolor" shape="square"/>
