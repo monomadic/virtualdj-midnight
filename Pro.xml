@@ -6519,7 +6519,7 @@
             <!-- BANK SELECT -->
             <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
               <!-- <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="1" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker" radius="6"/> -->
-              <button class="button_main" action="pad_page btn1" rightclick="pad_page_select 1" textaction="pad_page btn1 &amp; param_uppercase">
+              <button class="button_main" query="param_equal `pad_page 1` `pad_page` ? true : param_equal `pad_page 5` `pad_page`" action="shift ? pad_page 5 : pad_page 1" rightclick="shift ? pad_page_select 5 : pad_page_select 1" textaction="shift ? pad_page btn5 &amp; param_uppercase : pad_page btn1 &amp; param_uppercase">
                 <pos x="+0" y="+0"/>
                 <size width="100" height="25"/>
                 <tooltip>Select pad page 1.</tooltip>
@@ -6529,7 +6529,7 @@
                 <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
                 <text text="btn1" fontsize="12" color="textdarker" coloron="white" align="center"/>
               </button>
-              <button class="button_main" action="pad_page btn2" rightclick="pad_page_select 2" textaction="pad_page btn2 &amp; param_uppercase">
+              <button class="button_main" query="param_equal `pad_page 2` `pad_page` ? true : param_equal `pad_page 6` `pad_page`" action="shift ? pad_page 6 : pad_page 2" rightclick="shift ? pad_page_select 6 : pad_page_select 2" textaction="shift ? pad_page btn6 &amp; param_uppercase : pad_page btn2 &amp; param_uppercase">
                 <pos x="+2+100" y="+0"/>
                 <size width="100" height="25"/>
                 <tooltip>Select pad page 2.</tooltip>
@@ -6539,7 +6539,7 @@
                 <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
                 <text text="btn2" fontsize="12" color="textdarker" coloron="white" align="center"/>
               </button>
-              <button class="button_main" action="pad_page btn3" rightclick="pad_page_select 3" textaction="pad_page btn3 &amp; param_uppercase">
+              <button class="button_main" query="param_equal `pad_page 3` `pad_page` ? true : param_equal `pad_page 7` `pad_page`" action="shift ? pad_page 6 : pad_page 3" rightclick="shift ? pad_page_select 7 : pad_page_select 3" textaction="shift ? pad_page btn7 &amp; param_uppercase : pad_page btn3 &amp; param_uppercase">
                 <pos x="+2+100*2" y="+0"/>
                 <size width="100" height="25"/>
                 <tooltip>Select pad page 3.</tooltip>
@@ -6549,7 +6549,7 @@
                 <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
                 <text text="btn3" fontsize="12" color="textdarker" coloron="white" align="center"/>
               </button>
-              <button class="button_main" action="pad_page btn4" rightclick="pad_page_select 4" textaction="pad_page btn4 &amp; param_uppercase">
+              <button class="button_main" query="param_equal `pad_page 4` `pad_page` ? true : param_equal `pad_page 8` `pad_page`" action="shift ? pad_page 8 : pad_page 4" rightclick="shift ? pad_page_select 8 : pad_page_select 4" textaction="shift ? pad_page btn8 &amp; param_uppercase : pad_page btn4 &amp; param_uppercase">
                 <pos x="+2+100*3" y="+0"/>
                 <size width="100" height="25"/>
                 <tooltip>Select pad page 4.</tooltip>
@@ -6559,9 +6559,6 @@
                 <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
                 <text text="btn4" fontsize="12" color="textdarker" coloron="white" align="center"/>
               </button>
-              <!-- <button class="button_main" x="+2+100" y="+0" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-              <!-- <button class="button_main" x="+2+100+125" y="+0" width="104" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
-              <!-- <button class="button_main" x="+2+100+125+125+3" y="+0" width="104" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
             </panel>
             <!-- <visual> -->
             <!-- <size width="470" height="26"/> -->
