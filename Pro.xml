@@ -4608,7 +4608,7 @@
     <!-- PRO: TRACK INFO -->
     <define class="INFOS">
       <!-- LEFT DECK -->
-      <!-- background: black glass (behind cover) -->
+      <!-- background: black glass (under cover) -->
       <button class="button_main" action="select" width="532" height="95" coloroff="#000000" coloron="black" brcoloroff="#333333" brcoloron="#444444" bordersize="1"/>
       <!-- COVER ART: HIDE -->
       <group visibility="var_equal '@$haunting_showcover_title' 0 &amp; loaded">
@@ -4766,7 +4766,7 @@
       </group>
       <!-- PRO: COVER ART -->
       <!-- LEFT -->
-      <panel class="cover_art_hntg" size="184-6-6" x="+4" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
+      <panel class="cover_art_hntg" size="178-6-6" x="+8" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
       <!-- RIGHT -->
       <panel class="cover_art_hntg" size="184-6-6" x="+566-4-28-180" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
       <!-- PRO: RIGHT DECK: DECK BUTTON -->
@@ -5011,16 +5011,17 @@
     </define>
     <!-- PRO: BPM, KEY -->
     <define class="TRACK_INFO_ACTION_ZONE">
-      <visual class="gfx_shape" x="+2" y="-2" width="480" height="22" coloroff="black" bordercoloroff="red" bordersize="0"/>
+      <visual class="gfx_shape" x="+1" y="-2" width="530" height="22" coloroff="black" bordercoloroff="#444444" bordersize="0"/>
       <!-- HR -->
       <!-- <visual class="gfx_shape" coloroff="panel_background"> -->
       <!-- <pos x="+0" y="+20"/> -->
       <!-- <size width="481" height="1"/> -->
       <!-- </visual> -->
       <!-- bg (covers coverart) -->
-      <visual class="gfx_shape" y="+20" width="484" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="1"/>
+      <visual class="gfx_shape" x="+0" y="+20" width="530" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="0"/>
       <!-- bottom panel -->
       <visual class="gfx_shape" x="+7" y="+26" width="527" height="78" coloroff="#44000000" bordercoloroff="#FFFFFFF" bordersize="1" radius="8"/>
+      <line color="#444444" x="+0" y="+22" width="530" height="1"/>
       <group visibility="loaded" x="+15" y="+12">
         <!-- CLASS: STEM BUTTONS -->
         <define class="STEM_BUTTON" placeholders="*stem,*label,*color,width=65,height=23,fontsize=13,granularity=23">
@@ -5089,7 +5090,7 @@
           </group>
           <!-- STATUS: PADFX -->
           <group y="+20">
-            <button width="80" height="19" action="effect_disable_all 'padfx' &amp; pad_page 3 'PAD FX'" border_size="1" query="effects_used 'padfx'" rightclick="effect_select">
+            <button width="80" height="19" action="effects_used 'deck' ? effect_disable_all 'padfx' &amp; pad_page 3 'PAD FX' : effect_select" border_size="1" query="effects_used 'deck'" rightclick="effect_select">
               <off color="#444444"/>
               <selected color="color_padfx"/>
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="PAD FX"/>
@@ -6527,18 +6528,58 @@
         <panel name="@pads16_[PANELNAME]" group="efx_[PANELNAME]" visible="yes" available="yes" displayname="Pads x16" forceshow="16pads">
           <!-- BACKGROUND -->
           <!-- <visual class="gfx_shape" x="+0" y="+0" width="512" height="217" coloroff="#222222"/> -->
-          <group x="+20" y="+3">
+          <group x="+20" y="+0">
             <!-- BANK SELECT -->
             <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-              <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+2+100" y="+0" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+2+100+125" y="+0" width="104" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
-              <button class="button_main" x="+2+100+125+125+3" y="+0" width="104" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/>
+              <!-- <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="1" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker" radius="6"/> -->
+              <button class="button_main" action="pad_page btn1" rightclick="pad_page_select 1" textaction="pad_page btn1 &amp; param_uppercase">
+                <pos x="+0" y="+0"/>
+                <size width="100" height="25"/>
+                <tooltip>Select pad page 1.</tooltip>
+                <off color="transparent" border="#222222" radius="6" bordersize="1"/>
+                <over color="#000000" border="#333333" radius="6" bordersize="1"/>
+                <down color="#000000" border="#666666" radius="6" bordersize="1"/>
+                <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
+                <text text="btn1" fontsize="12" color="textdarker" coloron="white" align="center"/>
+              </button>
+              <button class="button_main" action="pad_page btn2" rightclick="pad_page_select 2" textaction="pad_page btn2 &amp; param_uppercase">
+                <pos x="+2+100" y="+0"/>
+                <size width="100" height="25"/>
+                <tooltip>Select pad page 2.</tooltip>
+                <off color="transparent" border="#222222" radius="6" bordersize="1"/>
+                <over color="#000000" border="#333333" radius="6" bordersize="1"/>
+                <down color="#000000" border="#666666" radius="6" bordersize="1"/>
+                <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
+                <text text="btn2" fontsize="12" color="textdarker" coloron="white" align="center"/>
+              </button>
+              <button class="button_main" action="pad_page btn3" rightclick="pad_page_select 3" textaction="pad_page btn3 &amp; param_uppercase">
+                <pos x="+2+100*2" y="+0"/>
+                <size width="100" height="25"/>
+                <tooltip>Select pad page 3.</tooltip>
+                <off color="transparent" border="#222222" radius="6" bordersize="1"/>
+                <over color="#000000" border="#333333" radius="6" bordersize="1"/>
+                <down color="#000000" border="#666666" radius="6" bordersize="1"/>
+                <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
+                <text text="btn3" fontsize="12" color="textdarker" coloron="white" align="center"/>
+              </button>
+              <button class="button_main" action="pad_page btn4" rightclick="pad_page_select 4" textaction="pad_page btn4 &amp; param_uppercase">
+                <pos x="+2+100*3" y="+0"/>
+                <size width="100" height="25"/>
+                <tooltip>Select pad page 4.</tooltip>
+                <off color="transparent" border="#222222" radius="6" bordersize="1"/>
+                <over color="#000000" border="#333333" radius="6" bordersize="1"/>
+                <down color="#000000" border="#666666" radius="6" bordersize="1"/>
+                <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
+                <text text="btn4" fontsize="12" color="textdarker" coloron="white" align="center"/>
+              </button>
+              <!-- <button class="button_main" x="+2+100" y="+0" width="100" height="21" action="pad_page btn2" rightclick="pad_page_select 2" tooltip="Select pad page 2." textcoloron="white" textsize="12" textaction="pad_page btn2 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
+              <!-- <button class="button_main" x="+2+100+125" y="+0" width="104" height="21" action="pad_page btn3" rightclick="pad_page_select 3" tooltip="Select pad page 3." textcoloron="white" textsize="12" textaction="pad_page btn3 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
+              <!-- <button class="button_main" x="+2+100+125+125+3" y="+0" width="104" height="21" action="pad_page btn4" rightclick="pad_page_select 4" tooltip="Select pad page 4." textcoloron="white" textsize="12" textaction="pad_page btn4 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="0" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker"/> -->
             </panel>
-            <visual>
-              <size width="470" height="26"/>
-              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
-            </visual>
+            <!-- <visual> -->
+            <!-- <size width="470" height="26"/> -->
+            <!-- <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/> -->
+            <!-- </visual> -->
           </group>
           <!-- BANK SELECT -->
           <!-- <group x="+40" y="+0"> -->
@@ -6553,7 +6594,7 @@
           <!-- </panel> -->
           <!-- </group> -->
           <!-- PAD AREA BORDER -->
-          <visual x="+0" y="+21" width="508" height="168">
+          <visual x="+0" y="+21" width="508" height="166">
             <off shape="square" color="#222222" border="#222222" border_size="3" radius="6"/>
           </visual>
           <!-- PAD BUTTONS -->
@@ -6606,6 +6647,10 @@
               </visual>
             </group>
           </group>
+          <!-- PAD AREA BORDER -->
+          <visual x="+0" y="+21" width="508" height="166">
+            <off shape="square" color="transparent" border="#222222" border_size="3" radius="6"/>
+          </visual>
         </panel>
       </deck>
     </define>
@@ -14358,12 +14403,12 @@
     <define class="AREA_DECK_LEFT" placeholders="*deck,*panelname">
       <deck deck="[DECK]">
         <!-- PRO: LEFT DECK: SPINE BG -->
-        <visual x="+0" y="+0" width="34" height="390">
+        <visual x="+0" y="+0" width="34" height="425">
           <off shape="square" color="black"/>
         </visual>
         <!-- PRO: LEFT DECK: PANEL BG -->
         <!-- <visual x="+37" class="gfx_shape" width="763" height="390" coloroff="panel_background" radius="6"/> -->
-        <visual width="763" height="390" x="+37">
+        <visual width="765" height="425" x="+35">
           <off shape="square" color="panel_background" radius="6"/>
         </visual>
         <!-- DECK BUTTON -->
@@ -14435,9 +14480,10 @@
             <panel class="deck_level" x="+0" y="+22"/>
           </group>
           <!-- PRO: DECK BORDER -->
-          <visual width="765" height="390" y="+0">
+          <visual width="765" height="425" y="+0">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
           </visual>
+          <line color="#333333" x="+0" y="+389" width="765" height="1"/>
         </group>
       </deck>
     </define>
@@ -14451,9 +14497,8 @@
         <!-- <down color="transparent" border_size="1" border="#333333" shape="square" radius="6"/> -->
         <!-- </visual> -->
         <!-- BORDER -->
-        <!-- if top deck in 4 deck mode -->
         <visual source="deck [DECK] select" x="+0" y="+0" visibility="var_equal '@$dd_bordermode' 1">
-          <size width="770" height="434"/>
+          <size width="770" height="429"/>
           <down color="transparent" border_size="3" border="deckcolor" shape="square" radius="8"/>
         </visual>
         <!-- <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? not deck [DECK] leftdeck" x="-2" y="-2"> -->
@@ -14478,7 +14523,7 @@
     <define class="TRANSPORT_BAR" placeholders="*deck,*deckside">
       <deck deck="[DECK]">
         <!-- bg -->
-        <visual class="gfx_shape" width="800" height="36" coloroff="#000000" bordercoloroff="#000000" bordersize="1" radius="6"/>
+        <!-- <visual class="gfx_shape" width="800" height="36" coloroff="#000000" bordercoloroff="#000000" bordersize="1" radius="6"/> -->
         <!-- INVERT DECK BUTTON -->
         <!-- <button class="button_main" width="30" height="30" action="invert_deck" coloroff="#333333" text="" textcolor="white" iconsize="30" sysicon="goto_last_folder" border="0" shape="circle"> -->
         <!-- <pos y="+3" x="+7" condition="param_equal [DECKSIDE] 'left'"/> -->
@@ -14527,8 +14572,8 @@
         </group>
         <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
         <group visibility="loaded">
-          <pos x="+40" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+766-230" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+42" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+500" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- acapella -->
           <button action="stem_pad 'acapella'" border_size="1">
             <size width="120" height="25"/>
@@ -14621,8 +14666,8 @@
         </group>
         <!-- PLAY/PAUSE BUTTON -->
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="not masterdeck">
-          <pos x="+800-80-60+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+35" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+800-80-40+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+15" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
           <off color="#222222" border="#888888" border_size="1" shape="square" radius="4"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
@@ -14630,8 +14675,8 @@
           <icon coloroff="white" colorover="white" colordown="#888888" colorselected="black"/>
         </button>
         <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="masterdeck">
-          <pos x="+800-80-60+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+35" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+800-80-40+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+15" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
           <off color="black" border="color_masterdeck" border_size="1" shape="square" radius="4" iconcolor="blue"/>
           <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
           <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
@@ -14644,7 +14689,6 @@
         <!-- <down color="#111111" border="#888888" border_size="1" shape="square" radius="4" iconcolor="#666666"/> -->
         <!-- <selected color="deckcolor" border="deckcolor" radius="4" iconcolor="black"/> -->
         <!-- </button> -->
-        <line x="+0" y="+36" width="1980" height="1" highlight="#555555" shadow="transparent"/>
       </deck>
     </define>
     <!-- CONTROL: COLORFX -->
@@ -14919,17 +14963,19 @@
           <size width="200" height="10"/>
           <clipmask x="27" y="140"/>
         </cues>
-        <!-- songpos -->
-        <songpos class="songpos" x="+800-570" y="+76" width="470" height="12" colorPlayed="blue"/>
-        <songpos deck="right" orientation="horizontal" colorHigh="black" colorMed="black" colorBass="black" colorVocal="red" colorInstru="red" colorBeat="#000000" colorNoBeat="#000000">
-          <pos x="+800-570" y="+96"/>
-          <size width="473" height="3"/>
-          <wave>
-            <size height="0"/>
-            <pos y="+5"/>
-          </wave>
-        </songpos>
+        <!-- <songpos class="songpos" x="+800-570" y="+76" width="470" height="12" colorPlayed="blue"/> -->
+        <!-- <songpos deck="right" orientation="horizontal" colorHigh="black" colorMed="black" colorBass="black" colorVocal="red" colorInstru="red" colorBeat="#000000" colorNoBeat="#000000"> -->
+        <!-- <pos x="+800-570" y="+96"/> -->
+        <!-- <size width="473" height="3"/> -->
+        <!-- <wave> -->
+        <!-- <size height="0"/> -->
+        <!-- <pos y="+5"/> -->
+        <!-- </wave> -->
+        <!-- </songpos> -->
         <panel class="track_info_action_zone" x="+800-570" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <!-- PRO: RIGHT: SONGPOS -->
+        <songpos class="cuemap" x="+8+228" y="+78" width="520" height="10"/>
+        <songpos class="songpos" x="+8+228" y="+79" width="520" height="12" colorPlayed="white"/>
         <!-- <panel class="times_bpm_key2" x="+800-404" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
         <!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
         <!-- PRO: SONGPOS RIGHT -->
@@ -14944,6 +14990,13 @@
         <group y="+15">
           <!-- LEVEL -->
           <panel class="deck_level" x="+10" y="+14"/>
+        </group>
+        <group>
+          <!-- PRO: DECK BORDER -->
+          <visual width="765" height="425" y="+0">
+            <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
+          </visual>
+          <line color="#333333" x="+0" y="+389" width="765" height="1"/>
         </group>
         <!-- <visual class="gfx_shape" x="+66-65" y="+2" width="62" height="170" coloroff="black"/> -->
         <!-- <panel class="vu_meter_LEDs" x="+65-47" y="+13" ledw="10" ledh="4" gap="6" source="get_level_left" showpeaks="true"/> -->
@@ -16060,7 +16113,7 @@
           <panel class="pad_page_panel" deck="4" panelname="[PANELNAME]_4" x="+855" visibility="deck 4 rightdeck"/>
         </group>
       </group>
-      <group y="+395">
+      <group y="+389">
         <!-- TRANSPORT -->
         <panel class="transport_bar" deck="1" x="+0" deckside="left" visibility="not deck 3 leftdeck"/>
         <panel class="transport_bar" deck="3" x="+0" deckside="left" visibility="deck 3 leftdeck"/>
@@ -16175,6 +16228,13 @@
       <panel class="area_deck_right" x="+1920-2-800" y="+432+2" panelname="deck4" deck="4" visibility="deck 2 rightdeck"/>
       <!-- RACKS (PADS, ETC) -->
       <panel class="htng_racks" x="+2" y="-2"/>
+      <group y="+389">
+        <!-- TRANSPORT -->
+        <panel class="transport_bar" deck="1" x="+0" deckside="left" visibility="not deck 3 leftdeck"/>
+        <panel class="transport_bar" deck="3" x="+0" deckside="left" visibility="deck 3 leftdeck"/>
+        <panel class="transport_bar" deck="2" x="+1920-2-800" deckside="right" visibility="not deck 4 rightdeck"/>
+        <panel class="transport_bar" deck="4" x="+1920-2-800" deckside="right" visibility="deck 4 rightdeck"/>
+      </group>
     </define>
     <define class="PERFORMANCE_4DECKS" placeholders="*panelname">
       <pos y="+43+2+381+3" condition="var_equal '@$hauntingwavesviewmaindecks' 0 ? var_equal '@$hauntingwaveformpos' 0 ? var_equal '@$infntywavesize' 13"/>
