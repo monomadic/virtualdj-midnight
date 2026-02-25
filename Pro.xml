@@ -5069,7 +5069,7 @@
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="COLOR FX"/>
             </button>
             <button x="+80" width="145" height="19" action="pad_page 3 'COLOR FX' &amp; effect_show_gui 'colorfx'" query="effect_active colorfx" border_size="1">
-              <off color="#000000" border="#444444" border_size="1"/>
+              <off color="#000000"/>
               <selected color="#222222" textcolor="color_colorfx" border="color_colorfx"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_colorfx" align="left" action="filter_label"/>
             </button>
@@ -5083,7 +5083,7 @@
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="PAD FX"/>
             </button>
             <button x="+80" width="145" height="19" action="pad_page 3 'PAD FX'" query="effects_used 'padfx'" border_size="1">
-              <off color="#222222"/>
+              <off color="#000000"/>
               <selected color="#222222" textcolor="color_padfx" border="color_padfx"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_padfx" align="left" action="get_text '`get_effects_used` ACTIVE'"/>
             </button>
@@ -5096,7 +5096,7 @@
               <text dx="+10" fontsize="12" color="#000000" colorselected="black" align="left" text="SAMPLER"/>
             </button>
             <button x="+80" width="145" height="19" action="sampler_play_stop" query="sampler_play_stop" border_size="1">
-              <off color="#222222"/>
+              <off color="#000000"/>
               <selected color="#222222" textcolor="color_sampler" border="color_sampler"/>
               <text dx="+10" fontsize="12" color="#555555" colorselected="color_sampler" align="left" action="get_sample_name"/>
             </button>
@@ -5404,9 +5404,9 @@
         <!-- time spinner -->
         <slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="#222222" widthfader="10" heightfader="50" radius="30"/>
         <slider class="dome_spinner" visibility="loaded" tooltip="" x="+5" y="+5" width="[JOGSIZE]-10" height="[JOGSIZE]-10" offcolor="transparent" colorfader="#DDDDDD" widthfader="5" heightfader="50" radius="28"/>
+        <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="jog_slider" widthfader="8" heightfader="8" radius="66"/>
         <!-- WARNING: SONG POS -->
         <visual source="song_pos 'show warning'" type="circle" visibility="loaded" color="red" width="40" height="40" x="+0" y="+0"/>
-        <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="jog_slider" widthfader="8" heightfader="8" radius="66"/>
         <!-- black circle mask -->
         <visual name="innercircle_border">
           <pos x="+10" y="+10"/>
@@ -5414,56 +5414,50 @@
           <off shape="circle" color="jogwheelbackground2"/>
         </visual>
         <group name="jogwheel_content" visibility="loaded">
-          <!-- BPM % DIFF -->
-          <textzone>
-            <pos x="+[JOGSIZE]/3" y="+15"/>
-            <size width="50" height="25"/>
-            <text fontsize="10" weight="" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/>
-          </textzone>
-          <!-- BPM -->
-          <button action="pitch_reset 8bt" x="+18" y="+40" width="[JOGSIZE]-36" height="22" border_size="0">
-            <text fontsize="22" coloron="red" colorselected="green" weight="bold" align="center" action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'"/>
-          </button>
+          <group>
+            <!-- LABEL: BPM -->
+            <textzone>
+              <pos x="+[JOGSIZE]/3" y="+10"/>
+              <size width="+[JOGSIZE]/3" height="25"/>
+              <text fontsize="13" weight="" color="white" align="center" format="`get_text '%Ppitch%'`" important="true"/>
+            </textzone>
+            <!-- BPM -->
+            <button action="pitch_reset 8bt" x="+12" y="+33" width="[JOGSIZE]-36" height="22" border_size="0">
+              <text fontsize="20" coloron="red" colorselected="green" weight="bold" align="center" action="var_equal '@$hauntingbpmhideopt' 1 ? get_text '--.--' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : get_text '%Pbpmex'"/>
+            </button>
+            <!-- BPM % DIFF -->
+            <textzone>
+              <pos x="+90" y="+34"/>
+              <size width="50" height="25"/>
+              <text fontsize="12" weight="" color="white" align="center" text="BPM" important="true"/>
+            </textzone>
+            <!-- <line x="+6" y="+58" color="white" shadow="transparent" width="146"/> -->
+          </group>
           <!-- BPM- -->
-          <button class="button_main" x="+27" y="+42" width="26" height="16" action="pitch -1 bpm" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/>
+          <!-- <button class="button_main" x="+27" y="+42" width="26" height="16" action="pitch -1 bpm" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="minus"/> -->
           <!-- BPM+ -->
-          <button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1 bpm" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
-          <!-- <button action="nothing" bordersize="0" color="red" > -->
-          <!-- visibility="sync_hint 'phase' ? blink 1bt : 0"> -->
-          <!-- <pos  x="+10" y="+10"/> -->
-          <!-- <size width="38" height="18"/> -->
-          <!-- </button> -->
-          <!-- <textzone align="center" fontsize="12" weight="bold" color="blue" visibility="sync_hint 'phase'"> -->
-          <!-- <pos x="+20" y="+90"/> -->
-          <!-- <size width="38" height="16"/> -->
-          <!-- <text fontsize="12" color="blue" format="PHRASE"/> -->
-          <!-- </textzone> -->
-          <!-- JOGWHEEL: KEY TEXT (OUT OF TUNE) -->
-          <button class="button_main" action="key_match_button" width="50" height="15" x="+14+10" y="+70" coloroff="transparent" coloron="transparent" brcoloroff="red" brcoloron="green" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="KEY" visibility="loaded ? not masterdeck"/>
-          <!-- SYNC TEXT BEAT DESYNC WARNING -->
-          <button class="button_main" action="phrase_sync 32" width="50" height="15" x="+16+6+60" y="+70" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="BEAT" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
+          <!-- <button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1 bpm" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/> -->
+          <!-- PRO: JOGWHEEL: KEY BEAT PHRASE INDICATORS -->
+          <group x="+8" y="+62">
+            <button class="button_main" action="sync" width="45" height="18" x="+16" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="BEAT" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
+            <button class="button_main" action="sync &amp; phrase_sync 32" width="65" height="18" x="+60" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="PHRASE" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
+            <button class="button_main" action="key_match_button" width="50" height="18" x="+42" y="+17" coloroff="transparent" coloron="transparent" brcoloroff="red" brcoloron="green" brcolorover="white" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="KEY" visibility="loaded ? not masterdeck" radius="2"/>
+          </group>
           <!-- MASTER BUTTON -->
-          <button class="button_main" action="key_match_button" width="110" height="18" x="+16+6" y="+69" coloroff="black" coloron="black" bordersize="1" brcoloroff="orange" brcoloron="orange" radius="1" textsize="12" textcolor="orange" textcoloron="orange" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" visibility="loaded ? masterdeck"/>
-          <!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="14" textcolor="textoff2" textcoloron="black" textaction="get_key_modifier_text" visibility="loaded ? not key 0"/> -->
-          <!-- JOGWHEEL: PITCH RANGE -->
-          <!-- <button class="button_main" action="key_match_button" width="38" height="16" x="+16+6" y="+68" coloroff="button_background" bordersize="0" textsize="12" textcolor="textdarker" textcoloron="black" textaction="get_text 'KEY'" visibility="loaded ? key 0"/> -->
-          <!-- <button class="button_main" width="45" height="16" x="+18+6+45+15" y="+68" coloroff="transparent" coloron="transparent" bordersize="0" textsize="14" textcolor="textoff2" textaction="get_text '±%Ppitchrange'" visibility="loaded"/> -->
-          <!-- BOTTOM TEXT -->
-          <!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="23" fontsize="14" color="deckcolor" align="center" weight="" textaction="wheel_mode & param_uppercase" visibility="loaded ? var_equal '@$haunting_jog_text' 0"/> -->
-          <!-- <button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="23" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/> -->
-          <!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/> -->
-          <!-- <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="30" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/> -->
-          <panel class="key_display" x="+22" y="+98"/>
-          <!-- <visual name="innercircle_border"> -->
-          <!-- <pos x="+68" y="+68"/> -->
-          <!-- <size width="[JOGSIZE]-136" height="[JOGSIZE]-136"/> -->
-          <!-- <off shape="circle" color="deckcolor" border_size="0" border="jogprogressoff" /> -->
-          <!-- </visual> -->
-          <!-- <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="deckcolor" widthfader="6" heightfader="52" radius="10"/> -->
-        </group>
-        <!-- CORNER BUTTONS -->
-        <!-- SYNC OPTIONS BUTTON -->
-        <group x="+0" y="+0">
+          <button class="button_main" action="key_match_button" width="110" height="30" x="+16+6" y="+63" coloroff="black" coloron="black" bordersize="1" brcoloroff="orange" brcoloron="orange" radius="1" textsize="12" textcolor="orange" textcoloron="orange" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" visibility="loaded ? masterdeck"/>
+          <!-- KEY -->
+          <group x="+20" y="+100">
+            <!-- KEY TEXT -->
+            <textzone class="text" x="+16" y="+0" width="128-26-26" height="20" action="key_match_menu" fontsize="18" color="white" align="center" weight="bold" textaction="get_key"/>
+            <!-- KEY DOWN BUTTON -->
+            <button class="button_main" x="+6" y="+0" width="26" height="15" action="key_move -1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" border="0" iconsize="15" sysicon="minus"/>
+            <!-- KEY MATCH BUTTON -->
+            <button class="button_main" action="key_match_button" width="100-26-26" height="14" x="+32" y="+21" coloroff="black" coloron="black" bordersize="0" textsize="12" textcolor="red" textcoloron="green" textaction="get_key_modifier"/>
+            <!-- KEY UP BUTTON -->
+            <button class="button_main" x="+80" y="+0" width="26" height="16" action="key_move +1" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/>
+            <!-- KEY MISMATCH WARNING -->
+            <!-- <visual type="square" x="+10" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/> -->
+          </group>
           <visual>
             <size width="24" height="24"/>
             <pos x="-2" y="-2"/>
@@ -6518,7 +6512,6 @@
           <group x="+20" y="+0">
             <!-- BANK SELECT -->
             <panel group="pads16_[PANELNAME]" visible="yes" available="yes" displayname="16 Pads">
-              <!-- <button class="button_main" x="+0" y="+0" width="100" height="21" action="pad_page btn1" rightclick="pad_page_select 1" tooltip="Select pad page 1." textcoloron="white" textsize="12" textaction="pad_page btn1 &amp; param_uppercase" coloroff="xf_background" coloron="#000000" bordersize="1" brcoloron="#444444" brcoloroff="#111111" textcolor="textdarker" radius="6"/> -->
               <button class="button_main" query="param_equal `pad_page 1` `pad_page` ? true : param_equal `pad_page 5` `pad_page`" action="shift ? pad_page 5 : pad_page 1" rightclick="shift ? pad_page_select 5 : pad_page_select 1" textaction="shift ? pad_page btn5 &amp; param_uppercase : pad_page btn1 &amp; param_uppercase">
                 <pos x="+0" y="+0"/>
                 <size width="100" height="25"/>
@@ -6539,7 +6532,7 @@
                 <selected color="#000000" border="#555555" radius="6" bordersize="1"/>
                 <text text="btn2" fontsize="12" color="textdarker" coloron="white" align="center"/>
               </button>
-              <button class="button_main" query="param_equal `pad_page 3` `pad_page` ? true : param_equal `pad_page 7` `pad_page`" action="shift ? pad_page 6 : pad_page 3" rightclick="shift ? pad_page_select 7 : pad_page_select 3" textaction="shift ? pad_page btn7 &amp; param_uppercase : pad_page btn3 &amp; param_uppercase">
+              <button class="button_main" query="param_equal `pad_page 3` `pad_page` ? true : param_equal `pad_page 7` `pad_page`" action="shift ? pad_page 7 : pad_page 3" rightclick="shift ? pad_page_select 7 : pad_page_select 3" textaction="shift ? pad_page btn7 &amp; param_uppercase : pad_page btn3 &amp; param_uppercase">
                 <pos x="+2+100*2" y="+0"/>
                 <size width="100" height="25"/>
                 <tooltip>Select pad page 3.</tooltip>
@@ -7216,7 +7209,7 @@
           </group>
           <button class="button_main" x="+50+26+120+20" width="25" height="25" action="effect_show_gui 3" iconsize="20" sysicon="settings" brcoloron="transparent"/>
         </group>
-        <!-- COLORFX -->
+        <!-- COLOR FX -->
         <group x="+10" y="+95">
           <textzone class="text" x="+0" y="+5" width="30" height="15" fontsize="12" color="textdarker" align="right" weight="" text="CFX"/>
           <group x="+40">
@@ -14430,28 +14423,6 @@
             <songpos class="cuemap" x="+8" y="+81" width="520" height="10"/>
             <songpos class="songpos" x="+8" y="+80" width="520" height="12" colorPlayed="white"/>
           </group>
-          <!-- <panel class="pitch_zone" x="+804-320" y="+10"/> -->
-          <!-- GROUP: JOG AREA -->
-          <!-- <group x="+485"> -->
-          <!-- <visual class="gfx_shape" width="315" height="172" coloroff="transparent"/> -->
-          <!-- CUSTOM BUTTONS -->
-          <!-- <group x="+2" y="+2"> -->
-          <!-- <define class="CUSTOM_BUTTON_1" action="custom_button [SOURCE]" border_size="1" rightclick="custom_button_edit [SOURCE]" placeholders="*source,width=70,height=20"> -->
-          <!-- <size width="[WIDTH]" height="[HEIGHT]"/> -->
-          <!-- <off color="#000000" border="#888888" radius="3"/> -->
-          <!-- <down color="#222222" border="#888888" radius="3"/> -->
-          <!-- <selected color="transparent" border="deckcolor" radius="3"/> -->
-          <!-- <text fontsize="10" color="#DDDDDD" colorselected="deckcolor" colordown="#888888" align="center" action="custom_button_name [SOURCE]"/> -->
-          <!-- </define> -->
-          <!-- <button class="custom_button_1" source="400" y="+0"/> -->
-          <!-- <button class="custom_button_1" source="401" y="+24"/> -->
-          <!-- <button class="custom_button_1" source="402" y="+24*2"/> -->
-          <!-- <button class="custom_button_1" source="403" y="+24*3"/> -->
-          <!-- <button class="custom_button_1" source="404" y="+24*4"/> -->
-          <!-- <button class="custom_button_1" source="405" y="+24*5"/> -->
-          <!-- <button class="custom_button_1" source="406" y="+24*6"/> -->
-          <!-- </group> -->
-          <!-- </group> -->
           <!-- JOG -->
           <panel class="jogwheel" x="+730-[JOGSIZE]-30" y="+2+6+2" name="jogwheel_spinner"/>
           <group x="+760-50" y="+5">
@@ -14491,8 +14462,8 @@
         <!-- </visual> -->
         <!-- DROP ZONE -->
         <group visibility="stem_pad 'acapella'">
-          <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
-          <line color="color_acapella" x="+1" y="+1" width="764" height="2"/>
+          <line color="color_acapella" x="+761" y="+2" width="3" height="424"/>
+          <!-- <line color="color_acapella" x="+1" y="-4" width="764" height="4"/> -->
         </group>
         <group visibility="stem_pad 'instrumental'">
           <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
@@ -14657,21 +14628,21 @@
           </button>
         </group>
         <!-- PLAY/PAUSE BUTTON -->
-        <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="not masterdeck">
-          <pos x="+800-80-40+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+15" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
-          <off color="#222222" border="#888888" border_size="1" shape="square" radius="4"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
-          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
+        <button class="button_main" textsize="11" width="80" height="25" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="not masterdeck">
+          <pos x="+800-80-10" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+10" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <off color="#222222" border="#444444" border_size="2" shape="square" radius="4"/>
+          <over color="#111111" border="#FFFFFF" border_size="1" shape="square" radius="4"/>
+          <down color="#111111" border="#444444" border_size="2" shape="square" radius="4"/>
           <selected color="deckcolor" border="deckcolor" radius="4"/>
-          <icon coloroff="white" colorover="white" colordown="#888888" colorselected="black"/>
+          <icon coloroff="#888888" colorover="#FFFFFF" colordown="#888888" colorselected="black"/>
         </button>
-        <button class="button_main" textsize="11" width="106" height="28" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="masterdeck">
-          <pos x="+800-80-40+1" y="+4" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+15" y="+4" condition="param_equal [DECKSIDE] 'right'"/>
-          <off color="black" border="color_masterdeck" border_size="1" shape="square" radius="4" iconcolor="blue"/>
-          <over color="#111111" border="#666666" border_size="1" shape="square" radius="4"/>
-          <down color="#111111" border="#888888" border_size="1" shape="square" radius="4"/>
+        <button class="button_main" textsize="11" width="80" height="25" action="select &amp; play_pause" query="play" rightclick="goto_first_beat" sysicon="play_button" iconsize="39" textcoloron="black" colorselected="red" bordersize="0" visibility="masterdeck">
+          <pos x="+800-80-10" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+10" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <off color="black" border="color_masterdeck" border_size="2" shape="square" radius="4" iconcolor="blue"/>
+          <over color="#111111" border="white" border_size="1" shape="square" radius="4"/>
+          <down color="#111111" border="#888888" border_size="2" shape="square" radius="4"/>
           <selected color="color_masterdeck" border="color_masterdeck" radius="4" iconcolor="black"/>
           <icon coloroff="color_masterdeck" colorover="white" colordown="#888888" colorselected="black"/>
         </button>
@@ -16088,46 +16059,17 @@
           <text fontsize="10" color="#DDDDDD" colorselected="deckcolor" colordown="#888888" align="center" action="custom_button_name [SOURCE]"/>
         </define>
         <!-- CUSTOM BUTTONS LEFT -->
-        <group x="+20" y="+20">
-          <button class="custom_button_1" source="400" deck="1" y="+0"/>
-          <button class="custom_button_1" source="401" deck="1" y="+24"/>
-          <button class="custom_button_1" source="402" deck="1" y="+24*2"/>
-          <button class="custom_button_1" source="403" deck="1" y="+24*3"/>
-          <button class="custom_button_1" source="404" deck="1" y="+24*4"/>
-          <button class="custom_button_1" source="405" deck="1" y="+24*5"/>
-          <button class="custom_button_1" source="406" deck="1" y="+24*6"/>
+        <group x="+20" y="+12">
+          <button class="custom_button_1" source="400" deck="1" width="80" y="+0"/>
+          <button class="custom_button_1" source="401" deck="1" width="80" y="+24"/>
+          <button class="custom_button_1" source="402" deck="1" width="80" y="+24*2"/>
+          <button class="custom_button_1" source="403" deck="1" width="80" y="+24*3"/>
+          <button class="custom_button_1" source="404" deck="1" width="80" y="+24*4"/>
+          <button class="custom_button_1" source="405" deck="1" width="80" y="+24*5"/>
+          <button class="custom_button_1" source="406" deck="1" width="80" y="+24*6"/>
+          <button class="custom_button_1" source="407" deck="1" width="80" y="+24*7"/>
           <!-- PARAM 1 -->
-          <!-- <group deck="1" x="+83" name="pad_param1" visibility="pad_param_visible 1"> -->
-          <!-- <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-          <!-- <button class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/> -->
-          <!-- <button class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-          <!-- <visual> -->
-          <!-- <size width="124" height="24"/> -->
-          <!-- <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/> -->
-          <!-- </visual> -->
-          <!-- </group> -->
-          <!-- PARAM 2 -->
-          <!-- <group deck="1" x="+83" y="+26" name="pad_param1" visibility="pad_param_visible 2"> -->
-          <!-- <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-          <!-- <button class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/> -->
-          <!-- <button class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/> -->
-          <!-- <visual> -->
-          <!-- <size width="124" height="24"/> -->
-          <!-- <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/> -->
-          <!-- </visual> -->
-          <!-- </group> -->
-        </group>
-        <!-- CUSTOM BUTTONS RIGHT -->
-        <group x="+1750" y="+20">
-          <button class="custom_button_1" source="400" deck="2" y="+0"/>
-          <button class="custom_button_1" source="401" deck="2" y="+24"/>
-          <button class="custom_button_1" source="402" deck="2" y="+24*2"/>
-          <button class="custom_button_1" source="403" deck="2" y="+24*3"/>
-          <button class="custom_button_1" source="404" deck="2" y="+24*4"/>
-          <button class="custom_button_1" source="405" deck="2" y="+24*5"/>
-          <button class="custom_button_1" source="406" deck="2" y="+24*6"/>
-          <!-- PARAM 1 -->
-          <group deck="2" x="-140" name="pad_param1" visibility="pad_param_visible 1">
+          <group deck="1" x="+83" name="pad_param1" visibility="pad_param_visible 1">
             <button class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
             <button class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
@@ -16137,10 +16079,41 @@
             </visual>
           </group>
           <!-- PARAM 2 -->
-          <group deck="2" x="-140" y="+26" name="pad_param1" visibility="pad_param_visible 2">
+          <group deck="1" x="+83" y="+26" name="pad_param2" visibility="pad_param_visible 2">
             <button class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <button class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
             <button class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <visual>
+              <size width="124" height="24"/>
+              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+            </visual>
+          </group>
+        </group>
+        <!-- CUSTOM BUTTONS RIGHT -->
+        <group x="+1740" y="+12">
+          <button class="custom_button_1" source="400" deck="2" width="80" y="+0"/>
+          <button class="custom_button_1" source="401" deck="2" width="80" y="+24"/>
+          <button class="custom_button_1" source="402" deck="2" width="80" y="+24*2"/>
+          <button class="custom_button_1" source="403" deck="2" width="80" y="+24*3"/>
+          <button class="custom_button_1" source="404" deck="2" width="80" y="+24*4"/>
+          <button class="custom_button_1" source="405" deck="2" width="80" y="+24*5"/>
+          <button class="custom_button_1" source="406" deck="2" width="80" y="+24*6"/>
+          <button class="custom_button_1" source="407" deck="2" width="80" y="+24*7"/>
+          <!-- PARAM 1 -->
+          <group x="-130" deck="2" name="pad_param1" visibility="pad_param_visible 1">
+            <button deck="2" class="button_main" x="+0" width="26" height="26" action="pad_param -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <button deck="2" class="button_main" x="+26" width="72" height="26" action="pad_param +1" query="off" textaction="pad_param" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+            <button deck="2" class="button_main" x="+26+72" width="26" height="26" action="pad_param +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <visual>
+              <size width="124" height="24"/>
+              <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
+            </visual>
+          </group>
+          <!-- PARAM 2 -->
+          <group deck="2" x="-130" y="+26" name="pad_param2" visibility="pad_param_visible 2">
+            <button deck="2" class="button_main" x="+0" width="26" height="26" action="pad_param2 -1" iconsize="20" sysicon="arrowleft" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
+            <button deck="2" class="button_main" x="+26" width="72" height="26" action="pad_param2 +1" query="off" textaction="pad_param2" coloroff="black" coloron="xf_background" bordersize="0" textsize="12" textcolor="white"/>
+            <button deck="2" class="button_main" x="+26+72" width="26" height="26" action="pad_param2 +1" iconsize="20" sysicon="arrowright" coloroff="black" coloron="xf_background" bordersize="0" textcolor="textdarker"/>
             <visual>
               <size width="124" height="24"/>
               <off shape="square" color="transparent" border="#333333" border_size="1" radius="6"/>
