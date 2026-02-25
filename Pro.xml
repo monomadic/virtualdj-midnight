@@ -4713,7 +4713,7 @@
                 <text fontsize="9" color="#888888" align="left" text="TIME" localize="true" important="true"/>
               </textzone>
               <textzone class="text" x="+110" y="+13" width="50" fontsize="15" color="texton2" align="left" weight="" textaction="get_time" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
-              <group x="+285" y="+0">
+              <group x="+195" y="+0">
                 <!-- FILETYPE -->
                 <square width="45" border="1" border_color="#555555" height="15" visibility="loaded" color="#111111"/>
                 <textzone>
@@ -4721,16 +4721,16 @@
                   <text fontsize="11" color="#888888" align="center" scroll="no" action="get_loaded_song 'file type' &amp; param_uppercase" localize="true" important="true"/>
                 </textzone>
               </group>
-              <group x="+256" y="-42">
+              <group x="+256" y="-30">
                 <!-- ACAPELLA TAG -->
                 <group visibility="stem_pad 'acapella'">
-                  <visual>
-                    <size width="85" height="20"/>
+                  <visual x="+0" y="+6">
+                    <size width="80" height="16"/>
                     <off shape="square" color="black"/>
                   </visual>
                   <button action="stem_pad 'acapella'" border_size="1" visibility="stem_pad 'acapella'">
-                    <pos x="+2" y="+2"/>
-                    <size width="85" height="20"/>
+                    <pos x="+2" y="+6"/>
+                    <size width="80" height="16"/>
                     <off color="#222222" border="#444444" radius="3"/>
                     <down color="#222222" border="color_acapella" radius="3"/>
                     <selected color="black" border="color_acapella" radius="3"/>
@@ -5053,11 +5053,32 @@
           <panel class="hashtag_stack" deck="4" x="+1920-280" panelname="tags4" visibility="deck 4 leftdeck"/>
         </group>
         <!-- STEM BUTTONS -->
-        <group x="+235" y="+24" visibility="has_stems">
+        <group x="+235" y="+52" visibility="has_stems">
           <panel class="stem_button" x="+0" y="+0" stem="vocal" label="VOCAL" color="colorvocal"/>
           <panel class="stem_button" x="+70" y="+0" stem="INSTRU" label="INSTR" color="colorinstru"/>
           <panel class="stem_button" x="+140" y="+0" stem="bass" label="BASS" color="colorbass"/>
           <panel class="stem_button" x="+210" y="+0" stem="rhythm" label="DRUM" color="colorbeat"/>
+        </group>
+        <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
+        <group x="+235" y="+24" visibility="loaded">
+          <pos x="+42" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+500" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <!-- acapella -->
+          <button action="stem_pad 'acapella'" border_size="1">
+            <size width="134" height="23"/>
+            <off color="#000000" border="#555555" radius="3"/>
+            <down color="#222222" border="color_acapella" radius="3"/>
+            <selected color="transparent" border="color_acapella" radius="3"/>
+            <text fontsize="12" color="#888888" colorover="color_acapella" colorselected="color_acapella" colordown="color_acapella" align="center" text="ACAPELLA"/>
+          </button>
+          <!-- instrumental -->
+          <button x="+140" action="stem_pad 'instrumental'" border_size="1">
+            <size width="134" height="23"/>
+            <off color="#111111" border="#555555" radius="3"/>
+            <down color="#222222" border="color_instrumental" radius="3"/>
+            <selected color="transparent" border="color_instrumental" radius="3"/>
+            <text fontsize="12" color="#888888" colorover="color_instrumental" colorselected="color_instrumental" colordown="color_instrumental" align="center" text="INSTRUMENTAL"/>
+          </button>
         </group>
         <!-- INDICATORS -->
         <group x="+0" y="+24">
@@ -5439,9 +5460,9 @@
           <!-- <button class="button_main" x="+102" y="+42" width="26" height="16" action="pitch +1 bpm" textcoloron="white" coloron="transparent" coloroff="transparent" brcoloron="transparent" brcoloroff="transparent" iconsize="15" sysicon="plus"/> -->
           <!-- PRO: JOGWHEEL: KEY BEAT PHRASE INDICATORS -->
           <group x="+8" y="+62">
-            <button class="button_main" action="sync" width="45" height="18" x="+16" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="BEAT" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
-            <button class="button_main" action="sync &amp; phrase_sync 32" width="65" height="18" x="+60" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="PHRASE" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 500ms : true"/>
-            <button class="button_main" action="key_match_button" width="50" height="18" x="+42" y="+17" coloroff="transparent" coloron="transparent" brcoloroff="red" brcoloron="green" brcolorover="white" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="KEY" visibility="loaded ? not masterdeck" radius="2"/>
+            <button class="button_main" action="sync" width="45" height="18" x="+16" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="BEAT" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 1bt : true"/>
+            <button class="button_main" action="sync &amp; phrase_sync 32" width="65" height="18" x="+60" color="blue" coloroff="transparent" brcoloroff="red" brcoloron="green" coloron="black" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="PHRASE" query="is_sync" visibility="loaded ? not masterdeck ? not is_sync ? blink 1bt : true"/>
+            <button class="button_main" action="key_match_button" width="110" height="18" x="+16" y="+17" coloroff="black" coloron="transparent" brcoloroff="red" brcoloron="green" brcolorover="white" bordersize="1" textsize="12" textcolor="red" textcoloron="green" text="KEY" visibility="loaded ? not masterdeck ? not key_match ? blink 1bt : true" radius="2"/>
           </group>
           <!-- MASTER BUTTON -->
           <button class="button_main" action="key_match_button" width="110" height="30" x="+16+6" y="+63" coloroff="black" coloron="black" bordersize="1" brcoloroff="orange" brcoloron="orange" radius="1" textsize="12" textcolor="orange" textcoloron="orange" textaction="masterdeck ? masterdeck_auto ? get_text 'AUTO' : get_text 'MASTER' : get_text 'SLAVE'" visibility="loaded ? masterdeck"/>
@@ -14383,6 +14404,28 @@
         <visual x="+0" y="+0" width="34" height="425">
           <off shape="square" color="black"/>
         </visual>
+        <!-- LEFT: ACAPELLA SPINE LABEL -->
+        <group visibility="loaded ? stem_pad 'acapella'">
+          <visual x="+5" y="+150" width="24" height="125">
+            <off shape="square" color="black" bordersize="1" border="color_acapella" radius="2"/>
+          </visual>
+          <textzone orientation="vertical" direction="ccw">
+            <pos x="+0" y="+0"/>
+            <size width="34" height="425"/>
+            <text fontsize="12" color="color_acapella" scroll="yes" align="center" text="ACAPELLA" important="true"/>
+          </textzone>
+        </group>
+        <!-- LEFT: INSTRUMENTAL SPINE LABEL -->
+        <group visibility="loaded ? stem_pad 'instrumental'">
+          <visual x="+5" y="+150" width="24" height="125">
+            <off shape="square" color="black" bordersize="1" border="color_instrumental" radius="2"/>
+          </visual>
+          <textzone orientation="vertical" direction="ccw" visibility="play ? false : loaded">
+            <pos x="+0" y="+0"/>
+            <size width="34" height="425"/>
+            <text fontsize="12" color="color_instrumental" scroll="yes" align="center" text="INSTRUMENTAL" important="true"/>
+          </textzone>
+        </group>
         <!-- PRO: LEFT DECK: PANEL BG -->
         <!-- <visual x="+37" class="gfx_shape" width="763" height="390" coloroff="panel_background" radius="6"/> -->
         <visual width="765" height="390" x="+35">
@@ -14462,8 +14505,8 @@
         <!-- </visual> -->
         <!-- DROP ZONE -->
         <group visibility="stem_pad 'acapella'">
-          <line color="color_acapella" x="+761" y="+2" width="3" height="424"/>
-          <!-- <line color="color_acapella" x="+1" y="-4" width="764" height="4"/> -->
+          <!-- <line color="color_acapella" x="+761" y="+2" width="3" height="424"/> -->
+          <line color="color_acapella" x="+1" y="-4" width="764" height="4"/>
         </group>
         <group visibility="stem_pad 'instrumental'">
           <!-- <line color="color_acapella" x="+0" y="+0" width="2" height="425"/> -->
@@ -14531,27 +14574,6 @@
             <size width="70" height="16"/>
             <off color="#330000" shape="square"/>
             <text size="18" align="center" color="red" weight="bold" action="get_text '%Ppitch%'"/>
-          </button>
-        </group>
-        <!-- ACAPELLA/INSTRUMENTAL BUTTONS -->
-        <group visibility="loaded">
-          <pos x="+42" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+500" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
-          <!-- acapella -->
-          <button action="stem_pad 'acapella'" border_size="1">
-            <size width="120" height="25"/>
-            <off color="#000000" border="#555555" radius="3"/>
-            <down color="#222222" border="color_acapella" radius="3"/>
-            <selected color="transparent" border="color_acapella" radius="3"/>
-            <text fontsize="12" color="#888888" colorselected="color_acapella" colordown="color_acapella" align="center" text="ACAPELLA"/>
-          </button>
-          <!-- instrumental -->
-          <button x="+122" action="stem_pad 'instrumental'" border_size="1">
-            <size width="120" height="25"/>
-            <off color="#111111" border="#555555" radius="3"/>
-            <down color="#222222" border="color_instrumental" radius="3"/>
-            <selected color="transparent" border="color_instrumental" radius="3"/>
-            <text fontsize="12" color="#888888" colorselected="color_instrumental" colordown="color_instrumental" align="center" text="INSTRUMENTAL"/>
           </button>
         </group>
         <!-- TRANSPORT BAR: SYNC BUTTONS -->
@@ -14894,6 +14916,28 @@
         <visual x="+768" y="+0" width="34" height="425">
           <off shape="square" color="black"/>
         </visual>
+        <!-- RIGHT: ACAPELLA SPINE LABEL -->
+        <group x="+768" visibility="loaded ? stem_pad 'acapella'">
+          <visual x="+5" y="+150" width="24" height="125">
+            <off shape="square" color="black" bordersize="1" border="color_acapella" radius="2"/>
+          </visual>
+          <textzone orientation="vertical" direction="cw">
+            <pos x="+0" y="+0"/>
+            <size width="34" height="425"/>
+            <text fontsize="12" color="color_acapella" scroll="yes" align="center" text="ACAPELLA" important="true"/>
+          </textzone>
+        </group>
+        <!-- RIGHT: INSTRUMENTAL SPINE LABEL -->
+        <group x="+768" visibility="loaded ? stem_pad 'instrumental'">
+          <visual x="+5" y="+150" width="24" height="125">
+            <off shape="square" color="black" bordersize="1" border="color_instrumental" radius="2"/>
+          </visual>
+          <textzone orientation="vertical" direction="cw" visibility="play ? false : loaded">
+            <pos x="+0" y="+0"/>
+            <size width="34" height="425"/>
+            <text fontsize="12" color="color_instrumental" scroll="yes" align="center" text="INSTRUMENTAL" important="true"/>
+          </textzone>
+        </group>
         <!-- bg: panel -->
         <visual width="765" height="390">
           <off shape="square" color="panel_background" radius="6"/>
