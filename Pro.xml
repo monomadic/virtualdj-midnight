@@ -4804,10 +4804,35 @@
         <panel class="track_info" x="+8" y="+0" visibility="get_deck 2 ? true : get_deck 4 ? true : false"/>
       </group>
       <!-- PRO: COVER ART -->
-      <!-- LEFT -->
-      <panel class="cover_art_hntg" size="178-6-6" x="+8" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/>
-      <!-- RIGHT -->
-      <panel class="cover_art_hntg" size="178-6-6" x="+358" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/>
+      <!-- <panel class="cover_art_hntg" size="178-6-6" x="+8" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 1 ? true : get_deck 3 ? true : false"/> -->
+      <group visibility="param_equal `get_deck` 1 | param_equal `get_deck` 3">
+        <pos x="+8" y="+6"/>
+        <!-- LEFT -->
+        <cover visibility="loaded" action="" rightclick="" dblclick="">
+          <pos x="+0" y="+0"/>
+          <size width="166" height="166"/>
+          <clipmask x="+800" y="+20" width="166" height="166"/>
+        </cover>
+        <!-- highlight -->
+        <visual>
+          <size width="166" height="64"/>
+          <off shape="square" color="transparent" border="#44FFFFFF" border_size="1"/>
+        </visual>
+      </group>
+      <group visibility="param_equal `get_deck` 2 | param_equal `get_deck` 4">
+        <pos x="+355" y="+6"/>
+        <!-- RIGHT -->
+        <cover action="" rightclick="" dblclick="">
+          <size width="170" height="170"/>
+          <clipmask x="920" y="100" width="100" height="90"/>
+        </cover>
+        <!-- highlight -->
+        <visual>
+          <size width="170" height="65"/>
+          <off shape="square" color="transparent" border="#44FFFFFF" border_size="1"/>
+        </visual>
+      </group>
+      <!-- <panel class="cover_art_hntg" size="178-6-6" x="+358" y="+4" visibility="var_equal '@$haunting_showcover_title' 1 ? get_deck 2 ? true : get_deck 4 ? true : false"/> -->
     </define>
     <!-- CLASS: PERFORMANCE: TRACK INFO -->
     <!-- LEFT DECK -->
@@ -5037,16 +5062,13 @@
     </define>
     <!-- PRO: BPM, KEY -->
     <define class="TRACK_INFO_ACTION_ZONE">
-      <!-- bg (covers coverart) -->
-      <!-- black strip -->
-      <visual class="gfx_shape" x="+5" y="-2" width="525" height="22" coloroff="black" bordercoloroff="#444444" bordersize="0"/>
       <!-- HR -->
       <!-- <visual class="gfx_shape" coloroff="panel_background"> -->
       <!-- <pos x="+0" y="+20"/> -->
       <!-- <size width="481" height="1"/> -->
       <!-- </visual> -->
       <!-- lower portion (panel color) -->
-      <visual class="gfx_shape" x="+0" y="+20" width="530" height="104" coloroff="panel_background" bordercoloroff="panel_background" bordersize="0"/>
+      <!-- <visual class="gfx_shape" x="+0" y="+20" width="530" height="104" coloroff="panel_background" bordercoloroff="red" bordersize="1"/> -->
       <!-- MID PANEL: glass bg -->
       <!-- <visual class="gfx_shape" x="+3" y="+20" width="527" height="72" coloroff="#ff000000" bordercoloroff="#FFFFFFF" bordersize="1" radius="8"/> -->
       <!-- <line color="#444444" x="+3" y="+0" width="530" height="1"/> -->
@@ -14524,10 +14546,13 @@
           <!-- cover, title etc -->
           <!-- PRO: LEFT: TRACK INFO -->
           <panel class="infos" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+          <!-- bg (covers coverart) -->
+          <!-- black strip -->
+          <!-- <visual class="gfx_shape" x="+5" y="+72" width="525" height="22" coloroff="black" bordercoloroff="#444444" bordersize="0"/> -->
           <!-- when video pane is active -->
           <!-- <panel class="infos2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/> -->
           <!-- LEFT: action zone -->
-          <panel class="track_info_action_zone" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+          <panel class="track_info_action_zone" y="+55" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
           <panel class="times_bpm_key2" y="+72-2" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
           <group>
             <!-- <visual class="gfx_shape" x="+5" y="+70" width="475" height="21" coloroff="black" bordersize="1" bordercoloroff="red"/> -->
@@ -14558,11 +14583,6 @@
     <define class="PRO_2DECKS_OVERLAYS" placeholders="*deck">
       <deck deck="[DECK]">
         <panel class="video_preview" x="+404-2+60+11+4" y="+6" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
-        <!-- standard grey border -->
-        <!-- <visual source="true" x="+0" y="+0"> -->
-        <!-- <size width="804" height="433"/> -->
-        <!-- <down color="transparent" border_size="1" border="#333333" shape="square" radius="6"/> -->
-        <!-- </visual> -->
         <!-- BORDER -->
         <visual source="deck [DECK] select" x="+0" y="+0" visibility="var_equal '@$dd_bordermode' 1">
           <size width="770" height="429"/>
@@ -14637,8 +14657,8 @@
         <!-- SONGPOS -->
         <!-- PRO: SONGPOS -->
         <group visibility="loaded">
-          <pos x="+50" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+480" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+45" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
+          <pos x="+460" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- <songpos class="cuemap" x="+3" y="+1" width="270" height="5"/> -->
           <songpos class="songpos" x="+6" y="+6" width="290" height="12" colorPlayed="deckcolor"/>
           <visual width="300" height="24">
@@ -14648,7 +14668,7 @@
         <!-- TRANSPORT BAR: SYNC BUTTONS -->
         <group visibility="loaded">
           <pos x="+365" y="+6" condition="param_equal [DECKSIDE] 'left'"/>
-          <pos x="+125" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
+          <pos x="+115" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
           <!-- KEY BUTTON -->
           <button class="button_main" action="select &amp; match_key" bordersize="1" query="match_key" visibility="not masterdeck">
             <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/>
@@ -14693,7 +14713,7 @@
             <pos x="+82*2" condition="param_equal [DECKSIDE] 'left'"/>
             <pos x="+82*1" condition="param_equal [DECKSIDE] 'right'"/>
             <size width="80" height="25"/>
-            <off color="#330000" border="#FF3333" radius="3"/>
+            <off color="#440000" border="#FF3333" radius="3"/>
             <down color="#222222" border="deckcolor" radius="3"/>
             <selected color="transparent" border="deckcolor" radius="3"/>
             <text fontsize="12" color="#FF3333" colorselected="deckcolor" colordown="deckcolor" align="center" text="PHRASE"/>
@@ -14858,7 +14878,7 @@
         <panel class="infos_ex" deckside="right" visibility="rightdeck"/>
         <!-- songpos border -->
         <visual class="gfx_shape" y="+62" width="922" height="33" coloroff="#111111" bordercoloroff="#222222" bordersize="1"/>
-        <songpos class="songpos" x="+2" y="+64" width="918" height="30"/>
+        <songpos class="songpos" x="+2" y="+65" width="918" height="30"/>
         <songpos class="cuemap" x="+2" y="+91" width="918" height="2"/>
         <!-- panel border -->
         <visual class="gfx_shape" x="+0" y="+0" width="922" height="324" coloroff="transparent" bordercoloroff="#444444" bordersize="1" radius="6"/>
@@ -15040,19 +15060,11 @@
           <size width="200" height="10"/>
           <clipmask x="27" y="140"/>
         </cues>
-        <!-- <songpos class="songpos" x="+800-570" y="+76" width="470" height="12" colorPlayed="blue"/> -->
-        <!-- <songpos deck="right" orientation="horizontal" colorHigh="black" colorMed="black" colorBass="black" colorVocal="red" colorInstru="red" colorBeat="#000000" colorNoBeat="#000000"> -->
-        <!-- <pos x="+800-570" y="+96"/> -->
-        <!-- <size width="473" height="3"/> -->
-        <!-- <wave> -->
-        <!-- <size height="0"/> -->
-        <!-- <pos y="+5"/> -->
-        <!-- </wave> -->
-        <!-- </songpos> -->
-        <panel class="track_info_action_zone" x="+800-570" y="+72" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <!-- RIGHT: action zone -->
+        <panel class="track_info_action_zone" x="+800-570" y="+55" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT: SONGPOS -->
-        <songpos class="cuemap" x="+8+228" y="+78" width="520" height="10"/>
-        <songpos class="songpos" x="+8+228" y="+79" width="520" height="12" colorPlayed="white"/>
+        <!-- <songpos class="cuemap" x="+8+228" y="+78" width="520" height="10"/> -->
+        <!-- <songpos class="songpos" x="+8+228" y="+79" width="520" height="12" colorPlayed="white"/> -->
         <!-- <panel class="times_bpm_key2" x="+800-404" y="+72-2" visibility="has_video_mix 'active' && skin_panel 'videomixer'"/> -->
         <!-- <panel class="beat_divider_area" x="+2+4" y="+216-44+2+4" width="800-4-8" height="44-4-8"/> -->
         <!-- BPM SLIDER -->
