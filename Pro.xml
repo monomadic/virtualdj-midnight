@@ -5138,7 +5138,7 @@
             <pos x="+500" y="+6" condition="param_equal [DECKSIDE] 'right'"/>
             <!-- acapella -->
             <button action="stem_pad 'acapella'" border_size="1">
-              <size width="134" height="23"/>
+              <size width="135" height="23"/>
               <off color="#000000" border="#555555" radius="3"/>
               <down color="#222222" border="color_acapella" radius="3"/>
               <selected color="transparent" border="color_acapella" radius="3"/>
@@ -14531,7 +14531,7 @@
               <off shape="square" color="color_masterdeck" radius="6"/>
             </visual>
             <!-- deck number -->
-            <button class="button_main" width="25" height="65" action="select" coloroff="black" textheight="55" textsize="30" textcoloron="black" textcolor="masterdeck">
+            <button class="button_main" width="25" height="65" action="select" coloroff="transparent" coloron="transparent" textheight="55" textsize="30" textcoloron="black" textcoloroff="color_masterdeck" textcolor="color_masterdeck" bordersize="0">
               <pos x="+5" y="+1"/>
               <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
               <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
@@ -14560,17 +14560,22 @@
             <!-- <songpos class="cuemap" x="+8" y="+81" width="520" height="10"/> -->
             <!-- <songpos class="songpos" x="+8" y="+80" width="520" height="12" colorPlayed="white"/> -->
           </group>
-          <!-- JOG -->
+          <!-- PRO: LEFT JOGWHEEL -->
           <panel class="jogwheel" x="+730-[JOGSIZE]-30" y="+2+6+2" name="jogwheel_spinner"/>
-          <group x="+760-50" y="+5">
-            <!-- LEFT MASTER VOLUME -->
-            <!-- <textzone> -->
-            <!-- <pos x="+0" y="+135"/> -->
-            <!-- <size width="40" height="15"/> -->
-            <!-- <text fontsize="10" weight="" color="#CCCCCC" align="center" text="VOLUME" important="true"/> -->
-            <!-- </textzone> -->
-            <panel class="deck_level" x="+0" y="+22"/>
-          </group>
+          <!-- PRO: LEFT VOLUME -->
+          <panel class="deck_level" x="+760-50" y="+10"/>
+          <!-- PRO: LEFT CUE -->
+          <button class="button_main" action="pfl" query="pfl">
+            <pos x="+760-50" y="+150"/>
+            <size width="37" height="15"/>
+            <!-- OFF / default -->
+            <off color="transparent" border="button_background4" border_size="1" radius="3"/>
+            <over color="transparent" border="button_background4" border_size="1" radius="3"/>
+            <!-- ON when deck is PFL -->
+            <down color="transparent" border="deckcolor" border_size="1" radius="3"/>
+            <selected color="transparent" border="deckcolor" border_size="1" radius="3"/>
+            <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/>
+          </button>
           <!-- PRO: DECK BORDER -->
           <visual width="765" height="425" y="+0">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
@@ -15071,11 +15076,22 @@
         <!-- PRO: RIGHT DECK: VU SLIDER -->
         <!-- <panel class="pitch_zone" x="+257" y="+10"/> -->
         <!-- GROUP: JOG AREA -->
-        <panel class="jogwheel" x="+55" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
-        <group y="+15">
-          <!-- LEVEL -->
-          <panel class="deck_level" x="+10" y="+14"/>
-        </group>
+        <!-- PRO: RIGHT JOGWHEEL -->
+        <panel class="jogwheel" x="+65" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+        <!-- PRO: RIGHT VOLUME -->
+        <panel class="deck_level" x="+15" y="+10"/>
+        <!-- PRO: RIGHT CUE -->
+        <button class="button_main" action="pfl" query="pfl">
+          <pos x="+15" y="+150"/>
+          <size width="37" height="15"/>
+          <!-- OFF / default -->
+          <off color="transparent" border="button_background4" border_size="1" radius="3"/>
+          <over color="transparent" border="button_background4" border_size="1" radius="3"/>
+          <!-- ON when deck is PFL -->
+          <down color="transparent" border="deckcolor" border_size="1" radius="3"/>
+          <selected color="transparent" border="deckcolor" border_size="1" radius="3"/>
+          <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/>
+        </button>
         <group>
           <!-- PRO: DECK BORDER -->
           <visual width="765" height="425" y="+0">
