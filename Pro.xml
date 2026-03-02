@@ -14469,56 +14469,28 @@
         <!-- PRO: LEFT: DECK BUTTON -->
         <group y="+3">
           <group visibility="not masterdeck">
-            <!-- tab background -->
-            <!-- <visual visibility="true"> -->
-            <!-- <size width="40" height="66"/> -->
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <pos x="-6" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <off shape="square" color="black" radius="6"/> -->
-            <!-- <selected shape="square" color="deckcolor" radius="6"/> -->
-            <!-- </visual> -->
-            <!-- text: deck number -->
-            <!-- <button class="button_main" width="25" height="65" action="select" coloroff="black" textheight="55" textsize="30" textcoloron="black" textcolor="deckcolor" border="red" bordersize="2"> -->
-            <!-- <pos x="+5" y="+1"/> -->
-            <!-- <size width="50" height="65"/> -->
-            <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <text dx="+2" align="center" action="get_deck" width="25" colorselected="black" radius="6"/> -->
-            <!-- <off shape="square" color="black" radius="6"/> -->
-            <!-- </button> -->
             <button action="select">
-              <pos x="+2" y="+0"/>
-              <size width="50" height="65"/>
+              <pos x="+10" y="+0"/>
+              <size width="30" height="65"/>
               <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
               <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
               <off shape="square" color="black" radius="6" border_size="1" border="black"/>
               <on shape="square" color="deckcolor" radius="6" border_size="1" border="deckcolor"/>
-              <text dx="+3" dy="-5" align="center" size="30" action="get_deck" width="25" color="deckcolor" colorselected="black"/>
+              <text dx="-1" dy="-5" align="center" size="30" action="get_deck" width="25" color="deckcolor" colorselected="black"/>
             </button>
           </group>
           <group visibility="masterdeck">
-            <!-- <visual visibility="deck [DECK] select ? masterdeck"> -->
-            <!-- <size width="40" height="66"/> -->
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <pos x="-6" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <off shape="square" color="color_masterdeck" radius="6"/> -->
-            <!-- </visual> -->
-            <!-- deck number -->
             <button action="select">
-              <pos x="+2" y="+0"/>
-              <size width="50" height="65"/>
+              <pos x="+10" y="+0"/>
+              <size width="30" height="65"/>
               <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
               <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
               <off shape="square" color="black" radius="6" border_size="1" border="black"/>
               <on shape="square" color="color_masterdeck" radius="6" border_size="1" border="color_masterdeck"/>
-              <text dx="+3" dy="-5" align="center" size="30" action="get_deck" width="25" color="color_masterdeck" colorselected="black"/>
+              <text dx="-1" dy="-5" align="center" size="30" action="get_deck" width="25" color="color_masterdeck" colorselected="black"/>
             </button>
           </group>
-          <menu class="menu_maindecks" query="select" x="+0" y="+360" width="34" height="34"/>
+          <menu class="menu_maindecks" query="select" x="+0" y="+386" width="34" height="34"/>
         </group>
         <group x="+35">
           <!-- bg (under jog) -->
@@ -14573,16 +14545,6 @@
           <size width="770" height="429"/>
           <down color="transparent" border_size="3" border="deckcolor" shape="square" radius="8"/>
         </visual>
-        <!-- <visual source="deck [DECK] select" visibility="var_equal '@$dd_bordermode' 1 ? not deck [DECK] leftdeck" x="-2" y="-2"> -->
-        <!-- <size width="804" height="218"/> -->
-        <!-- <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="8"/> -->
-        <!-- </visual> -->
-        <!-- DROP ZONE -->
-        <!-- ACAPELLA LINE BORDER -->
-        <!-- <group visibility="stem_pad 'acapella'"> -->
-        <!-- <line color="color_acapella" x="+761" y="+2" width="3" height="424"/> -->
-        <!-- <line color="color_acapella" x="+1" y="-4" width="764" height="4"/> -->
-        <!-- </group> -->
       </deck>
     </define>
     <!-- <define class="BUTTON_INVERT_DECK" placeholders="*deck"> -->
@@ -15024,22 +14986,44 @@
         </visual>
         <!-- PRO: RIGHT: DECK BUTTON -->
         <group x="+768" y="+3">
-          <visual visibility="deck [DECK] select">
-            <size width="40" height="66"/>
-            <pos x="-10"/>
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <!-- <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <pos x="-6" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <off shape="square" color="deckcolor" radius="6"/>
-          </visual>
+          <group visibility="not masterdeck">
+            <button action="select">
+              <pos x="-8" y="+0"/>
+              <size width="30" height="65"/>
+              <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
+              <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
+              <off shape="square" color="black" radius="6" border_size="1" border="black"/>
+              <on shape="square" color="deckcolor" radius="6" border_size="1" border="deckcolor"/>
+              <text dx="+3" dy="-5" align="center" size="30" action="get_deck" width="25" color="deckcolor" colorselected="black"/>
+            </button>
+          </group>
+          <group visibility="masterdeck">
+            <button action="select">
+              <pos x="-8" y="+0"/>
+              <size width="30" height="65"/>
+              <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
+              <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
+              <off shape="square" color="black" radius="6" border_size="1" border="black"/>
+              <on shape="square" color="color_masterdeck" radius="6" border_size="1" border="color_masterdeck"/>
+              <text dx="+3" dy="-5" align="center" size="30" action="get_deck" width="25" color="color_masterdeck" colorselected="black"/>
+            </button>
+          </group>
+          <!-- <visual visibility="deck [DECK] select"> -->
+          <!-- <size width="40" height="66"/> -->
+          <!-- <pos x="-10"/> -->
+          <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'left'"/> -->
+          <!-- <size width="40" height="60" condition="param_equal [DECKSIDE] 'right'"/> -->
+          <!-- <pos x="+0" condition="param_equal [DECKSIDE] 'left'"/> -->
+          <!-- <pos x="-6" condition="param_equal [DECKSIDE] 'right'"/> -->
+          <!-- <off shape="square" color="deckcolor" radius="6"/> -->
+          <!-- </visual> -->
           <!-- deck number -->
-          <button class="button_main" width="25" height="65" action="select" coloroff="black" textheight="55" textsize="30" textcoloron="black" textcolor="deckcolor">
-            <pos x="+0" y="+1"/>
-            <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
-            <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
-            <text align="center" action="get_deck" width="25"/>
-          </button>
+          <!-- <button class="button_main" width="25" height="65" action="select" coloroff="black" textheight="55" textsize="30" textcoloron="black" textcolor="deckcolor"> -->
+          <!-- <pos x="+0" y="+1"/> -->
+          <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
+          <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
+          <!-- <text align="center" action="get_deck" width="25"/> -->
+          <!-- </button> -->
           <menu class="menu_maindecks" query="select" x="+0" y="+380" width="34" height="34"/>
         </group>
         <!-- cover, title etc -->
