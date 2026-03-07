@@ -4898,7 +4898,7 @@
         <!-- <off shape="square" color="black" radius="6"/> -->
         <!-- </visual> -->
         <!-- <menu class="menu_maindecks" query="select" x="+5" y="+295" width="28" height="20"/> -->
-        <group x="+70">
+        <group x="+190">
           <!-- LINE 1 (Title) -->
           <textzone>
             <size width="500" height="70-6-6-26"/>
@@ -4913,12 +4913,15 @@
           </textzone>
         </group>
         <!-- cover -->
-        <group x="+0" y="+0" visibility="loaded">
-          <panel class="cover_art_hntg" size="62" y="-1"/>
+        <group x="+10" y="+8" visibility="loaded">
+          <cover action="" rightclick="" dblclick="">
+            <size width="170" height="170"/>
+            <clipmask x="920" y="100" width="100" height="90"/>
+          </cover>
           <!-- highlight -->
-          <visual width="58" height="58" x="+3" y="+2">
-            <off shape="square" color="transparent" border_size="1" border="#44FFFFFF" radius="0"/>
-          </visual>
+          <!-- <visual width="62" height="62" x="+0" y="+0"> -->
+          <!-- <off shape="square" color="transparent" border_size="1" border="#44FFFFFF" radius="0"/> -->
+          <!-- </visual> -->
         </group>
         <!-- PERFORMANCE: EXTENDED: LEFT DECK: ACTIONS -->
         <group x="+900/2">
@@ -5425,6 +5428,60 @@
       <button class="button_main" x="+29" y="+6+30+4+30+6+62+12+50" width="29" height="18" action="pitch_bend +2% 500ms" rightclick="pitch_range '8,16,32,50' +1" tooltip="Pitch Bend.\nRigth-click: Pitch range +8,16,32,50." textsize="14" text="+" visibility="var_not_equal '@$hauntingjogtype' 0"/>
       <button class="button_main" x="+0" y="+6+30+4+30+6+62+12+50" action="pitch_range '8,16,32,50' +1" rightclick="pitch_range '8,16,32,50' -1" tooltip="Pitch range +8,16,32,50.\nRigth-click: Pitch range -8,16,32,50." width="58" height="18" coloroff="button_background3" brcoloroff="button_background3" textsize="14" textcolor="textoff2" textaction="get_text '&#xB1;%pitchrange'" visibility="var_equal '@$hauntingjogtype' 0"/>
     </define>
+    <!-- JOGWHEEL CORNER BUTTONS -->
+    <define class="JOGWHEEL_CORNER_BUTTONS" placeholders="*jogsize=155">
+      <group>
+        <!-- <visual> -->
+        <!-- <size width="24" height="24"/> -->
+        <!-- <pos x="-2" y="-2"/> -->
+        <!-- <off shape="circle" color="#111111" border="#000000" border_size="1"/> -->
+        <!-- </visual> -->
+        <visual>
+          <size width="20" height="20"/>
+          <off shape="circle" color="#333333" border="#222222" border_size="1"/>
+        </visual>
+        <button action="auto_sync_options" query="auto_match_bpm ? auto_match_key ? auto_sync ? auto_pitch_lock" visibility="loaded" shape="circle">
+          <size width="10" height="10"/>
+          <pos x="+5" y="+5"/>
+          <off shape="circle" color="#AAAAAA" border="#000000" border_size="1"/>
+          <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
+          <over shape="circle" color="#DDDDDD" border="#000000" border_size="0"/>
+          <down shape="circle" color="#00FF00" border="#88FFFF00" border_size="0"/>
+        </button>
+      </group>
+      <group x="+[JOGSIZE]-20" y="+0">
+        <visual>
+          <size width="20" height="20"/>
+          <off shape="circle" color="#333333" border="#222222" border_size="1"/>
+          <over shape="circle" color="#888888" border="#888888" border_size="1"/>
+        </visual>
+        <menu>
+          <pos x="+5" y="+5"/>
+          <size width="10" height="10"/>
+          <pos x="+5" y="+5"/>
+          <icon sysicon="settings" height="18" width="18" color="#AAAAAA" colorover="white" colordown="needle"/>
+          <item text="Needle" localize="true" action="set '@$hauntingjogtype' 0" check="var_equal '@$hauntingjogtype' 0"/>
+          <item text="Text" localize="true" action="set '@$hauntingjogtype' 1" check="var_equal '@$hauntingjogtype' 1"/>
+          <item text="Needle + Text" localize="true" action="set '@$hauntingjogtype' 2" check="var_equal '@$hauntingjogtype' 2"/>
+          <item text="Needle + Cover" localize="true" action="set '@$hauntingjogtype' 3" check="var_equal '@$hauntingjogtype' 3"/>
+          <separator localize="true"/>
+          <submenu text="Text" localize="true">
+            <item text="Jog Mode" localize="true" action="set '@$haunting_jog_text' 0" check="var_equal '@$haunting_jog_text' 0"/>
+            <item text="Loop Size" localize="true" action="set '@$haunting_jog_text' 1" check="var_equal '@$haunting_jog_text' 1"/>
+            <item text="Elapsed" localize="true" action="set '@$haunting_jog_text' 2" check="var_equal '@$haunting_jog_text' 2"/>
+            <item text="Remain" localize="true" action="set '@$haunting_jog_text' 3" check="var_equal '@$haunting_jog_text' 3"/>
+          </submenu>
+          <submenu text="RPM" localize="true">
+            <item text="25" localize="true" action="setting 'RPM' 25" check="setting 'RPM' 25"/>
+            <item text="33" localize="true" action="setting 'RPM' 33" check="setting 'RPM' 33"/>
+            <item text="45" localize="true" action="setting 'RPM' 45" check="setting 'RPM' 45"/>
+            <item text="4 Beats" localize="true" action="setting 'RPM' '4 beats'" check="setting 'RPM' '4 beats'"/>
+          </submenu>
+          <separator localize="true"/>
+          <item text="Auto Disc Marker" action="setting 'autoDiscMarker'" check="setting 'autoDiscMarker'"/>
+        </menu>
+      </group>
+    </define>
     <!-- JOGWHEEL (ALL) -->
     <define class="JOGWHEEL" placeholders="*jogsize=155">
       <group name="jogwheel_a" visibility="var_equal '@$hauntingjogtype' 0">
@@ -5467,6 +5524,7 @@
         <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="jogprogressoff" widthfader="8" heightfader="16" radius="14"/>
         <slider class="dome_spinner" visibility="loaded" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="deckcolor" widthfader="6" heightfader="34" radius="35"/>
         <slider class="dome_spinner" action="get_rotation_slip" visibility="loaded ? get_slip_active" tooltip="" x="+10" y="+10" width="[JOGSIZE]-20" height="[JOGSIZE]-20" offcolor="transparent" colorfader="jog_slider" widthfader="5" heightfader="5" radius="69"/>
+        <panel class="jogwheel_corner_buttons"/>
       </group>
       <group name="jogwheel_b" visibility="var_equal '@$hauntingjogtype' 1">
         <visual>
@@ -5496,6 +5554,7 @@
         <button class="button_main" x="+18" y="+92" width="[JOGSIZE]-36" height="26" action="loop" textsize="14" coloroff="transparent" coloron="transparent" bordersize="0" align="center" weight="bold" textaction="get_text '`get_loop` LOOP'" visibility="loaded ? var_equal '@$haunting_jog_text' 1"/>
         <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="26" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'elapsed'" visibility="loaded ? var_equal '@$haunting_jog_text' 2"/>
         <textzone class="text" x="+18" y="+92" width="[JOGSIZE]-36" height="26" fontsize="18" color="texton2" align="center" weight="" textaction="get_time 'remain'" visibility="loaded ? var_equal '@$haunting_jog_text' 3"/>
+        <panel class="jogwheel_corner_buttons"/>
       </group>
       <!-- JOGWHEEL C: NEEDLE + TEXT -->
       <group name="jogwheel_c" visibility="var_equal '@$hauntingjogtype' 2">
@@ -5513,7 +5572,7 @@
           <off shape="circle" color="#333333" border="transparent"/>
           <on shape="circle" color="deckcolor" border="transparent"/>
         </visual>
-        <visual source="song_pos" type="circle" visibility="loaded ? masterdeck">
+        <visual source="song_pos" type="circle" visibility="masterdeck">
           <tooltip/>
           <pos x="-1" y="-1"/>
           <size width="[JOGSIZE]+2" height="[JOGSIZE]+2"/>
@@ -5592,36 +5651,8 @@
             <!-- KEY MISMATCH WARNING -->
             <!-- <visual type="square" x="+10" y="+40" width="10" height="10" color="red" visibility="not is_sync ? blink : false"/> -->
           </group>
-          <visual>
-            <size width="24" height="24"/>
-            <pos x="-2" y="-2"/>
-            <off shape="circle" color="#333333" border="#111111" border_size="1"/>
-          </visual>
-          <visual>
-            <size width="20" height="20"/>
-            <off shape="circle" color="#000000" border="#222222" border_size="1"/>
-          </visual>
-          <button action="auto_sync_options" query="auto_match_bpm ? auto_match_key" visibility="loaded" shape="circle">
-            <size width="10" height="10"/>
-            <pos x="+5" y="+5"/>
-            <off shape="circle" color="#777777" border="#555555" border_size="3"/>
-            <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
-            <over shape="circle" color="#00FF00" border="transparent" border_size="0"/>
-            <down shape="circle" color="#AA44FF44" border="#8800FF00" border_size="1"/>
-          </button>
+          <panel class="jogwheel_corner_buttons"/>
         </group>
-        <!-- MASTER BUTTON -->
-        <!-- <group> -->
-        <!-- <visual name="innercircle_border" x="+[JOGSIZE]-23+2" y="-2" width="23" height="23"> -->
-        <!-- <off shape="circle" color="#111111" border="transparent" border_size="0"/> -->
-        <!-- </visual> -->
-        <!-- <button action="unload" x="+[JOGSIZE]-23+2" y="-2" width="22" height="22"> -->
-        <!-- <off color="transparent" border_size="0"/> -->
-        <!-- <down color="transparent" border_size="0"/> -->
-        <!-- <on color="#333333" border_size="0"/> -->
-        <!-- <text fontsize="10" weight="bold" textcoloroff="#AAAAAA" textcolorover="white" align="center" text="E"/> -->
-        <!-- </button> -->
-        <!-- </group> -->
       </group>
       <!-- PRO: JOGWHEEL -->
       <group name="jogwheel_d" visibility="var_equal '@$hauntingjogtype' 3">
@@ -5688,6 +5719,7 @@
         <!-- <off shape="square" color="jogprogressoff" border="jogprogressoff" radius="6"/> -->
         <!-- <textzone class="text" x="+18" y="+50" width="[JOGSIZE]-36" height="46" fontsize="26" color="needle" align="center" weight="bold" textaction="var_equal '@$hauntingbpmhideopt' 1 ? get_text '==.==' : var_equal '@$hauntingjogbpmdgts' 0 ? get_text '%Pbpm' : var_equal '@$hauntingjogbpmdgts' 1 ? get_text '%Pbpmex'"/> -->
         <!-- </visual> -->
+        <panel class="jogwheel_corner_buttons"/>
       </group>
       <!-- <scratch> -->
       <!-- <pos width="[JOGSIZE]" height="[JOGSIZE]"/> -->
@@ -9143,32 +9175,32 @@
         <!-- <button class="button_main" x="+18" width="40" height="27" textsize="12" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_active colorfx off" query="deck 1 effect_active colorfx ? blink 500ms : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx"/> -->
         <!-- </group> -->
         <!-- FILTER INDICATOR -->
-        <group x="-60">
+        <group x="-50">
           <visual type="transparent" source="deck 1 effect_active colorfx ? true : deck 2 effect_active colorfx ? true : deck 3 effect_active colorfx ? true : deck 4 effect_active colorfx ? true : false">
-            <pos x="+0" y="+8" width="12" height="12"/>
+            <pos x="+3" y="+9" width="10" height="10"/>
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
+          <button class="button_main" x="+18" width="40" height="27" textsize="10" text="CFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
         <!-- -->
         <!-- MASTER FX INDICATOR -->
         <group x="+0">
           <visual type="transparent" source="is_using 'effect' ? blink 500ms : false">
-            <pos x="+0" y="+8" width="12" height="12"/>
+            <pos x="+3" y="+9" width="10" height="10"/>
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="40" height="27" textsize="12" text="PFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
+          <button class="button_main" x="+18" width="40" height="27" textsize="10" text="PFX" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="deck all effect_disable_all" query="effects_used ? blink 500ms"/>
         </group>
         <!-- MASTER SAMPLER INDICATOR -->
         <group x="+45">
           <visual type="transparent" source="is_using 'sample' ? blink 500ms : false">
-            <pos x="+0" y="+8" width="12" height="12"/>
+            <pos x="+3" y="+9" width="10" height="10"/>
             <off color="tab_menu" border="tab_menu" shape="circle"/>
             <on color="green" border="green" shape="circle"/>
           </visual>
-          <button class="button_main" x="+18" width="50" height="27" textsize="12" text="SAMP" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
+          <button class="button_main" x="+18" width="50" height="27" textsize="10" text="SAMP" align="left" radius="6" coloroff="transparent" coloron="transparent" bordersize="0" textcolor="#888888" textcoloron="#888888" brcoloroff="transparent" brcoloron="transparent" action="sampler_stop all &amp; deck 1 sampler_stop all &amp; deck 2 sampler_stop all &amp; deck 3 sampler_stop all &amp; deck 4 sampler_stop all &amp; deck master sampler_stop all"/>
         </group>
       </group>
       <!-- TOP BAR: MASTER (master vu, cpu, clock) -->
@@ -10272,11 +10304,6 @@
             <!-- <off shape="square" color="color_masterdeck" border_size="0" border="color_masterdeck" radius="10"/> -->
             <!-- </visual> -->
             <!-- <button orientation="vertical" class="button_main" x="+1920-50-21" y="+2" width="18" height="[HEIGHT]-4" action="masterdeck" coloroff="#88000000" coloron="#AA000000" brcoloron="color_masterdeck" textcoloron="orange" textcolor="textoff4" textsize="13" text="MASTER" visibility="masterdeck"/> -->
-            <!-- PRO: HORIZONTAL WAVEFORM: BORDER -->
-            <visual source="select" x="-2" y="+0" visibility="var_equal '@$dd_bordermode' 1">
-              <size width="1920-32" height="[HEIGHT]"/>
-              <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
-            </visual>
             <!-- master/slave -->
             <!-- <button orientation="vertical" class="button_main" x="+[HEIGHT]*2+30" y="+0" width="20" height="[HEIGHT]-4" action="masterdeck" query="masterdeck" bordersize="2" textsize="13" radius="6" textaction="masterdeck ? get_text 'MASTER' : get_text 'SLAVE'" coloroff="#AA000000" coloron="#AA000000" brcoloroff="`masterdeck ? color_masterdeck : color 'white'`" brcoloron="color_masterdeck" textcolor="white" textcoloron="color_masterdeck"/> -->
             <!-- cover (when not loaded) -->
@@ -10303,6 +10330,12 @@
             <!-- <icon dx="-4" sysicon="play" width="[HEIGHT]*0.8" height="[HEIGHT]*0.8" coloroff="transparent" coloron="#55FFFFFF" colorover="#FFFFFFFF" condition="loaded &amp; playing"/> -->
             <!-- </button> -->
             <!-- </group> -->
+            <!-- PRO: HORIZONTAL WAVEFORM: BORDER -->
+            <visual source="select" x="+28" y="+0" visibility="var_equal '@$dd_bordermode' 1">
+              <size width="1920-32" height="[HEIGHT]"/>
+              <!-- <size width="[HEIGHT]" height="[HEIGHT]"/> -->
+              <down color="transparent" border_size="2" border="deckcolor" shape="square" radius="10"/>
+            </visual>
             <dropzone>
               <pos x="-2" y="+0"/>
               <size width="1920-8-23" height="[WAVEFORMHEIGHT]/2"/>
@@ -14563,35 +14596,48 @@
           <off shape="square" color="black"/>
         </visual>
         <!-- LEFT: ACAPELLA SPINE LABEL -->
-        <group visibility="loaded ? stem_pad 'acapella'">
-          <!-- <visual x="+0" y="+0" width="34" height="425" visibility="0.2"> -->
-          <!-- <off shape="square" color="color_acapella"/> -->
-          <!-- </visual> -->
-          <visual x="+0" y="+0" width="34" height="450" visibility="0.1">
-            <off shape="square" color="color_acapella"/>
+        <!-- <group visibility="loaded ? stem_pad 'acapella'"> -->
+        <!-- <visual x="+0" y="+0" width="34" height="425" visibility="0.2"> -->
+        <!-- <off shape="square" color="color_acapella"/> -->
+        <!-- </visual> -->
+        <!-- <visual x="+0" y="+0" width="34" height="450" visibility="0.1"> -->
+        <!-- <off shape="square" color="color_acapella"/> -->
+        <!-- </visual> -->
+        <!-- <visual x="+5" y="+150" width="24" height="125"> -->
+        <!-- <off shape="square" color="black" bordersize="1" border="color_acapella" radius="2"/> -->
+        <!-- </visual> -->
+        <!-- <textzone orientation="vertical" direction="ccw"> -->
+        <!-- <pos x="+0" y="+0"/> -->
+        <!-- <size width="34" height="425"/> -->
+        <!-- <text fontsize="12" color="color_acapella" scroll="yes" align="center" text="ACAPELLA" important="true"/> -->
+        <!-- </textzone> -->
+        <!-- </group> -->
+        <!-- LEFT: MASTERDECK SPINE LABEL -->
+        <group visibility="loaded ? masterdeck">
+          <visual x="+0" y="+0" width="34" height="425" visibility="0.2">
+            <off shape="square" color="color_masterdeck"/>
           </visual>
           <visual x="+5" y="+150" width="24" height="125">
-            <off shape="square" color="black" bordersize="1" border="color_acapella" radius="2"/>
+            <off shape="square" color="black" bordersize="1" border="color_masterdeck" radius="2"/>
           </visual>
           <textzone orientation="vertical" direction="ccw">
             <pos x="+0" y="+0"/>
             <size width="34" height="425"/>
-            <text fontsize="12" color="color_acapella" scroll="yes" align="center" text="ACAPELLA" important="true"/>
+            <text fontsize="12" color="color_masterdeck" scroll="yes" align="center" text="MASTER" important="true"/>
           </textzone>
-        </group>
-        <!-- LEFT: INSTRUMENTAL SPINE LABEL -->
-        <group visibility="loaded ? stem_pad 'instrumental'">
-          <visual x="+0" y="+0" width="34" height="425" visibility="0.2">
-            <off shape="square" color="color_instrumental"/>
-          </visual>
-          <visual x="+5" y="+150" width="24" height="125">
-            <off shape="square" color="black" bordersize="1" border="color_instrumental" radius="2"/>
-          </visual>
-          <textzone orientation="vertical" direction="ccw" visibility="play ? false : loaded">
-            <pos x="+0" y="+0"/>
-            <size width="34" height="425"/>
-            <text fontsize="12" color="color_instrumental" scroll="yes" align="center" text="INSTRUMENTAL" important="true"/>
-          </textzone>
+          <!-- LEFT: INSTRUMENTAL SPINE LABEL -->
+          <!-- <group visibility="loaded ? stem_pad 'instrumental'"> -->
+          <!-- <visual x="+0" y="+0" width="34" height="425" visibility="0.2"> -->
+          <!-- <off shape="square" color="color_instrumental"/> -->
+          <!-- </visual> -->
+          <!-- <visual x="+5" y="+150" width="24" height="125"> -->
+          <!-- <off shape="square" color="black" bordersize="1" border="color_instrumental" radius="2"/> -->
+          <!-- </visual> -->
+          <!-- <textzone orientation="vertical" direction="ccw" visibility="play ? false : loaded"> -->
+          <!-- <pos x="+0" y="+0"/> -->
+          <!-- <size width="34" height="425"/> -->
+          <!-- <text fontsize="12" color="color_instrumental" scroll="yes" align="center" text="INSTRUMENTAL" important="true"/> -->
+          <!-- </textzone> -->
         </group>
         <!-- PRO: LEFT DECK: PANEL BG (behind jog) -->
         <visual width="765" height="390" x="+35">
@@ -14600,32 +14646,36 @@
         </visual>
         <!-- PRO: LEFT: DECK BUTTON -->
         <group y="+3">
-          <group visibility="not masterdeck">
-            <button action="select">
-              <pos x="+10" y="+5"/>
-              <size width="30" height="50"/>
-              <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
-              <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
-              <off shape="square" color="black" radius="5" border_size="1" border="black"/>
-              <on shape="square" color="deckcolor" radius="5" border_size="1" border="deckcolor"/>
-              <text dx="-1" dy="-5" align="center" size="30" action="get_deck" width="25" color="deckcolor" colorselected="black"/>
-            </button>
-            <line x="+33" y="+0" width="2" height="433" color="deckcolor"/>
-          </group>
+          <!-- <group visibility="not masterdeck"> -->
+          <!-- <button action="select"> -->
+          <!-- <pos x="+5" y="+5"/> -->
+          <!-- <size width="35" height="50"/> -->
+          <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
+          <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
+          <!-- <off shape="square" color="black" radius="5" border_size="1" border="black"/> -->
+          <!-- <on shape="square" color="deckcolor" radius="5" border_size="1" border="deckcolor"/> -->
+          <!-- <text dx="+1" dy="-5" align="center" size="35" action="get_deck" width="25" color="deckcolor" colorselected="black"/> -->
+          <!-- </button> -->
+          <!-- <line x="+33" y="+0" width="2" height="433" color="deckcolor"/> -->
+          <!-- </group> -->
+          <!-- CLASS: DECK BUTTON -->
           <define class="DECK_BUTTON_LEFT" placeholders="*deck,*color">
             <button action="select">
-              <pos x="+0" y="+5"/>
-              <size width="30" height="60"/>
+              <pos x="+5" y="+5"/>
+              <size width="35" height="50"/>
               <!-- <pos x="+5" y="+1" condition="param_equal [DECKSIDE] 'left'"/> -->
               <!-- <pos x="+3" y="+1" condition="param_equal [DECKSIDE] 'right'"/> -->
               <off shape="square" color="black" radius="5" border_size="1" border="black"/>
-              <on shape="square" color="color_masterdeck" radius="5" border_size="1" border="[COLOR]"/>
-              <text dx="-1" dy="-5" align="center" size="30" action="get_deck" width="25" color="[COLOR]" colorselected="black"/>
+              <on shape="square" color="[COLOR]" radius="5" border_size="1" border="[COLOR]"/>
+              <text dx="+1" dy="-5" align="center" size="35" action="get_deck" width="25" color="[COLOR]" colorselected="black"/>
             </button>
-            <line visibility="select" x="+25" y="+0" width="3" height="433" color="[COLOR]"/>
+            <line visibility="select" x="+34" y="+0" width="1" height="433" color="[COLOR]"/>
           </define>
           <group class="deck_button_left" visibility="masterdeck" color="color_masterdeck">
-            <pos x="+8" y="+0"/>
+            <pos x="+0" y="+0"/>
+          </group>
+          <group class="deck_button_left" visibility="not masterdeck" color="deckcolor">
+            <pos x="+0" y="+0"/>
           </group>
           <!-- <group visibility="masterdeck"> -->
           <!-- <button action="select"> -->
@@ -14646,7 +14696,7 @@
           <!-- <visual class="gfx_shape" width="922" height="324" x="-1" coloroff="panel_background" bordersize="1" bordercoloroff="#222222"/> -->
           <!-- cover, title etc -->
           <!-- PRO: LEFT: TRACK INFO -->
-          <panel class="infos" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
+          <panel class="infos"/>
           <!-- bg (covers coverart) -->
           <!-- black strip -->
           <!-- <visual class="gfx_shape" x="+5" y="+72" width="525" height="22" coloroff="black" bordercoloroff="#444444" bordersize="0"/> -->
@@ -14691,7 +14741,7 @@
         <panel class="video_preview" x="+404-2+60+11+4" y="+6" visibility="has_video_mix 'active' &amp;&amp; skin_panel 'videomixer'"/>
         <!-- BORDER -->
         <visual source="deck [DECK] select" x="+0" y="+0" visibility="var_equal '@$dd_bordermode' 1">
-          <size width="770" height="429"/>
+          <size width="770" height="440"/>
           <down color="transparent" border_size="3" border="deckcolor" shape="square" radius="8"/>
         </visual>
       </deck>
