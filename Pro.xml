@@ -2039,7 +2039,7 @@
         <!-- <separator visibility="not var_equal '@$hauntingproskinmode' 3"/> -->
         <item text="Show CoverArt" action="toggle '@$haunting_showcover_title'" check="var_equal '@$haunting_showcover_title' 1" visibility="not var_equal '@$hauntingproskinmode' 3"/>
       </define>
-      <define class="dropdown_menu">
+      <define class="DROPDOWN_MENU">
         <size width="14" height="13"/>
         <off shape="square" color="panel_background"/>
         <icon sysicon="chevrondown" height="14" width="14" color="textdarker" colorover="needle" colordown="needle"/>
@@ -5241,7 +5241,7 @@
           </group>
           <!-- STATUS: SAMPLER -->
           <group y="+40">
-            <button width="80" height="19" action="sampler_play_stop &amp; pad_page 4 'SAMPLER'" border_size="1" query="sampler_play_stop">
+            <button width="80" height="19" action="sampler_play_stop &amp; pad_page 3 'SAMPLER'" border_size="1" query="sampler_play_stop">
               <off color="#000000"/>
               <selected color="color_sampler" textcolor="white"/>
               <text dx="+10" fontsize="12" color="#AAAAAA" colorselected="black" align="left" text="SAMPLER"/>
@@ -7818,13 +7818,27 @@
           <!-- <visual x="+10" y="+6" width="55" height="432-56-16"> -->
           <!-- <off shape="square" color="#1C1C1C" radius="6" bordersize="1" border="#444444"/> -->
           <!-- </visual> -->
-          <button class="dropdown_menu" action="eq_mode" x="+68" y="+6" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <button class="dropdown_menu" action="eq_mode" x="+58" y="+8" visibility="var_equal '@$hauntingdropmenus' 0"/>
           <panel class="knob" x="+18" y="+14" knobsize="41" knobradius="10" faderradius="9" action="gain" rgclick="match_gain" dblclick="gain 50%" frommiddle="true" fillcolor="knobfillon" textaction="gain_label" actiontxt="var_equal '@$hauntingdropmenus' 1 ? eq_mode : eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+76" knobsize="41" knobradius="10" faderradius="9" action="eq_high" rgclick="eq_high 0% ? eq_high 50% : eq_high 0%" dblclick="eq_high 50%" frommiddle="true" fillcolor="knobfillon" textaction="high_label" actiontxt="eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+76+67" knobsize="41" knobradius="10" faderradius="9" action="eq_mid" rgclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" dblclick="eq_mid 50%" frommiddle="true" fillcolor="knobfillon" textaction="mid_label 'short'" actiontxt="eq_mode +1"/>
           <panel class="knob" x="+18" y="+14+76+67+67" knobsize="41" knobradius="10" faderradius="9" action="eq_low" rgclick="eq_low 0% ? eq_low 50% : eq_low 0%" dblclick="eq_low 50%" frommiddle="true" fillcolor="knobfillon" textaction="low_label" actiontxt="eq_mode +1"/>
           <!-- PRO: AUDIO PANEL: COLORFX -->
-          <button class="dropdown_menu" action="effect_select colorfx" x="+68" y="+14+81+68+68+50+5" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <button class="dropdown_menu" action="effect_select colorfx" x="+58" y="+14+81+68+68+50+6" visibility="var_equal '@$hauntingdropmenus' 0"/>
+          <group x="+55" y="+14+81+68+68+50+6">
+            <visual>
+              <size width="16" height="16"/>
+              <off shape="circle" color="#333333" border="#222222" border_size="1"/>
+            </visual>
+            <button action="auto_sync_options" query="auto_match_bpm ? auto_match_key ? auto_sync ? auto_pitch_lock" visibility="loaded" shape="circle">
+              <size width="8" height="8"/>
+              <pos x="+4" y="+4"/>
+              <off shape="circle" color="#AAAAAA" border="#000000" border_size="1"/>
+              <selected shape="circle" color="#00FF00" border="#222222" border_size="1"/>
+              <over shape="circle" color="#DDDDDD" border="#000000" border_size="0"/>
+              <down shape="circle" color="#00FF00" border="#88FFFF00" border_size="0"/>
+            </button>
+          </group>
           <panel class="knob" x="+18" y="+14+81+68+68+50+13" knobsize="41" knobradius="10" faderradius="9" action="filter" dblclick="filter 50%" frommiddle="true" fillcolor="knobfillon" textaction="filter_label &amp; param_cast 'text' 9" actiontxt="filter_selectcolorfx"/>
         </group>
         <!-- 5knobs -->
@@ -7884,7 +7898,18 @@
         <panel class="vu_meter_LEDs" x="+23" y="+5" source="get_level_left" showpeaks="var_equal '@$hauntingshowpeaksmt' 1"/>
         <panel class="vu_meter_LEDs" x="+23+11+10" y="+5" source="get_level_right" showpeaks="var_equal '@$hauntingshowpeaksmt' 1"/>
         <!-- CUE BUTTON -->
-        <button class="button_main" x="+2+4+4" y="+175" width="57" height="24" action="pfl" coloroff="button_background4" brcoloroff="button_background4" textcoloron="black" text="CUE"/>
+        <!-- <button class="button_main" x="+2+4+4" y="+175" width="57" height="24" action="pfl" coloroff="button_background4" brcoloroff="button_background4" textcoloron="black" text="CUE"/> -->
+        <button class="button_main" action="pfl" query="pfl">
+          <pos x="+10" y="+175"/>
+          <size width="60" height="25"/>
+          <!-- OFF / default -->
+          <off color="transparent" border="button_background4" border_size="1" radius="3"/>
+          <over color="transparent" border="button_background4" border_size="1" radius="3"/>
+          <!-- ON when deck is PFL -->
+          <down color="transparent" border="deckcolor" border_size="1" radius="3"/>
+          <selected color="transparent" border="deckcolor" border_size="1" radius="3"/>
+          <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/>
+        </button>
         <panel class="deck_level" x="+11+9" y="+6+10+200"/>
       </deck>
     </define>
@@ -13671,14 +13696,18 @@
         <visual x="+4" width="307" height="375">
           <off shape="square" color="#1A1A1A" radius="6" bordersize="1" border="#333333"/>
         </visual>
-        <panel class="channel_eqs" deck="1" visibility="not deck 3 leftdeck"/>
-        <panel class="channel_eqs" deck="3" visibility="deck 3 leftdeck"/>
+        <group x="+2" y="+8">
+          <panel class="channel_eqs" deck="1" visibility="not deck 3 leftdeck"/>
+          <panel class="channel_eqs" deck="3" visibility="deck 3 leftdeck"/>
+        </group>
         <panel class="channel_levels" deck="1" y="+10" x="+77+1" visibility="not deck 3 leftdeck"/>
         <panel class="channel_levels" deck="3" y="+10" x="+77+1" visibility="deck 3 leftdeck"/>
         <panel class="channel_levels" deck="2" y="+10" x="+77+1+77+2" visibility="not deck 4 rightdeck"/>
         <panel class="channel_levels" deck="4" y="+10" x="+77+1+77+2" visibility="deck 4 rightdeck"/>
-        <panel class="channel_eqs" deck="2" x="+77+1+77+2+77+1" visibility="not deck 4 rightdeck"/>
-        <panel class="channel_eqs" deck="4" x="+77+1+77+2+77+1" visibility="deck 4 rightdeck"/>
+        <group x="-2" y="+8">
+          <panel class="channel_eqs" deck="2" x="+77+1+77+2+77+1" visibility="not deck 4 rightdeck"/>
+          <panel class="channel_eqs" deck="4" x="+77+1+77+2+77+1" visibility="deck 4 rightdeck"/>
+        </group>
         <menu tooltip="MIXER OPTIONS">
           <pos x="960-10" y="+10"/>
           <size width="20" height="18"/>
@@ -13840,7 +13869,7 @@
                 <!-- TEXT: LINE 2 -->
                 <group x="+16" y="+13">
                   <!-- bpm -->
-                  <textzone>
+                  <textzone visibility="not param_equal '`get_sample_info [INDEX] bpm`' '``'">
                     <pos x="+0" y="+0"/>
                     <size width="200" height="22"/>
                     <text fontsize="11" color="#FFFFFF" align="left" action="get_text '`get_sample_info [INDEX] bpm`bpm'"/>
@@ -14714,19 +14743,20 @@
           <!-- PRO: LEFT JOGWHEEL -->
           <panel class="jogwheel" x="+730-[JOGSIZE]-30" y="+2+6+2" name="jogwheel_spinner"/>
           <!-- PRO: LEFT VOLUME -->
-          <panel class="deck_level" x="+760-50" y="+10"/>
+          <!-- <panel class="deck_level" x="+760-50" y="+10"/> -->
+          <panel class="pitch" x="+760-45" y="+30"/>
           <!-- PRO: LEFT CUE -->
-          <button class="button_main" action="pfl" query="pfl">
-            <pos x="+760-50" y="+150"/>
-            <size width="37" height="15"/>
-            <!-- OFF / default -->
-            <off color="transparent" border="button_background4" border_size="1" radius="3"/>
-            <over color="transparent" border="button_background4" border_size="1" radius="3"/>
-            <!-- ON when deck is PFL -->
-            <down color="transparent" border="deckcolor" border_size="1" radius="3"/>
-            <selected color="transparent" border="deckcolor" border_size="1" radius="3"/>
-            <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/>
-          </button>
+          <!-- <button class="button_main" action="pfl" query="pfl"> -->
+          <!-- <pos x="+760-50" y="+150"/> -->
+          <!-- <size width="37" height="15"/> -->
+          <!-- OFF / default -->
+          <!-- <off color="transparent" border="button_background4" border_size="1" radius="3"/> -->
+          <!-- <over color="transparent" border="button_background4" border_size="1" radius="3"/> -->
+          <!-- ON when deck is PFL -->
+          <!-- <down color="transparent" border="deckcolor" border_size="1" radius="3"/> -->
+          <!-- <selected color="transparent" border="deckcolor" border_size="1" radius="3"/> -->
+          <!-- <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/> -->
+          <!-- </button> -->
           <!-- PRO: LEFT DECK BORDER -->
           <visual width="765" height="438" y="+0">
             <off shape="square" color="transparent" border_size="1" border="#333333" radius="6"/>
@@ -15248,19 +15278,20 @@
         <!-- PRO: RIGHT JOGWHEEL -->
         <panel class="jogwheel" x="+65" y="+2+6+2" name="jogwheel_spinner" visibility="not has_video_mix 'active' ? yes : not skin_panel 'videomixer'"/>
         <!-- PRO: RIGHT VOLUME -->
-        <panel class="deck_level" x="+15" y="+10"/>
+        <!-- <panel class="deck_level" x="+15" y="+10"/> -->
+        <panel class="pitch" x="+15" y="+30"/>
         <!-- PRO: RIGHT CUE -->
-        <button class="button_main" action="pfl" query="pfl">
-          <pos x="+15" y="+150"/>
-          <size width="37" height="15"/>
-          <!-- OFF / default -->
-          <off color="transparent" border="button_background4" border_size="1" radius="3"/>
-          <over color="transparent" border="button_background4" border_size="1" radius="3"/>
-          <!-- ON when deck is PFL -->
-          <down color="transparent" border="deckcolor" border_size="1" radius="3"/>
-          <selected color="transparent" border="deckcolor" border_size="1" radius="3"/>
-          <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/>
-        </button>
+        <!-- <button class="button_main" action="pfl" query="pfl"> -->
+        <!-- <pos x="+15" y="+150"/> -->
+        <!-- <size width="37" height="15"/> -->
+        <!-- OFF / default -->
+        <!-- <off color="transparent" border="button_background4" border_size="1" radius="3"/> -->
+        <!-- <over color="transparent" border="button_background4" border_size="1" radius="3"/> -->
+        <!-- ON when deck is PFL -->
+        <!-- <down color="transparent" border="deckcolor" border_size="1" radius="3"/> -->
+        <!-- <selected color="transparent" border="deckcolor" border_size="1" radius="3"/> -->
+        <!-- <text text="CUE" fontsize="10" align="center" valign="center" color="textdarker" colordown="deckcolor" colorselected="deckcolor"/> -->
+        <!-- </button> -->
         <group>
           <!-- PRO: RIGHT DECK BORDER -->
           <visual width="765" height="438" y="+0">
